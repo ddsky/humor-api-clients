@@ -1,0 +1,237 @@
+# WWW::OpenAPIClient::MemesApi
+
+## Load the API package
+```perl
+use WWW::OpenAPIClient::Object::MemesApi;
+```
+
+All URIs are relative to *https://api.humorapi.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**downvote_meme**](MemesApi.md#downvote_meme) | **POST** /memes/{id}/downvote | Downvote a Meme
+[**random_meme**](MemesApi.md#random_meme) | **GET** /memes/random | Random Meme
+[**search_memes**](MemesApi.md#search_memes) | **GET** /memes/search | Search Memes
+[**upvote_meme**](MemesApi.md#upvote_meme) | **POST** /memes/{id}/upvote | Upvote a Meme
+
+
+# **downvote_meme**
+> InlineResponse2008 downvote_meme(id => $id)
+
+Downvote a Meme
+
+Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
+
+### Example 
+```perl
+use Data::Dumper;
+use WWW::OpenAPIClient::MemesApi;
+my $api_instance = WWW::OpenAPIClient::MemesApi->new(
+
+    # Configure API key authorization: apiKey
+    api_key => {'api-key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'api-key' => 'Bearer'},
+);
+
+my $id = 56; # int | The object's id.
+
+eval { 
+    my $result = $api_instance->downvote_meme(id => $id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling MemesApi->downvote_meme: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The object&#39;s id. | 
+
+### Return type
+
+[**InlineResponse2008**](InlineResponse2008.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **random_meme**
+> InlineResponse2003 random_meme(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating)
+
+Random Meme
+
+Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
+
+### Example 
+```perl
+use Data::Dumper;
+use WWW::OpenAPIClient::MemesApi;
+my $api_instance = WWW::OpenAPIClient::MemesApi->new(
+
+    # Configure API key authorization: apiKey
+    api_key => {'api-key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'api-key' => 'Bearer'},
+);
+
+my $keywords = rocket; # string | A comma separated list of keywords.
+my $keywords_in_image = false; # boolean | Whether the keywords should be found in the meme's image.
+my $media_type = image; # string | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
+my $number = 3; # int | The number of results to retrieve between 1 and 10.
+my $min_rating = 7; # int | The minimum rating between 0 and 10 the result should have.
+
+eval { 
+    my $result = $api_instance->random_meme(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling MemesApi->random_meme: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **keywords** | **string**| A comma separated list of keywords. | [optional] 
+ **keywords_in_image** | **boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] 
+ **media_type** | **string**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
+ **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] 
+ **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
+
+### Return type
+
+[**InlineResponse2003**](InlineResponse2003.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_memes**
+> InlineResponse2002 search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating)
+
+Search Memes
+
+Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
+
+### Example 
+```perl
+use Data::Dumper;
+use WWW::OpenAPIClient::MemesApi;
+my $api_instance = WWW::OpenAPIClient::MemesApi->new(
+
+    # Configure API key authorization: apiKey
+    api_key => {'api-key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'api-key' => 'Bearer'},
+);
+
+my $keywords = rocket; # string | A comma separated list of keywords.
+my $keywords_in_image = false; # boolean | Whether the keywords should be found in the meme's image.
+my $media_type = image; # string | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
+my $number = 3; # int | The number of results to retrieve between 1 and 10.
+my $min_rating = 7; # int | The minimum rating between 0 and 10 the result should have.
+
+eval { 
+    my $result = $api_instance->search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling MemesApi->search_memes: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **keywords** | **string**| A comma separated list of keywords. | [optional] 
+ **keywords_in_image** | **boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] 
+ **media_type** | **string**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
+ **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] 
+ **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
+
+### Return type
+
+[**InlineResponse2002**](InlineResponse2002.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upvote_meme**
+> InlineResponse2008 upvote_meme(id => $id)
+
+Upvote a Meme
+
+Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
+
+### Example 
+```perl
+use Data::Dumper;
+use WWW::OpenAPIClient::MemesApi;
+my $api_instance = WWW::OpenAPIClient::MemesApi->new(
+
+    # Configure API key authorization: apiKey
+    api_key => {'api-key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'api-key' => 'Bearer'},
+);
+
+my $id = 56; # int | The object's id.
+
+eval { 
+    my $result = $api_instance->upvote_meme(id => $id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling MemesApi->upvote_meme: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The object&#39;s id. | 
+
+### Return type
+
+[**InlineResponse2008**](InlineResponse2008.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
