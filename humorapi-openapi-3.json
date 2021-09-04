@@ -1063,7 +1063,9 @@
         "name": "id",
         "in": "path",
         "schema": {
-          "type": "integer"
+          "type": "integer",
+          "example": 1,
+          "minimum": 1
         },
         "description": "The object's id.",
         "required": true
