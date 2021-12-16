@@ -74,7 +74,7 @@ Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 //import com.humorapi.JokesApi;
 
 JokesApi apiInstance = new JokesApi();
-Integer id = null; // Integer | The object's id.
+Integer id = 1; // Integer | The object's id.
 try {
     InlineResponse2008 result = apiInstance.downvoteJoke(id);
     System.out.println(result);
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## searchJokes
 
-> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength)
+> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
 
 Search Jokes
 
@@ -180,8 +180,9 @@ String excludeTags = nsfw; // String | A comma separated list of tags that the j
 Integer number = 3; // Integer | The number of results to retrieve between 1 and 10.
 Integer minRating = 7; // Integer | The minimum rating between 0 and 10 the result should have.
 Integer maxLength = 200; // Integer | The maximum number of letters in the joke.
+BigDecimal offset = null; // BigDecimal | The number of results to skip.
 try {
-    InlineResponse200 result = apiInstance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength);
+    InlineResponse200 result = apiInstance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JokesApi#searchJokes");
@@ -200,6 +201,7 @@ Name | Type | Description  | Notes
  **number** | **Integer**| The number of results to retrieve between 1 and 10. | [optional] [default to null]
  **minRating** | **Integer**| The minimum rating between 0 and 10 the result should have. | [optional] [default to null]
  **maxLength** | **Integer**| The maximum number of letters in the joke. | [optional] [default to null]
+ **offset** | **BigDecimal**| The number of results to skip. | [optional] [default to null]
 
 ### Return type
 
@@ -276,7 +278,7 @@ Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 //import com.humorapi.JokesApi;
 
 JokesApi apiInstance = new JokesApi();
-Integer id = null; // Integer | The object's id.
+Integer id = 1; // Integer | The object's id.
 try {
     InlineResponse2008 result = apiInstance.upvoteJoke(id);
     System.out.println(result);

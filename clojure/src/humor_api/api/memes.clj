@@ -75,11 +75,11 @@ See https://humorapi.com/docs/#Random-Meme for more."
   Search for memes.
 See https://humorapi.com/docs/#Search-Memes for more."
   ([] (search-memes-with-http-info nil))
-  ([{:keys [keywords keywords-in-image media-type number min-rating]} (s/map-of keyword? any?)]
+  ([{:keys [keywords keywords-in-image media-type number min-rating offset]} (s/map-of keyword? any?)]
    (call-api "/memes/search" :get
              {:path-params   {}
               :header-params {}
-              :query-params  {"keywords" keywords "keywords-in-image" keywords-in-image "media-type" media-type "number" number "min-rating" min-rating }
+              :query-params  {"keywords" keywords "keywords-in-image" keywords-in-image "media-type" media-type "number" number "min-rating" min-rating "offset" offset }
               :form-params   {}
               :content-types []
               :accepts       ["application/json"]

@@ -74,7 +74,7 @@ Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 //import com.humorapi.client.model.*
 
 val apiInstance = JokesApi()
-val id : kotlin.Int = 56 // kotlin.Int | The object's id.
+val id : kotlin.Int = 1 // kotlin.Int | The object's id.
 try {
     val result : InlineResponse2008 = apiInstance.downvoteJoke(id)
     println(result)
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 <a name="searchJokes"></a>
 # **searchJokes**
-> InlineResponse200 searchJokes(keywords, includeMinusTags, excludeMinusTags, number, minMinusRating, maxMinusLength)
+> InlineResponse200 searchJokes(keywords, includeMinusTags, excludeMinusTags, number, minMinusRating, maxMinusLength, offset)
 
 Search Jokes
 
@@ -182,8 +182,9 @@ val excludeMinusTags : kotlin.String = nsfw // kotlin.String | A comma separated
 val number : kotlin.Int = 3 // kotlin.Int | The number of results to retrieve between 1 and 10.
 val minMinusRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
 val maxMinusLength : kotlin.Int = 200 // kotlin.Int | The maximum number of letters in the joke.
+val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | The number of results to skip.
 try {
-    val result : InlineResponse200 = apiInstance.searchJokes(keywords, includeMinusTags, excludeMinusTags, number, minMinusRating, maxMinusLength)
+    val result : InlineResponse200 = apiInstance.searchJokes(keywords, includeMinusTags, excludeMinusTags, number, minMinusRating, maxMinusLength, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling JokesApi#searchJokes")
@@ -204,6 +205,7 @@ Name | Type | Description  | Notes
  **number** | **kotlin.Int**| The number of results to retrieve between 1 and 10. | [optional]
  **minMinusRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
  **maxMinusLength** | **kotlin.Int**| The maximum number of letters in the joke. | [optional]
+ **offset** | **java.math.BigDecimal**| The number of results to skip. | [optional]
 
 ### Return type
 
@@ -280,7 +282,7 @@ Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 //import com.humorapi.client.model.*
 
 val apiInstance = JokesApi()
-val id : kotlin.Int = 56 // kotlin.Int | The object's id.
+val id : kotlin.Int = 1 // kotlin.Int | The object's id.
 try {
     val result : InlineResponse2008 = apiInstance.upvoteJoke(id)
     println(result)

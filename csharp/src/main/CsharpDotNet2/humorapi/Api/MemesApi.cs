@@ -35,8 +35,9 @@ namespace com.humorapi
         /// <param name="mediaType">The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;.</param>
         /// <param name="number">The number of results to retrieve between 1 and 10.</param>
         /// <param name="minRating">The minimum rating between 0 and 10 the result should have.</param>
+        /// <param name="offset">The number of results to skip.</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 SearchMemes (string keywords, bool? keywordsInImage, string mediaType, int? number, int? minRating);
+        InlineResponse2002 SearchMemes (string keywords, bool? keywordsInImage, string mediaType, int? number, int? minRating, decimal? offset);
         /// <summary>
         /// Upvote a Meme Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
         /// </summary>
@@ -185,8 +186,9 @@ namespace com.humorapi
         /// <param name="mediaType">The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;.</param> 
         /// <param name="number">The number of results to retrieve between 1 and 10.</param> 
         /// <param name="minRating">The minimum rating between 0 and 10 the result should have.</param> 
+        /// <param name="offset">The number of results to skip.</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 SearchMemes (string keywords, bool? keywordsInImage, string mediaType, int? number, int? minRating)
+        public InlineResponse2002 SearchMemes (string keywords, bool? keywordsInImage, string mediaType, int? number, int? minRating, decimal? offset)
         {
             
     
@@ -204,6 +206,7 @@ namespace com.humorapi
  if (mediaType != null) queryParams.Add("media-type", ApiClient.ParameterToString(mediaType)); // query parameter
  if (number != null) queryParams.Add("number", ApiClient.ParameterToString(number)); // query parameter
  if (minRating != null) queryParams.Add("min-rating", ApiClient.ParameterToString(minRating)); // query parameter
+ if (offset != null) queryParams.Add("offset", ApiClient.ParameterToString(offset)); // query parameter
                                         
             // authentication setting, if any
             String[] authSettings = new String[] { "apiKey" };

@@ -3,6 +3,7 @@ package com.humorapi
 import java.io._
 import humorapi._
 import com.humorapi.client.model._
+import java.math.BigDecimal
 import com.humorapi.client.model.InlineResponse200
 import com.humorapi.client.model.InlineResponse2004
 import com.humorapi.client.model.InlineResponse2008
@@ -101,8 +102,8 @@ object JokesApi {
         * @return An endpoint representing a InlineResponse200
         */
         private def searchJokes(da: DataAccessor): Endpoint[InlineResponse200] =
-        get("jokes" :: "search" :: paramOption("keywords") :: paramOption("include-tags") :: paramOption("exclude-tags") :: paramOption("number").map(_.map(_.toInt)) :: paramOption("min-rating").map(_.map(_.toInt)) :: paramOption("max-length").map(_.map(_.toInt)) :: param("api-key")) { (keywords: Option[String], includeTags: Option[String], excludeTags: Option[String], number: Option[Int], minRating: Option[Int], maxLength: Option[Int], authParamapiKey: String) =>
-          da.Jokes_searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, authParamapiKey) match {
+        get("jokes" :: "search" :: paramOption("keywords") :: paramOption("include-tags") :: paramOption("exclude-tags") :: paramOption("number").map(_.map(_.toInt)) :: paramOption("min-rating").map(_.map(_.toInt)) :: paramOption("max-length").map(_.map(_.toInt)) :: paramOption("offset").map(_.map(_.toBigDecimal)) :: param("api-key")) { (keywords: Option[String], includeTags: Option[String], excludeTags: Option[String], number: Option[Int], minRating: Option[Int], maxLength: Option[Int], offset: Option[BigDecimal], authParamapiKey: String) =>
+          da.Jokes_searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset, authParamapiKey) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

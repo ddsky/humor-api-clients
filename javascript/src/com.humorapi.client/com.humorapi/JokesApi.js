@@ -187,6 +187,7 @@ export default class JokesApi {
      * @param {Number} opts._number The number of results to retrieve between 1 and 10.
      * @param {Number} opts.minRating The minimum rating between 0 and 10 the result should have.
      * @param {Number} opts.maxLength The maximum number of letters in the joke.
+     * @param {Number} opts.offset The number of results to skip.
      * @param {module:com.humorapi.client/com.humorapi/JokesApi~searchJokesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:com.humorapi.client/com.humorapi.client.model/InlineResponse200}
      */
@@ -202,7 +203,8 @@ export default class JokesApi {
         'exclude-tags': opts['excludeTags'],
         'number': opts['_number'],
         'min-rating': opts['minRating'],
-        'max-length': opts['maxLength']
+        'max-length': opts['maxLength'],
+        'offset': opts['offset']
       };
       let headerParams = {
       };

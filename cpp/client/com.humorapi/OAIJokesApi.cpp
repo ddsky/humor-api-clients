@@ -214,7 +214,7 @@ OAIJokesApi::randomJokeCallback(OAIHttpRequestWorker * worker) {
 }
 
 void
-OAIJokesApi::searchJokes(const QString& keywords, const QString& include_tags, const QString& exclude_tags, const qint32& number, const qint32& min_rating, const qint32& max_length) {
+OAIJokesApi::searchJokes(const QString& keywords, const QString& include_tags, const QString& exclude_tags, const qint32& number, const qint32& min_rating, const qint32& max_length, const OAINumber& offset) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/jokes/search");
     
@@ -265,6 +265,14 @@ OAIJokesApi::searchJokes(const QString& keywords, const QString& include_tags, c
     fullPath.append(QUrl::toPercentEncoding("max-length"))
         .append("=")
         .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(max_length)));
+    
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("offset"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(offset)));
     
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker();
     OAIHttpRequestInput input(fullPath, "GET");

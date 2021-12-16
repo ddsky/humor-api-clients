@@ -36,7 +36,7 @@ apiKey.setApiKey("YOUR API KEY");
 //apiKey.setApiKeyPrefix("Token");
 
 MemesApi apiInstance = new MemesApi();
-Integer id = 56; // Integer | The object's id.
+Integer id = 1; // Integer | The object's id.
 try {
     InlineResponse2008 result = apiInstance.downvoteMeme(id);
     System.out.println(result);
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 <a name="searchMemes"></a>
 # **searchMemes**
-> InlineResponse2002 searchMemes(keywords, keywordsInImage, mediaType, number, minRating)
+> InlineResponse2002 searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
 
 Search Memes
 
@@ -159,8 +159,9 @@ Boolean keywordsInImage = false; // Boolean | Whether the keywords should be fou
 String mediaType = image; // String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
 Integer number = 3; // Integer | The number of results to retrieve between 1 and 10.
 Integer minRating = 7; // Integer | The minimum rating between 0 and 10 the result should have.
+BigDecimal offset = new BigDecimal(); // BigDecimal | The number of results to skip.
 try {
-    InlineResponse2002 result = apiInstance.searchMemes(keywords, keywordsInImage, mediaType, number, minRating);
+    InlineResponse2002 result = apiInstance.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MemesApi#searchMemes");
@@ -177,6 +178,7 @@ Name | Type | Description  | Notes
  **mediaType** | **String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] [enum: image, video, jpg, gif, png, mp4]
  **number** | **Integer**| The number of results to retrieve between 1 and 10. | [optional]
  **minRating** | **Integer**| The minimum rating between 0 and 10 the result should have. | [optional]
+ **offset** | **BigDecimal**| The number of results to skip. | [optional]
 
 ### Return type
 
@@ -217,7 +219,7 @@ apiKey.setApiKey("YOUR API KEY");
 //apiKey.setApiKeyPrefix("Token");
 
 MemesApi apiInstance = new MemesApi();
-Integer id = 56; // Integer | The object's id.
+Integer id = 1; // Integer | The object's id.
 try {
     InlineResponse2008 result = apiInstance.upvoteMeme(id);
     System.out.println(result);

@@ -305,6 +305,10 @@ class MemesApi
                 'Missing the required parameter $id when calling downvoteMeme'
             );
         }
+        if ($id < 1) {
+            throw new \InvalidArgumentException('invalid value for "$id" when calling MemesApi.downvoteMeme, must be bigger than or equal to 1.');
+        }
+
 
         $resourcePath = '/memes/{id}/downvote';
         $formParams = [];
@@ -722,14 +726,15 @@ class MemesApi
      * @param  string $media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \com.humorapi.client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \com.humorapi.client\com.humorapi.client.model\InlineResponse2002
      */
-    public function searchMemes($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null)
+    public function searchMemes($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null, $offset = null)
     {
-        list($response) = $this->searchMemesWithHttpInfo($keywords, $keywords_in_image, $media_type, $number, $min_rating);
+        list($response) = $this->searchMemesWithHttpInfo($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset);
         return $response;
     }
 
@@ -743,14 +748,15 @@ class MemesApi
      * @param  string $media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \com.humorapi.client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \com.humorapi.client\com.humorapi.client.model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchMemesWithHttpInfo($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null)
+    public function searchMemesWithHttpInfo($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null, $offset = null)
     {
-        $request = $this->searchMemesRequest($keywords, $keywords_in_image, $media_type, $number, $min_rating);
+        $request = $this->searchMemesRequest($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset);
 
         try {
             $options = $this->createHttpClientOption();
@@ -835,13 +841,14 @@ class MemesApi
      * @param  string $media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchMemesAsync($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null)
+    public function searchMemesAsync($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null, $offset = null)
     {
-        return $this->searchMemesAsyncWithHttpInfo($keywords, $keywords_in_image, $media_type, $number, $min_rating)
+        return $this->searchMemesAsyncWithHttpInfo($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -859,14 +866,15 @@ class MemesApi
      * @param  string $media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchMemesAsyncWithHttpInfo($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null)
+    public function searchMemesAsyncWithHttpInfo($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null, $offset = null)
     {
         $returnType = '\com.humorapi.client\com.humorapi.client.model\InlineResponse2002';
-        $request = $this->searchMemesRequest($keywords, $keywords_in_image, $media_type, $number, $min_rating);
+        $request = $this->searchMemesRequest($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -910,11 +918,12 @@ class MemesApi
      * @param  string $media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchMemesRequest($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null)
+    protected function searchMemesRequest($keywords = null, $keywords_in_image = null, $media_type = null, $number = null, $min_rating = null, $offset = null)
     {
         if ($number !== null && $number > 10) {
             throw new \InvalidArgumentException('invalid value for "$number" when calling MemesApi.searchMemes, must be smaller than or equal to 10.');
@@ -931,6 +940,13 @@ class MemesApi
         }
         if ($min_rating !== null && $min_rating < 0) {
             throw new \InvalidArgumentException('invalid value for "$min_rating" when calling MemesApi.searchMemes, must be bigger than or equal to 0.');
+        }
+
+        if ($offset !== null && $offset > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling MemesApi.searchMemes, must be smaller than or equal to 1000.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling MemesApi.searchMemes, must be bigger than or equal to 0.');
         }
 
 
@@ -960,6 +976,10 @@ class MemesApi
         // query params
         if ($min_rating !== null) {
             $queryParams['min-rating'] = ObjectSerializer::toQueryValue($min_rating);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
         }
 
 
@@ -1222,6 +1242,10 @@ class MemesApi
                 'Missing the required parameter $id when calling upvoteMeme'
             );
         }
+        if ($id < 1) {
+            throw new \InvalidArgumentException('invalid value for "$id" when calling MemesApi.upvoteMeme, must be bigger than or equal to 1.');
+        }
+
 
         $resourcePath = '/memes/{id}/upvote';
         $formParams = [];

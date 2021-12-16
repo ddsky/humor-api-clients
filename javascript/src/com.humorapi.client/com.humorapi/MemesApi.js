@@ -145,6 +145,7 @@ export default class MemesApi {
      * @param {module:com.humorapi.client/com.humorapi.client.model/String} opts.mediaType The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
      * @param {Number} opts._number The number of results to retrieve between 1 and 10.
      * @param {Number} opts.minRating The minimum rating between 0 and 10 the result should have.
+     * @param {Number} opts.offset The number of results to skip.
      * @param {module:com.humorapi.client/com.humorapi/MemesApi~searchMemesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:com.humorapi.client/com.humorapi.client.model/InlineResponse2002}
      */
@@ -159,7 +160,8 @@ export default class MemesApi {
         'keywords-in-image': opts['keywordsInImage'],
         'media-type': opts['mediaType'],
         'number': opts['_number'],
-        'min-rating': opts['minRating']
+        'min-rating': opts['minRating'],
+        'offset': opts['offset']
       };
       let headerParams = {
       };

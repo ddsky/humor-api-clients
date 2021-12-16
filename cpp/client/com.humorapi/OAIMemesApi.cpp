@@ -165,7 +165,7 @@ OAIMemesApi::randomMemeCallback(OAIHttpRequestWorker * worker) {
 }
 
 void
-OAIMemesApi::searchMemes(const QString& keywords, const bool& keywords_in_image, const QString& media_type, const qint32& number, const qint32& min_rating) {
+OAIMemesApi::searchMemes(const QString& keywords, const bool& keywords_in_image, const QString& media_type, const qint32& number, const qint32& min_rating, const OAINumber& offset) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/memes/search");
     
@@ -208,6 +208,14 @@ OAIMemesApi::searchMemes(const QString& keywords, const bool& keywords_in_image,
     fullPath.append(QUrl::toPercentEncoding("min-rating"))
         .append("=")
         .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(min_rating)));
+    
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("offset"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(offset)));
     
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker();
     OAIHttpRequestInput input(fullPath, "GET");

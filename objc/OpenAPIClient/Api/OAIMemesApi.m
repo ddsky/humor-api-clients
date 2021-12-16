@@ -213,6 +213,8 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
 ///
 ///  @param minRating The minimum rating between 0 and 10 the result should have. (optional)
 ///
+///  @param offset The number of results to skip. (optional)
+///
 ///  @returns OAIInlineResponse2002*
 ///
 -(NSURLSessionTask*) searchMemesWithKeywords: (NSString*) keywords
@@ -220,6 +222,7 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
     mediaType: (NSString*) mediaType
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
+    offset: (NSNumber*) offset
     completionHandler: (void (^)(OAIInlineResponse2002* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/memes/search"];
 
@@ -240,6 +243,9 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
     }
     if (minRating != nil) {
         queryParams[@"min-rating"] = minRating;
+    }
+    if (offset != nil) {
+        queryParams[@"offset"] = offset;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];

@@ -91,7 +91,7 @@ OpenapiClient.configure do |config|
 end
 
 api_instance = OpenapiClient::JokesApi.new
-id = 56 # Integer | The object's id.
+id = 1 # Integer | The object's id.
 
 begin
   #Downvote a Joke
@@ -215,7 +215,8 @@ opts = {
   exclude_tags: 'nsfw', # String | A comma separated list of tags that the joke must not have.
   number: 3, # Integer | The number of results to retrieve between 1 and 10.
   min_rating: 7, # Integer | The minimum rating between 0 and 10 the result should have.
-  max_length: 200 # Integer | The maximum number of letters in the joke.
+  max_length: 200, # Integer | The maximum number of letters in the joke.
+  offset: 3.4 # Float | The number of results to skip.
 }
 
 begin
@@ -238,6 +239,7 @@ Name | Type | Description  | Notes
  **number** | **Integer**| The number of results to retrieve between 1 and 10. | [optional] 
  **min_rating** | **Integer**| The minimum rating between 0 and 10 the result should have. | [optional] 
  **max_length** | **Integer**| The maximum number of letters in the joke. | [optional] 
+ **offset** | **Float**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -331,7 +333,7 @@ OpenapiClient.configure do |config|
 end
 
 api_instance = OpenapiClient::JokesApi.new
-id = 56 # Integer | The object's id.
+id = 1 # Integer | The object's id.
 
 begin
   #Upvote a Joke

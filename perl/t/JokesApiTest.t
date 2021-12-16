@@ -67,7 +67,8 @@ isa_ok($api, 'WWW::OpenAPIClient::JokesApi');
     my $number = undef; # replace NULL with a proper value
     my $min_rating = undef; # replace NULL with a proper value
     my $max_length = undef; # replace NULL with a proper value
-    my $result = $api->search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length);
+    my $offset = undef; # replace NULL with a proper value
+    my $result = $api->search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length, offset => $offset);
 }
 
 #

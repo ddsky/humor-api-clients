@@ -192,6 +192,8 @@ class JokesApi(object):
                 local_var_params['id'] is None):
             raise ApiValueError("Missing the required parameter `id` when calling `downvote_joke`")  # noqa: E501
 
+        if 'id' in local_var_params and local_var_params['id'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `downvote_joke`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -364,6 +366,7 @@ class JokesApi(object):
         :param int number: The number of results to retrieve between 1 and 10.
         :param int min_rating: The minimum rating between 0 and 10 the result should have.
         :param int max_length: The maximum number of letters in the joke.
+        :param float offset: The number of results to skip.
         :return: InlineResponse200
                  If the method is called asynchronously,
                  returns the request thread.
@@ -391,6 +394,7 @@ class JokesApi(object):
         :param int number: The number of results to retrieve between 1 and 10.
         :param int min_rating: The minimum rating between 0 and 10 the result should have.
         :param int max_length: The maximum number of letters in the joke.
+        :param float offset: The number of results to skip.
         :return: InlineResponse200
                  If the method is called asynchronously,
                  returns the request thread.
@@ -398,7 +402,7 @@ class JokesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['keywords', 'include_tags', 'exclude_tags', 'number', 'min_rating', 'max_length']  # noqa: E501
+        all_params = ['keywords', 'include_tags', 'exclude_tags', 'number', 'min_rating', 'max_length', 'offset']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -428,6 +432,10 @@ class JokesApi(object):
             raise ApiValueError("Invalid value for parameter `max_length` when calling `search_jokes`, must be a value less than or equal to `9999`")  # noqa: E501
         if 'max_length' in local_var_params and local_var_params['max_length'] < 10:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `max_length` when calling `search_jokes`, must be a value greater than or equal to `10`")  # noqa: E501
+        if 'offset' in local_var_params and local_var_params['offset'] > 1000:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `search_jokes`, must be a value less than or equal to `1000`")  # noqa: E501
+        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `search_jokes`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -445,6 +453,8 @@ class JokesApi(object):
             query_params.append(('min-rating', local_var_params['min_rating']))  # noqa: E501
         if 'max_length' in local_var_params:
             query_params.append(('max-length', local_var_params['max_length']))  # noqa: E501
+        if 'offset' in local_var_params:
+            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
 
         header_params = {}
 
@@ -630,6 +640,8 @@ class JokesApi(object):
                 local_var_params['id'] is None):
             raise ApiValueError("Missing the required parameter `id` when calling `upvote_joke`")  # noqa: E501
 
+        if 'id' in local_var_params and local_var_params['id'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `upvote_joke`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}

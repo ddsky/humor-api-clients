@@ -93,7 +93,7 @@ apiKey.setApiKey("YOUR API KEY");
 //apiKey.setApiKeyPrefix("Token");
 
 JokesApi apiInstance = new JokesApi();
-Integer id = 56; // Integer | The object's id.
+Integer id = 1; // Integer | The object's id.
 try {
     InlineResponse2008 result = apiInstance.downvoteJoke(id);
     System.out.println(result);
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 <a name="searchJokes"></a>
 # **searchJokes**
-> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength)
+> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
 
 Search Jokes
 
@@ -217,8 +217,9 @@ String excludeTags = nsfw; // String | A comma separated list of tags that the j
 Integer number = 3; // Integer | The number of results to retrieve between 1 and 10.
 Integer minRating = 7; // Integer | The minimum rating between 0 and 10 the result should have.
 Integer maxLength = 200; // Integer | The maximum number of letters in the joke.
+BigDecimal offset = new BigDecimal(); // BigDecimal | The number of results to skip.
 try {
-    InlineResponse200 result = apiInstance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength);
+    InlineResponse200 result = apiInstance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JokesApi#searchJokes");
@@ -236,6 +237,7 @@ Name | Type | Description  | Notes
  **number** | **Integer**| The number of results to retrieve between 1 and 10. | [optional]
  **minRating** | **Integer**| The minimum rating between 0 and 10 the result should have. | [optional]
  **maxLength** | **Integer**| The maximum number of letters in the joke. | [optional]
+ **offset** | **BigDecimal**| The number of results to skip. | [optional]
 
 ### Return type
 
@@ -331,7 +333,7 @@ apiKey.setApiKey("YOUR API KEY");
 //apiKey.setApiKeyPrefix("Token");
 
 JokesApi apiInstance = new JokesApi();
-Integer id = 56; // Integer | The object's id.
+Integer id = 1; // Integer | The object's id.
 try {
     InlineResponse2008 result = apiInstance.upvoteJoke(id);
     System.out.println(result);

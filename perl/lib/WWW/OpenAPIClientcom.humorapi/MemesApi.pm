@@ -229,6 +229,7 @@ sub random_meme {
 # @param string $media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
 # @param int $number The number of results to retrieve between 1 and 10. (optional)
 # @param int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
+# @param double $offset The number of results to skip. (optional)
 {
     my $params = {
     'keywords' => {
@@ -254,6 +255,11 @@ sub random_meme {
     'min_rating' => {
         data_type => 'int',
         description => 'The minimum rating between 0 and 10 the result should have.',
+        required => '0',
+    },
+    'offset' => {
+        data_type => 'double',
+        description => 'The number of results to skip.',
         required => '0',
     },
     };
@@ -306,6 +312,11 @@ sub search_memes {
     # query params
     if ( exists $args{'min_rating'}) {
         $query_params->{'min-rating'} = $self->{api_client}->to_query_value($args{'min_rating'});
+    }
+
+    # query params
+    if ( exists $args{'offset'}) {
+        $query_params->{'offset'} = $self->{api_client}->to_query_value($args{'offset'});
     }
 
     my $_body_data;

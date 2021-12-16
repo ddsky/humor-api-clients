@@ -102,6 +102,10 @@ module OpenapiClient
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling JokesApi.downvote_joke"
       end
+      if @api_client.config.client_side_validation && id < 1
+        fail ArgumentError, 'invalid value for "id" when calling JokesApi.downvote_joke, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/jokes/{id}/downvote'.sub('{' + 'id' + '}', id.to_s)
 
@@ -249,6 +253,7 @@ module OpenapiClient
     # @option opts [Integer] :number The number of results to retrieve between 1 and 10.
     # @option opts [Integer] :min_rating The minimum rating between 0 and 10 the result should have.
     # @option opts [Integer] :max_length The maximum number of letters in the joke.
+    # @option opts [Float] :offset The number of results to skip.
     # @return [InlineResponse200]
     def search_jokes(opts = {})
       data, _status_code, _headers = search_jokes_with_http_info(opts)
@@ -264,6 +269,7 @@ module OpenapiClient
     # @option opts [Integer] :number The number of results to retrieve between 1 and 10.
     # @option opts [Integer] :min_rating The minimum rating between 0 and 10 the result should have.
     # @option opts [Integer] :max_length The maximum number of letters in the joke.
+    # @option opts [Float] :offset The number of results to skip.
     # @return [Array<(InlineResponse200, Integer, Hash)>] InlineResponse200 data, response status code and response headers
     def search_jokes_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -305,6 +311,14 @@ module OpenapiClient
         fail ArgumentError, 'invalid value for "opts[:"max_length"]" when calling JokesApi.search_jokes, must be greater than or equal to 10.'
       end
 
+      if @api_client.config.client_side_validation && !opts[:'offset'].nil? && opts[:'offset'] > 1000
+        fail ArgumentError, 'invalid value for "opts[:"offset"]" when calling JokesApi.search_jokes, must be smaller than or equal to 1000.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'offset'].nil? && opts[:'offset'] < 0
+        fail ArgumentError, 'invalid value for "opts[:"offset"]" when calling JokesApi.search_jokes, must be greater than or equal to 0.'
+      end
+
       # resource path
       local_var_path = '/jokes/search'
 
@@ -316,6 +330,7 @@ module OpenapiClient
       query_params[:'number'] = opts[:'number'] if !opts[:'number'].nil?
       query_params[:'min-rating'] = opts[:'min_rating'] if !opts[:'min_rating'].nil?
       query_params[:'max-length'] = opts[:'max_length'] if !opts[:'max_length'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -433,6 +448,10 @@ module OpenapiClient
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling JokesApi.upvote_joke"
       end
+      if @api_client.config.client_side_validation && id < 1
+        fail ArgumentError, 'invalid value for "id" when calling JokesApi.upvote_joke, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/jokes/{id}/upvote'.sub('{' + 'id' + '}', id.to_s)
 

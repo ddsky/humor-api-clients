@@ -3,6 +3,7 @@ package com.humorapi
 import java.io._
 import humorapi._
 import com.humorapi.client.model._
+import java.math.BigDecimal
 import com.humorapi.client.model.InlineResponse2002
 import com.humorapi.client.model.InlineResponse2003
 import com.humorapi.client.model.InlineResponse2008
@@ -84,8 +85,8 @@ object MemesApi {
         * @return An endpoint representing a InlineResponse2002
         */
         private def searchMemes(da: DataAccessor): Endpoint[InlineResponse2002] =
-        get("memes" :: "search" :: paramOption("keywords") :: paramOption("keywords-in-image").map(_.map(_.toBoolean)) :: paramOption("media-type") :: paramOption("number").map(_.map(_.toInt)) :: paramOption("min-rating").map(_.map(_.toInt)) :: param("api-key")) { (keywords: Option[String], keywordsInImage: Option[Boolean], mediaType: Option[String], number: Option[Int], minRating: Option[Int], authParamapiKey: String) =>
-          da.Memes_searchMemes(keywords, keywordsInImage, mediaType, number, minRating, authParamapiKey) match {
+        get("memes" :: "search" :: paramOption("keywords") :: paramOption("keywords-in-image").map(_.map(_.toBoolean)) :: paramOption("media-type") :: paramOption("number").map(_.map(_.toInt)) :: paramOption("min-rating").map(_.map(_.toInt)) :: paramOption("offset").map(_.map(_.toBigDecimal)) :: param("api-key")) { (keywords: Option[String], keywordsInImage: Option[Boolean], mediaType: Option[String], number: Option[Int], minRating: Option[Int], offset: Option[BigDecimal], authParamapiKey: String) =>
+          da.Memes_searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset, authParamapiKey) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

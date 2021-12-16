@@ -111,6 +111,7 @@ Name | Type | Description  | Notes
  **media_type** | **String**| The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. | 
  **number** | **i32**| The number of results to retrieve between 1 and 10. | 
  **min_rating** | **i32**| The minimum rating between 0 and 10 the result should have. | 
+ **offset** | **f32**| The number of results to skip. | 
 
 ### Return type
 

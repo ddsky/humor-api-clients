@@ -162,6 +162,7 @@ Name | Type | Description  | Notes
  **number** | **optional.Int32**| The number of results to retrieve between 1 and 10. | 
  **minRating** | **optional.Int32**| The minimum rating between 0 and 10 the result should have. | 
  **maxLength** | **optional.Int32**| The maximum number of letters in the joke. | 
+ **offset** | **optional.Float32**| The number of results to skip. | 
 
 ### Return type
 

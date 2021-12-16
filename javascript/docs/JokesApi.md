@@ -86,7 +86,7 @@ apiKey.apiKey = 'YOUR API KEY';
 //apiKey.apiKeyPrefix = 'Token';
 
 let apiInstance = new HumorApi.JokesApi();
-let id = 56; // Number | The object's id.
+let id = 1; // Number | The object's id.
 apiInstance.downvoteJoke(id, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -204,7 +204,8 @@ let opts = {
   'excludeTags': nsfw, // String | A comma separated list of tags that the joke must not have.
   '_number': 3, // Number | The number of results to retrieve between 1 and 10.
   'minRating': 7, // Number | The minimum rating between 0 and 10 the result should have.
-  'maxLength': 200 // Number | The maximum number of letters in the joke.
+  'maxLength': 200, // Number | The maximum number of letters in the joke.
+  'offset': 3.4 // Number | The number of results to skip.
 };
 apiInstance.searchJokes(opts, (error, data, response) => {
   if (error) {
@@ -226,6 +227,7 @@ Name | Type | Description  | Notes
  **_number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
  **minRating** | **Number**| The minimum rating between 0 and 10 the result should have. | [optional] 
  **maxLength** | **Number**| The maximum number of letters in the joke. | [optional] 
+ **offset** | **Number**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -314,7 +316,7 @@ apiKey.apiKey = 'YOUR API KEY';
 //apiKey.apiKeyPrefix = 'Token';
 
 let apiInstance = new HumorApi.JokesApi();
-let id = 56; // Number | The object's id.
+let id = 1; // Number | The object's id.
 apiInstance.upvoteJoke(id, (error, data, response) => {
   if (error) {
     console.error(error);

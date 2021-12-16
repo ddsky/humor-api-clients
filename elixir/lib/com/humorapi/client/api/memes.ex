@@ -88,6 +88,7 @@ defmodule com.humorapi.client.Api.Memes do
     - :media_type (String.t): The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
     - :number (integer()): The number of results to retrieve between 1 and 10.
     - :min_rating (integer()): The minimum rating between 0 and 10 the result should have.
+    - :offset (float()): The number of results to skip.
   ## Returns
 
   {:ok, %com.humorapi.client.Model.InlineResponse2002{}} on success
@@ -100,7 +101,8 @@ defmodule com.humorapi.client.Api.Memes do
       :"keywords-in-image" => :query,
       :"media-type" => :query,
       :"number" => :query,
-      :"min-rating" => :query
+      :"min-rating" => :query,
+      :"offset" => :query
     }
     %{}
     |> method(:get)

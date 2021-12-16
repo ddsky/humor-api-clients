@@ -141,6 +141,16 @@ paths:
           minimum: 10
           type: integer
         style: form
+      - description: The number of results to skip.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          maximum: 1000
+          minimum: 0
+          type: number
+        style: form
       responses:
         200:
           content:
@@ -274,6 +284,16 @@ paths:
           minLength: 0
           minimum: 0
           type: integer
+        style: form
+      - description: The number of results to skip.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          maximum: 1000
+          minimum: 0
+          type: number
         style: form
       responses:
         200:
@@ -717,6 +737,8 @@ paths:
         name: id
         required: true
         schema:
+          example: 1
+          minimum: 1
           type: integer
         style: simple
       responses:
@@ -745,6 +767,8 @@ paths:
         name: id
         required: true
         schema:
+          example: 1
+          minimum: 1
           type: integer
         style: simple
       responses:
@@ -773,6 +797,8 @@ paths:
         name: id
         required: true
         schema:
+          example: 1
+          minimum: 1
           type: integer
         style: simple
       responses:
@@ -801,6 +827,8 @@ paths:
         name: id
         required: true
         schema:
+          example: 1
+          minimum: 1
           type: integer
         style: simple
       responses:
@@ -841,6 +869,8 @@ components:
       name: id
       required: true
       schema:
+        example: 1
+        minimum: 1
         type: integer
       style: simple
     include-tags:
@@ -1003,6 +1033,17 @@ components:
       schema:
         example: cat
         type: string
+      style: form
+    offset:
+      description: The number of results to skip.
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        maximum: 1000
+        minimum: 0
+        type: number
       style: form
   schemas:
     inline_response_200:

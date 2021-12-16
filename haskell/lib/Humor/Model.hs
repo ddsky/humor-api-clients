@@ -100,6 +100,9 @@ newtype Name = Name { unName :: Text } deriving (P.Eq, P.Show)
 -- ** Number
 newtype Number = Number { unNumber :: Int } deriving (P.Eq, P.Show)
 
+-- ** Offset
+newtype Offset = Offset { unOffset :: Double } deriving (P.Eq, P.Show)
+
 -- ** Query
 newtype Query = Query { unQuery :: Text } deriving (P.Eq, P.Show)
 

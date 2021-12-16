@@ -82,6 +82,7 @@ describe 'JokesApi' do
   # @option opts [Integer] :number The number of results to retrieve between 1 and 10.
   # @option opts [Integer] :min_rating The minimum rating between 0 and 10 the result should have.
   # @option opts [Integer] :max_length The maximum number of letters in the joke.
+  # @option opts [Float] :offset The number of results to skip.
   # @return [InlineResponse200]
   describe 'search_jokes test' do
     it 'should work' do

@@ -89,7 +89,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"api-key"];
 
 
-NSNumber* _id = @56; // The object's id.
+NSNumber* _id = 1; // The object's id.
 
 OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
 
@@ -207,6 +207,7 @@ Name | Type | Description  | Notes
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
     maxLength: (NSNumber*) maxLength
+    offset: (NSNumber*) offset
         completionHandler: (void (^)(OAIInlineResponse200* output, NSError* error)) handler;
 ```
 
@@ -230,6 +231,7 @@ NSString* excludeTags = nsfw; // A comma separated list of tags that the joke mu
 NSNumber* number = 3; // The number of results to retrieve between 1 and 10. (optional)
 NSNumber* minRating = 7; // The minimum rating between 0 and 10 the result should have. (optional)
 NSNumber* maxLength = 200; // The maximum number of letters in the joke. (optional)
+NSNumber* offset = @56; // The number of results to skip. (optional)
 
 OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
 
@@ -240,6 +242,7 @@ OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
               number:number
               minRating:minRating
               maxLength:maxLength
+              offset:offset
           completionHandler: ^(OAIInlineResponse200* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -260,6 +263,7 @@ Name | Type | Description  | Notes
  **number** | **NSNumber***| The number of results to retrieve between 1 and 10. | [optional] 
  **minRating** | **NSNumber***| The minimum rating between 0 and 10 the result should have. | [optional] 
  **maxLength** | **NSNumber***| The maximum number of letters in the joke. | [optional] 
+ **offset** | **NSNumber***| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -353,7 +357,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"api-key"];
 
 
-NSNumber* _id = @56; // The object's id.
+NSNumber* _id = 1; // The object's id.
 
 OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
 

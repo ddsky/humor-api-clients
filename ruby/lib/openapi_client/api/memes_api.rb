@@ -42,6 +42,10 @@ module OpenapiClient
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling MemesApi.downvote_meme"
       end
+      if @api_client.config.client_side_validation && id < 1
+        fail ArgumentError, 'invalid value for "id" when calling MemesApi.downvote_meme, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/memes/{id}/downvote'.sub('{' + 'id' + '}', id.to_s)
 
@@ -188,6 +192,7 @@ module OpenapiClient
     # @option opts [String] :media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;.
     # @option opts [Integer] :number The number of results to retrieve between 1 and 10.
     # @option opts [Integer] :min_rating The minimum rating between 0 and 10 the result should have.
+    # @option opts [Float] :offset The number of results to skip.
     # @return [InlineResponse2002]
     def search_memes(opts = {})
       data, _status_code, _headers = search_memes_with_http_info(opts)
@@ -202,6 +207,7 @@ module OpenapiClient
     # @option opts [String] :media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;.
     # @option opts [Integer] :number The number of results to retrieve between 1 and 10.
     # @option opts [Integer] :min_rating The minimum rating between 0 and 10 the result should have.
+    # @option opts [Float] :offset The number of results to skip.
     # @return [Array<(InlineResponse2002, Integer, Hash)>] InlineResponse2002 data, response status code and response headers
     def search_memes_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -235,6 +241,14 @@ module OpenapiClient
         fail ArgumentError, 'invalid value for "opts[:"min_rating"]" when calling MemesApi.search_memes, must be greater than or equal to 0.'
       end
 
+      if @api_client.config.client_side_validation && !opts[:'offset'].nil? && opts[:'offset'] > 1000
+        fail ArgumentError, 'invalid value for "opts[:"offset"]" when calling MemesApi.search_memes, must be smaller than or equal to 1000.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'offset'].nil? && opts[:'offset'] < 0
+        fail ArgumentError, 'invalid value for "opts[:"offset"]" when calling MemesApi.search_memes, must be greater than or equal to 0.'
+      end
+
       # resource path
       local_var_path = '/memes/search'
 
@@ -245,6 +259,7 @@ module OpenapiClient
       query_params[:'media-type'] = opts[:'media_type'] if !opts[:'media_type'].nil?
       query_params[:'number'] = opts[:'number'] if !opts[:'number'].nil?
       query_params[:'min-rating'] = opts[:'min_rating'] if !opts[:'min_rating'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -302,6 +317,10 @@ module OpenapiClient
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling MemesApi.upvote_meme"
       end
+      if @api_client.config.client_side_validation && id < 1
+        fail ArgumentError, 'invalid value for "id" when calling MemesApi.upvote_meme, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/memes/{id}/upvote'.sub('{' + 'id' + '}', id.to_s)
 

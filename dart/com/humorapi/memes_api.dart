@@ -122,7 +122,7 @@ class MemesApi {
   /// Search Memes
   ///
   /// Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
-  Future<InlineResponse2002> searchMemes({ String keywords, bool keywordsInImage, String mediaType, int number, int minRating }) async {
+  Future<InlineResponse2002> searchMemes({ String keywords, bool keywordsInImage, String mediaType, int number, int minRating, num offset }) async {
     Object postBody;
 
     // verify required params are set
@@ -148,6 +148,9 @@ class MemesApi {
     }
     if(minRating != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "min-rating", minRating));
+    }
+    if(offset != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
     }
 
     List<String> contentTypes = [];

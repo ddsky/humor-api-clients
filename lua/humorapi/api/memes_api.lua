@@ -140,13 +140,13 @@ function memes_api:random_meme(keywords, keywords_in_image, media_type, Number_,
 	end
 end
 
-function memes_api:search_memes(keywords, keywords_in_image, media_type, Number_, min_rating)
+function memes_api:search_memes(keywords, keywords_in_image, media_type, Number_, min_rating, offset)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/memes/search?keywords=%s&keywords-in-image=%s&media-type=%s&number=%s&min-rating=%s",
-			self.basePath, http_util.encodeURIComponent(keywords), http_util.encodeURIComponent(keywords_in_image), http_util.encodeURIComponent(media_type), http_util.encodeURIComponent(Number_), http_util.encodeURIComponent(min_rating));
+		path = string.format("%s/memes/search?keywords=%s&keywords-in-image=%s&media-type=%s&number=%s&min-rating=%s&offset=%s",
+			self.basePath, http_util.encodeURIComponent(keywords), http_util.encodeURIComponent(keywords_in_image), http_util.encodeURIComponent(media_type), http_util.encodeURIComponent(Number_), http_util.encodeURIComponent(min_rating), http_util.encodeURIComponent(offset));
 	})
 
 	-- set HTTP verb

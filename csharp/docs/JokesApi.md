@@ -108,7 +108,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("api-key", "Bearer");
 
             var apiInstance = new JokesApi();
-            var id = 56;  // int? | The object's id.
+            var id = 1;  // int? | The object's id.
 
             try
             {
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 <a name="searchjokes"></a>
 # **SearchJokes**
-> InlineResponse200 SearchJokes (string keywords, string includeTags, string excludeTags, int? number, int? minRating, int? maxLength)
+> InlineResponse200 SearchJokes (string keywords, string includeTags, string excludeTags, int? number, int? minRating, int? maxLength, decimal? offset)
 
 Search Jokes
 
@@ -256,11 +256,12 @@ namespace Example
             var number = 3;  // int? | The number of results to retrieve between 1 and 10. (optional) 
             var minRating = 7;  // int? | The minimum rating between 0 and 10 the result should have. (optional) 
             var maxLength = 200;  // int? | The maximum number of letters in the joke. (optional) 
+            var offset = 8.14;  // decimal? | The number of results to skip. (optional) 
 
             try
             {
                 // Search Jokes
-                InlineResponse200 result = apiInstance.SearchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength);
+                InlineResponse200 result = apiInstance.SearchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -282,6 +283,7 @@ Name | Type | Description  | Notes
  **number** | **int?**| The number of results to retrieve between 1 and 10. | [optional] 
  **minRating** | **int?**| The minimum rating between 0 and 10 the result should have. | [optional] 
  **maxLength** | **int?**| The maximum number of letters in the joke. | [optional] 
+ **offset** | **decimal?**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -394,7 +396,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("api-key", "Bearer");
 
             var apiInstance = new JokesApi();
-            var id = 56;  // int? | The object's id.
+            var id = 1;  // int? | The object's id.
 
             try
             {

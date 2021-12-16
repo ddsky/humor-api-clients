@@ -103,11 +103,11 @@ See https://humorapi.com/docs/#Random-Joke for more."
   Search for jokes.
 See https://humorapi.com/docs/#Search-Jokes for more."
   ([] (search-jokes-with-http-info nil))
-  ([{:keys [keywords include-tags exclude-tags number min-rating max-length]} (s/map-of keyword? any?)]
+  ([{:keys [keywords include-tags exclude-tags number min-rating max-length offset]} (s/map-of keyword? any?)]
    (call-api "/jokes/search" :get
              {:path-params   {}
               :header-params {}
-              :query-params  {"keywords" keywords "include-tags" include-tags "exclude-tags" exclude-tags "number" number "min-rating" min-rating "max-length" max-length }
+              :query-params  {"keywords" keywords "include-tags" include-tags "exclude-tags" exclude-tags "number" number "min-rating" min-rating "max-length" max-length "offset" offset }
               :form-params   {}
               :content-types []
               :accepts       ["application/json"]

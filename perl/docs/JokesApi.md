@@ -87,7 +87,7 @@ my $api_instance = WWW::OpenAPIClient::JokesApi->new(
     #api_key_prefix => {'api-key' => 'Bearer'},
 );
 
-my $id = 56; # int | The object's id.
+my $id = 1; # int | The object's id.
 
 eval { 
     my $result = $api_instance->downvote_joke(id => $id);
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_jokes**
-> InlineResponse200 search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length)
+> InlineResponse200 search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length, offset => $offset)
 
 Search Jokes
 
@@ -203,9 +203,10 @@ my $exclude_tags = nsfw; # string | A comma separated list of tags that the joke
 my $number = 3; # int | The number of results to retrieve between 1 and 10.
 my $min_rating = 7; # int | The minimum rating between 0 and 10 the result should have.
 my $max_length = 200; # int | The maximum number of letters in the joke.
+my $offset = 3.4; # double | The number of results to skip.
 
 eval { 
-    my $result = $api_instance->search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length);
+    my $result = $api_instance->search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length, offset => $offset);
     print Dumper($result);
 };
 if ($@) {
@@ -223,6 +224,7 @@ Name | Type | Description  | Notes
  **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] 
  **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
  **max_length** | **int**| The maximum number of letters in the joke. | [optional] 
+ **offset** | **double**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -309,7 +311,7 @@ my $api_instance = WWW::OpenAPIClient::JokesApi->new(
     #api_key_prefix => {'api-key' => 'Bearer'},
 );
 
-my $id = 56; # int | The object's id.
+my $id = 1; # int | The object's id.
 
 eval { 
     my $result = $api_instance->upvote_joke(id => $id);

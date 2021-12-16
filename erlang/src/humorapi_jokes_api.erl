@@ -85,7 +85,7 @@ search_jokes(Ctx, Optional) ->
 
     Method = get,
     Path = ["/jokes/search"],
-    QS = lists:flatten([])++humorapi_utils:optional_params(['keywords', 'include-tags', 'exclude-tags', 'number', 'min-rating', 'max-length'], _OptionalParams),
+    QS = lists:flatten([])++humorapi_utils:optional_params(['keywords', 'include-tags', 'exclude-tags', 'number', 'min-rating', 'max-length', 'offset'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = humorapi_utils:select_header_content_type([]),

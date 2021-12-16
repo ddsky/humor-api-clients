@@ -202,6 +202,11 @@ instance HasOptionalParam SearchJokes MinRating where
 instance HasOptionalParam SearchJokes MaxLength where
   applyOptionalParam req (MaxLength xs) =
     req `setQuery` toQuery ("max-length", Just xs)
+
+-- | /Optional Param/ "offset" - The number of results to skip.
+instance HasOptionalParam SearchJokes Offset where
+  applyOptionalParam req (Offset xs) =
+    req `setQuery` toQuery ("offset", Just xs)
 -- | @application/json@
 instance Produces SearchJokes MimeJSON
 

@@ -34,7 +34,7 @@ configuration.api_key['api-key'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = humorapi.MemesApi(humorapi.ApiClient(configuration))
-id = 56 # int | The object's id.
+id = 1 # int | The object's id.
 
 try:
     # Downvote a Meme
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_memes**
-> InlineResponse2002 search_memes(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating)
+> InlineResponse2002 search_memes(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating, offset=offset)
 
 Search Memes
 
@@ -157,10 +157,11 @@ keywords_in_image = false # bool | Whether the keywords should be found in the m
 media_type = 'image' # str | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
 number = 3 # int | The number of results to retrieve between 1 and 10. (optional)
 min_rating = 7 # int | The minimum rating between 0 and 10 the result should have. (optional)
+offset = 3.4 # float | The number of results to skip. (optional)
 
 try:
     # Search Memes
-    api_response = api_instance.search_memes(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating)
+    api_response = api_instance.search_memes(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating, offset=offset)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MemesApi->search_memes: %s\n" % e)
@@ -175,6 +176,7 @@ Name | Type | Description  | Notes
  **media_type** | **str**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
  **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] 
  **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
+ **offset** | **float**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -215,7 +217,7 @@ configuration.api_key['api-key'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = humorapi.MemesApi(humorapi.ApiClient(configuration))
-id = 56 # int | The object's id.
+id = 1 # int | The object's id.
 
 try:
     # Upvote a Meme

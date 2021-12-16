@@ -42,8 +42,9 @@ namespace com.humorapi
         /// <param name="number">The number of results to retrieve between 1 and 10.</param>
         /// <param name="minRating">The minimum rating between 0 and 10 the result should have.</param>
         /// <param name="maxLength">The maximum number of letters in the joke.</param>
+        /// <param name="offset">The number of results to skip.</param>
         /// <returns>InlineResponse200</returns>
-        InlineResponse200 SearchJokes (string keywords, string includeTags, string excludeTags, int? number, int? minRating, int? maxLength);
+        InlineResponse200 SearchJokes (string keywords, string includeTags, string excludeTags, int? number, int? minRating, int? maxLength, decimal? offset);
         /// <summary>
         /// Submit Joke Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
         /// </summary>
@@ -233,8 +234,9 @@ namespace com.humorapi
         /// <param name="number">The number of results to retrieve between 1 and 10.</param> 
         /// <param name="minRating">The minimum rating between 0 and 10 the result should have.</param> 
         /// <param name="maxLength">The maximum number of letters in the joke.</param> 
+        /// <param name="offset">The number of results to skip.</param> 
         /// <returns>InlineResponse200</returns>            
-        public InlineResponse200 SearchJokes (string keywords, string includeTags, string excludeTags, int? number, int? minRating, int? maxLength)
+        public InlineResponse200 SearchJokes (string keywords, string includeTags, string excludeTags, int? number, int? minRating, int? maxLength, decimal? offset)
         {
             
     
@@ -253,6 +255,7 @@ namespace com.humorapi
  if (number != null) queryParams.Add("number", ApiClient.ParameterToString(number)); // query parameter
  if (minRating != null) queryParams.Add("min-rating", ApiClient.ParameterToString(minRating)); // query parameter
  if (maxLength != null) queryParams.Add("max-length", ApiClient.ParameterToString(maxLength)); // query parameter
+ if (offset != null) queryParams.Add("offset", ApiClient.ParameterToString(offset)); // query parameter
                                         
             // authentication setting, if any
             String[] authSettings = new String[] { "apiKey" };

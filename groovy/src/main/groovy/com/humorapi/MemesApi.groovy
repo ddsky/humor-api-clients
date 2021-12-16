@@ -1,6 +1,7 @@
 package com.humorapi;
 
 import com.humorapi.client.ApiUtils
+import java.math.BigDecimal
 import com.humorapi.client.model.InlineResponse2002
 import com.humorapi.client.model.InlineResponse2003
 import com.humorapi.client.model.InlineResponse2008
@@ -69,7 +70,7 @@ class MemesApi {
 
     }
 
-    def searchMemes ( String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, Closure onSuccess, Closure onFailure)  {
+    def searchMemes ( String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/memes/search"
 
         // params
@@ -93,6 +94,9 @@ class MemesApi {
         }
         if (minRating != null) {
             queryParams.put("min-rating", minRating)
+        }
+        if (offset != null) {
+            queryParams.put("offset", offset)
         }
 
 

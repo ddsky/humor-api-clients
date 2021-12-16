@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import java.math.BigDecimal;
 import com.humorapi.client.model.InlineResponse2002;
 import com.humorapi.client.model.InlineResponse2003;
 import com.humorapi.client.model.InlineResponse2008;
@@ -273,11 +274,12 @@ public class MemesApi {
      * @param mediaType The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
+     * @param offset The number of results to skip. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call searchMemesCall(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchMemesCall(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -305,6 +307,10 @@ public class MemesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("min-rating", minRating));
         }
 
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
@@ -326,10 +332,10 @@ public class MemesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchMemesValidateBeforeCall(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchMemesValidateBeforeCall(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = searchMemesCall(keywords, keywordsInImage, mediaType, number, minRating, _callback);
+        okhttp3.Call localVarCall = searchMemesCall(keywords, keywordsInImage, mediaType, number, minRating, offset, _callback);
         return localVarCall;
 
     }
@@ -342,11 +348,12 @@ public class MemesApi {
      * @param mediaType The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
+     * @param offset The number of results to skip. (optional)
      * @return InlineResponse2002
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2002 searchMemes(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating) throws ApiException {
-        ApiResponse<InlineResponse2002> localVarResp = searchMemesWithHttpInfo(keywords, keywordsInImage, mediaType, number, minRating);
+    public InlineResponse2002 searchMemes(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset) throws ApiException {
+        ApiResponse<InlineResponse2002> localVarResp = searchMemesWithHttpInfo(keywords, keywordsInImage, mediaType, number, minRating, offset);
         return localVarResp.getData();
     }
 
@@ -358,11 +365,12 @@ public class MemesApi {
      * @param mediaType The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
+     * @param offset The number of results to skip. (optional)
      * @return ApiResponse&lt;InlineResponse2002&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2002> searchMemesWithHttpInfo(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating) throws ApiException {
-        okhttp3.Call localVarCall = searchMemesValidateBeforeCall(keywords, keywordsInImage, mediaType, number, minRating, null);
+    public ApiResponse<InlineResponse2002> searchMemesWithHttpInfo(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset) throws ApiException {
+        okhttp3.Call localVarCall = searchMemesValidateBeforeCall(keywords, keywordsInImage, mediaType, number, minRating, offset, null);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -375,13 +383,14 @@ public class MemesApi {
      * @param mediaType The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
+     * @param offset The number of results to skip. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call searchMemesAsync(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
+    public okhttp3.Call searchMemesAsync(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchMemesValidateBeforeCall(keywords, keywordsInImage, mediaType, number, minRating, _callback);
+        okhttp3.Call localVarCall = searchMemesValidateBeforeCall(keywords, keywordsInImage, mediaType, number, minRating, offset, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

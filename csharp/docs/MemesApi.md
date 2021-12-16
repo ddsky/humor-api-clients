@@ -39,7 +39,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("api-key", "Bearer");
 
             var apiInstance = new MemesApi();
-            var id = 56;  // int? | The object's id.
+            var id = 1;  // int? | The object's id.
 
             try
             {
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 <a name="searchmemes"></a>
 # **SearchMemes**
-> InlineResponse2002 SearchMemes (string keywords, bool? keywordsInImage, string mediaType, int? number, int? minRating)
+> InlineResponse2002 SearchMemes (string keywords, bool? keywordsInImage, string mediaType, int? number, int? minRating, decimal? offset)
 
 Search Memes
 
@@ -186,11 +186,12 @@ namespace Example
             var mediaType = image;  // string | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional) 
             var number = 3;  // int? | The number of results to retrieve between 1 and 10. (optional) 
             var minRating = 7;  // int? | The minimum rating between 0 and 10 the result should have. (optional) 
+            var offset = 8.14;  // decimal? | The number of results to skip. (optional) 
 
             try
             {
                 // Search Memes
-                InlineResponse2002 result = apiInstance.SearchMemes(keywords, keywordsInImage, mediaType, number, minRating);
+                InlineResponse2002 result = apiInstance.SearchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -211,6 +212,7 @@ Name | Type | Description  | Notes
  **mediaType** | **string**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
  **number** | **int?**| The number of results to retrieve between 1 and 10. | [optional] 
  **minRating** | **int?**| The minimum rating between 0 and 10 the result should have. | [optional] 
+ **offset** | **decimal?**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -256,7 +258,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("api-key", "Bearer");
 
             var apiInstance = new MemesApi();
-            var id = 56;  // int? | The object's id.
+            var id = 1;  // int? | The object's id.
 
             try
             {

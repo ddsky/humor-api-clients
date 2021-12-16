@@ -103,7 +103,7 @@ $apiInstance = new com.humorapi.client\Api\JokesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | The object's id.
+$id = 1; // int | The object's id.
 
 try {
     $result = $apiInstance->downvoteJoke($id);
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ## searchJokes
 
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse200 searchJokes($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length)
+> \com.humorapi.client\com.humorapi.client.model\InlineResponse200 searchJokes($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset)
 
 Search Jokes
 
@@ -243,9 +243,10 @@ $exclude_tags = nsfw; // string | A comma separated list of tags that the joke m
 $number = 3; // int | The number of results to retrieve between 1 and 10.
 $min_rating = 7; // int | The minimum rating between 0 and 10 the result should have.
 $max_length = 200; // int | The maximum number of letters in the joke.
+$offset = 3.4; // float | The number of results to skip.
 
 try {
-    $result = $apiInstance->searchJokes($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length);
+    $result = $apiInstance->searchJokes($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JokesApi->searchJokes: ', $e->getMessage(), PHP_EOL;
@@ -264,6 +265,7 @@ Name | Type | Description  | Notes
  **number** | **int**| The number of results to retrieve between 1 and 10. | [optional]
  **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
  **max_length** | **int**| The maximum number of letters in the joke. | [optional]
+ **offset** | **float**| The number of results to skip. | [optional]
 
 ### Return type
 
@@ -373,7 +375,7 @@ $apiInstance = new com.humorapi.client\Api\JokesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | The object's id.
+$id = 1; // int | The object's id.
 
 try {
     $result = $apiInstance->upvoteJoke($id);

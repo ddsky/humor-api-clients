@@ -80,7 +80,7 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('apiKey').apiKeyPrefix = 'Bearer';
 
 var api_instance = new JokesApi();
-var id = 56; // int | The object's id.
+var id = 1; // int | The object's id.
 
 try { 
     var result = api_instance.downvoteJoke(id);
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchJokes**
-> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength)
+> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
 
 Search Jokes
 
@@ -188,9 +188,10 @@ var excludeTags = nsfw; // String | A comma separated list of tags that the joke
 var number = 3; // int | The number of results to retrieve between 1 and 10.
 var minRating = 7; // int | The minimum rating between 0 and 10 the result should have.
 var maxLength = 200; // int | The maximum number of letters in the joke.
+var offset = 8.14; // num | The number of results to skip.
 
 try { 
-    var result = api_instance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength);
+    var result = api_instance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
     print(result);
 } catch (e) {
     print("Exception when calling JokesApi->searchJokes: $e\n");
@@ -207,6 +208,7 @@ Name | Type | Description  | Notes
  **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] [default to null]
  **minRating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] [default to null]
  **maxLength** | **int**| The maximum number of letters in the joke. | [optional] [default to null]
+ **offset** | **num**| The number of results to skip. | [optional] [default to null]
 
 ### Return type
 
@@ -286,7 +288,7 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('apiKey').apiKeyPrefix = 'Bearer';
 
 var api_instance = new JokesApi();
-var id = 56; // int | The object's id.
+var id = 1; // int | The object's id.
 
 try { 
     var result = api_instance.upvoteJoke(id);

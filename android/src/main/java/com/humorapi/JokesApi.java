@@ -20,6 +20,7 @@ import com.humorapi.client.model.*;
 
 import java.util.*;
 
+import java.math.BigDecimal;
 import com.humorapi.client.model.InlineResponse200;
 import com.humorapi.client.model.InlineResponse2004;
 import com.humorapi.client.model.InlineResponse2008;
@@ -217,9 +218,10 @@ public class JokesApi {
    * @param number The number of results to retrieve between 1 and 10.
    * @param minRating The minimum rating between 0 and 10 the result should have.
    * @param maxLength The maximum number of letters in the joke.
+   * @param offset The number of results to skip.
    * @return InlineResponse200
    */
-  public InlineResponse200  searchJokes (String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength) throws ApiException {
+  public InlineResponse200  searchJokes (String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset) throws ApiException {
     Object localVarPostBody = null;
 
     // create path and map variables
@@ -238,6 +240,7 @@ public class JokesApi {
     localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "number", number));
     localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "min-rating", minRating));
     localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "max-length", maxLength));
+    localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "offset", offset));
 
 
     String[] localVarContentTypes = {

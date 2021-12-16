@@ -19,6 +19,7 @@
 #include "com.humorapi.client.model\OAIInline_response_200_4.h"
 #include "com.humorapi.client.model\OAIInline_response_200_8.h"
 #include "com.humorapi.client.model\OAIInline_response_200_9.h"
+#include "com.humorapi.client.model\OAINumber.h"
 #include <QString>
 
 #include <QObject>
@@ -40,7 +41,7 @@ public:
     void analyzeJoke(const QString& body);
     void downvoteJoke(const qint32& id);
     void randomJoke(const QString& keywords, const QString& include_tags, const QString& exclude_tags, const qint32& min_rating, const qint32& max_length);
-    void searchJokes(const QString& keywords, const QString& include_tags, const QString& exclude_tags, const qint32& number, const qint32& min_rating, const qint32& max_length);
+    void searchJokes(const QString& keywords, const QString& include_tags, const QString& exclude_tags, const qint32& number, const qint32& min_rating, const qint32& max_length, const OAINumber& offset);
     void submitJoke(const QString& body);
     void upvoteJoke(const qint32& id);
     

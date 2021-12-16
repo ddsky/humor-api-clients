@@ -153,6 +153,7 @@ Name | Type | Description  | Notes
  **number** | **i32**| The number of results to retrieve between 1 and 10. | 
  **min_rating** | **i32**| The minimum rating between 0 and 10 the result should have. | 
  **max_length** | **i32**| The maximum number of letters in the joke. | 
+ **offset** | **f32**| The number of results to skip. | 
 
 ### Return type
 

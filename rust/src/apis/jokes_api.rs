@@ -34,7 +34,7 @@ pub trait JokesApi {
     fn analyze_joke(&self, body: &str) -> Box<Future<Item = ::models::InlineResponse2009, Error = Error<serde_json::Value>>>;
     fn downvote_joke(&self, id: i32) -> Box<Future<Item = ::models::InlineResponse2008, Error = Error<serde_json::Value>>>;
     fn random_joke(&self, keywords: &str, include_tags: &str, exclude_tags: &str, min_rating: i32, max_length: i32) -> Box<Future<Item = ::models::InlineResponse2004, Error = Error<serde_json::Value>>>;
-    fn search_jokes(&self, keywords: &str, include_tags: &str, exclude_tags: &str, number: i32, min_rating: i32, max_length: i32) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
+    fn search_jokes(&self, keywords: &str, include_tags: &str, exclude_tags: &str, number: i32, min_rating: i32, max_length: i32, offset: f32) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
     fn submit_joke(&self, body: &str) -> Box<Future<Item = ::models::InlineResponse2008, Error = Error<serde_json::Value>>>;
     fn upvote_joke(&self, id: i32) -> Box<Future<Item = ::models::InlineResponse2008, Error = Error<serde_json::Value>>>;
 }
@@ -78,7 +78,7 @@ impl<C: hyper::client::Connect>JokesApi for JokesApiClient<C> {
             .execute(self.configuration.borrow())
     }
 
-    fn search_jokes(&self, keywords: &str, include_tags: &str, exclude_tags: &str, number: i32, min_rating: i32, max_length: i32) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>> {
+    fn search_jokes(&self, keywords: &str, include_tags: &str, exclude_tags: &str, number: i32, min_rating: i32, max_length: i32, offset: f32) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>> {
         __internal_request::Request::new(hyper::Method::Get, "/jokes/search".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: false,
@@ -91,6 +91,7 @@ impl<C: hyper::client::Connect>JokesApi for JokesApiClient<C> {
             .with_query_param("number".to_string(), number.to_string())
             .with_query_param("min-rating".to_string(), min_rating.to_string())
             .with_query_param("max-length".to_string(), max_length.to_string())
+            .with_query_param("offset".to_string(), offset.to_string())
             .execute(self.configuration.borrow())
     }
 

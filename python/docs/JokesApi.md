@@ -91,7 +91,7 @@ configuration.api_key['api-key'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = humorapi.JokesApi(humorapi.ApiClient(configuration))
-id = 56 # int | The object's id.
+id = 1 # int | The object's id.
 
 try:
     # Downvote a Joke
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_jokes**
-> InlineResponse200 search_jokes(keywords=keywords, include_tags=include_tags, exclude_tags=exclude_tags, number=number, min_rating=min_rating, max_length=max_length)
+> InlineResponse200 search_jokes(keywords=keywords, include_tags=include_tags, exclude_tags=exclude_tags, number=number, min_rating=min_rating, max_length=max_length, offset=offset)
 
 Search Jokes
 
@@ -215,10 +215,11 @@ exclude_tags = 'nsfw' # str | A comma separated list of tags that the joke must 
 number = 3 # int | The number of results to retrieve between 1 and 10. (optional)
 min_rating = 7 # int | The minimum rating between 0 and 10 the result should have. (optional)
 max_length = 200 # int | The maximum number of letters in the joke. (optional)
+offset = 3.4 # float | The number of results to skip. (optional)
 
 try:
     # Search Jokes
-    api_response = api_instance.search_jokes(keywords=keywords, include_tags=include_tags, exclude_tags=exclude_tags, number=number, min_rating=min_rating, max_length=max_length)
+    api_response = api_instance.search_jokes(keywords=keywords, include_tags=include_tags, exclude_tags=exclude_tags, number=number, min_rating=min_rating, max_length=max_length, offset=offset)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling JokesApi->search_jokes: %s\n" % e)
@@ -234,6 +235,7 @@ Name | Type | Description  | Notes
  **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] 
  **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
  **max_length** | **int**| The maximum number of letters in the joke. | [optional] 
+ **offset** | **float**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -329,7 +331,7 @@ configuration.api_key['api-key'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = humorapi.JokesApi(humorapi.ApiClient(configuration))
-id = 56 # int | The object's id.
+id = 1 # int | The object's id.
 
 try:
     # Upvote a Joke

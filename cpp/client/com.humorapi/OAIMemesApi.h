@@ -18,6 +18,7 @@
 #include "com.humorapi.client.model\OAIInline_response_200_2.h"
 #include "com.humorapi.client.model\OAIInline_response_200_3.h"
 #include "com.humorapi.client.model\OAIInline_response_200_8.h"
+#include "com.humorapi.client.model\OAINumber.h"
 #include <QString>
 
 #include <QObject>
@@ -38,7 +39,7 @@ public:
 
     void downvoteMeme(const qint32& id);
     void randomMeme(const QString& keywords, const bool& keywords_in_image, const QString& media_type, const qint32& number, const qint32& min_rating);
-    void searchMemes(const QString& keywords, const bool& keywords_in_image, const QString& media_type, const qint32& number, const qint32& min_rating);
+    void searchMemes(const QString& keywords, const bool& keywords_in_image, const QString& media_type, const qint32& number, const qint32& min_rating, const OAINumber& offset);
     void upvoteMeme(const qint32& id);
     
 private:

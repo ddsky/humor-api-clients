@@ -290,6 +290,7 @@ sub random_joke {
 # @param int $number The number of results to retrieve between 1 and 10. (optional)
 # @param int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
 # @param int $max_length The maximum number of letters in the joke. (optional)
+# @param double $offset The number of results to skip. (optional)
 {
     my $params = {
     'keywords' => {
@@ -320,6 +321,11 @@ sub random_joke {
     'max_length' => {
         data_type => 'int',
         description => 'The maximum number of letters in the joke.',
+        required => '0',
+    },
+    'offset' => {
+        data_type => 'double',
+        description => 'The number of results to skip.',
         required => '0',
     },
     };
@@ -377,6 +383,11 @@ sub search_jokes {
     # query params
     if ( exists $args{'max_length'}) {
         $query_params->{'max-length'} = $self->{api_client}->to_query_value($args{'max_length'});
+    }
+
+    # query params
+    if ( exists $args{'offset'}) {
+        $query_params->{'offset'} = $self->{api_client}->to_query_value($args{'offset'});
     }
 
     my $_body_data;

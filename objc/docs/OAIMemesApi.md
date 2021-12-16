@@ -30,7 +30,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"api-key"];
 
 
-NSNumber* _id = @56; // The object's id.
+NSNumber* _id = 1; // The object's id.
 
 OAIMemesApi*apiInstance = [[OAIMemesApi alloc] init];
 
@@ -147,6 +147,7 @@ Name | Type | Description  | Notes
     mediaType: (NSString*) mediaType
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
+    offset: (NSNumber*) offset
         completionHandler: (void (^)(OAIInlineResponse2002* output, NSError* error)) handler;
 ```
 
@@ -169,6 +170,7 @@ NSNumber* keywordsInImage = false; // Whether the keywords should be found in th
 NSString* mediaType = image; // The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
 NSNumber* number = 3; // The number of results to retrieve between 1 and 10. (optional)
 NSNumber* minRating = 7; // The minimum rating between 0 and 10 the result should have. (optional)
+NSNumber* offset = @56; // The number of results to skip. (optional)
 
 OAIMemesApi*apiInstance = [[OAIMemesApi alloc] init];
 
@@ -178,6 +180,7 @@ OAIMemesApi*apiInstance = [[OAIMemesApi alloc] init];
               mediaType:mediaType
               number:number
               minRating:minRating
+              offset:offset
           completionHandler: ^(OAIInlineResponse2002* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -197,6 +200,7 @@ Name | Type | Description  | Notes
  **mediaType** | **NSString***| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
  **number** | **NSNumber***| The number of results to retrieve between 1 and 10. | [optional] 
  **minRating** | **NSNumber***| The minimum rating between 0 and 10 the result should have. | [optional] 
+ **offset** | **NSNumber***| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -233,7 +237,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"api-key"];
 
 
-NSNumber* _id = @56; // The object's id.
+NSNumber* _id = 1; // The object's id.
 
 OAIMemesApi*apiInstance = [[OAIMemesApi alloc] init];
 

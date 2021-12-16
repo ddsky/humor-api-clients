@@ -119,6 +119,7 @@ defmodule com.humorapi.client.Api.Jokes do
     - :number (integer()): The number of results to retrieve between 1 and 10.
     - :min_rating (integer()): The minimum rating between 0 and 10 the result should have.
     - :max_length (integer()): The maximum number of letters in the joke.
+    - :offset (float()): The number of results to skip.
   ## Returns
 
   {:ok, %com.humorapi.client.Model.InlineResponse200{}} on success
@@ -132,7 +133,8 @@ defmodule com.humorapi.client.Api.Jokes do
       :"exclude-tags" => :query,
       :"number" => :query,
       :"min-rating" => :query,
-      :"max-length" => :query
+      :"max-length" => :query,
+      :"offset" => :query
     }
     %{}
     |> method(:get)

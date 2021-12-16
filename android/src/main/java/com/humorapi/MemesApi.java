@@ -20,6 +20,7 @@ import com.humorapi.client.model.*;
 
 import java.util.*;
 
+import java.math.BigDecimal;
 import com.humorapi.client.model.InlineResponse2002;
 import com.humorapi.client.model.InlineResponse2003;
 import com.humorapi.client.model.InlineResponse2008;
@@ -167,9 +168,10 @@ public class MemesApi {
    * @param mediaType The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;.
    * @param number The number of results to retrieve between 1 and 10.
    * @param minRating The minimum rating between 0 and 10 the result should have.
+   * @param offset The number of results to skip.
    * @return InlineResponse2002
    */
-  public InlineResponse2002  searchMemes (String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating) throws ApiException {
+  public InlineResponse2002  searchMemes (String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset) throws ApiException {
     Object localVarPostBody = null;
 
     // create path and map variables
@@ -187,6 +189,7 @@ public class MemesApi {
     localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "media-type", mediaType));
     localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "number", number));
     localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "min-rating", minRating));
+    localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "offset", offset));
 
 
     String[] localVarContentTypes = {

@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import java.math.BigDecimal;
 import com.humorapi.client.model.InlineResponse200;
 import com.humorapi.client.model.InlineResponse2004;
 import com.humorapi.client.model.InlineResponse2008;
@@ -359,11 +360,12 @@ public class JokesApi {
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
      * @param maxLength The maximum number of letters in the joke. (optional)
+     * @param offset The number of results to skip. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call searchJokesCall(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchJokesCall(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -395,6 +397,10 @@ public class JokesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("max-length", maxLength));
         }
 
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
@@ -416,10 +422,10 @@ public class JokesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchJokesValidateBeforeCall(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchJokesValidateBeforeCall(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = searchJokesCall(keywords, includeTags, excludeTags, number, minRating, maxLength, _callback);
+        okhttp3.Call localVarCall = searchJokesCall(keywords, includeTags, excludeTags, number, minRating, maxLength, offset, _callback);
         return localVarCall;
 
     }
@@ -433,11 +439,12 @@ public class JokesApi {
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
      * @param maxLength The maximum number of letters in the joke. (optional)
+     * @param offset The number of results to skip. (optional)
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse200 searchJokes(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength) throws ApiException {
-        ApiResponse<InlineResponse200> localVarResp = searchJokesWithHttpInfo(keywords, includeTags, excludeTags, number, minRating, maxLength);
+    public InlineResponse200 searchJokes(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset) throws ApiException {
+        ApiResponse<InlineResponse200> localVarResp = searchJokesWithHttpInfo(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
         return localVarResp.getData();
     }
 
@@ -450,11 +457,12 @@ public class JokesApi {
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
      * @param maxLength The maximum number of letters in the joke. (optional)
+     * @param offset The number of results to skip. (optional)
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse200> searchJokesWithHttpInfo(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength) throws ApiException {
-        okhttp3.Call localVarCall = searchJokesValidateBeforeCall(keywords, includeTags, excludeTags, number, minRating, maxLength, null);
+    public ApiResponse<InlineResponse200> searchJokesWithHttpInfo(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset) throws ApiException {
+        okhttp3.Call localVarCall = searchJokesValidateBeforeCall(keywords, includeTags, excludeTags, number, minRating, maxLength, offset, null);
         Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -468,13 +476,14 @@ public class JokesApi {
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
      * @param maxLength The maximum number of letters in the joke. (optional)
+     * @param offset The number of results to skip. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call searchJokesAsync(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, final ApiCallback<InlineResponse200> _callback) throws ApiException {
+    public okhttp3.Call searchJokesAsync(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset, final ApiCallback<InlineResponse200> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchJokesValidateBeforeCall(keywords, includeTags, excludeTags, number, minRating, maxLength, _callback);
+        okhttp3.Call localVarCall = searchJokesValidateBeforeCall(keywords, includeTags, excludeTags, number, minRating, maxLength, offset, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

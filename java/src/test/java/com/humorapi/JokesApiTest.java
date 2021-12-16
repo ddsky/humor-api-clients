@@ -14,6 +14,7 @@
 package com.humorapi;
 
 import com.humorapi.client.ApiException;
+import java.math.BigDecimal;
 import com.humorapi.client.model.InlineResponse200;
 import com.humorapi.client.model.InlineResponse2004;
 import com.humorapi.client.model.InlineResponse2008;
@@ -103,7 +104,8 @@ public class JokesApiTest {
         Integer number = null;
         Integer minRating = null;
         Integer maxLength = null;
-        InlineResponse200 response = api.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength);
+        BigDecimal offset = null;
+        InlineResponse200 response = api.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
 
         // TODO: test validations
     }

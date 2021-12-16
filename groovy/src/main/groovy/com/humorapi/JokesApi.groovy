@@ -1,6 +1,7 @@
 package com.humorapi;
 
 import com.humorapi.client.ApiUtils
+import java.math.BigDecimal
 import com.humorapi.client.model.InlineResponse200
 import com.humorapi.client.model.InlineResponse2004
 import com.humorapi.client.model.InlineResponse2008
@@ -92,7 +93,7 @@ class JokesApi {
 
     }
 
-    def searchJokes ( String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, Closure onSuccess, Closure onFailure)  {
+    def searchJokes ( String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/jokes/search"
 
         // params
@@ -119,6 +120,9 @@ class JokesApi {
         }
         if (maxLength != null) {
             queryParams.put("max-length", maxLength)
+        }
+        if (offset != null) {
+            queryParams.put("offset", offset)
         }
 
 

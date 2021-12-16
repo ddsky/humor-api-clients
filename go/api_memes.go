@@ -51,6 +51,9 @@ func (a *MemesApiService) DownvoteMeme(ctx context.Context, id int32) (InlineRes
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -265,6 +268,7 @@ Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
  * @param "MediaType" (optional.String) -  The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
  * @param "Number" (optional.Int32) -  The number of results to retrieve between 1 and 10.
  * @param "MinRating" (optional.Int32) -  The minimum rating between 0 and 10 the result should have.
+ * @param "Offset" (optional.Float32) -  The number of results to skip.
 @return InlineResponse2002
 */
 
@@ -274,6 +278,7 @@ type SearchMemesOpts struct {
 	MediaType optional.String
 	Number optional.Int32
 	MinRating optional.Int32
+	Offset optional.Float32
 }
 
 func (a *MemesApiService) SearchMemes(ctx context.Context, localVarOptionals *SearchMemesOpts) (InlineResponse2002, *http.Response, error) {
@@ -307,6 +312,9 @@ func (a *MemesApiService) SearchMemes(ctx context.Context, localVarOptionals *Se
 	}
 	if localVarOptionals != nil && localVarOptionals.MinRating.IsSet() {
 		localVarQueryParams.Add("min-rating", parameterToString(localVarOptionals.MinRating.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
+		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -407,6 +415,9 @@ func (a *MemesApiService) UpvoteMeme(ctx context.Context, id int32) (InlineRespo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}

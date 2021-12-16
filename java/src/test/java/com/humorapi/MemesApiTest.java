@@ -14,6 +14,7 @@
 package com.humorapi;
 
 import com.humorapi.client.ApiException;
+import java.math.BigDecimal;
 import com.humorapi.client.model.InlineResponse2002;
 import com.humorapi.client.model.InlineResponse2003;
 import com.humorapi.client.model.InlineResponse2008;
@@ -85,7 +86,8 @@ public class MemesApiTest {
         String mediaType = null;
         Integer number = null;
         Integer minRating = null;
-        InlineResponse2002 response = api.searchMemes(keywords, keywordsInImage, mediaType, number, minRating);
+        BigDecimal offset = null;
+        InlineResponse2002 response = api.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset);
 
         // TODO: test validations
     }

@@ -33,7 +33,7 @@ OpenapiClient.configure do |config|
 end
 
 api_instance = OpenapiClient::MemesApi.new
-id = 56 # Integer | The object's id.
+id = 1 # Integer | The object's id.
 
 begin
   #Downvote a Meme
@@ -156,7 +156,8 @@ opts = {
   keywords_in_image: false, # Boolean | Whether the keywords should be found in the meme's image.
   media_type: 'image', # String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
   number: 3, # Integer | The number of results to retrieve between 1 and 10.
-  min_rating: 7 # Integer | The minimum rating between 0 and 10 the result should have.
+  min_rating: 7, # Integer | The minimum rating between 0 and 10 the result should have.
+  offset: 3.4 # Float | The number of results to skip.
 }
 
 begin
@@ -178,6 +179,7 @@ Name | Type | Description  | Notes
  **media_type** | **String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
  **number** | **Integer**| The number of results to retrieve between 1 and 10. | [optional] 
  **min_rating** | **Integer**| The minimum rating between 0 and 10 the result should have. | [optional] 
+ **offset** | **Float**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -215,7 +217,7 @@ OpenapiClient.configure do |config|
 end
 
 api_instance = OpenapiClient::MemesApi.new
-id = 56 # Integer | The object's id.
+id = 1 # Integer | The object's id.
 
 begin
   #Upvote a Meme

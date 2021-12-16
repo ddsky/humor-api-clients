@@ -194,13 +194,13 @@ function jokes_api:random_joke(keywords, include_tags, exclude_tags, min_rating,
 	end
 end
 
-function jokes_api:search_jokes(keywords, include_tags, exclude_tags, Number_, min_rating, max_length)
+function jokes_api:search_jokes(keywords, include_tags, exclude_tags, Number_, min_rating, max_length, offset)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/jokes/search?keywords=%s&include-tags=%s&exclude-tags=%s&number=%s&min-rating=%s&max-length=%s",
-			self.basePath, http_util.encodeURIComponent(keywords), http_util.encodeURIComponent(include_tags), http_util.encodeURIComponent(exclude_tags), http_util.encodeURIComponent(Number_), http_util.encodeURIComponent(min_rating), http_util.encodeURIComponent(max_length));
+		path = string.format("%s/jokes/search?keywords=%s&include-tags=%s&exclude-tags=%s&number=%s&min-rating=%s&max-length=%s&offset=%s",
+			self.basePath, http_util.encodeURIComponent(keywords), http_util.encodeURIComponent(include_tags), http_util.encodeURIComponent(exclude_tags), http_util.encodeURIComponent(Number_), http_util.encodeURIComponent(min_rating), http_util.encodeURIComponent(max_length), http_util.encodeURIComponent(offset));
 	})
 
 	-- set HTTP verb

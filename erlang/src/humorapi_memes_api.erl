@@ -62,7 +62,7 @@ search_memes(Ctx, Optional) ->
 
     Method = get,
     Path = ["/memes/search"],
-    QS = lists:flatten([])++humorapi_utils:optional_params(['keywords', 'keywords-in-image', 'media-type', 'number', 'min-rating'], _OptionalParams),
+    QS = lists:flatten([])++humorapi_utils:optional_params(['keywords', 'keywords-in-image', 'media-type', 'number', 'min-rating', 'offset'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = humorapi_utils:select_header_content_type([]),

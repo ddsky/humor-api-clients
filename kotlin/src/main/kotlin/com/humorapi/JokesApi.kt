@@ -136,12 +136,13 @@ class JokesApi(basePath: kotlin.String = "https://api.humorapi.com") : ApiClient
     * @param number The number of results to retrieve between 1 and 10. (optional)
     * @param minMinusRating The minimum rating between 0 and 10 the result should have. (optional)
     * @param maxMinusLength The maximum number of letters in the joke. (optional)
+    * @param offset The number of results to skip. (optional)
     * @return InlineResponse200
     */
     @Suppress("UNCHECKED_CAST")
-    fun searchJokes(keywords: kotlin.String?, includeMinusTags: kotlin.String?, excludeMinusTags: kotlin.String?, number: kotlin.Int?, minMinusRating: kotlin.Int?, maxMinusLength: kotlin.Int?) : InlineResponse200 {
+    fun searchJokes(keywords: kotlin.String?, includeMinusTags: kotlin.String?, excludeMinusTags: kotlin.String?, number: kotlin.Int?, minMinusRating: kotlin.Int?, maxMinusLength: kotlin.Int?, offset: java.math.BigDecimal?) : InlineResponse200 {
         val localVariableBody: kotlin.Any? = null
-        val localVariableQuery: MultiValueMap = mapOf("keywords" to listOf("$keywords"), "includeMinusTags" to listOf("$includeMinusTags"), "excludeMinusTags" to listOf("$excludeMinusTags"), "number" to listOf("$number"), "minMinusRating" to listOf("$minMinusRating"), "maxMinusLength" to listOf("$maxMinusLength"))
+        val localVariableQuery: MultiValueMap = mapOf("keywords" to listOf("$keywords"), "includeMinusTags" to listOf("$includeMinusTags"), "excludeMinusTags" to listOf("$excludeMinusTags"), "number" to listOf("$number"), "minMinusRating" to listOf("$minMinusRating"), "maxMinusLength" to listOf("$maxMinusLength"), "offset" to listOf("$offset"))
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         val localVariableConfig = RequestConfig(
             RequestMethod.GET,

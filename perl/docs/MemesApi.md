@@ -34,7 +34,7 @@ my $api_instance = WWW::OpenAPIClient::MemesApi->new(
     #api_key_prefix => {'api-key' => 'Bearer'},
 );
 
-my $id = 56; # int | The object's id.
+my $id = 1; # int | The object's id.
 
 eval { 
     my $result = $api_instance->downvote_meme(id => $id);
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_memes**
-> InlineResponse2002 search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating)
+> InlineResponse2002 search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating, offset => $offset)
 
 Search Memes
 
@@ -149,9 +149,10 @@ my $keywords_in_image = false; # boolean | Whether the keywords should be found 
 my $media_type = image; # string | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
 my $number = 3; # int | The number of results to retrieve between 1 and 10.
 my $min_rating = 7; # int | The minimum rating between 0 and 10 the result should have.
+my $offset = 3.4; # double | The number of results to skip.
 
 eval { 
-    my $result = $api_instance->search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating);
+    my $result = $api_instance->search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating, offset => $offset);
     print Dumper($result);
 };
 if ($@) {
@@ -168,6 +169,7 @@ Name | Type | Description  | Notes
  **media_type** | **string**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
  **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] 
  **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
+ **offset** | **double**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -203,7 +205,7 @@ my $api_instance = WWW::OpenAPIClient::MemesApi->new(
     #api_key_prefix => {'api-key' => 'Bearer'},
 );
 
-my $id = 56; # int | The object's id.
+my $id = 1; # int | The object's id.
 
 eval { 
     my $result = $api_instance->upvote_meme(id => $id);

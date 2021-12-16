@@ -36,7 +36,7 @@ trait DataAccessor {
         * 
         * @return A InlineResponse200
         */
-        def Jokes_searchJokes(keywords: Option[String], includeTags: Option[String], excludeTags: Option[String], number: Option[Int], minRating: Option[Int], maxLength: Option[Int], authParamapiKey: String): Either[CommonError,InlineResponse200] = Left(TODO)
+        def Jokes_searchJokes(keywords: Option[String], includeTags: Option[String], excludeTags: Option[String], number: Option[Int], minRating: Option[Int], maxLength: Option[Int], offset: Option[BigDecimal], authParamapiKey: String): Either[CommonError,InlineResponse200] = Left(TODO)
 
         /**
         * 
@@ -66,7 +66,7 @@ trait DataAccessor {
         * 
         * @return A InlineResponse2002
         */
-        def Memes_searchMemes(keywords: Option[String], keywordsInImage: Option[Boolean], mediaType: Option[String], number: Option[Int], minRating: Option[Int], authParamapiKey: String): Either[CommonError,InlineResponse2002] = Left(TODO)
+        def Memes_searchMemes(keywords: Option[String], keywordsInImage: Option[Boolean], mediaType: Option[String], number: Option[Int], minRating: Option[Int], offset: Option[BigDecimal], authParamapiKey: String): Either[CommonError,InlineResponse2002] = Left(TODO)
 
         /**
         * 

@@ -96,6 +96,8 @@ class MemesApi(object):
                 local_var_params['id'] is None):
             raise ApiValueError("Missing the required parameter `id` when calling `downvote_meme`")  # noqa: E501
 
+        if 'id' in local_var_params and local_var_params['id'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `downvote_meme`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -267,6 +269,7 @@ class MemesApi(object):
         :param str media_type: The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
         :param int number: The number of results to retrieve between 1 and 10.
         :param int min_rating: The minimum rating between 0 and 10 the result should have.
+        :param float offset: The number of results to skip.
         :return: InlineResponse2002
                  If the method is called asynchronously,
                  returns the request thread.
@@ -293,6 +296,7 @@ class MemesApi(object):
         :param str media_type: The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
         :param int number: The number of results to retrieve between 1 and 10.
         :param int min_rating: The minimum rating between 0 and 10 the result should have.
+        :param float offset: The number of results to skip.
         :return: InlineResponse2002
                  If the method is called asynchronously,
                  returns the request thread.
@@ -300,7 +304,7 @@ class MemesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['keywords', 'keywords_in_image', 'media_type', 'number', 'min_rating']  # noqa: E501
+        all_params = ['keywords', 'keywords_in_image', 'media_type', 'number', 'min_rating', 'offset']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -326,6 +330,10 @@ class MemesApi(object):
             raise ApiValueError("Invalid value for parameter `min_rating` when calling `search_memes`, must be a value less than or equal to `10`")  # noqa: E501
         if 'min_rating' in local_var_params and local_var_params['min_rating'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `min_rating` when calling `search_memes`, must be a value greater than or equal to `0`")  # noqa: E501
+        if 'offset' in local_var_params and local_var_params['offset'] > 1000:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `search_memes`, must be a value less than or equal to `1000`")  # noqa: E501
+        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `search_memes`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -341,6 +349,8 @@ class MemesApi(object):
             query_params.append(('number', local_var_params['number']))  # noqa: E501
         if 'min_rating' in local_var_params:
             query_params.append(('min-rating', local_var_params['min_rating']))  # noqa: E501
+        if 'offset' in local_var_params:
+            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
 
         header_params = {}
 
@@ -430,6 +440,8 @@ class MemesApi(object):
                 local_var_params['id'] is None):
             raise ApiValueError("Missing the required parameter `id` when calling `upvote_meme`")  # noqa: E501
 
+        if 'id' in local_var_params and local_var_params['id'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `upvote_meme`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}

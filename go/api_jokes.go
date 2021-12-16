@@ -161,6 +161,9 @@ func (a *JokesApiService) DownvoteJoke(ctx context.Context, id int32) (InlineRes
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -376,6 +379,7 @@ Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
  * @param "Number" (optional.Int32) -  The number of results to retrieve between 1 and 10.
  * @param "MinRating" (optional.Int32) -  The minimum rating between 0 and 10 the result should have.
  * @param "MaxLength" (optional.Int32) -  The maximum number of letters in the joke.
+ * @param "Offset" (optional.Float32) -  The number of results to skip.
 @return InlineResponse200
 */
 
@@ -386,6 +390,7 @@ type SearchJokesOpts struct {
 	Number optional.Int32
 	MinRating optional.Int32
 	MaxLength optional.Int32
+	Offset optional.Float32
 }
 
 func (a *JokesApiService) SearchJokes(ctx context.Context, localVarOptionals *SearchJokesOpts) (InlineResponse200, *http.Response, error) {
@@ -422,6 +427,9 @@ func (a *JokesApiService) SearchJokes(ctx context.Context, localVarOptionals *Se
 	}
 	if localVarOptionals != nil && localVarOptionals.MaxLength.IsSet() {
 		localVarQueryParams.Add("max-length", parameterToString(localVarOptionals.MaxLength.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
+		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -632,6 +640,9 @@ func (a *JokesApiService) UpvoteJoke(ctx context.Context, id int32) (InlineRespo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}

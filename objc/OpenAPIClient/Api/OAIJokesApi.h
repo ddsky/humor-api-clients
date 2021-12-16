@@ -79,6 +79,7 @@ extern NSInteger kOAIJokesApiMissingParamErrorCode;
 /// @param number The number of results to retrieve between 1 and 10. (optional)
 /// @param minRating The minimum rating between 0 and 10 the result should have. (optional)
 /// @param maxLength The maximum number of letters in the joke. (optional)
+/// @param offset The number of results to skip. (optional)
 /// 
 ///  code:200 message:"Joke Search Response"
 ///
@@ -89,6 +90,7 @@ extern NSInteger kOAIJokesApiMissingParamErrorCode;
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
     maxLength: (NSNumber*) maxLength
+    offset: (NSNumber*) offset
     completionHandler: (void (^)(OAIInlineResponse200* output, NSError* error)) handler;
 
 

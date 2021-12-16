@@ -105,6 +105,9 @@
           },
           {
             "$ref": "#/components/parameters/max-length"
+          },
+          {
+            "$ref": "#/components/parameters/offset"
           }
         ]
       }
@@ -337,6 +340,9 @@
           },
           {
             "$ref": "#/components/parameters/min-rating"
+          },
+          {
+            "$ref": "#/components/parameters/offset"
           }
         ]
       }
@@ -1232,6 +1238,16 @@
           "example": "cat"
         },
         "description": "A search query."
+      },
+      "offset": {
+        "name": "offset",
+        "in": "query",
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "description": "The number of results to skip."
       }
     },
     "examples": {

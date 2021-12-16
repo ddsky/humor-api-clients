@@ -31,7 +31,7 @@ apiKey.apiKey = 'YOUR API KEY';
 //apiKey.apiKeyPrefix = 'Token';
 
 let apiInstance = new HumorApi.MemesApi();
-let id = 56; // Number | The object's id.
+let id = 1; // Number | The object's id.
 apiInstance.downvoteMeme(id, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -148,7 +148,8 @@ let opts = {
   'keywordsInImage': false, // Boolean | Whether the keywords should be found in the meme's image.
   'mediaType': image, // String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
   '_number': 3, // Number | The number of results to retrieve between 1 and 10.
-  'minRating': 7 // Number | The minimum rating between 0 and 10 the result should have.
+  'minRating': 7, // Number | The minimum rating between 0 and 10 the result should have.
+  'offset': 3.4 // Number | The number of results to skip.
 };
 apiInstance.searchMemes(opts, (error, data, response) => {
   if (error) {
@@ -169,6 +170,7 @@ Name | Type | Description  | Notes
  **mediaType** | **String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
  **_number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
  **minRating** | **Number**| The minimum rating between 0 and 10 the result should have. | [optional] 
+ **offset** | **Number**| The number of results to skip. | [optional] 
 
 ### Return type
 
@@ -204,7 +206,7 @@ apiKey.apiKey = 'YOUR API KEY';
 //apiKey.apiKeyPrefix = 'Token';
 
 let apiInstance = new HumorApi.MemesApi();
-let id = 56; // Number | The object's id.
+let id = 1; // Number | The object's id.
 apiInstance.upvoteMeme(id, (error, data, response) => {
   if (error) {
     console.error(error);

@@ -58,7 +58,8 @@ isa_ok($api, 'WWW::OpenAPIClient::MemesApi');
     my $media_type = undef; # replace NULL with a proper value
     my $number = undef; # replace NULL with a proper value
     my $min_rating = undef; # replace NULL with a proper value
-    my $result = $api->search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating);
+    my $offset = undef; # replace NULL with a proper value
+    my $result = $api->search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating, offset => $offset);
 }
 
 #

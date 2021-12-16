@@ -31,7 +31,7 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('apiKey').apiKeyPrefix = 'Bearer';
 
 var api_instance = new MemesApi();
-var id = 56; // int | The object's id.
+var id = 1; // int | The object's id.
 
 try { 
     var result = api_instance.downvoteMeme(id);
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchMemes**
-> InlineResponse2002 searchMemes(keywords, keywordsInImage, mediaType, number, minRating)
+> InlineResponse2002 searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
 
 Search Memes
 
@@ -138,9 +138,10 @@ var keywordsInImage = false; // bool | Whether the keywords should be found in t
 var mediaType = image; // String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
 var number = 3; // int | The number of results to retrieve between 1 and 10.
 var minRating = 7; // int | The minimum rating between 0 and 10 the result should have.
+var offset = 8.14; // num | The number of results to skip.
 
 try { 
-    var result = api_instance.searchMemes(keywords, keywordsInImage, mediaType, number, minRating);
+    var result = api_instance.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset);
     print(result);
 } catch (e) {
     print("Exception when calling MemesApi->searchMemes: $e\n");
@@ -156,6 +157,7 @@ Name | Type | Description  | Notes
  **mediaType** | **String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] [default to null]
  **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] [default to null]
  **minRating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] [default to null]
+ **offset** | **num**| The number of results to skip. | [optional] [default to null]
 
 ### Return type
 
@@ -188,7 +190,7 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('apiKey').apiKeyPrefix = 'Bearer';
 
 var api_instance = new MemesApi();
-var id = 56; // int | The object's id.
+var id = 1; // int | The object's id.
 
 try { 
     var result = api_instance.upvoteMeme(id);

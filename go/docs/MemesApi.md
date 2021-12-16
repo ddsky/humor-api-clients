@@ -117,6 +117,7 @@ Name | Type | Description  | Notes
  **mediaType** | **optional.String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | 
  **number** | **optional.Int32**| The number of results to retrieve between 1 and 10. | 
  **minRating** | **optional.Int32**| The minimum rating between 0 and 10 the result should have. | 
+ **offset** | **optional.Float32**| The number of results to skip. | 
 
 ### Return type
 

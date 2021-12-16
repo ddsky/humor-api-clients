@@ -38,7 +38,7 @@ $apiInstance = new com.humorapi.client\Api\MemesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | The object's id.
+$id = 1; // int | The object's id.
 
 try {
     $result = $apiInstance->downvoteMeme($id);
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## searchMemes
 
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2002 searchMemes($keywords, $keywords_in_image, $media_type, $number, $min_rating)
+> \com.humorapi.client\com.humorapi.client.model\InlineResponse2002 searchMemes($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset)
 
 Search Memes
 
@@ -177,9 +177,10 @@ $keywords_in_image = false; // bool | Whether the keywords should be found in th
 $media_type = image; // string | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
 $number = 3; // int | The number of results to retrieve between 1 and 10.
 $min_rating = 7; // int | The minimum rating between 0 and 10 the result should have.
+$offset = 3.4; // float | The number of results to skip.
 
 try {
-    $result = $apiInstance->searchMemes($keywords, $keywords_in_image, $media_type, $number, $min_rating);
+    $result = $apiInstance->searchMemes($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MemesApi->searchMemes: ', $e->getMessage(), PHP_EOL;
@@ -197,6 +198,7 @@ Name | Type | Description  | Notes
  **media_type** | **string**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional]
  **number** | **int**| The number of results to retrieve between 1 and 10. | [optional]
  **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
+ **offset** | **float**| The number of results to skip. | [optional]
 
 ### Return type
 
@@ -243,7 +245,7 @@ $apiInstance = new com.humorapi.client\Api\MemesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | The object's id.
+$id = 1; // int | The object's id.
 
 try {
     $result = $apiInstance->upvoteMeme($id);

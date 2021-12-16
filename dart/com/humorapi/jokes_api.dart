@@ -169,7 +169,7 @@ class JokesApi {
   /// Search Jokes
   ///
   /// Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
-  Future<InlineResponse200> searchJokes({ String keywords, String includeTags, String excludeTags, int number, int minRating, int maxLength }) async {
+  Future<InlineResponse200> searchJokes({ String keywords, String includeTags, String excludeTags, int number, int minRating, int maxLength, num offset }) async {
     Object postBody;
 
     // verify required params are set
@@ -198,6 +198,9 @@ class JokesApi {
     }
     if(maxLength != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "max-length", maxLength));
+    }
+    if(offset != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
     }
 
     List<String> contentTypes = [];

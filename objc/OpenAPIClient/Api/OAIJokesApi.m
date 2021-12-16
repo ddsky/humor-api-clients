@@ -271,6 +271,8 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
 ///
 ///  @param maxLength The maximum number of letters in the joke. (optional)
 ///
+///  @param offset The number of results to skip. (optional)
+///
 ///  @returns OAIInlineResponse200*
 ///
 -(NSURLSessionTask*) searchJokesWithKeywords: (NSString*) keywords
@@ -279,6 +281,7 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
     maxLength: (NSNumber*) maxLength
+    offset: (NSNumber*) offset
     completionHandler: (void (^)(OAIInlineResponse200* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/jokes/search"];
 
@@ -302,6 +305,9 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
     }
     if (maxLength != nil) {
         queryParams[@"max-length"] = maxLength;
+    }
+    if (offset != nil) {
+        queryParams[@"offset"] = offset;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];

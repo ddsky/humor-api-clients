@@ -103,12 +103,13 @@ class MemesApi(basePath: kotlin.String = "https://api.humorapi.com") : ApiClient
     * @param mediaMinusType The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
     * @param number The number of results to retrieve between 1 and 10. (optional)
     * @param minMinusRating The minimum rating between 0 and 10 the result should have. (optional)
+    * @param offset The number of results to skip. (optional)
     * @return InlineResponse2002
     */
     @Suppress("UNCHECKED_CAST")
-    fun searchMemes(keywords: kotlin.String?, keywordsMinusInMinusImage: kotlin.Boolean?, mediaMinusType: kotlin.String?, number: kotlin.Int?, minMinusRating: kotlin.Int?) : InlineResponse2002 {
+    fun searchMemes(keywords: kotlin.String?, keywordsMinusInMinusImage: kotlin.Boolean?, mediaMinusType: kotlin.String?, number: kotlin.Int?, minMinusRating: kotlin.Int?, offset: java.math.BigDecimal?) : InlineResponse2002 {
         val localVariableBody: kotlin.Any? = null
-        val localVariableQuery: MultiValueMap = mapOf("keywords" to listOf("$keywords"), "keywordsMinusInMinusImage" to listOf("$keywordsMinusInMinusImage"), "mediaMinusType" to listOf("$mediaMinusType"), "number" to listOf("$number"), "minMinusRating" to listOf("$minMinusRating"))
+        val localVariableQuery: MultiValueMap = mapOf("keywords" to listOf("$keywords"), "keywordsMinusInMinusImage" to listOf("$keywordsMinusInMinusImage"), "mediaMinusType" to listOf("$mediaMinusType"), "number" to listOf("$number"), "minMinusRating" to listOf("$minMinusRating"), "offset" to listOf("$offset"))
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         val localVariableConfig = RequestConfig(
             RequestMethod.GET,

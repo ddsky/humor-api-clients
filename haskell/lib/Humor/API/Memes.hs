@@ -168,6 +168,11 @@ instance HasOptionalParam SearchMemes Number where
 instance HasOptionalParam SearchMemes MinRating where
   applyOptionalParam req (MinRating xs) =
     req `setQuery` toQuery ("min-rating", Just xs)
+
+-- | /Optional Param/ "offset" - The number of results to skip.
+instance HasOptionalParam SearchMemes Offset where
+  applyOptionalParam req (Offset xs) =
+    req `setQuery` toQuery ("offset", Just xs)
 -- | @application/json@
 instance Produces SearchMemes MimeJSON
 

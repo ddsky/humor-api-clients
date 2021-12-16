@@ -571,6 +571,10 @@ class JokesApi
                 'Missing the required parameter $id when calling downvoteJoke'
             );
         }
+        if ($id < 1) {
+            throw new \InvalidArgumentException('invalid value for "$id" when calling JokesApi.downvoteJoke, must be bigger than or equal to 1.');
+        }
+
 
         $resourcePath = '/jokes/{id}/downvote';
         $formParams = [];
@@ -989,14 +993,15 @@ class JokesApi
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
      * @param  int $max_length The maximum number of letters in the joke. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \com.humorapi.client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \com.humorapi.client\com.humorapi.client.model\InlineResponse200
      */
-    public function searchJokes($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null)
+    public function searchJokes($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null, $offset = null)
     {
-        list($response) = $this->searchJokesWithHttpInfo($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length);
+        list($response) = $this->searchJokesWithHttpInfo($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset);
         return $response;
     }
 
@@ -1011,14 +1016,15 @@ class JokesApi
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
      * @param  int $max_length The maximum number of letters in the joke. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \com.humorapi.client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \com.humorapi.client\com.humorapi.client.model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchJokesWithHttpInfo($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null)
+    public function searchJokesWithHttpInfo($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null, $offset = null)
     {
-        $request = $this->searchJokesRequest($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length);
+        $request = $this->searchJokesRequest($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1104,13 +1110,14 @@ class JokesApi
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
      * @param  int $max_length The maximum number of letters in the joke. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchJokesAsync($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null)
+    public function searchJokesAsync($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null, $offset = null)
     {
-        return $this->searchJokesAsyncWithHttpInfo($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length)
+        return $this->searchJokesAsyncWithHttpInfo($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1129,14 +1136,15 @@ class JokesApi
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
      * @param  int $max_length The maximum number of letters in the joke. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchJokesAsyncWithHttpInfo($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null)
+    public function searchJokesAsyncWithHttpInfo($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null, $offset = null)
     {
         $returnType = '\com.humorapi.client\com.humorapi.client.model\InlineResponse200';
-        $request = $this->searchJokesRequest($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length);
+        $request = $this->searchJokesRequest($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1181,11 +1189,12 @@ class JokesApi
      * @param  int $number The number of results to retrieve between 1 and 10. (optional)
      * @param  int $min_rating The minimum rating between 0 and 10 the result should have. (optional)
      * @param  int $max_length The maximum number of letters in the joke. (optional)
+     * @param  float $offset The number of results to skip. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchJokesRequest($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null)
+    protected function searchJokesRequest($keywords = null, $include_tags = null, $exclude_tags = null, $number = null, $min_rating = null, $max_length = null, $offset = null)
     {
         if ($number !== null && $number > 10) {
             throw new \InvalidArgumentException('invalid value for "$number" when calling JokesApi.searchJokes, must be smaller than or equal to 10.');
@@ -1209,6 +1218,13 @@ class JokesApi
         }
         if ($max_length !== null && $max_length < 10) {
             throw new \InvalidArgumentException('invalid value for "$max_length" when calling JokesApi.searchJokes, must be bigger than or equal to 10.');
+        }
+
+        if ($offset !== null && $offset > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling JokesApi.searchJokes, must be smaller than or equal to 1000.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling JokesApi.searchJokes, must be bigger than or equal to 0.');
         }
 
 
@@ -1242,6 +1258,10 @@ class JokesApi
         // query params
         if ($max_length !== null) {
             $queryParams['max-length'] = ObjectSerializer::toQueryValue($max_length);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
         }
 
 
@@ -1770,6 +1790,10 @@ class JokesApi
                 'Missing the required parameter $id when calling upvoteJoke'
             );
         }
+        if ($id < 1) {
+            throw new \InvalidArgumentException('invalid value for "$id" when calling JokesApi.upvoteJoke, must be bigger than or equal to 1.');
+        }
+
 
         $resourcePath = '/jokes/{id}/upvote';
         $formParams = [];

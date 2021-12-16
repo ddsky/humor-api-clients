@@ -65,6 +65,7 @@ extern NSInteger kOAIMemesApiMissingParamErrorCode;
 /// @param mediaType The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
 /// @param number The number of results to retrieve between 1 and 10. (optional)
 /// @param minRating The minimum rating between 0 and 10 the result should have. (optional)
+/// @param offset The number of results to skip. (optional)
 /// 
 ///  code:200 message:"Meme Search Response"
 ///
@@ -74,6 +75,7 @@ extern NSInteger kOAIMemesApiMissingParamErrorCode;
     mediaType: (NSString*) mediaType
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
+    offset: (NSNumber*) offset
     completionHandler: (void (^)(OAIInlineResponse2002* output, NSError* error)) handler;
 
 

@@ -25,7 +25,7 @@ Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
 //import com.humorapi.client.model.*
 
 val apiInstance = MemesApi()
-val id : kotlin.Int = 56 // kotlin.Int | The object's id.
+val id : kotlin.Int = 1 // kotlin.Int | The object's id.
 try {
     val result : InlineResponse2008 = apiInstance.downvoteMeme(id)
     println(result)
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 <a name="searchMemes"></a>
 # **searchMemes**
-> InlineResponse2002 searchMemes(keywords, keywordsMinusInMinusImage, mediaMinusType, number, minMinusRating)
+> InlineResponse2002 searchMemes(keywords, keywordsMinusInMinusImage, mediaMinusType, number, minMinusRating, offset)
 
 Search Memes
 
@@ -132,8 +132,9 @@ val keywordsMinusInMinusImage : kotlin.Boolean = false // kotlin.Boolean | Wheth
 val mediaMinusType : kotlin.String = image // kotlin.String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
 val number : kotlin.Int = 3 // kotlin.Int | The number of results to retrieve between 1 and 10.
 val minMinusRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
+val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | The number of results to skip.
 try {
-    val result : InlineResponse2002 = apiInstance.searchMemes(keywords, keywordsMinusInMinusImage, mediaMinusType, number, minMinusRating)
+    val result : InlineResponse2002 = apiInstance.searchMemes(keywords, keywordsMinusInMinusImage, mediaMinusType, number, minMinusRating, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MemesApi#searchMemes")
@@ -153,6 +154,7 @@ Name | Type | Description  | Notes
  **mediaMinusType** | **kotlin.String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] [enum: image, video, jpg, gif, png, mp4]
  **number** | **kotlin.Int**| The number of results to retrieve between 1 and 10. | [optional]
  **minMinusRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
+ **offset** | **java.math.BigDecimal**| The number of results to skip. | [optional]
 
 ### Return type
 
@@ -182,7 +184,7 @@ Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
 //import com.humorapi.client.model.*
 
 val apiInstance = MemesApi()
-val id : kotlin.Int = 56 // kotlin.Int | The object's id.
+val id : kotlin.Int = 1 // kotlin.Int | The object's id.
 try {
     val result : InlineResponse2008 = apiInstance.upvoteMeme(id)
     println(result)

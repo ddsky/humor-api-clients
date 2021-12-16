@@ -33,7 +33,7 @@ impl<C: hyper::client::Connect> MemesApiClient<C> {
 pub trait MemesApi {
     fn downvote_meme(&self, id: i32) -> Box<Future<Item = ::models::InlineResponse2008, Error = Error<serde_json::Value>>>;
     fn random_meme(&self, keywords: &str, keywords_in_image: bool, media_type: &str, number: i32, min_rating: i32) -> Box<Future<Item = ::models::InlineResponse2003, Error = Error<serde_json::Value>>>;
-    fn search_memes(&self, keywords: &str, keywords_in_image: bool, media_type: &str, number: i32, min_rating: i32) -> Box<Future<Item = ::models::InlineResponse2002, Error = Error<serde_json::Value>>>;
+    fn search_memes(&self, keywords: &str, keywords_in_image: bool, media_type: &str, number: i32, min_rating: i32, offset: f32) -> Box<Future<Item = ::models::InlineResponse2002, Error = Error<serde_json::Value>>>;
     fn upvote_meme(&self, id: i32) -> Box<Future<Item = ::models::InlineResponse2008, Error = Error<serde_json::Value>>>;
 }
 
@@ -65,7 +65,7 @@ impl<C: hyper::client::Connect>MemesApi for MemesApiClient<C> {
             .execute(self.configuration.borrow())
     }
 
-    fn search_memes(&self, keywords: &str, keywords_in_image: bool, media_type: &str, number: i32, min_rating: i32) -> Box<Future<Item = ::models::InlineResponse2002, Error = Error<serde_json::Value>>> {
+    fn search_memes(&self, keywords: &str, keywords_in_image: bool, media_type: &str, number: i32, min_rating: i32, offset: f32) -> Box<Future<Item = ::models::InlineResponse2002, Error = Error<serde_json::Value>>> {
         __internal_request::Request::new(hyper::Method::Get, "/memes/search".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: false,
@@ -77,6 +77,7 @@ impl<C: hyper::client::Connect>MemesApi for MemesApiClient<C> {
             .with_query_param("media-type".to_string(), media_type.to_string())
             .with_query_param("number".to_string(), number.to_string())
             .with_query_param("min-rating".to_string(), min_rating.to_string())
+            .with_query_param("offset".to_string(), offset.to_string())
             .execute(self.configuration.borrow())
     }
 

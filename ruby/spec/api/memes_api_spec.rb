@@ -69,6 +69,7 @@ describe 'MemesApi' do
   # @option opts [String] :media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;.
   # @option opts [Integer] :number The number of results to retrieve between 1 and 10.
   # @option opts [Integer] :min_rating The minimum rating between 0 and 10 the result should have.
+  # @option opts [Float] :offset The number of results to skip.
   # @return [InlineResponse2002]
   describe 'search_memes test' do
     it 'should work' do
