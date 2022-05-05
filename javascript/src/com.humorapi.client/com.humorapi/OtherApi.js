@@ -228,7 +228,7 @@ export default class OtherApi {
      * Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
      * @param {String} query A search query.
      * @param {Object} opts Optional parameters
-     * @param {Number} opts._number The number of results to retrieve between 1 and 10.
+     * @param {Number} opts.number The number of results to retrieve between 1 and 10.
      * @param {module:com.humorapi.client/com.humorapi/OtherApi~searchGifsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:com.humorapi.client/com.humorapi.client.model/InlineResponse2001}
      */
@@ -244,7 +244,7 @@ export default class OtherApi {
       };
       let queryParams = {
         'query': query,
-        'number': opts['_number']
+        'number': opts['number']
       };
       let headerParams = {
       };

@@ -68,7 +68,7 @@ import qualified Prelude as P
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-generateNonsenseWord 
+generateNonsenseWord
   :: HumorRequest GenerateNonsenseWord MimeNoContent InlineResponse2007 MimeJSON
 generateNonsenseWord =
   _mkRequest "GET" ["/words/nonsense/random"]
@@ -89,15 +89,15 @@ instance Produces GenerateNonsenseWord MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-insult 
+insult
   :: Name -- ^ "name" -  The person's name.
   -> Reason -- ^ "reason" -  The reason for the praise/insult.
   -> HumorRequest Insult MimeNoContent InlineResponse2005 MimeJSON
 insult (Name name) (Reason reason) =
   _mkRequest "GET" ["/insult"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
-    `setQuery` toQuery ("name", Just name)
-    `setQuery` toQuery ("reason", Just reason)
+    `addQuery` toQuery ("name", Just name)
+    `addQuery` toQuery ("reason", Just reason)
 
 data Insult  
 -- | @application/json@
@@ -114,15 +114,15 @@ instance Produces Insult MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-praise 
+praise
   :: Name -- ^ "name" -  The person's name.
   -> Reason -- ^ "reason" -  The reason for the praise/insult.
   -> HumorRequest Praise MimeNoContent InlineResponse2005 MimeJSON
 praise (Name name) (Reason reason) =
   _mkRequest "GET" ["/praise"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
-    `setQuery` toQuery ("name", Just name)
-    `setQuery` toQuery ("reason", Just reason)
+    `addQuery` toQuery ("name", Just name)
+    `addQuery` toQuery ("reason", Just reason)
 
 data Praise  
 -- | @application/json@
@@ -139,13 +139,13 @@ instance Produces Praise MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-rateWord 
+rateWord
   :: Word -- ^ "word" -  The word to be rated.
   -> HumorRequest RateWord MimeNoContent InlineResponse2006 MimeJSON
 rateWord (Word word) =
   _mkRequest "GET" ["/words/rate"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
-    `setQuery` toQuery ("word", Just word)
+    `addQuery` toQuery ("word", Just word)
 
 data RateWord  
 -- | @application/json@
@@ -162,20 +162,20 @@ instance Produces RateWord MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-searchGifs 
+searchGifs
   :: Query -- ^ "query" -  A search query.
   -> HumorRequest SearchGifs MimeNoContent InlineResponse2001 MimeJSON
 searchGifs (Query query) =
   _mkRequest "GET" ["/gif/search"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
-    `setQuery` toQuery ("query", Just query)
+    `addQuery` toQuery ("query", Just query)
 
 data SearchGifs  
 
 -- | /Optional Param/ "number" - The number of results to retrieve between 1 and 10.
 instance HasOptionalParam SearchGifs Number where
   applyOptionalParam req (Number xs) =
-    req `setQuery` toQuery ("number", Just xs)
+    req `addQuery` toQuery ("number", Just xs)
 -- | @application/json@
 instance Produces SearchGifs MimeJSON
 

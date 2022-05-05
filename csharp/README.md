@@ -1,4 +1,4 @@
-# humorapi - the C# library for the Humor API
+# Org.OpenAPITools - the C# library for the Humor API
 
 Awesome Humor API.
 
@@ -29,9 +29,9 @@ Run the following command to generate the DLL
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 ```csharp
-using humorapi.Api;
+using Org.OpenAPITools.Api;
 using Org.OpenAPITools.Client;
-using humorapi.Model;
+using Org.OpenAPITools.Model;
 ```
 <a name="getting-started"></a>
 ## Getting Started
@@ -39,9 +39,9 @@ using humorapi.Model;
 ```csharp
 using System;
 using System.Diagnostics;
-using humorapi.Api;
+using Org.OpenAPITools.Api;
 using Org.OpenAPITools.Client;
-using humorapi.Model;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -56,7 +56,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("api-key", "Bearer");
 
             var apiInstance = new JokesApi();
-            var body = body_example;  // string | Post the joke as plain text. (optional) 
+            var body = "body_example";  // string | Post the joke as plain text. (optional) 
 
             try
             {
@@ -100,21 +100,22 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [humorapi.Model.InlineResponse200](docs/InlineResponse200.md)
- - [humorapi.Model.InlineResponse2001](docs/InlineResponse2001.md)
- - [humorapi.Model.InlineResponse2002](docs/InlineResponse2002.md)
- - [humorapi.Model.InlineResponse2003](docs/InlineResponse2003.md)
- - [humorapi.Model.InlineResponse2004](docs/InlineResponse2004.md)
- - [humorapi.Model.InlineResponse2005](docs/InlineResponse2005.md)
- - [humorapi.Model.InlineResponse2006](docs/InlineResponse2006.md)
- - [humorapi.Model.InlineResponse2007](docs/InlineResponse2007.md)
- - [humorapi.Model.InlineResponse2008](docs/InlineResponse2008.md)
- - [humorapi.Model.InlineResponse2009](docs/InlineResponse2009.md)
+ - [Org.OpenAPITools.Model.InlineResponse200](docs/InlineResponse200.md)
+ - [Org.OpenAPITools.Model.InlineResponse2001](docs/InlineResponse2001.md)
+ - [Org.OpenAPITools.Model.InlineResponse2002](docs/InlineResponse2002.md)
+ - [Org.OpenAPITools.Model.InlineResponse2003](docs/InlineResponse2003.md)
+ - [Org.OpenAPITools.Model.InlineResponse2004](docs/InlineResponse2004.md)
+ - [Org.OpenAPITools.Model.InlineResponse2005](docs/InlineResponse2005.md)
+ - [Org.OpenAPITools.Model.InlineResponse2006](docs/InlineResponse2006.md)
+ - [Org.OpenAPITools.Model.InlineResponse2007](docs/InlineResponse2007.md)
+ - [Org.OpenAPITools.Model.InlineResponse2008](docs/InlineResponse2008.md)
+ - [Org.OpenAPITools.Model.InlineResponse2009](docs/InlineResponse2009.md)
 
 
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
+Authentication schemes defined for the API:
 <a name="apiKey"></a>
 ### apiKey
 

@@ -1,7 +1,7 @@
 package com.humorapi
 
 import java.io._
-import humorapi._
+import org.openapitools._
 import com.humorapi.client.model._
 import com.humorapi.client.model.InlineResponse2001
 import com.humorapi.client.model.InlineResponse2005
@@ -18,6 +18,7 @@ import com.twitter.util.Future
 import com.twitter.io.Buf
 import io.finch._, items._
 import java.io.File
+import java.nio.file.Files
 import java.time._
 
 object OtherApi {
@@ -135,7 +136,7 @@ object OtherApi {
     }
 
     private def bytesToFile(input: Array[Byte]): java.io.File = {
-      val file = File.createTempFile("tmpOtherApi", null)
+      val file = Files.createTempFile("tmpOtherApi", null).toFile
       val output = new FileOutputStream(file)
       output.write(input)
       file

@@ -45,8 +45,7 @@ public class OtherApiTest {
      */
     @Test
     public void generateNonsenseWordTest() throws ApiException {
-        InlineResponse2007 response = api.generateNonsenseWord();
-
+                InlineResponse2007 response = api.generateNonsenseWord();
         // TODO: test validations
     }
     
@@ -62,8 +61,7 @@ public class OtherApiTest {
     public void insultTest() throws ApiException {
         String name = null;
         String reason = null;
-        InlineResponse2005 response = api.insult(name, reason);
-
+                InlineResponse2005 response = api.insult(name, reason);
         // TODO: test validations
     }
     
@@ -79,8 +77,7 @@ public class OtherApiTest {
     public void praiseTest() throws ApiException {
         String name = null;
         String reason = null;
-        InlineResponse2005 response = api.praise(name, reason);
-
+                InlineResponse2005 response = api.praise(name, reason);
         // TODO: test validations
     }
     
@@ -95,8 +92,7 @@ public class OtherApiTest {
     @Test
     public void rateWordTest() throws ApiException {
         String word = null;
-        InlineResponse2006 response = api.rateWord(word);
-
+                InlineResponse2006 response = api.rateWord(word);
         // TODO: test validations
     }
     
@@ -112,8 +108,7 @@ public class OtherApiTest {
     public void searchGifsTest() throws ApiException {
         String query = null;
         Integer number = null;
-        InlineResponse2001 response = api.searchGifs(query, number);
-
+                InlineResponse2001 response = api.searchGifs(query, number);
         // TODO: test validations
     }
     

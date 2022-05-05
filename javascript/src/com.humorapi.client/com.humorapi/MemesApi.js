@@ -94,7 +94,7 @@ export default class MemesApi {
      * @param {String} opts.keywords A comma separated list of keywords.
      * @param {module:com.humorapi.client/com.humorapi.client.model/Boolean} opts.keywordsInImage Whether the keywords should be found in the meme's image.
      * @param {module:com.humorapi.client/com.humorapi.client.model/String} opts.mediaType The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
-     * @param {Number} opts._number The number of results to retrieve between 1 and 10.
+     * @param {Number} opts.number The number of results to retrieve between 1 and 10.
      * @param {Number} opts.minRating The minimum rating between 0 and 10 the result should have.
      * @param {module:com.humorapi.client/com.humorapi/MemesApi~randomMemeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:com.humorapi.client/com.humorapi.client.model/InlineResponse2003}
@@ -109,7 +109,7 @@ export default class MemesApi {
         'keywords': opts['keywords'],
         'keywords-in-image': opts['keywordsInImage'],
         'media-type': opts['mediaType'],
-        'number': opts['_number'],
+        'number': opts['number'],
         'min-rating': opts['minRating']
       };
       let headerParams = {
@@ -143,7 +143,7 @@ export default class MemesApi {
      * @param {String} opts.keywords A comma separated list of keywords.
      * @param {module:com.humorapi.client/com.humorapi.client.model/Boolean} opts.keywordsInImage Whether the keywords should be found in the meme's image.
      * @param {module:com.humorapi.client/com.humorapi.client.model/String} opts.mediaType The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
-     * @param {Number} opts._number The number of results to retrieve between 1 and 10.
+     * @param {Number} opts.number The number of results to retrieve between 1 and 10.
      * @param {Number} opts.minRating The minimum rating between 0 and 10 the result should have.
      * @param {Number} opts.offset The number of results to skip.
      * @param {module:com.humorapi.client/com.humorapi/MemesApi~searchMemesCallback} callback The callback function, accepting three arguments: error, data, response
@@ -159,7 +159,7 @@ export default class MemesApi {
         'keywords': opts['keywords'],
         'keywords-in-image': opts['keywordsInImage'],
         'media-type': opts['mediaType'],
-        'number': opts['_number'],
+        'number': opts['number'],
         'min-rating': opts['minRating'],
         'offset': opts['offset']
       };

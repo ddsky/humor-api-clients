@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * InlineResponse2007
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-16T19:38:20.770+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-05T21:05:51.248+02:00[Europe/Berlin]")
 public class InlineResponse2007 {
   public static final String SERIALIZED_NAME_WORD = "word";
   @SerializedName(SERIALIZED_NAME_WORD)
@@ -38,7 +38,11 @@ public class InlineResponse2007 {
   @SerializedName(SERIALIZED_NAME_RATING)
   private BigDecimal rating;
 
+  public InlineResponse2007() { 
+  }
+
   public InlineResponse2007 word(String word) {
+    
     this.word = word;
     return this;
   }
@@ -47,16 +51,21 @@ public class InlineResponse2007 {
    * Get word
    * @return word
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public String getWord() {
     return word;
   }
+
 
   public void setWord(String word) {
     this.word = word;
   }
 
+
   public InlineResponse2007 rating(BigDecimal rating) {
+    
     this.rating = rating;
     return this;
   }
@@ -65,10 +74,13 @@ public class InlineResponse2007 {
    * Get rating
    * @return rating
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public BigDecimal getRating() {
     return rating;
   }
+
 
   public void setRating(BigDecimal rating) {
     this.rating = rating;
@@ -76,7 +88,7 @@ public class InlineResponse2007 {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -93,7 +105,6 @@ public class InlineResponse2007 {
     return Objects.hash(word, rating);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -108,7 +119,7 @@ public class InlineResponse2007 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

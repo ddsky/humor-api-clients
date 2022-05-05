@@ -21,52 +21,51 @@
 
 #include <QJsonObject>
 
-
-#include "com.humorapi.client.model\OAINumber.h"
 #include <QString>
 
-#include "OAIObject.h"
 #include "OAIEnum.h"
+#include "OAIObject.h"
 
 namespace OpenAPI {
 
-class OAIInline_response_200_7: public OAIObject {
+class OAIInline_response_200_7 : public OAIObject {
 public:
     OAIInline_response_200_7();
     OAIInline_response_200_7(QString json);
     ~OAIInline_response_200_7() override;
 
-    QString asJson () const override;
+    QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    
     QString getWord() const;
     void setWord(const QString &word);
+    bool is_word_Set() const;
+    bool is_word_Valid() const;
 
-    
-    OAINumber getRating() const;
-    void setRating(const OAINumber &rating);
+    double getRating() const;
+    void setRating(const double &rating);
+    bool is_rating_Set() const;
+    bool is_rating_Valid() const;
 
-    
-    
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
-    void init();
-    
+    void initializeModel();
+
     QString word;
     bool m_word_isSet;
     bool m_word_isValid;
-    
-    OAINumber rating;
+
+    double rating;
     bool m_rating_isSet;
     bool m_rating_isValid;
-    
-    };
+};
 
-}
+} // namespace OpenAPI
+
+Q_DECLARE_METATYPE(OpenAPI::OAIInline_response_200_7)
 
 #endif // OAIInline_response_200_7_H

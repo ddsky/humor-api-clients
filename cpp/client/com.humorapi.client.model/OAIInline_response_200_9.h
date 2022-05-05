@@ -21,52 +21,52 @@
 
 #include <QJsonObject>
 
-
 #include <QList>
 #include <QString>
 
-#include "OAIObject.h"
 #include "OAIEnum.h"
+#include "OAIObject.h"
 
 namespace OpenAPI {
 
-class OAIInline_response_200_9: public OAIObject {
+class OAIInline_response_200_9 : public OAIObject {
 public:
     OAIInline_response_200_9();
     OAIInline_response_200_9(QString json);
     ~OAIInline_response_200_9() override;
 
-    QString asJson () const override;
+    QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    
     QString getJoke() const;
     void setJoke(const QString &joke);
+    bool is_joke_Set() const;
+    bool is_joke_Valid() const;
 
-    
     QList<QString> getTags() const;
     void setTags(const QList<QString> &tags);
+    bool is_tags_Set() const;
+    bool is_tags_Valid() const;
 
-    
-    
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
-    void init();
-    
+    void initializeModel();
+
     QString joke;
     bool m_joke_isSet;
     bool m_joke_isValid;
-    
+
     QList<QString> tags;
     bool m_tags_isSet;
     bool m_tags_isValid;
-    
-    };
+};
 
-}
+} // namespace OpenAPI
+
+Q_DECLARE_METATYPE(OpenAPI::OAIInline_response_200_9)
 
 #endif // OAIInline_response_200_9_H

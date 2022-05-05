@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Humor API
 
@@ -11,13 +9,11 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
 
-import humorapi
-from humorapi.com.humorapi.client.model.inline_response200 import InlineResponse200  # noqa: E501
-from humorapi.rest import ApiException
+import openapi_client
+from openapi_client.model.inline_response200 import InlineResponse200
 
 
 class TestInlineResponse200(unittest.TestCase):
@@ -32,7 +28,7 @@ class TestInlineResponse200(unittest.TestCase):
     def testInlineResponse200(self):
         """Test InlineResponse200"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = humorapi.models.inline_response200.InlineResponse200()  # noqa: E501
+        # model = InlineResponse200()  # noqa: E501
         pass
 
 

@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**images** | **Array&lt;Object&gt;** |  | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **images** | **Array&lt;Object&gt;** |  |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'OpenapiClient'
+require 'openapi_client'
 
-instance = OpenapiClient::InlineResponse2001.new(images: null)
+instance = OpenapiClient::InlineResponse2001.new(
+  images: null
+)
 ```
-
 

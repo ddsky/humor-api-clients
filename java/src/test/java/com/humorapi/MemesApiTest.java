@@ -46,8 +46,7 @@ public class MemesApiTest {
     @Test
     public void downvoteMemeTest() throws ApiException {
         Integer id = null;
-        InlineResponse2008 response = api.downvoteMeme(id);
-
+                InlineResponse2008 response = api.downvoteMeme(id);
         // TODO: test validations
     }
     
@@ -66,8 +65,7 @@ public class MemesApiTest {
         String mediaType = null;
         Integer number = null;
         Integer minRating = null;
-        InlineResponse2003 response = api.randomMeme(keywords, keywordsInImage, mediaType, number, minRating);
-
+                InlineResponse2003 response = api.randomMeme(keywords, keywordsInImage, mediaType, number, minRating);
         // TODO: test validations
     }
     
@@ -87,8 +85,7 @@ public class MemesApiTest {
         Integer number = null;
         Integer minRating = null;
         BigDecimal offset = null;
-        InlineResponse2002 response = api.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset);
-
+                InlineResponse2002 response = api.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset);
         // TODO: test validations
     }
     
@@ -103,8 +100,7 @@ public class MemesApiTest {
     @Test
     public void upvoteMemeTest() throws ApiException {
         Integer id = null;
-        InlineResponse2008 response = api.upvoteMeme(id);
-
+                InlineResponse2008 response = api.upvoteMeme(id);
         // TODO: test validations
     }
     

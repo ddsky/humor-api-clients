@@ -32,60 +32,52 @@ isa_ok($api, 'WWW::OpenAPIClient::JokesApi');
 #
 # analyze_joke test
 #
-{
-    my $body = undef; # replace NULL with a proper value
-    my $result = $api->analyze_joke(body => $body);
-}
+# uncomment below and update the test
+#my $analyze_joke_body = undef; # replace NULL with a proper value
+#my $analyze_joke_result = $api->analyze_joke(body => $analyze_joke_body);
 
 #
 # downvote_joke test
 #
-{
-    my $id = undef; # replace NULL with a proper value
-    my $result = $api->downvote_joke(id => $id);
-}
+# uncomment below and update the test
+#my $downvote_joke_id = undef; # replace NULL with a proper value
+#my $downvote_joke_result = $api->downvote_joke(id => $downvote_joke_id);
 
 #
 # random_joke test
 #
-{
-    my $keywords = undef; # replace NULL with a proper value
-    my $include_tags = undef; # replace NULL with a proper value
-    my $exclude_tags = undef; # replace NULL with a proper value
-    my $min_rating = undef; # replace NULL with a proper value
-    my $max_length = undef; # replace NULL with a proper value
-    my $result = $api->random_joke(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, min_rating => $min_rating, max_length => $max_length);
-}
+# uncomment below and update the test
+#my $random_joke_keywords = undef; # replace NULL with a proper value
+#my $random_joke_include_tags = undef; # replace NULL with a proper value
+#my $random_joke_exclude_tags = undef; # replace NULL with a proper value
+#my $random_joke_min_rating = undef; # replace NULL with a proper value
+#my $random_joke_max_length = undef; # replace NULL with a proper value
+#my $random_joke_result = $api->random_joke(keywords => $random_joke_keywords, include_tags => $random_joke_include_tags, exclude_tags => $random_joke_exclude_tags, min_rating => $random_joke_min_rating, max_length => $random_joke_max_length);
 
 #
 # search_jokes test
 #
-{
-    my $keywords = undef; # replace NULL with a proper value
-    my $include_tags = undef; # replace NULL with a proper value
-    my $exclude_tags = undef; # replace NULL with a proper value
-    my $number = undef; # replace NULL with a proper value
-    my $min_rating = undef; # replace NULL with a proper value
-    my $max_length = undef; # replace NULL with a proper value
-    my $offset = undef; # replace NULL with a proper value
-    my $result = $api->search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length, offset => $offset);
-}
+# uncomment below and update the test
+#my $search_jokes_keywords = undef; # replace NULL with a proper value
+#my $search_jokes_include_tags = undef; # replace NULL with a proper value
+#my $search_jokes_exclude_tags = undef; # replace NULL with a proper value
+#my $search_jokes_number = undef; # replace NULL with a proper value
+#my $search_jokes_min_rating = undef; # replace NULL with a proper value
+#my $search_jokes_max_length = undef; # replace NULL with a proper value
+#my $search_jokes_offset = undef; # replace NULL with a proper value
+#my $search_jokes_result = $api->search_jokes(keywords => $search_jokes_keywords, include_tags => $search_jokes_include_tags, exclude_tags => $search_jokes_exclude_tags, number => $search_jokes_number, min_rating => $search_jokes_min_rating, max_length => $search_jokes_max_length, offset => $search_jokes_offset);
 
 #
 # submit_joke test
 #
-{
-    my $body = undef; # replace NULL with a proper value
-    my $result = $api->submit_joke(body => $body);
-}
+# uncomment below and update the test
+#my $submit_joke_body = undef; # replace NULL with a proper value
+#my $submit_joke_result = $api->submit_joke(body => $submit_joke_body);
 
 #
 # upvote_joke test
 #
-{
-    my $id = undef; # replace NULL with a proper value
-    my $result = $api->upvote_joke(id => $id);
-}
+# uncomment below and update the test
+#my $upvote_joke_id = undef; # replace NULL with a proper value
+#my $upvote_joke_result = $api->upvote_joke(id => $upvote_joke_id);
 
-
-1;

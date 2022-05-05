@@ -50,19 +50,19 @@
   describe('InlineResponse2007', function() {
     it('should create an instance of InlineResponse2007', function() {
       // uncomment below and update the code to test InlineResponse2007
-      //var instane = new HumorApi.InlineResponse2007();
+      //var instance = new HumorApi.InlineResponse2007();
       //expect(instance).to.be.a(HumorApi.InlineResponse2007);
     });
 
     it('should have the property word (base name: "word")', function() {
       // uncomment below and update the code to test the property word
-      //var instane = new HumorApi.InlineResponse2007();
+      //var instance = new HumorApi.InlineResponse2007();
       //expect(instance).to.be();
     });
 
     it('should have the property rating (base name: "rating")', function() {
       // uncomment below and update the code to test the property rating
-      //var instane = new HumorApi.InlineResponse2007();
+      //var instance = new HumorApi.InlineResponse2007();
       //expect(instance).to.be();
     });
 

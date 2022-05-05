@@ -41,6 +41,8 @@ import java.util.Map;
 
 public class JokesApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public JokesApi() {
         this(Configuration.getDefaultApiClient());
@@ -58,14 +60,49 @@ public class JokesApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for analyzeJoke
      * @param body Post the joke as plain text. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful analysis </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call analyzeJokeCall(String body, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -74,7 +111,9 @@ public class JokesApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -87,10 +126,12 @@ public class JokesApi {
             "text/plain"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -108,6 +149,11 @@ public class JokesApi {
      * @param body Post the joke as plain text. (optional)
      * @return InlineResponse2009
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful analysis </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2009 analyzeJoke(String body) throws ApiException {
         ApiResponse<InlineResponse2009> localVarResp = analyzeJokeWithHttpInfo(body);
@@ -120,6 +166,11 @@ public class JokesApi {
      * @param body Post the joke as plain text. (optional)
      * @return ApiResponse&lt;InlineResponse2009&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful analysis </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2009> analyzeJokeWithHttpInfo(String body) throws ApiException {
         okhttp3.Call localVarCall = analyzeJokeValidateBeforeCall(body, null);
@@ -134,6 +185,11 @@ public class JokesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful analysis </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call analyzeJokeAsync(String body, final ApiCallback<InlineResponse2009> _callback) throws ApiException {
 
@@ -148,9 +204,28 @@ public class JokesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful downvote </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call downvoteJokeCall(Integer id, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/jokes/{id}/downvote"
@@ -159,7 +234,9 @@ public class JokesApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -172,10 +249,12 @@ public class JokesApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -198,6 +277,11 @@ public class JokesApi {
      * @param id The object&#39;s id. (required)
      * @return InlineResponse2008
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful downvote </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2008 downvoteJoke(Integer id) throws ApiException {
         ApiResponse<InlineResponse2008> localVarResp = downvoteJokeWithHttpInfo(id);
@@ -210,6 +294,11 @@ public class JokesApi {
      * @param id The object&#39;s id. (required)
      * @return ApiResponse&lt;InlineResponse2008&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful downvote </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2008> downvoteJokeWithHttpInfo(Integer id) throws ApiException {
         okhttp3.Call localVarCall = downvoteJokeValidateBeforeCall(id, null);
@@ -224,6 +313,11 @@ public class JokesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful downvote </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call downvoteJokeAsync(Integer id, final ApiCallback<InlineResponse2008> _callback) throws ApiException {
 
@@ -242,15 +336,38 @@ public class JokesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Random Joke Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call randomJokeCall(String keywords, String includeTags, String excludeTags, Integer minRating, Integer maxLength, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/jokes/random";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (keywords != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("keywords", keywords));
         }
@@ -271,8 +388,6 @@ public class JokesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("max-length", maxLength));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -285,10 +400,12 @@ public class JokesApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -310,6 +427,11 @@ public class JokesApi {
      * @param maxLength The maximum number of letters in the joke. (optional)
      * @return InlineResponse2004
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Random Joke Response </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2004 randomJoke(String keywords, String includeTags, String excludeTags, Integer minRating, Integer maxLength) throws ApiException {
         ApiResponse<InlineResponse2004> localVarResp = randomJokeWithHttpInfo(keywords, includeTags, excludeTags, minRating, maxLength);
@@ -326,6 +448,11 @@ public class JokesApi {
      * @param maxLength The maximum number of letters in the joke. (optional)
      * @return ApiResponse&lt;InlineResponse2004&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Random Joke Response </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2004> randomJokeWithHttpInfo(String keywords, String includeTags, String excludeTags, Integer minRating, Integer maxLength) throws ApiException {
         okhttp3.Call localVarCall = randomJokeValidateBeforeCall(keywords, includeTags, excludeTags, minRating, maxLength, null);
@@ -344,6 +471,11 @@ public class JokesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Random Joke Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call randomJokeAsync(String keywords, String includeTags, String excludeTags, Integer minRating, Integer maxLength, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
@@ -364,15 +496,38 @@ public class JokesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Joke Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call searchJokesCall(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/jokes/search";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (keywords != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("keywords", keywords));
         }
@@ -401,8 +556,6 @@ public class JokesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -415,10 +568,12 @@ public class JokesApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -442,6 +597,11 @@ public class JokesApi {
      * @param offset The number of results to skip. (optional)
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Joke Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse200 searchJokes(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset) throws ApiException {
         ApiResponse<InlineResponse200> localVarResp = searchJokesWithHttpInfo(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
@@ -460,6 +620,11 @@ public class JokesApi {
      * @param offset The number of results to skip. (optional)
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Joke Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse200> searchJokesWithHttpInfo(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset) throws ApiException {
         okhttp3.Call localVarCall = searchJokesValidateBeforeCall(keywords, includeTags, excludeTags, number, minRating, maxLength, offset, null);
@@ -480,6 +645,11 @@ public class JokesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Joke Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call searchJokesAsync(String keywords, String includeTags, String excludeTags, Integer number, Integer minRating, Integer maxLength, BigDecimal offset, final ApiCallback<InlineResponse200> _callback) throws ApiException {
 
@@ -494,8 +664,27 @@ public class JokesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful submission. </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call submitJokeCall(String body, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -504,7 +693,9 @@ public class JokesApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -517,10 +708,12 @@ public class JokesApi {
             "text/plain"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -538,6 +731,11 @@ public class JokesApi {
      * @param body Post the joke as plain text. (optional)
      * @return InlineResponse2008
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful submission. </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2008 submitJoke(String body) throws ApiException {
         ApiResponse<InlineResponse2008> localVarResp = submitJokeWithHttpInfo(body);
@@ -550,6 +748,11 @@ public class JokesApi {
      * @param body Post the joke as plain text. (optional)
      * @return ApiResponse&lt;InlineResponse2008&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful submission. </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2008> submitJokeWithHttpInfo(String body) throws ApiException {
         okhttp3.Call localVarCall = submitJokeValidateBeforeCall(body, null);
@@ -564,6 +767,11 @@ public class JokesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful submission. </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call submitJokeAsync(String body, final ApiCallback<InlineResponse2008> _callback) throws ApiException {
 
@@ -578,9 +786,28 @@ public class JokesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful upvote </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call upvoteJokeCall(Integer id, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/jokes/{id}/upvote"
@@ -589,7 +816,9 @@ public class JokesApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -602,10 +831,12 @@ public class JokesApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -628,6 +859,11 @@ public class JokesApi {
      * @param id The object&#39;s id. (required)
      * @return InlineResponse2008
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful upvote </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2008 upvoteJoke(Integer id) throws ApiException {
         ApiResponse<InlineResponse2008> localVarResp = upvoteJokeWithHttpInfo(id);
@@ -640,6 +876,11 @@ public class JokesApi {
      * @param id The object&#39;s id. (required)
      * @return ApiResponse&lt;InlineResponse2008&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful upvote </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2008> upvoteJokeWithHttpInfo(Integer id) throws ApiException {
         okhttp3.Call localVarCall = upvoteJokeValidateBeforeCall(id, null);
@@ -654,6 +895,11 @@ public class JokesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful upvote </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call upvoteJokeAsync(Integer id, final ApiCallback<InlineResponse2008> _callback) throws ApiException {
 

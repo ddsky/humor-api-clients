@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**memes** | [**kotlin.Array&lt;kotlin.Any&gt;**](kotlin.Any.md) |  | 
+**memes** | [**kotlin.collections.Set&lt;kotlin.Any&gt;**](kotlin.Any.md) |  | 
 
 
 

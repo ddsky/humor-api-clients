@@ -68,7 +68,7 @@ import qualified Prelude as P
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-downvoteMeme 
+downvoteMeme
   :: Id -- ^ "id" -  The object's id.
   -> HumorRequest DownvoteMeme MimeNoContent InlineResponse2008 MimeJSON
 downvoteMeme (Id id) =
@@ -90,7 +90,7 @@ instance Produces DownvoteMeme MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-randomMeme 
+randomMeme
   :: HumorRequest RandomMeme MimeNoContent InlineResponse2003 MimeJSON
 randomMeme =
   _mkRequest "GET" ["/memes/random"]
@@ -101,27 +101,27 @@ data RandomMeme
 -- | /Optional Param/ "keywords" - A comma separated list of keywords.
 instance HasOptionalParam RandomMeme Keywords where
   applyOptionalParam req (Keywords xs) =
-    req `setQuery` toQuery ("keywords", Just xs)
+    req `addQuery` toQuery ("keywords", Just xs)
 
 -- | /Optional Param/ "keywords-in-image" - Whether the keywords should be found in the meme's image.
 instance HasOptionalParam RandomMeme KeywordsInImage where
   applyOptionalParam req (KeywordsInImage xs) =
-    req `setQuery` toQuery ("keywords-in-image", Just xs)
+    req `addQuery` toQuery ("keywords-in-image", Just xs)
 
 -- | /Optional Param/ "media-type" - The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
 instance HasOptionalParam RandomMeme MediaType where
   applyOptionalParam req (MediaType xs) =
-    req `setQuery` toQuery ("media-type", Just xs)
+    req `addQuery` toQuery ("media-type", Just xs)
 
 -- | /Optional Param/ "number" - The number of results to retrieve between 1 and 10.
 instance HasOptionalParam RandomMeme Number where
   applyOptionalParam req (Number xs) =
-    req `setQuery` toQuery ("number", Just xs)
+    req `addQuery` toQuery ("number", Just xs)
 
 -- | /Optional Param/ "min-rating" - The minimum rating between 0 and 10 the result should have.
 instance HasOptionalParam RandomMeme MinRating where
   applyOptionalParam req (MinRating xs) =
-    req `setQuery` toQuery ("min-rating", Just xs)
+    req `addQuery` toQuery ("min-rating", Just xs)
 -- | @application/json@
 instance Produces RandomMeme MimeJSON
 
@@ -136,7 +136,7 @@ instance Produces RandomMeme MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-searchMemes 
+searchMemes
   :: HumorRequest SearchMemes MimeNoContent InlineResponse2002 MimeJSON
 searchMemes =
   _mkRequest "GET" ["/memes/search"]
@@ -147,32 +147,32 @@ data SearchMemes
 -- | /Optional Param/ "keywords" - A comma separated list of keywords.
 instance HasOptionalParam SearchMemes Keywords where
   applyOptionalParam req (Keywords xs) =
-    req `setQuery` toQuery ("keywords", Just xs)
+    req `addQuery` toQuery ("keywords", Just xs)
 
 -- | /Optional Param/ "keywords-in-image" - Whether the keywords should be found in the meme's image.
 instance HasOptionalParam SearchMemes KeywordsInImage where
   applyOptionalParam req (KeywordsInImage xs) =
-    req `setQuery` toQuery ("keywords-in-image", Just xs)
+    req `addQuery` toQuery ("keywords-in-image", Just xs)
 
 -- | /Optional Param/ "media-type" - The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
 instance HasOptionalParam SearchMemes MediaType where
   applyOptionalParam req (MediaType xs) =
-    req `setQuery` toQuery ("media-type", Just xs)
+    req `addQuery` toQuery ("media-type", Just xs)
 
 -- | /Optional Param/ "number" - The number of results to retrieve between 1 and 10.
 instance HasOptionalParam SearchMemes Number where
   applyOptionalParam req (Number xs) =
-    req `setQuery` toQuery ("number", Just xs)
+    req `addQuery` toQuery ("number", Just xs)
 
 -- | /Optional Param/ "min-rating" - The minimum rating between 0 and 10 the result should have.
 instance HasOptionalParam SearchMemes MinRating where
   applyOptionalParam req (MinRating xs) =
-    req `setQuery` toQuery ("min-rating", Just xs)
+    req `addQuery` toQuery ("min-rating", Just xs)
 
 -- | /Optional Param/ "offset" - The number of results to skip.
 instance HasOptionalParam SearchMemes Offset where
   applyOptionalParam req (Offset xs) =
-    req `setQuery` toQuery ("offset", Just xs)
+    req `addQuery` toQuery ("offset", Just xs)
 -- | @application/json@
 instance Produces SearchMemes MimeJSON
 
@@ -187,7 +187,7 @@ instance Produces SearchMemes MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-upvoteMeme 
+upvoteMeme
   :: Id -- ^ "id" -  The object's id.
   -> HumorRequest UpvoteMeme MimeNoContent InlineResponse2008 MimeJSON
 upvoteMeme (Id id) =

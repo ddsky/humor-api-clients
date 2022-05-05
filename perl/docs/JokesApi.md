@@ -24,7 +24,7 @@ Analyze Joke
 
 Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::JokesApi;
@@ -38,7 +38,7 @@ my $api_instance = WWW::OpenAPIClient::JokesApi->new(
 
 my $body = WWW::OpenAPIClient::Object::string->new(); # string | Post the joke as plain text.
 
-eval { 
+eval {
     my $result = $api_instance->analyze_joke(body => $body);
     print Dumper($result);
 };
@@ -75,7 +75,7 @@ Downvote a Joke
 
 Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::JokesApi;
@@ -89,7 +89,7 @@ my $api_instance = WWW::OpenAPIClient::JokesApi->new(
 
 my $id = 1; # int | The object's id.
 
-eval { 
+eval {
     my $result = $api_instance->downvote_joke(id => $id);
     print Dumper($result);
 };
@@ -126,7 +126,7 @@ Random Joke
 
 Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::JokesApi;
@@ -144,7 +144,7 @@ my $exclude_tags = nsfw; # string | A comma separated list of tags that the joke
 my $min_rating = 7; # int | The minimum rating between 0 and 10 the result should have.
 my $max_length = 200; # int | The maximum number of letters in the joke.
 
-eval { 
+eval {
     my $result = $api_instance->random_joke(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, min_rating => $min_rating, max_length => $max_length);
     print Dumper($result);
 };
@@ -185,7 +185,7 @@ Search Jokes
 
 Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::JokesApi;
@@ -205,7 +205,7 @@ my $min_rating = 7; # int | The minimum rating between 0 and 10 the result shoul
 my $max_length = 200; # int | The maximum number of letters in the joke.
 my $offset = 3.4; # double | The number of results to skip.
 
-eval { 
+eval {
     my $result = $api_instance->search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length, offset => $offset);
     print Dumper($result);
 };
@@ -248,7 +248,7 @@ Submit Joke
 
 Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::JokesApi;
@@ -262,7 +262,7 @@ my $api_instance = WWW::OpenAPIClient::JokesApi->new(
 
 my $body = WWW::OpenAPIClient::Object::string->new(); # string | Post the joke as plain text.
 
-eval { 
+eval {
     my $result = $api_instance->submit_joke(body => $body);
     print Dumper($result);
 };
@@ -299,7 +299,7 @@ Upvote a Joke
 
 Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::JokesApi;
@@ -313,7 +313,7 @@ my $api_instance = WWW::OpenAPIClient::JokesApi->new(
 
 my $id = 1; # int | The object's id.
 
-eval { 
+eval {
     my $result = $api_instance->upvote_joke(id => $id);
     print Dumper($result);
 };

@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**joke** | **String** |  | 
-**tags** | **Array&lt;String&gt;** |  | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **joke** | **String** |  |  |
+| **tags** | **Array&lt;String&gt;** |  |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'OpenapiClient'
+require 'openapi_client'
 
-instance = OpenapiClient::InlineResponse2009.new(joke: null,
-                                 tags: null)
+instance = OpenapiClient::InlineResponse2009.new(
+  joke: null,
+  tags: null
+)
 ```
-
 

@@ -10,119 +10,122 @@
  * Do not edit the class manually.
  */
 
-
 #include "OAIInline_response_200_9.h"
 
-#include "OAIHelpers.h"
-
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QObject>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QObject>
+
+#include "OAIHelpers.h"
 
 namespace OpenAPI {
 
 OAIInline_response_200_9::OAIInline_response_200_9(QString json) {
-    this->init();
+    this->initializeModel();
     this->fromJson(json);
 }
 
 OAIInline_response_200_9::OAIInline_response_200_9() {
-    this->init();
+    this->initializeModel();
 }
 
-OAIInline_response_200_9::~OAIInline_response_200_9() {
+OAIInline_response_200_9::~OAIInline_response_200_9() {}
 
-}
+void OAIInline_response_200_9::initializeModel() {
 
-void
-OAIInline_response_200_9::init() {
-    
     m_joke_isSet = false;
     m_joke_isValid = false;
-    
+
     m_tags_isSet = false;
     m_tags_isValid = false;
-    }
+}
 
-void
-OAIInline_response_200_9::fromJson(QString jsonString) {
-    QByteArray array (jsonString.toStdString().c_str());
+void OAIInline_response_200_9::fromJson(QString jsonString) {
+    QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();
     this->fromJsonObject(jsonObject);
 }
 
-void
-OAIInline_response_200_9::fromJsonObject(QJsonObject json) {
-    
+void OAIInline_response_200_9::fromJsonObject(QJsonObject json) {
+
     m_joke_isValid = ::OpenAPI::fromJsonValue(joke, json[QString("joke")]);
-    
-    
-    
+    m_joke_isSet = !json[QString("joke")].isNull() && m_joke_isValid;
+
     m_tags_isValid = ::OpenAPI::fromJsonValue(tags, json[QString("tags")]);
-    
+    m_tags_isSet = !json[QString("tags")].isNull() && m_tags_isValid;
 }
 
-QString
-OAIInline_response_200_9::asJson () const {
+QString OAIInline_response_200_9::asJson() const {
     QJsonObject obj = this->asJsonObject();
     QJsonDocument doc(obj);
     QByteArray bytes = doc.toJson();
     return QString(bytes);
 }
 
-QJsonObject
-OAIInline_response_200_9::asJsonObject() const {
+QJsonObject OAIInline_response_200_9::asJsonObject() const {
     QJsonObject obj;
-	if(m_joke_isSet){
+    if (m_joke_isSet) {
         obj.insert(QString("joke"), ::OpenAPI::toJsonValue(joke));
     }
-	
-    if(tags.size() > 0){
+    if (tags.size() > 0) {
         obj.insert(QString("tags"), ::OpenAPI::toJsonValue(tags));
-    } 
+    }
     return obj;
 }
 
-
-QString
-OAIInline_response_200_9::getJoke() const {
+QString OAIInline_response_200_9::getJoke() const {
     return joke;
 }
-void
-OAIInline_response_200_9::setJoke(const QString &joke) {
+void OAIInline_response_200_9::setJoke(const QString &joke) {
     this->joke = joke;
     this->m_joke_isSet = true;
 }
 
+bool OAIInline_response_200_9::is_joke_Set() const{
+    return m_joke_isSet;
+}
 
-QList<QString>
-OAIInline_response_200_9::getTags() const {
+bool OAIInline_response_200_9::is_joke_Valid() const{
+    return m_joke_isValid;
+}
+
+QList<QString> OAIInline_response_200_9::getTags() const {
     return tags;
 }
-void
-OAIInline_response_200_9::setTags(const QList<QString> &tags) {
+void OAIInline_response_200_9::setTags(const QList<QString> &tags) {
     this->tags = tags;
     this->m_tags_isSet = true;
 }
 
-bool
-OAIInline_response_200_9::isSet() const {
+bool OAIInline_response_200_9::is_tags_Set() const{
+    return m_tags_isSet;
+}
+
+bool OAIInline_response_200_9::is_tags_Valid() const{
+    return m_tags_isValid;
+}
+
+bool OAIInline_response_200_9::isSet() const {
     bool isObjectUpdated = false;
-    do{ 
-        if(m_joke_isSet){ isObjectUpdated = true; break;}
-    
-        if(tags.size() > 0){ isObjectUpdated = true; break;}
-    }while(false);
+    do {
+        if (m_joke_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (tags.size() > 0) {
+            isObjectUpdated = true;
+            break;
+        }
+    } while (false);
     return isObjectUpdated;
 }
 
-bool
-OAIInline_response_200_9::isValid() const {
+bool OAIInline_response_200_9::isValid() const {
     // only required properties are required for the object to be considered valid
     return m_joke_isValid && m_tags_isValid && true;
 }
 
-}
-
+} // namespace OpenAPI

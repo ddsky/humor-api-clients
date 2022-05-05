@@ -1,9 +1,9 @@
-# humorapi - Kotlin client library for Humor API
+# org.openapitools.client - Kotlin client library for Humor API
 
 ## Requires
 
-* Kotlin 1.3.31
-* Gradle 4.9
+* Kotlin 1.4.30
+* Gradle 6.8.3
 
 ## Build
 

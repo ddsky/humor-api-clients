@@ -22,7 +22,7 @@ package WWW::OpenAPIClient::JokesApi;
 require 5.6.0;
 use strict;
 use warnings;
-use utf8; 
+use utf8;
 use Exporter;
 use Carp qw( croak );
 use Log::Any qw($log);
@@ -52,7 +52,7 @@ sub new {
 # analyze_joke
 #
 # Analyze Joke
-# 
+#
 # @param string $body Post the joke as plain text. (optional)
 {
     my $params = {
@@ -62,7 +62,7 @@ sub new {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'analyze_joke' } = { 
+    __PACKAGE__->method_documentation->{ 'analyze_joke' } = {
         summary => 'Analyze Joke',
         params => $params,
         returns => 'InlineResponse2009',
@@ -112,7 +112,7 @@ sub analyze_joke {
 # downvote_joke
 #
 # Downvote a Joke
-# 
+#
 # @param int $id The object&#39;s id. (required)
 {
     my $params = {
@@ -122,7 +122,7 @@ sub analyze_joke {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'downvote_joke' } = { 
+    __PACKAGE__->method_documentation->{ 'downvote_joke' } = {
         summary => 'Downvote a Joke',
         params => $params,
         returns => 'InlineResponse2008',
@@ -179,7 +179,7 @@ sub downvote_joke {
 # random_joke
 #
 # Random Joke
-# 
+#
 # @param string $keywords A comma separated list of keywords. (optional)
 # @param string $include_tags A comma separated list of tags that the joke must have. (optional)
 # @param string $exclude_tags A comma separated list of tags that the joke must not have. (optional)
@@ -213,7 +213,7 @@ sub downvote_joke {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'random_joke' } = { 
+    __PACKAGE__->method_documentation->{ 'random_joke' } = {
         summary => 'Random Joke',
         params => $params,
         returns => 'InlineResponse2004',
@@ -283,7 +283,7 @@ sub random_joke {
 # search_jokes
 #
 # Search Jokes
-# 
+#
 # @param string $keywords A comma separated list of keywords. (optional)
 # @param string $include_tags A comma separated list of tags that the joke must have. (optional)
 # @param string $exclude_tags A comma separated list of tags that the joke must not have. (optional)
@@ -329,7 +329,7 @@ sub random_joke {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'search_jokes' } = { 
+    __PACKAGE__->method_documentation->{ 'search_jokes' } = {
         summary => 'Search Jokes',
         params => $params,
         returns => 'InlineResponse200',
@@ -409,7 +409,7 @@ sub search_jokes {
 # submit_joke
 #
 # Submit Joke
-# 
+#
 # @param string $body Post the joke as plain text. (optional)
 {
     my $params = {
@@ -419,7 +419,7 @@ sub search_jokes {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'submit_joke' } = { 
+    __PACKAGE__->method_documentation->{ 'submit_joke' } = {
         summary => 'Submit Joke',
         params => $params,
         returns => 'InlineResponse2008',
@@ -469,7 +469,7 @@ sub submit_joke {
 # upvote_joke
 #
 # Upvote a Joke
-# 
+#
 # @param int $id The object&#39;s id. (required)
 {
     my $params = {
@@ -479,7 +479,7 @@ sub submit_joke {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'upvote_joke' } = { 
+    __PACKAGE__->method_documentation->{ 'upvote_joke' } = {
         summary => 'Upvote a Joke',
         params => $params,
         returns => 'InlineResponse2008',

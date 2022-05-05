@@ -10,97 +10,92 @@
  * Do not edit the class manually.
  */
 
-
 #include "OAIInline_response_200_2.h"
 
-#include "OAIHelpers.h"
-
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QObject>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QObject>
+
+#include "OAIHelpers.h"
 
 namespace OpenAPI {
 
 OAIInline_response_200_2::OAIInline_response_200_2(QString json) {
-    this->init();
+    this->initializeModel();
     this->fromJson(json);
 }
 
 OAIInline_response_200_2::OAIInline_response_200_2() {
-    this->init();
+    this->initializeModel();
 }
 
-OAIInline_response_200_2::~OAIInline_response_200_2() {
+OAIInline_response_200_2::~OAIInline_response_200_2() {}
 
-}
+void OAIInline_response_200_2::initializeModel() {
 
-void
-OAIInline_response_200_2::init() {
-    
     m_memes_isSet = false;
     m_memes_isValid = false;
-    }
+}
 
-void
-OAIInline_response_200_2::fromJson(QString jsonString) {
-    QByteArray array (jsonString.toStdString().c_str());
+void OAIInline_response_200_2::fromJson(QString jsonString) {
+    QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();
     this->fromJsonObject(jsonObject);
 }
 
-void
-OAIInline_response_200_2::fromJsonObject(QJsonObject json) {
-    
-    
+void OAIInline_response_200_2::fromJsonObject(QJsonObject json) {
+
     m_memes_isValid = ::OpenAPI::fromJsonValue(memes, json[QString("memes")]);
-    
+    m_memes_isSet = !json[QString("memes")].isNull() && m_memes_isValid;
 }
 
-QString
-OAIInline_response_200_2::asJson () const {
+QString OAIInline_response_200_2::asJson() const {
     QJsonObject obj = this->asJsonObject();
     QJsonDocument doc(obj);
     QByteArray bytes = doc.toJson();
     return QString(bytes);
 }
 
-QJsonObject
-OAIInline_response_200_2::asJsonObject() const {
+QJsonObject OAIInline_response_200_2::asJsonObject() const {
     QJsonObject obj;
-	
-    if(memes.size() > 0){
+    if (memes.size() > 0) {
         obj.insert(QString("memes"), ::OpenAPI::toJsonValue(memes));
-    } 
+    }
     return obj;
 }
 
-
-QList<OAIObject>
-OAIInline_response_200_2::getMemes() const {
+QSet<OAIObject> OAIInline_response_200_2::getMemes() const {
     return memes;
 }
-void
-OAIInline_response_200_2::setMemes(const QList<OAIObject> &memes) {
+void OAIInline_response_200_2::setMemes(const QSet<OAIObject> &memes) {
     this->memes = memes;
     this->m_memes_isSet = true;
 }
 
-bool
-OAIInline_response_200_2::isSet() const {
+bool OAIInline_response_200_2::is_memes_Set() const{
+    return m_memes_isSet;
+}
+
+bool OAIInline_response_200_2::is_memes_Valid() const{
+    return m_memes_isValid;
+}
+
+bool OAIInline_response_200_2::isSet() const {
     bool isObjectUpdated = false;
-    do{ 
-        if(memes.size() > 0){ isObjectUpdated = true; break;}
-    }while(false);
+    do {
+        if (memes.size() > 0) {
+            isObjectUpdated = true;
+            break;
+        }
+    } while (false);
     return isObjectUpdated;
 }
 
-bool
-OAIInline_response_200_2::isValid() const {
+bool OAIInline_response_200_2::isValid() const {
     // only required properties are required for the object to be considered valid
     return m_memes_isValid && true;
 }
 
-}
-
+} // namespace OpenAPI

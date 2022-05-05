@@ -21,59 +21,60 @@
 
 #include <QJsonObject>
 
-
 #include <QString>
 
-#include "OAIObject.h"
 #include "OAIEnum.h"
+#include "OAIObject.h"
 
 namespace OpenAPI {
 
-class OAIInline_response_200_3: public OAIObject {
+class OAIInline_response_200_3 : public OAIObject {
 public:
     OAIInline_response_200_3();
     OAIInline_response_200_3(QString json);
     ~OAIInline_response_200_3() override;
 
-    QString asJson () const override;
+    QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    
     qint32 getId() const;
     void setId(const qint32 &id);
+    bool is_id_Set() const;
+    bool is_id_Valid() const;
 
-    
     QString getUrl() const;
     void setUrl(const QString &url);
+    bool is_url_Set() const;
+    bool is_url_Valid() const;
 
-    
     QString getType() const;
     void setType(const QString &type);
+    bool is_type_Set() const;
+    bool is_type_Valid() const;
 
-    
-    
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
-    void init();
-    
+    void initializeModel();
+
     qint32 id;
     bool m_id_isSet;
     bool m_id_isValid;
-    
+
     QString url;
     bool m_url_isSet;
     bool m_url_isValid;
-    
+
     QString type;
     bool m_type_isSet;
     bool m_type_isValid;
-    
-    };
+};
 
-}
+} // namespace OpenAPI
+
+Q_DECLARE_METATYPE(OpenAPI::OAIInline_response_200_3)
 
 #endif // OAIInline_response_200_3_H

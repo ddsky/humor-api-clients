@@ -68,7 +68,7 @@ import qualified Prelude as P
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-analyzeJoke 
+analyzeJoke
   :: (Consumes AnalyzeJoke MimePlainText)
   => HumorRequest AnalyzeJoke MimePlainText InlineResponse2009 MimeJSON
 analyzeJoke =
@@ -97,7 +97,7 @@ instance Produces AnalyzeJoke MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-downvoteJoke 
+downvoteJoke
   :: Id -- ^ "id" -  The object's id.
   -> HumorRequest DownvoteJoke MimeNoContent InlineResponse2008 MimeJSON
 downvoteJoke (Id id) =
@@ -119,7 +119,7 @@ instance Produces DownvoteJoke MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-randomJoke 
+randomJoke
   :: HumorRequest RandomJoke MimeNoContent InlineResponse2004 MimeJSON
 randomJoke =
   _mkRequest "GET" ["/jokes/random"]
@@ -130,27 +130,27 @@ data RandomJoke
 -- | /Optional Param/ "keywords" - A comma separated list of keywords.
 instance HasOptionalParam RandomJoke Keywords where
   applyOptionalParam req (Keywords xs) =
-    req `setQuery` toQuery ("keywords", Just xs)
+    req `addQuery` toQuery ("keywords", Just xs)
 
 -- | /Optional Param/ "include-tags" - A comma separated list of tags that the joke must have.
 instance HasOptionalParam RandomJoke IncludeTags where
   applyOptionalParam req (IncludeTags xs) =
-    req `setQuery` toQuery ("include-tags", Just xs)
+    req `addQuery` toQuery ("include-tags", Just xs)
 
 -- | /Optional Param/ "exclude-tags" - A comma separated list of tags that the joke must not have.
 instance HasOptionalParam RandomJoke ExcludeTags where
   applyOptionalParam req (ExcludeTags xs) =
-    req `setQuery` toQuery ("exclude-tags", Just xs)
+    req `addQuery` toQuery ("exclude-tags", Just xs)
 
 -- | /Optional Param/ "min-rating" - The minimum rating between 0 and 10 the result should have.
 instance HasOptionalParam RandomJoke MinRating where
   applyOptionalParam req (MinRating xs) =
-    req `setQuery` toQuery ("min-rating", Just xs)
+    req `addQuery` toQuery ("min-rating", Just xs)
 
 -- | /Optional Param/ "max-length" - The maximum number of letters in the joke.
 instance HasOptionalParam RandomJoke MaxLength where
   applyOptionalParam req (MaxLength xs) =
-    req `setQuery` toQuery ("max-length", Just xs)
+    req `addQuery` toQuery ("max-length", Just xs)
 -- | @application/json@
 instance Produces RandomJoke MimeJSON
 
@@ -165,7 +165,7 @@ instance Produces RandomJoke MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-searchJokes 
+searchJokes
   :: HumorRequest SearchJokes MimeNoContent InlineResponse200 MimeJSON
 searchJokes =
   _mkRequest "GET" ["/jokes/search"]
@@ -176,37 +176,37 @@ data SearchJokes
 -- | /Optional Param/ "keywords" - A comma separated list of keywords.
 instance HasOptionalParam SearchJokes Keywords where
   applyOptionalParam req (Keywords xs) =
-    req `setQuery` toQuery ("keywords", Just xs)
+    req `addQuery` toQuery ("keywords", Just xs)
 
 -- | /Optional Param/ "include-tags" - A comma separated list of tags that the joke must have.
 instance HasOptionalParam SearchJokes IncludeTags where
   applyOptionalParam req (IncludeTags xs) =
-    req `setQuery` toQuery ("include-tags", Just xs)
+    req `addQuery` toQuery ("include-tags", Just xs)
 
 -- | /Optional Param/ "exclude-tags" - A comma separated list of tags that the joke must not have.
 instance HasOptionalParam SearchJokes ExcludeTags where
   applyOptionalParam req (ExcludeTags xs) =
-    req `setQuery` toQuery ("exclude-tags", Just xs)
+    req `addQuery` toQuery ("exclude-tags", Just xs)
 
 -- | /Optional Param/ "number" - The number of results to retrieve between 1 and 10.
 instance HasOptionalParam SearchJokes Number where
   applyOptionalParam req (Number xs) =
-    req `setQuery` toQuery ("number", Just xs)
+    req `addQuery` toQuery ("number", Just xs)
 
 -- | /Optional Param/ "min-rating" - The minimum rating between 0 and 10 the result should have.
 instance HasOptionalParam SearchJokes MinRating where
   applyOptionalParam req (MinRating xs) =
-    req `setQuery` toQuery ("min-rating", Just xs)
+    req `addQuery` toQuery ("min-rating", Just xs)
 
 -- | /Optional Param/ "max-length" - The maximum number of letters in the joke.
 instance HasOptionalParam SearchJokes MaxLength where
   applyOptionalParam req (MaxLength xs) =
-    req `setQuery` toQuery ("max-length", Just xs)
+    req `addQuery` toQuery ("max-length", Just xs)
 
 -- | /Optional Param/ "offset" - The number of results to skip.
 instance HasOptionalParam SearchJokes Offset where
   applyOptionalParam req (Offset xs) =
-    req `setQuery` toQuery ("offset", Just xs)
+    req `addQuery` toQuery ("offset", Just xs)
 -- | @application/json@
 instance Produces SearchJokes MimeJSON
 
@@ -221,7 +221,7 @@ instance Produces SearchJokes MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-submitJoke 
+submitJoke
   :: (Consumes SubmitJoke MimePlainText)
   => HumorRequest SubmitJoke MimePlainText InlineResponse2008 MimeJSON
 submitJoke =
@@ -250,7 +250,7 @@ instance Produces SubmitJoke MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
-upvoteJoke 
+upvoteJoke
   :: Id -- ^ "id" -  The object's id.
   -> HumorRequest UpvoteJoke MimeNoContent InlineResponse2008 MimeJSON
 upvoteJoke (Id id) =

@@ -218,6 +218,15 @@ spec. If so, this is available via the `class_documentation()` and
 
 Each of these calls returns a hashref with various useful pieces of information.
 
+# Installation Prerequisites
+
+Use [cpanm](https://metacpan.org/pod/distribution/App-cpanminus/bin/cpanm) to install the module dependencies:
+
+```
+cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
+cpanm --quiet --no-interactive Class::Accessor Test::Exception Test::More Log::Any LWP::UserAgent URI::Query Module::Runtime DateTime Module::Find Moose::Role JSON
+```
+
 # LOAD THE MODULES
 
 To load the API packages:
@@ -269,10 +278,9 @@ use WWW::OpenAPIClient::Object::InlineResponse2009;
 
 # for displaying the API response data
 use Data::Dumper;
-use WWW::OpenAPIClient::;
 
-my $api_instance = WWW::OpenAPIClient::->new(
 
+my $api_instance = WWW::OpenAPIClient::JokesApi->new(
     # Configure API key authorization: apiKey
     api_key => {'api-key' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed

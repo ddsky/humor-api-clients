@@ -10,140 +10,152 @@
  * Do not edit the class manually.
  */
 
-
 #include "OAIInline_response_200_3.h"
 
-#include "OAIHelpers.h"
-
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QObject>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QObject>
+
+#include "OAIHelpers.h"
 
 namespace OpenAPI {
 
 OAIInline_response_200_3::OAIInline_response_200_3(QString json) {
-    this->init();
+    this->initializeModel();
     this->fromJson(json);
 }
 
 OAIInline_response_200_3::OAIInline_response_200_3() {
-    this->init();
+    this->initializeModel();
 }
 
-OAIInline_response_200_3::~OAIInline_response_200_3() {
+OAIInline_response_200_3::~OAIInline_response_200_3() {}
 
-}
+void OAIInline_response_200_3::initializeModel() {
 
-void
-OAIInline_response_200_3::init() {
-    
     m_id_isSet = false;
     m_id_isValid = false;
-    
+
     m_url_isSet = false;
     m_url_isValid = false;
-    
+
     m_type_isSet = false;
     m_type_isValid = false;
-    }
+}
 
-void
-OAIInline_response_200_3::fromJson(QString jsonString) {
-    QByteArray array (jsonString.toStdString().c_str());
+void OAIInline_response_200_3::fromJson(QString jsonString) {
+    QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();
     this->fromJsonObject(jsonObject);
 }
 
-void
-OAIInline_response_200_3::fromJsonObject(QJsonObject json) {
-    
+void OAIInline_response_200_3::fromJsonObject(QJsonObject json) {
+
     m_id_isValid = ::OpenAPI::fromJsonValue(id, json[QString("id")]);
-    
-    
+    m_id_isSet = !json[QString("id")].isNull() && m_id_isValid;
+
     m_url_isValid = ::OpenAPI::fromJsonValue(url, json[QString("url")]);
-    
-    
+    m_url_isSet = !json[QString("url")].isNull() && m_url_isValid;
+
     m_type_isValid = ::OpenAPI::fromJsonValue(type, json[QString("type")]);
-    
-    
+    m_type_isSet = !json[QString("type")].isNull() && m_type_isValid;
 }
 
-QString
-OAIInline_response_200_3::asJson () const {
+QString OAIInline_response_200_3::asJson() const {
     QJsonObject obj = this->asJsonObject();
     QJsonDocument doc(obj);
     QByteArray bytes = doc.toJson();
     return QString(bytes);
 }
 
-QJsonObject
-OAIInline_response_200_3::asJsonObject() const {
+QJsonObject OAIInline_response_200_3::asJsonObject() const {
     QJsonObject obj;
-	if(m_id_isSet){
+    if (m_id_isSet) {
         obj.insert(QString("id"), ::OpenAPI::toJsonValue(id));
     }
-	if(m_url_isSet){
+    if (m_url_isSet) {
         obj.insert(QString("url"), ::OpenAPI::toJsonValue(url));
     }
-	if(m_type_isSet){
+    if (m_type_isSet) {
         obj.insert(QString("type"), ::OpenAPI::toJsonValue(type));
     }
     return obj;
 }
 
-
-qint32
-OAIInline_response_200_3::getId() const {
+qint32 OAIInline_response_200_3::getId() const {
     return id;
 }
-void
-OAIInline_response_200_3::setId(const qint32 &id) {
+void OAIInline_response_200_3::setId(const qint32 &id) {
     this->id = id;
     this->m_id_isSet = true;
 }
 
+bool OAIInline_response_200_3::is_id_Set() const{
+    return m_id_isSet;
+}
 
-QString
-OAIInline_response_200_3::getUrl() const {
+bool OAIInline_response_200_3::is_id_Valid() const{
+    return m_id_isValid;
+}
+
+QString OAIInline_response_200_3::getUrl() const {
     return url;
 }
-void
-OAIInline_response_200_3::setUrl(const QString &url) {
+void OAIInline_response_200_3::setUrl(const QString &url) {
     this->url = url;
     this->m_url_isSet = true;
 }
 
+bool OAIInline_response_200_3::is_url_Set() const{
+    return m_url_isSet;
+}
 
-QString
-OAIInline_response_200_3::getType() const {
+bool OAIInline_response_200_3::is_url_Valid() const{
+    return m_url_isValid;
+}
+
+QString OAIInline_response_200_3::getType() const {
     return type;
 }
-void
-OAIInline_response_200_3::setType(const QString &type) {
+void OAIInline_response_200_3::setType(const QString &type) {
     this->type = type;
     this->m_type_isSet = true;
 }
 
-bool
-OAIInline_response_200_3::isSet() const {
+bool OAIInline_response_200_3::is_type_Set() const{
+    return m_type_isSet;
+}
+
+bool OAIInline_response_200_3::is_type_Valid() const{
+    return m_type_isValid;
+}
+
+bool OAIInline_response_200_3::isSet() const {
     bool isObjectUpdated = false;
-    do{ 
-        if(m_id_isSet){ isObjectUpdated = true; break;}
-    
-        if(m_url_isSet){ isObjectUpdated = true; break;}
-    
-        if(m_type_isSet){ isObjectUpdated = true; break;}
-    }while(false);
+    do {
+        if (m_id_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_url_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_type_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+    } while (false);
     return isObjectUpdated;
 }
 
-bool
-OAIInline_response_200_3::isValid() const {
+bool OAIInline_response_200_3::isValid() const {
     // only required properties are required for the object to be considered valid
     return m_id_isValid && m_url_isValid && m_type_isValid && true;
 }
 
-}
-
+} // namespace OpenAPI

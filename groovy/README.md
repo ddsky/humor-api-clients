@@ -6,6 +6,7 @@ This Groovy package, using the [http-builder-ng library](https://http-builder-ng
 
 - API version: 1.0
 - Package version: 1.0
+- Build date: 2022-05-05T21:06:28.456+02:00[Europe/Berlin]
 - Build package: org.openapitools.codegen.languages.GroovyClientCodegen
 For more information, please visit [https://humorapi.com](https://humorapi.com)
 

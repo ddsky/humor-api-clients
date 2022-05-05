@@ -1,3 +1,5 @@
-<manifest package="com.humorapi.client">
+<manifest  xmlns:android="http://schemas.android.com/apk/res/android" package="com.humorapi.client">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application />
 </manifest>

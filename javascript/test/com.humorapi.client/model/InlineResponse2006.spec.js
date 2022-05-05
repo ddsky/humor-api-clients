@@ -50,13 +50,13 @@
   describe('InlineResponse2006', function() {
     it('should create an instance of InlineResponse2006', function() {
       // uncomment below and update the code to test InlineResponse2006
-      //var instane = new HumorApi.InlineResponse2006();
+      //var instance = new HumorApi.InlineResponse2006();
       //expect(instance).to.be.a(HumorApi.InlineResponse2006);
     });
 
     it('should have the property rating (base name: "rating")', function() {
       // uncomment below and update the code to test the property rating
-      //var instane = new HumorApi.InlineResponse2006();
+      //var instance = new HumorApi.InlineResponse2006();
       //expect(instance).to.be();
     });
 

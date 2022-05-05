@@ -10,24 +10,20 @@ For more information, please visit [https://humorapi.com](https://humorapi.com)
 
 ## Requirements
 
-Dart 1.20.0 or later OR Flutter 0.0.20 or later
+Dart 2.0 or later
 
 ## Installation & Usage
 
 ### Github
-If this Dart package is published to Github, please include the following in pubspec.yaml
+If this Dart package is published to Github, add the following dependency to your pubspec.yaml
 ```
-name: openapi
-version: 1.0.0
-description: OpenAPI API client
 dependencies:
   openapi:
     git: https://github.com/GIT_USER_ID/GIT_REPO_ID.git
-      version: 'any'
 ```
 
 ### Local
-To use the package in your local drive, please include the following in pubspec.yaml
+To use the package in your local drive, add the following dependency to your pubspec.yaml
 ```
 dependencies:
   openapi:
@@ -50,14 +46,14 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('apiKey').apiKeyPrefix = 'Bearer';
 
-var api_instance = new JokesApi();
-var body = new String(); // String | Post the joke as plain text.
+final api_instance = JokesApi();
+final body = String(); // String | Post the joke as plain text.
 
 try {
-    var result = api_instance.analyzeJoke(body);
+    final result = api_instance.analyzeJoke(body);
     print(result);
 } catch (e) {
-    print("Exception when calling JokesApi->analyzeJoke: $e\n");
+    print('Exception when calling JokesApi->analyzeJoke: $e\n');
 }
 
 ```
@@ -68,35 +64,35 @@ All URIs are relative to *https://api.humorapi.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*JokesApi* | [**analyzeJoke**](docs\/JokesApi.md#analyzejoke) | **POST** /jokes/analyze | Analyze Joke
-*JokesApi* | [**downvoteJoke**](docs\/JokesApi.md#downvotejoke) | **POST** /jokes/{id}/downvote | Downvote a Joke
-*JokesApi* | [**randomJoke**](docs\/JokesApi.md#randomjoke) | **GET** /jokes/random | Random Joke
-*JokesApi* | [**searchJokes**](docs\/JokesApi.md#searchjokes) | **GET** /jokes/search | Search Jokes
-*JokesApi* | [**submitJoke**](docs\/JokesApi.md#submitjoke) | **POST** /jokes | Submit Joke
-*JokesApi* | [**upvoteJoke**](docs\/JokesApi.md#upvotejoke) | **POST** /jokes/{id}/upvote | Upvote a Joke
-*MemesApi* | [**downvoteMeme**](docs\/MemesApi.md#downvotememe) | **POST** /memes/{id}/downvote | Downvote a Meme
-*MemesApi* | [**randomMeme**](docs\/MemesApi.md#randommeme) | **GET** /memes/random | Random Meme
-*MemesApi* | [**searchMemes**](docs\/MemesApi.md#searchmemes) | **GET** /memes/search | Search Memes
-*MemesApi* | [**upvoteMeme**](docs\/MemesApi.md#upvotememe) | **POST** /memes/{id}/upvote | Upvote a Meme
-*OtherApi* | [**generateNonsenseWord**](docs\/OtherApi.md#generatenonsenseword) | **GET** /words/nonsense/random | Generate Nonsense Word
-*OtherApi* | [**insult**](docs\/OtherApi.md#insult) | **GET** /insult | Insult
-*OtherApi* | [**praise**](docs\/OtherApi.md#praise) | **GET** /praise | Praise
-*OtherApi* | [**rateWord**](docs\/OtherApi.md#rateword) | **GET** /words/rate | Rate Word
-*OtherApi* | [**searchGifs**](docs\/OtherApi.md#searchgifs) | **GET** /gif/search | Search Gifs
+*JokesApi* | [**analyzeJoke**](doc\/JokesApi.md#analyzejoke) | **POST** /jokes/analyze | Analyze Joke
+*JokesApi* | [**downvoteJoke**](doc\/JokesApi.md#downvotejoke) | **POST** /jokes/{id}/downvote | Downvote a Joke
+*JokesApi* | [**randomJoke**](doc\/JokesApi.md#randomjoke) | **GET** /jokes/random | Random Joke
+*JokesApi* | [**searchJokes**](doc\/JokesApi.md#searchjokes) | **GET** /jokes/search | Search Jokes
+*JokesApi* | [**submitJoke**](doc\/JokesApi.md#submitjoke) | **POST** /jokes | Submit Joke
+*JokesApi* | [**upvoteJoke**](doc\/JokesApi.md#upvotejoke) | **POST** /jokes/{id}/upvote | Upvote a Joke
+*MemesApi* | [**downvoteMeme**](doc\/MemesApi.md#downvotememe) | **POST** /memes/{id}/downvote | Downvote a Meme
+*MemesApi* | [**randomMeme**](doc\/MemesApi.md#randommeme) | **GET** /memes/random | Random Meme
+*MemesApi* | [**searchMemes**](doc\/MemesApi.md#searchmemes) | **GET** /memes/search | Search Memes
+*MemesApi* | [**upvoteMeme**](doc\/MemesApi.md#upvotememe) | **POST** /memes/{id}/upvote | Upvote a Meme
+*OtherApi* | [**generateNonsenseWord**](doc\/OtherApi.md#generatenonsenseword) | **GET** /words/nonsense/random | Generate Nonsense Word
+*OtherApi* | [**insult**](doc\/OtherApi.md#insult) | **GET** /insult | Insult
+*OtherApi* | [**praise**](doc\/OtherApi.md#praise) | **GET** /praise | Praise
+*OtherApi* | [**rateWord**](doc\/OtherApi.md#rateword) | **GET** /words/rate | Rate Word
+*OtherApi* | [**searchGifs**](doc\/OtherApi.md#searchgifs) | **GET** /gif/search | Search Gifs
 
 
 ## Documentation For Models
 
- - [InlineResponse200](docs\/InlineResponse200.md)
- - [InlineResponse2001](docs\/InlineResponse2001.md)
- - [InlineResponse2002](docs\/InlineResponse2002.md)
- - [InlineResponse2003](docs\/InlineResponse2003.md)
- - [InlineResponse2004](docs\/InlineResponse2004.md)
- - [InlineResponse2005](docs\/InlineResponse2005.md)
- - [InlineResponse2006](docs\/InlineResponse2006.md)
- - [InlineResponse2007](docs\/InlineResponse2007.md)
- - [InlineResponse2008](docs\/InlineResponse2008.md)
- - [InlineResponse2009](docs\/InlineResponse2009.md)
+ - [InlineResponse200](doc\/InlineResponse200.md)
+ - [InlineResponse2001](doc\/InlineResponse2001.md)
+ - [InlineResponse2002](doc\/InlineResponse2002.md)
+ - [InlineResponse2003](doc\/InlineResponse2003.md)
+ - [InlineResponse2004](doc\/InlineResponse2004.md)
+ - [InlineResponse2005](doc\/InlineResponse2005.md)
+ - [InlineResponse2006](doc\/InlineResponse2006.md)
+ - [InlineResponse2007](doc\/InlineResponse2007.md)
+ - [InlineResponse2008](doc\/InlineResponse2008.md)
+ - [InlineResponse2009](doc\/InlineResponse2009.md)
 
 
 ## Documentation For Authorization
@@ -112,5 +108,4 @@ Class | Method | HTTP request | Description
 ## Author
 
 mail@humorapi.com
-
 

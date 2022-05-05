@@ -1,21 +1,22 @@
 # com.humorapi.client\JokesApi
 
-All URIs are relative to *https://api.humorapi.com*
+All URIs are relative to https://api.humorapi.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**analyzeJoke**](JokesApi.md#analyzeJoke) | **POST** /jokes/analyze | Analyze Joke
-[**downvoteJoke**](JokesApi.md#downvoteJoke) | **POST** /jokes/{id}/downvote | Downvote a Joke
-[**randomJoke**](JokesApi.md#randomJoke) | **GET** /jokes/random | Random Joke
-[**searchJokes**](JokesApi.md#searchJokes) | **GET** /jokes/search | Search Jokes
-[**submitJoke**](JokesApi.md#submitJoke) | **POST** /jokes | Submit Joke
-[**upvoteJoke**](JokesApi.md#upvoteJoke) | **POST** /jokes/{id}/upvote | Upvote a Joke
+[**analyzeJoke()**](JokesApi.md#analyzeJoke) | **POST** /jokes/analyze | Analyze Joke
+[**downvoteJoke()**](JokesApi.md#downvoteJoke) | **POST** /jokes/{id}/downvote | Downvote a Joke
+[**randomJoke()**](JokesApi.md#randomJoke) | **GET** /jokes/random | Random Joke
+[**searchJokes()**](JokesApi.md#searchJokes) | **GET** /jokes/search | Search Jokes
+[**submitJoke()**](JokesApi.md#submitJoke) | **POST** /jokes | Submit Joke
+[**upvoteJoke()**](JokesApi.md#upvoteJoke) | **POST** /jokes/{id}/upvote | Upvote a Joke
 
 
+## `analyzeJoke()`
 
-## analyzeJoke
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2009 analyzeJoke($body)
+```php
+analyzeJoke($body): \com.humorapi.client\com.humorapi.client.model\InlineResponse2009
+```
 
 Analyze Joke
 
@@ -48,11 +49,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling JokesApi->analyzeJoke: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -68,17 +67,18 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: text/plain
-- **Accept**: application/json
+- **Content-Type**: `text/plain`
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `downvoteJoke()`
 
-## downvoteJoke
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2008 downvoteJoke($id)
+```php
+downvoteJoke($id): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+```
 
 Downvote a Joke
 
@@ -111,11 +111,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling JokesApi->downvoteJoke: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -132,16 +130,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `randomJoke()`
 
-## randomJoke
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2004 randomJoke($keywords, $include_tags, $exclude_tags, $min_rating, $max_length)
+```php
+randomJoke($keywords, $include_tags, $exclude_tags, $min_rating, $max_length): \com.humorapi.client\com.humorapi.client.model\InlineResponse2004
+```
 
 Random Joke
 
@@ -178,11 +177,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling JokesApi->randomJoke: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -203,16 +200,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `searchJokes()`
 
-## searchJokes
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse200 searchJokes($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset)
+```php
+searchJokes($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset): \com.humorapi.client\com.humorapi.client.model\InlineResponse200
+```
 
 Search Jokes
 
@@ -251,11 +249,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling JokesApi->searchJokes: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -278,16 +274,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `submitJoke()`
 
-## submitJoke
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2008 submitJoke($body)
+```php
+submitJoke($body): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+```
 
 Submit Joke
 
@@ -320,11 +317,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling JokesApi->submitJoke: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -340,17 +335,18 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: text/plain
-- **Accept**: application/json
+- **Content-Type**: `text/plain`
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `upvoteJoke()`
 
-## upvoteJoke
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2008 upvoteJoke($id)
+```php
+upvoteJoke($id): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+```
 
 Upvote a Joke
 
@@ -383,11 +379,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling JokesApi->upvoteJoke: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -404,9 +398,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

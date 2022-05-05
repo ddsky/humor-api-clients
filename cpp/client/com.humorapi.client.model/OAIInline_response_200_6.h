@@ -22,42 +22,40 @@
 #include <QJsonObject>
 
 
-#include "com.humorapi.client.model\OAINumber.h"
-
-#include "OAIObject.h"
 #include "OAIEnum.h"
+#include "OAIObject.h"
 
 namespace OpenAPI {
 
-class OAIInline_response_200_6: public OAIObject {
+class OAIInline_response_200_6 : public OAIObject {
 public:
     OAIInline_response_200_6();
     OAIInline_response_200_6(QString json);
     ~OAIInline_response_200_6() override;
 
-    QString asJson () const override;
+    QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    
-    OAINumber getRating() const;
-    void setRating(const OAINumber &rating);
+    double getRating() const;
+    void setRating(const double &rating);
+    bool is_rating_Set() const;
+    bool is_rating_Valid() const;
 
-    
-    
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
-    void init();
-    
-    OAINumber rating;
+    void initializeModel();
+
+    double rating;
     bool m_rating_isSet;
     bool m_rating_isValid;
-    
-    };
+};
 
-}
+} // namespace OpenAPI
+
+Q_DECLARE_METATYPE(OpenAPI::OAIInline_response_200_6)
 
 #endif // OAIInline_response_200_6_H

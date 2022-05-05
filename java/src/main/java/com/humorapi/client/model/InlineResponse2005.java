@@ -27,13 +27,17 @@ import java.io.IOException;
 /**
  * InlineResponse2005
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-16T19:38:20.770+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-05T21:05:51.248+02:00[Europe/Berlin]")
 public class InlineResponse2005 {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
   private String text;
 
+  public InlineResponse2005() { 
+  }
+
   public InlineResponse2005 text(String text) {
+    
     this.text = text;
     return this;
   }
@@ -42,10 +46,13 @@ public class InlineResponse2005 {
    * Get text
    * @return text
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public String getText() {
     return text;
   }
+
 
   public void setText(String text) {
     this.text = text;
@@ -53,7 +60,7 @@ public class InlineResponse2005 {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -69,7 +76,6 @@ public class InlineResponse2005 {
     return Objects.hash(text);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -83,7 +89,7 @@ public class InlineResponse2005 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**word** | **String** |  | 
-**rating** | **Float** |  | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **word** | **String** |  |  |
+| **rating** | **Float** |  |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'OpenapiClient'
+require 'openapi_client'
 
-instance = OpenapiClient::InlineResponse2007.new(word: null,
-                                 rating: null)
+instance = OpenapiClient::InlineResponse2007.new(
+  word: null,
+  rating: null
+)
 ```
-
 

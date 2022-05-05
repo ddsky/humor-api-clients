@@ -22,7 +22,7 @@ package WWW::OpenAPIClient::MemesApi;
 require 5.6.0;
 use strict;
 use warnings;
-use utf8; 
+use utf8;
 use Exporter;
 use Carp qw( croak );
 use Log::Any qw($log);
@@ -52,7 +52,7 @@ sub new {
 # downvote_meme
 #
 # Downvote a Meme
-# 
+#
 # @param int $id The object&#39;s id. (required)
 {
     my $params = {
@@ -62,7 +62,7 @@ sub new {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'downvote_meme' } = { 
+    __PACKAGE__->method_documentation->{ 'downvote_meme' } = {
         summary => 'Downvote a Meme',
         params => $params,
         returns => 'InlineResponse2008',
@@ -119,7 +119,7 @@ sub downvote_meme {
 # random_meme
 #
 # Random Meme
-# 
+#
 # @param string $keywords A comma separated list of keywords. (optional)
 # @param boolean $keywords_in_image Whether the keywords should be found in the meme&#39;s image. (optional)
 # @param string $media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
@@ -153,7 +153,7 @@ sub downvote_meme {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'random_meme' } = { 
+    __PACKAGE__->method_documentation->{ 'random_meme' } = {
         summary => 'Random Meme',
         params => $params,
         returns => 'InlineResponse2003',
@@ -223,7 +223,7 @@ sub random_meme {
 # search_memes
 #
 # Search Memes
-# 
+#
 # @param string $keywords A comma separated list of keywords. (optional)
 # @param boolean $keywords_in_image Whether the keywords should be found in the meme&#39;s image. (optional)
 # @param string $media_type The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. (optional)
@@ -263,7 +263,7 @@ sub random_meme {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'search_memes' } = { 
+    __PACKAGE__->method_documentation->{ 'search_memes' } = {
         summary => 'Search Memes',
         params => $params,
         returns => 'InlineResponse2002',
@@ -338,7 +338,7 @@ sub search_memes {
 # upvote_meme
 #
 # Upvote a Meme
-# 
+#
 # @param int $id The object&#39;s id. (required)
 {
     my $params = {
@@ -348,7 +348,7 @@ sub search_memes {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'upvote_meme' } = { 
+    __PACKAGE__->method_documentation->{ 'upvote_meme' } = {
         summary => 'Upvote a Meme',
         params => $params,
         returns => 'InlineResponse2008',

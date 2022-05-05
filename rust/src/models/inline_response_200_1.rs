@@ -9,19 +9,20 @@
  */
 
 
-#[allow(unused_imports)]
-use serde_json::Value;
 
-#[derive(Debug, Serialize, Deserialize)]
+
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineResponse2001 {
     #[serde(rename = "images")]
-    pub images: Vec<Value>,
+    pub images: Vec<serde_json::Value>,
 }
 
 impl InlineResponse2001 {
-    pub fn new(images: Vec<Value>) -> InlineResponse2001 {
+    pub fn new(images: Vec<serde_json::Value>) -> InlineResponse2001 {
         InlineResponse2001 {
-            images: images,
+            images,
         }
     }
 }
+
+

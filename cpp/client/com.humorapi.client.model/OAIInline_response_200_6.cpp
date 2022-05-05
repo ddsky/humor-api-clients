@@ -10,96 +10,92 @@
  * Do not edit the class manually.
  */
 
-
 #include "OAIInline_response_200_6.h"
 
-#include "OAIHelpers.h"
-
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QObject>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QObject>
+
+#include "OAIHelpers.h"
 
 namespace OpenAPI {
 
 OAIInline_response_200_6::OAIInline_response_200_6(QString json) {
-    this->init();
+    this->initializeModel();
     this->fromJson(json);
 }
 
 OAIInline_response_200_6::OAIInline_response_200_6() {
-    this->init();
+    this->initializeModel();
 }
 
-OAIInline_response_200_6::~OAIInline_response_200_6() {
+OAIInline_response_200_6::~OAIInline_response_200_6() {}
 
-}
+void OAIInline_response_200_6::initializeModel() {
 
-void
-OAIInline_response_200_6::init() {
-    
     m_rating_isSet = false;
     m_rating_isValid = false;
-    }
+}
 
-void
-OAIInline_response_200_6::fromJson(QString jsonString) {
-    QByteArray array (jsonString.toStdString().c_str());
+void OAIInline_response_200_6::fromJson(QString jsonString) {
+    QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();
     this->fromJsonObject(jsonObject);
 }
 
-void
-OAIInline_response_200_6::fromJsonObject(QJsonObject json) {
-    
+void OAIInline_response_200_6::fromJsonObject(QJsonObject json) {
+
     m_rating_isValid = ::OpenAPI::fromJsonValue(rating, json[QString("rating")]);
-    
-    
+    m_rating_isSet = !json[QString("rating")].isNull() && m_rating_isValid;
 }
 
-QString
-OAIInline_response_200_6::asJson () const {
+QString OAIInline_response_200_6::asJson() const {
     QJsonObject obj = this->asJsonObject();
     QJsonDocument doc(obj);
     QByteArray bytes = doc.toJson();
     return QString(bytes);
 }
 
-QJsonObject
-OAIInline_response_200_6::asJsonObject() const {
+QJsonObject OAIInline_response_200_6::asJsonObject() const {
     QJsonObject obj;
-	if(rating.isSet()){
+    if (m_rating_isSet) {
         obj.insert(QString("rating"), ::OpenAPI::toJsonValue(rating));
     }
     return obj;
 }
 
-
-OAINumber
-OAIInline_response_200_6::getRating() const {
+double OAIInline_response_200_6::getRating() const {
     return rating;
 }
-void
-OAIInline_response_200_6::setRating(const OAINumber &rating) {
+void OAIInline_response_200_6::setRating(const double &rating) {
     this->rating = rating;
     this->m_rating_isSet = true;
 }
 
-bool
-OAIInline_response_200_6::isSet() const {
+bool OAIInline_response_200_6::is_rating_Set() const{
+    return m_rating_isSet;
+}
+
+bool OAIInline_response_200_6::is_rating_Valid() const{
+    return m_rating_isValid;
+}
+
+bool OAIInline_response_200_6::isSet() const {
     bool isObjectUpdated = false;
-    do{ 
-        if(rating.isSet()){ isObjectUpdated = true; break;}
-    }while(false);
+    do {
+        if (m_rating_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+    } while (false);
     return isObjectUpdated;
 }
 
-bool
-OAIInline_response_200_6::isValid() const {
+bool OAIInline_response_200_6::isValid() const {
     // only required properties are required for the object to be considered valid
     return m_rating_isValid && true;
 }
 
-}
-
+} // namespace OpenAPI

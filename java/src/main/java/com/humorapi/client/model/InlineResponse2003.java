@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * InlineResponse2003
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-16T19:38:20.770+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-05T21:05:51.248+02:00[Europe/Berlin]")
 public class InlineResponse2003 {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -41,7 +41,11 @@ public class InlineResponse2003 {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public InlineResponse2003() { 
+  }
+
   public InlineResponse2003 id(Integer id) {
+    
     this.id = id;
     return this;
   }
@@ -50,16 +54,21 @@ public class InlineResponse2003 {
    * Get id
    * @return id
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public Integer getId() {
     return id;
   }
+
 
   public void setId(Integer id) {
     this.id = id;
   }
 
+
   public InlineResponse2003 url(String url) {
+    
     this.url = url;
     return this;
   }
@@ -68,16 +77,21 @@ public class InlineResponse2003 {
    * Get url
    * @return url
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public String getUrl() {
     return url;
   }
+
 
   public void setUrl(String url) {
     this.url = url;
   }
 
+
   public InlineResponse2003 type(String type) {
+    
     this.type = type;
     return this;
   }
@@ -86,10 +100,13 @@ public class InlineResponse2003 {
    * Get type
    * @return type
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public String getType() {
     return type;
   }
+
 
   public void setType(String type) {
     this.type = type;
@@ -97,7 +114,7 @@ public class InlineResponse2003 {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -115,7 +132,6 @@ public class InlineResponse2003 {
     return Objects.hash(id, url, type);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -131,7 +147,7 @@ public class InlineResponse2003 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

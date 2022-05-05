@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jokes** | **List&lt;Object&gt;** |  | 
+**jokes** | **Set&lt;Object&gt;** |  | 
 
 
 

@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * InlineResponse2009
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-16T19:38:20.770+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-05T21:05:51.248+02:00[Europe/Berlin]")
 public class InlineResponse2009 {
   public static final String SERIALIZED_NAME_JOKE = "joke";
   @SerializedName(SERIALIZED_NAME_JOKE)
@@ -39,7 +39,11 @@ public class InlineResponse2009 {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = new ArrayList<>();
 
+  public InlineResponse2009() { 
+  }
+
   public InlineResponse2009 joke(String joke) {
+    
     this.joke = joke;
     return this;
   }
@@ -48,16 +52,21 @@ public class InlineResponse2009 {
    * Get joke
    * @return joke
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public String getJoke() {
     return joke;
   }
+
 
   public void setJoke(String joke) {
     this.joke = joke;
   }
 
+
   public InlineResponse2009 tags(List<String> tags) {
+    
     this.tags = tags;
     return this;
   }
@@ -71,10 +80,13 @@ public class InlineResponse2009 {
    * Get tags
    * @return tags
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public List<String> getTags() {
     return tags;
   }
+
 
   public void setTags(List<String> tags) {
     this.tags = tags;
@@ -82,7 +94,7 @@ public class InlineResponse2009 {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -99,7 +111,6 @@ public class InlineResponse2009 {
     return Objects.hash(joke, tags);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -114,7 +125,7 @@ public class InlineResponse2009 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

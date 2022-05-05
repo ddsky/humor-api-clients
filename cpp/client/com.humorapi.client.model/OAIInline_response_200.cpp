@@ -10,97 +10,92 @@
  * Do not edit the class manually.
  */
 
-
 #include "OAIInline_response_200.h"
 
-#include "OAIHelpers.h"
-
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QObject>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QObject>
+
+#include "OAIHelpers.h"
 
 namespace OpenAPI {
 
 OAIInline_response_200::OAIInline_response_200(QString json) {
-    this->init();
+    this->initializeModel();
     this->fromJson(json);
 }
 
 OAIInline_response_200::OAIInline_response_200() {
-    this->init();
+    this->initializeModel();
 }
 
-OAIInline_response_200::~OAIInline_response_200() {
+OAIInline_response_200::~OAIInline_response_200() {}
 
-}
+void OAIInline_response_200::initializeModel() {
 
-void
-OAIInline_response_200::init() {
-    
     m_jokes_isSet = false;
     m_jokes_isValid = false;
-    }
+}
 
-void
-OAIInline_response_200::fromJson(QString jsonString) {
-    QByteArray array (jsonString.toStdString().c_str());
+void OAIInline_response_200::fromJson(QString jsonString) {
+    QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();
     this->fromJsonObject(jsonObject);
 }
 
-void
-OAIInline_response_200::fromJsonObject(QJsonObject json) {
-    
-    
+void OAIInline_response_200::fromJsonObject(QJsonObject json) {
+
     m_jokes_isValid = ::OpenAPI::fromJsonValue(jokes, json[QString("jokes")]);
-    
+    m_jokes_isSet = !json[QString("jokes")].isNull() && m_jokes_isValid;
 }
 
-QString
-OAIInline_response_200::asJson () const {
+QString OAIInline_response_200::asJson() const {
     QJsonObject obj = this->asJsonObject();
     QJsonDocument doc(obj);
     QByteArray bytes = doc.toJson();
     return QString(bytes);
 }
 
-QJsonObject
-OAIInline_response_200::asJsonObject() const {
+QJsonObject OAIInline_response_200::asJsonObject() const {
     QJsonObject obj;
-	
-    if(jokes.size() > 0){
+    if (jokes.size() > 0) {
         obj.insert(QString("jokes"), ::OpenAPI::toJsonValue(jokes));
-    } 
+    }
     return obj;
 }
 
-
-QList<OAIObject>
-OAIInline_response_200::getJokes() const {
+QSet<OAIObject> OAIInline_response_200::getJokes() const {
     return jokes;
 }
-void
-OAIInline_response_200::setJokes(const QList<OAIObject> &jokes) {
+void OAIInline_response_200::setJokes(const QSet<OAIObject> &jokes) {
     this->jokes = jokes;
     this->m_jokes_isSet = true;
 }
 
-bool
-OAIInline_response_200::isSet() const {
+bool OAIInline_response_200::is_jokes_Set() const{
+    return m_jokes_isSet;
+}
+
+bool OAIInline_response_200::is_jokes_Valid() const{
+    return m_jokes_isValid;
+}
+
+bool OAIInline_response_200::isSet() const {
     bool isObjectUpdated = false;
-    do{ 
-        if(jokes.size() > 0){ isObjectUpdated = true; break;}
-    }while(false);
+    do {
+        if (jokes.size() > 0) {
+            isObjectUpdated = true;
+            break;
+        }
+    } while (false);
     return isObjectUpdated;
 }
 
-bool
-OAIInline_response_200::isValid() const {
+bool OAIInline_response_200::isValid() const {
     // only required properties are required for the object to be considered valid
     return m_jokes_isValid && true;
 }
 
-}
-
+} // namespace OpenAPI

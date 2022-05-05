@@ -21,8 +21,8 @@ defmodule com.humorapi.client.Api.Other do
   - opts (KeywordList): [optional] Optional parameters
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2007{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2007.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec generate_nonsense_word(Tesla.Env.client, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2007.t} | {:error, Tesla.Env.t}
   def generate_nonsense_word(connection, _opts \\ []) do
@@ -48,8 +48,8 @@ defmodule com.humorapi.client.Api.Other do
   - opts (KeywordList): [optional] Optional parameters
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2005{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2005.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec insult(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2005.t} | {:error, Tesla.Env.t}
   def insult(connection, name, reason, _opts \\ []) do
@@ -77,8 +77,8 @@ defmodule com.humorapi.client.Api.Other do
   - opts (KeywordList): [optional] Optional parameters
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2005{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2005.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec praise(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2005.t} | {:error, Tesla.Env.t}
   def praise(connection, name, reason, _opts \\ []) do
@@ -105,8 +105,8 @@ defmodule com.humorapi.client.Api.Other do
   - opts (KeywordList): [optional] Optional parameters
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2006{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2006.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec rate_word(Tesla.Env.client, String.t, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2006.t} | {:error, Tesla.Env.t}
   def rate_word(connection, word, _opts \\ []) do
@@ -133,8 +133,8 @@ defmodule com.humorapi.client.Api.Other do
     - :number (integer()): The number of results to retrieve between 1 and 10.
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2001{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2001.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec search_gifs(Tesla.Env.client, String.t, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2001.t} | {:error, Tesla.Env.t}
   def search_gifs(connection, query, opts \\ []) do

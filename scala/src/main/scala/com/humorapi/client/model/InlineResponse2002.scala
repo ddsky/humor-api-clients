@@ -4,14 +4,14 @@ import io.circe._
 import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
-import humorapi._
+import org.openapitools._
 import scala.collection.immutable.Seq
 
 /**
  * 
  * @param memes 
  */
-case class InlineResponse2002(memes: Seq[Object]
+case class InlineResponse2002(memes: Set[Object]
                 )
 
 object InlineResponse2002 {

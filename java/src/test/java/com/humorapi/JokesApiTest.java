@@ -47,8 +47,7 @@ public class JokesApiTest {
     @Test
     public void analyzeJokeTest() throws ApiException {
         String body = null;
-        InlineResponse2009 response = api.analyzeJoke(body);
-
+                InlineResponse2009 response = api.analyzeJoke(body);
         // TODO: test validations
     }
     
@@ -63,8 +62,7 @@ public class JokesApiTest {
     @Test
     public void downvoteJokeTest() throws ApiException {
         Integer id = null;
-        InlineResponse2008 response = api.downvoteJoke(id);
-
+                InlineResponse2008 response = api.downvoteJoke(id);
         // TODO: test validations
     }
     
@@ -83,8 +81,7 @@ public class JokesApiTest {
         String excludeTags = null;
         Integer minRating = null;
         Integer maxLength = null;
-        InlineResponse2004 response = api.randomJoke(keywords, includeTags, excludeTags, minRating, maxLength);
-
+                InlineResponse2004 response = api.randomJoke(keywords, includeTags, excludeTags, minRating, maxLength);
         // TODO: test validations
     }
     
@@ -105,8 +102,7 @@ public class JokesApiTest {
         Integer minRating = null;
         Integer maxLength = null;
         BigDecimal offset = null;
-        InlineResponse200 response = api.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
-
+                InlineResponse200 response = api.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
         // TODO: test validations
     }
     
@@ -121,8 +117,7 @@ public class JokesApiTest {
     @Test
     public void submitJokeTest() throws ApiException {
         String body = null;
-        InlineResponse2008 response = api.submitJoke(body);
-
+                InlineResponse2008 response = api.submitJoke(body);
         // TODO: test validations
     }
     
@@ -137,8 +132,7 @@ public class JokesApiTest {
     @Test
     public void upvoteJokeTest() throws ApiException {
         Integer id = null;
-        InlineResponse2008 response = api.upvoteJoke(id);
-
+                InlineResponse2008 response = api.upvoteJoke(id);
         // TODO: test validations
     }
     

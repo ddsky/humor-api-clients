@@ -4,8 +4,8 @@ import io.circe._
 import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
-import humorapi._
-import java.math.BigDecimal
+import org.openapitools._
+import com.humorapi.client.model.BigDecimal
 
 /**
  * 

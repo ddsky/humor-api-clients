@@ -14,6 +14,9 @@
 */
 
 
+#import "OAISet.h"
+@protocol OAISet;
+@class OAISet;
 
 
 
@@ -23,6 +26,6 @@
 @interface OAIInlineResponse200 : OAIObject
 
 
-@property(nonatomic) NSArray<NSObject*>* jokes;
+@property(nonatomic) OAISet<NSObject*>* jokes;
 
 @end

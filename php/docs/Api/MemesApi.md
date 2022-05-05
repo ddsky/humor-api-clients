@@ -1,19 +1,20 @@
 # com.humorapi.client\MemesApi
 
-All URIs are relative to *https://api.humorapi.com*
+All URIs are relative to https://api.humorapi.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**downvoteMeme**](MemesApi.md#downvoteMeme) | **POST** /memes/{id}/downvote | Downvote a Meme
-[**randomMeme**](MemesApi.md#randomMeme) | **GET** /memes/random | Random Meme
-[**searchMemes**](MemesApi.md#searchMemes) | **GET** /memes/search | Search Memes
-[**upvoteMeme**](MemesApi.md#upvoteMeme) | **POST** /memes/{id}/upvote | Upvote a Meme
+[**downvoteMeme()**](MemesApi.md#downvoteMeme) | **POST** /memes/{id}/downvote | Downvote a Meme
+[**randomMeme()**](MemesApi.md#randomMeme) | **GET** /memes/random | Random Meme
+[**searchMemes()**](MemesApi.md#searchMemes) | **GET** /memes/search | Search Memes
+[**upvoteMeme()**](MemesApi.md#upvoteMeme) | **POST** /memes/{id}/upvote | Upvote a Meme
 
 
+## `downvoteMeme()`
 
-## downvoteMeme
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2008 downvoteMeme($id)
+```php
+downvoteMeme($id): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+```
 
 Downvote a Meme
 
@@ -46,11 +47,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling MemesApi->downvoteMeme: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -67,16 +66,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `randomMeme()`
 
-## randomMeme
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2003 randomMeme($keywords, $keywords_in_image, $media_type, $number, $min_rating)
+```php
+randomMeme($keywords, $keywords_in_image, $media_type, $number, $min_rating): \com.humorapi.client\com.humorapi.client.model\InlineResponse2003
+```
 
 Random Meme
 
@@ -113,11 +113,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling MemesApi->randomMeme: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -138,16 +136,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `searchMemes()`
 
-## searchMemes
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2002 searchMemes($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset)
+```php
+searchMemes($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset): \com.humorapi.client\com.humorapi.client.model\InlineResponse2002
+```
 
 Search Memes
 
@@ -185,11 +184,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling MemesApi->searchMemes: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -211,16 +208,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `upvoteMeme()`
 
-## upvoteMeme
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2008 upvoteMeme($id)
+```php
+upvoteMeme($id): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+```
 
 Upvote a Meme
 
@@ -253,11 +251,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling MemesApi->upvoteMeme: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -274,9 +270,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

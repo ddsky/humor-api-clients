@@ -23,7 +23,7 @@ Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = JokesApi()
@@ -52,11 +52,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="downvoteJoke"></a>
@@ -70,7 +73,7 @@ Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = JokesApi()
@@ -99,7 +102,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -108,7 +114,7 @@ Name | Type | Description  | Notes
 
 <a name="randomJoke"></a>
 # **randomJoke**
-> InlineResponse2004 randomJoke(keywords, includeMinusTags, excludeMinusTags, minMinusRating, maxMinusLength)
+> InlineResponse2004 randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
 
 Random Joke
 
@@ -117,17 +123,17 @@ Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = JokesApi()
 val keywords : kotlin.String = rocket // kotlin.String | A comma separated list of keywords.
-val includeMinusTags : kotlin.String = one_liner // kotlin.String | A comma separated list of tags that the joke must have.
-val excludeMinusTags : kotlin.String = nsfw // kotlin.String | A comma separated list of tags that the joke must not have.
-val minMinusRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
-val maxMinusLength : kotlin.Int = 200 // kotlin.Int | The maximum number of letters in the joke.
+val includeTags : kotlin.String = one_liner // kotlin.String | A comma separated list of tags that the joke must have.
+val excludeTags : kotlin.String = nsfw // kotlin.String | A comma separated list of tags that the joke must not have.
+val minRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
+val maxLength : kotlin.Int = 200 // kotlin.Int | The maximum number of letters in the joke.
 try {
-    val result : InlineResponse2004 = apiInstance.randomJoke(keywords, includeMinusTags, excludeMinusTags, minMinusRating, maxMinusLength)
+    val result : InlineResponse2004 = apiInstance.randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling JokesApi#randomJoke")
@@ -143,10 +149,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keywords** | **kotlin.String**| A comma separated list of keywords. | [optional]
- **includeMinusTags** | **kotlin.String**| A comma separated list of tags that the joke must have. | [optional] [enum: clean, yo_mama, chuck_norris, nsfw, racist, sexist, sexual, political, religious, knock_knock, christmas, nerdy, analogy, one_liner, dark, jewish, school, sport, law, kids, animal, relationship, insults, blondes, deep_thoughts, food, holiday]
- **excludeMinusTags** | **kotlin.String**| A comma separated list of tags that the joke must not have. | [optional] [enum: clean, yo_mama, chuck_norris, nsfw, racist, sexist, sexual, political, religious, knock_knock, christmas, nerdy, analogy, one_liner, dark, jewish, school, sport, law, kids, animal, relationship, insults, blondes, deep_thoughts, food, holiday]
- **minMinusRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
- **maxMinusLength** | **kotlin.Int**| The maximum number of letters in the joke. | [optional]
+ **includeTags** | **kotlin.String**| A comma separated list of tags that the joke must have. | [optional] [enum: clean, yo_mama, chuck_norris, nsfw, racist, sexist, sexual, political, religious, knock_knock, christmas, nerdy, analogy, one_liner, dark, jewish, school, sport, law, kids, animal, relationship, insults, blondes, deep_thoughts, food, holiday]
+ **excludeTags** | **kotlin.String**| A comma separated list of tags that the joke must not have. | [optional] [enum: clean, yo_mama, chuck_norris, nsfw, racist, sexist, sexual, political, religious, knock_knock, christmas, nerdy, analogy, one_liner, dark, jewish, school, sport, law, kids, animal, relationship, insults, blondes, deep_thoughts, food, holiday]
+ **minRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
+ **maxLength** | **kotlin.Int**| The maximum number of letters in the joke. | [optional]
 
 ### Return type
 
@@ -154,7 +160,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -163,7 +172,7 @@ Name | Type | Description  | Notes
 
 <a name="searchJokes"></a>
 # **searchJokes**
-> InlineResponse200 searchJokes(keywords, includeMinusTags, excludeMinusTags, number, minMinusRating, maxMinusLength, offset)
+> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
 
 Search Jokes
 
@@ -172,19 +181,19 @@ Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = JokesApi()
 val keywords : kotlin.String = rocket // kotlin.String | A comma separated list of keywords.
-val includeMinusTags : kotlin.String = one_liner // kotlin.String | A comma separated list of tags that the joke must have.
-val excludeMinusTags : kotlin.String = nsfw // kotlin.String | A comma separated list of tags that the joke must not have.
+val includeTags : kotlin.String = one_liner // kotlin.String | A comma separated list of tags that the joke must have.
+val excludeTags : kotlin.String = nsfw // kotlin.String | A comma separated list of tags that the joke must not have.
 val number : kotlin.Int = 3 // kotlin.Int | The number of results to retrieve between 1 and 10.
-val minMinusRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
-val maxMinusLength : kotlin.Int = 200 // kotlin.Int | The maximum number of letters in the joke.
+val minRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
+val maxLength : kotlin.Int = 200 // kotlin.Int | The maximum number of letters in the joke.
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | The number of results to skip.
 try {
-    val result : InlineResponse200 = apiInstance.searchJokes(keywords, includeMinusTags, excludeMinusTags, number, minMinusRating, maxMinusLength, offset)
+    val result : InlineResponse200 = apiInstance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling JokesApi#searchJokes")
@@ -200,11 +209,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keywords** | **kotlin.String**| A comma separated list of keywords. | [optional]
- **includeMinusTags** | **kotlin.String**| A comma separated list of tags that the joke must have. | [optional] [enum: clean, yo_mama, chuck_norris, nsfw, racist, sexist, sexual, political, religious, knock_knock, christmas, nerdy, analogy, one_liner, dark, jewish, school, sport, law, kids, animal, relationship, insults, blondes, deep_thoughts, food, holiday]
- **excludeMinusTags** | **kotlin.String**| A comma separated list of tags that the joke must not have. | [optional] [enum: clean, yo_mama, chuck_norris, nsfw, racist, sexist, sexual, political, religious, knock_knock, christmas, nerdy, analogy, one_liner, dark, jewish, school, sport, law, kids, animal, relationship, insults, blondes, deep_thoughts, food, holiday]
+ **includeTags** | **kotlin.String**| A comma separated list of tags that the joke must have. | [optional] [enum: clean, yo_mama, chuck_norris, nsfw, racist, sexist, sexual, political, religious, knock_knock, christmas, nerdy, analogy, one_liner, dark, jewish, school, sport, law, kids, animal, relationship, insults, blondes, deep_thoughts, food, holiday]
+ **excludeTags** | **kotlin.String**| A comma separated list of tags that the joke must not have. | [optional] [enum: clean, yo_mama, chuck_norris, nsfw, racist, sexist, sexual, political, religious, knock_knock, christmas, nerdy, analogy, one_liner, dark, jewish, school, sport, law, kids, animal, relationship, insults, blondes, deep_thoughts, food, holiday]
  **number** | **kotlin.Int**| The number of results to retrieve between 1 and 10. | [optional]
- **minMinusRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
- **maxMinusLength** | **kotlin.Int**| The maximum number of letters in the joke. | [optional]
+ **minRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
+ **maxLength** | **kotlin.Int**| The maximum number of letters in the joke. | [optional]
  **offset** | **java.math.BigDecimal**| The number of results to skip. | [optional]
 
 ### Return type
@@ -213,7 +222,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -231,7 +243,7 @@ Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = JokesApi()
@@ -260,11 +272,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="upvoteJoke"></a>
@@ -278,7 +293,7 @@ Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = JokesApi()
@@ -307,7 +322,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 

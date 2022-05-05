@@ -9,19 +9,20 @@
  */
 
 
-#[allow(unused_imports)]
-use serde_json::Value;
 
-#[derive(Debug, Serialize, Deserialize)]
+
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineResponse2002 {
     #[serde(rename = "memes")]
-    pub memes: Vec<Value>,
+    pub memes: Vec<serde_json::Value>,
 }
 
 impl InlineResponse2002 {
-    pub fn new(memes: Vec<Value>) -> InlineResponse2002 {
+    pub fn new(memes: Vec<serde_json::Value>) -> InlineResponse2002 {
         InlineResponse2002 {
-            memes: memes,
+            memes,
         }
     }
 }
+
+

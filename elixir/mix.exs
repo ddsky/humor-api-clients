@@ -2,11 +2,13 @@ defmodule com.humorapi.client.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :humorapi,
+    [app: :com/humorapi/client,
      version: "1.0",
      elixir: "~> 1.6",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package(),
+     description: "Awesome Humor API.",
      deps: deps()]
   end
 
@@ -31,6 +33,14 @@ defmodule com.humorapi.client.Mixfile do
     [
       {:tesla, "~> 1.2"},
       {:poison, "~> 3.0"}
+    ]
+  end
+
+   defp package() do
+    [
+      name: "com/humorapi/client",
+      files: ~w(lib mix.exs README* LICENSE*),
+      licenses: [""]
     ]
   end
 end

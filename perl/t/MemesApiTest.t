@@ -32,43 +32,37 @@ isa_ok($api, 'WWW::OpenAPIClient::MemesApi');
 #
 # downvote_meme test
 #
-{
-    my $id = undef; # replace NULL with a proper value
-    my $result = $api->downvote_meme(id => $id);
-}
+# uncomment below and update the test
+#my $downvote_meme_id = undef; # replace NULL with a proper value
+#my $downvote_meme_result = $api->downvote_meme(id => $downvote_meme_id);
 
 #
 # random_meme test
 #
-{
-    my $keywords = undef; # replace NULL with a proper value
-    my $keywords_in_image = undef; # replace NULL with a proper value
-    my $media_type = undef; # replace NULL with a proper value
-    my $number = undef; # replace NULL with a proper value
-    my $min_rating = undef; # replace NULL with a proper value
-    my $result = $api->random_meme(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating);
-}
+# uncomment below and update the test
+#my $random_meme_keywords = undef; # replace NULL with a proper value
+#my $random_meme_keywords_in_image = undef; # replace NULL with a proper value
+#my $random_meme_media_type = undef; # replace NULL with a proper value
+#my $random_meme_number = undef; # replace NULL with a proper value
+#my $random_meme_min_rating = undef; # replace NULL with a proper value
+#my $random_meme_result = $api->random_meme(keywords => $random_meme_keywords, keywords_in_image => $random_meme_keywords_in_image, media_type => $random_meme_media_type, number => $random_meme_number, min_rating => $random_meme_min_rating);
 
 #
 # search_memes test
 #
-{
-    my $keywords = undef; # replace NULL with a proper value
-    my $keywords_in_image = undef; # replace NULL with a proper value
-    my $media_type = undef; # replace NULL with a proper value
-    my $number = undef; # replace NULL with a proper value
-    my $min_rating = undef; # replace NULL with a proper value
-    my $offset = undef; # replace NULL with a proper value
-    my $result = $api->search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating, offset => $offset);
-}
+# uncomment below and update the test
+#my $search_memes_keywords = undef; # replace NULL with a proper value
+#my $search_memes_keywords_in_image = undef; # replace NULL with a proper value
+#my $search_memes_media_type = undef; # replace NULL with a proper value
+#my $search_memes_number = undef; # replace NULL with a proper value
+#my $search_memes_min_rating = undef; # replace NULL with a proper value
+#my $search_memes_offset = undef; # replace NULL with a proper value
+#my $search_memes_result = $api->search_memes(keywords => $search_memes_keywords, keywords_in_image => $search_memes_keywords_in_image, media_type => $search_memes_media_type, number => $search_memes_number, min_rating => $search_memes_min_rating, offset => $search_memes_offset);
 
 #
 # upvote_meme test
 #
-{
-    my $id = undef; # replace NULL with a proper value
-    my $result = $api->upvote_meme(id => $id);
-}
+# uncomment below and update the test
+#my $upvote_meme_id = undef; # replace NULL with a proper value
+#my $upvote_meme_result = $api->upvote_meme(id => $upvote_meme_id);
 
-
-1;

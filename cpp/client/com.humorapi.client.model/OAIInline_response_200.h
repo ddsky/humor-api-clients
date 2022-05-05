@@ -21,44 +21,44 @@
 
 #include <QJsonObject>
 
-
 #include "com.humorapi.client.model\OAIObject.h"
 #include <QList>
+#include <QSet>
 
-#include "OAIObject.h"
 #include "OAIEnum.h"
+#include "OAIObject.h"
 
 namespace OpenAPI {
 
-class OAIInline_response_200: public OAIObject {
+class OAIInline_response_200 : public OAIObject {
 public:
     OAIInline_response_200();
     OAIInline_response_200(QString json);
     ~OAIInline_response_200() override;
 
-    QString asJson () const override;
+    QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    
-    QList<OAIObject> getJokes() const;
-    void setJokes(const QList<OAIObject> &jokes);
+    QSet<OAIObject> getJokes() const;
+    void setJokes(const QSet<OAIObject> &jokes);
+    bool is_jokes_Set() const;
+    bool is_jokes_Valid() const;
 
-    
-    
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
-    void init();
-    
-    QList<OAIObject> jokes;
+    void initializeModel();
+
+    QSet<OAIObject> jokes;
     bool m_jokes_isSet;
     bool m_jokes_isValid;
-    
-    };
+};
 
-}
+} // namespace OpenAPI
+
+Q_DECLARE_METATYPE(OpenAPI::OAIInline_response_200)
 
 #endif // OAIInline_response_200_H

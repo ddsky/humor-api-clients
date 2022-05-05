@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**kotlin.Array&lt;kotlin.Any&gt;**](kotlin.Any.md) |  | 
+**images** | [**kotlin.collections.Set&lt;kotlin.Any&gt;**](kotlin.Any.md) |  | 
 
 
 

@@ -22,7 +22,7 @@ Downvote a Meme
 
 Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::MemesApi;
@@ -36,7 +36,7 @@ my $api_instance = WWW::OpenAPIClient::MemesApi->new(
 
 my $id = 1; # int | The object's id.
 
-eval { 
+eval {
     my $result = $api_instance->downvote_meme(id => $id);
     print Dumper($result);
 };
@@ -73,7 +73,7 @@ Random Meme
 
 Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::MemesApi;
@@ -91,7 +91,7 @@ my $media_type = image; # string | The type of the content. Can be either 'image
 my $number = 3; # int | The number of results to retrieve between 1 and 10.
 my $min_rating = 7; # int | The minimum rating between 0 and 10 the result should have.
 
-eval { 
+eval {
     my $result = $api_instance->random_meme(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating);
     print Dumper($result);
 };
@@ -132,7 +132,7 @@ Search Memes
 
 Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::MemesApi;
@@ -151,7 +151,7 @@ my $number = 3; # int | The number of results to retrieve between 1 and 10.
 my $min_rating = 7; # int | The minimum rating between 0 and 10 the result should have.
 my $offset = 3.4; # double | The number of results to skip.
 
-eval { 
+eval {
     my $result = $api_instance->search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating, offset => $offset);
     print Dumper($result);
 };
@@ -193,7 +193,7 @@ Upvote a Meme
 
 Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::MemesApi;
@@ -207,7 +207,7 @@ my $api_instance = WWW::OpenAPIClient::MemesApi->new(
 
 my $id = 1; # int | The object's id.
 
-eval { 
+eval {
     my $result = $api_instance->upvote_meme(id => $id);
     print Dumper($result);
 };

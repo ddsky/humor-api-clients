@@ -22,7 +22,7 @@ package WWW::OpenAPIClient::OtherApi;
 require 5.6.0;
 use strict;
 use warnings;
-use utf8; 
+use utf8;
 use Exporter;
 use Carp qw( croak );
 use Log::Any qw($log);
@@ -52,11 +52,11 @@ sub new {
 # generate_nonsense_word
 #
 # Generate Nonsense Word
-# 
+#
 {
     my $params = {
     };
-    __PACKAGE__->method_documentation->{ 'generate_nonsense_word' } = { 
+    __PACKAGE__->method_documentation->{ 'generate_nonsense_word' } = {
         summary => 'Generate Nonsense Word',
         params => $params,
         returns => 'InlineResponse2007',
@@ -101,7 +101,7 @@ sub generate_nonsense_word {
 # insult
 #
 # Insult
-# 
+#
 # @param string $name The person&#39;s name. (required)
 # @param string $reason The reason for the praise/insult. (required)
 {
@@ -117,7 +117,7 @@ sub generate_nonsense_word {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'insult' } = { 
+    __PACKAGE__->method_documentation->{ 'insult' } = {
         summary => 'Insult',
         params => $params,
         returns => 'InlineResponse2005',
@@ -182,7 +182,7 @@ sub insult {
 # praise
 #
 # Praise
-# 
+#
 # @param string $name The person&#39;s name. (required)
 # @param string $reason The reason for the praise/insult. (required)
 {
@@ -198,7 +198,7 @@ sub insult {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'praise' } = { 
+    __PACKAGE__->method_documentation->{ 'praise' } = {
         summary => 'Praise',
         params => $params,
         returns => 'InlineResponse2005',
@@ -263,7 +263,7 @@ sub praise {
 # rate_word
 #
 # Rate Word
-# 
+#
 # @param string $word The word to be rated. (required)
 {
     my $params = {
@@ -273,7 +273,7 @@ sub praise {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'rate_word' } = { 
+    __PACKAGE__->method_documentation->{ 'rate_word' } = {
         summary => 'Rate Word',
         params => $params,
         returns => 'InlineResponse2006',
@@ -328,7 +328,7 @@ sub rate_word {
 # search_gifs
 #
 # Search Gifs
-# 
+#
 # @param string $query A search query. (required)
 # @param int $number The number of results to retrieve between 1 and 10. (optional)
 {
@@ -344,7 +344,7 @@ sub rate_word {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'search_gifs' } = { 
+    __PACKAGE__->method_documentation->{ 'search_gifs' } = {
         summary => 'Search Gifs',
         params => $params,
         returns => 'InlineResponse2001',

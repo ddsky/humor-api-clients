@@ -22,7 +22,7 @@ Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word 
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = OtherApi()
@@ -47,7 +47,10 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -65,7 +68,7 @@ Insult somebody for doing something. See https://humorapi.com/docs/#Insult for m
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = OtherApi()
@@ -96,7 +99,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -114,7 +120,7 @@ Praise somebody for doing something. See https://humorapi.com/docs/#Praise for m
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = OtherApi()
@@ -145,7 +151,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -163,7 +172,7 @@ Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = OtherApi()
@@ -192,7 +201,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -210,7 +222,7 @@ Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = OtherApi()
@@ -241,7 +253,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 

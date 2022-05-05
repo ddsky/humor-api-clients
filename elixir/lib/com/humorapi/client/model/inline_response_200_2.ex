@@ -13,7 +13,7 @@ defmodule com.humorapi.client.Model.InlineResponse2002 do
   ]
 
   @type t :: %__MODULE__{
-    :"memes" => [Map]
+    :"memes" => [map()]
   }
 end
 

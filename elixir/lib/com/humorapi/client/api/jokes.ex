@@ -22,18 +22,19 @@ defmodule com.humorapi.client.Api.Jokes do
     - :body (String.t): Post the joke as plain text.
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2009{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2009.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec analyze_joke(Tesla.Env.client, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2009.t} | {:error, Tesla.Env.t}
   def analyze_joke(connection, opts \\ []) do
     optional_params = %{
-      :"body" => :body
+      :body => :body
     }
     %{}
     |> method(:post)
     |> url("/jokes/analyze")
     |> add_optional_params(optional_params, opts)
+    |> ensure_body()
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> evaluate_response([
@@ -52,14 +53,15 @@ defmodule com.humorapi.client.Api.Jokes do
   - opts (KeywordList): [optional] Optional parameters
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2008{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2008.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec downvote_joke(Tesla.Env.client, integer(), keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2008.t} | {:error, Tesla.Env.t}
   def downvote_joke(connection, id, _opts \\ []) do
     %{}
     |> method(:post)
     |> url("/jokes/#{id}/downvote")
+    |> ensure_body()
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> evaluate_response([
@@ -82,8 +84,8 @@ defmodule com.humorapi.client.Api.Jokes do
     - :max_length (integer()): The maximum number of letters in the joke.
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2004{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2004.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec random_joke(Tesla.Env.client, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2004.t} | {:error, Tesla.Env.t}
   def random_joke(connection, opts \\ []) do
@@ -122,8 +124,8 @@ defmodule com.humorapi.client.Api.Jokes do
     - :offset (float()): The number of results to skip.
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse200{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse200.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec search_jokes(Tesla.Env.client, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse200.t} | {:error, Tesla.Env.t}
   def search_jokes(connection, opts \\ []) do
@@ -158,18 +160,19 @@ defmodule com.humorapi.client.Api.Jokes do
     - :body (String.t): Post the joke as plain text.
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2008{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2008.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec submit_joke(Tesla.Env.client, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2008.t} | {:error, Tesla.Env.t}
   def submit_joke(connection, opts \\ []) do
     optional_params = %{
-      :"body" => :body
+      :body => :body
     }
     %{}
     |> method(:post)
     |> url("/jokes")
     |> add_optional_params(optional_params, opts)
+    |> ensure_body()
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> evaluate_response([
@@ -188,14 +191,15 @@ defmodule com.humorapi.client.Api.Jokes do
   - opts (KeywordList): [optional] Optional parameters
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2008{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2008.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec upvote_joke(Tesla.Env.client, integer(), keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2008.t} | {:error, Tesla.Env.t}
   def upvote_joke(connection, id, _opts \\ []) do
     %{}
     |> method(:post)
     |> url("/jokes/#{id}/upvote")
+    |> ensure_body()
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> evaluate_response([

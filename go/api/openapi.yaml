@@ -152,7 +152,7 @@ paths:
           type: number
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -195,7 +195,7 @@ paths:
           type: integer
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -296,7 +296,7 @@ paths:
           type: number
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -387,7 +387,7 @@ paths:
           type: integer
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -516,7 +516,7 @@ paths:
           type: integer
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -556,7 +556,7 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -595,7 +595,7 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -625,7 +625,7 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -646,7 +646,7 @@ paths:
       operationId: generate-nonsense-word
       parameters: []
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -678,7 +678,7 @@ paths:
                 example-1: asdf
         description: Post the joke as plain text.
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -709,7 +709,7 @@ paths:
                 example-1: abc
         description: Post the joke as plain text.
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -742,7 +742,7 @@ paths:
           type: integer
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -772,7 +772,7 @@ paths:
           type: integer
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -802,7 +802,7 @@ paths:
           type: integer
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -832,7 +832,7 @@ paths:
           type: integer
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               examples:
@@ -1068,6 +1068,12 @@ components:
           uniqueItems: true
       required:
       - jokes
+      type: object
+      x-examples:
+        example-1:
+          jokes:
+          - id: 1
+            joke: This is a joke
     inline_response_200_1:
       example:
         images:
@@ -1093,6 +1099,19 @@ components:
           uniqueItems: true
       required:
       - images
+      type: object
+      x-examples:
+        example-1:
+          images:
+          - url: https://media.tenor.com/images/f97a4505bb4f972cef00bc377aff7f4e/tenor.gif
+            width: 498
+            height: 364
+          - url: https://media.tenor.com/images/1d73fd5b39730fd356b482128eb3746a/tenor.gif
+            width: 498
+            height: 490
+          - url: https://media.tenor.com/images/6e45dbbc34d8427ffcc322024c73f8fc/tenor.gif
+            width: 498
+            height: 498
     inline_response_200_2:
       example:
         memes:
@@ -1119,6 +1138,19 @@ components:
           uniqueItems: true
       required:
       - memes
+      type: object
+      x-examples:
+        example-1:
+          memes:
+          - id: 6696
+            url: https://i.imgur.com/1rmAxUG.jpg
+            type: image/jpeg
+          - id: 6697
+            url: https://i.imgur.com/ELT8zMQ.jpg
+            type: image/jpeg
+          - id: 6698
+            url: https://i.imgur.com/8JTc5z3.jpg
+            type: image/jpeg
     inline_response_200_3:
       example:
         id: 0
@@ -1137,6 +1169,12 @@ components:
       - id
       - type
       - url
+      type: object
+      x-examples:
+        example-1:
+          id: 50561
+          url: https://preview.redd.it/hg0zn2mhjsh01.png?width=640&crop=smart&auto=webp&s=f19b0a87edfc6c71b35ec9aceb64799cd532ff59
+          type: image/png
     inline_response_200_4:
       example:
         id: 0
@@ -1150,6 +1188,11 @@ components:
       required:
       - id
       - joke
+      type: object
+      x-examples:
+        example-1:
+          id: 1
+          joke: this is a car joke
     inline_response_200_5:
       example:
         text: text
@@ -1159,6 +1202,10 @@ components:
           type: string
       required:
       - text
+      type: object
+      x-examples:
+        example-1:
+          text: Bravo Alex, you mastermind, you did it again.
     inline_response_200_6:
       example:
         rating: 0.8008281904610115
@@ -1167,6 +1214,10 @@ components:
           type: number
       required:
       - rating
+      type: object
+      x-examples:
+        example-1:
+          rating: 0.57
     inline_response_200_7:
       example:
         rating: 0.8008281904610115
@@ -1180,6 +1231,11 @@ components:
       required:
       - rating
       - word
+      type: object
+      x-examples:
+        example-1:
+          word: caboo
+          rating: 0.41
     inline_response_200_8:
       example:
         message: message
@@ -1188,6 +1244,10 @@ components:
           type: string
       required:
       - message
+      type: object
+      x-examples:
+        example-1:
+          message: ""
     inline_response_200_9:
       example:
         joke: joke
@@ -1205,6 +1265,12 @@ components:
       required:
       - joke
       - tags
+      type: object
+      x-examples:
+        example-1:
+          joke: What do you call a deer without eyes? No ideer.
+          tags:
+          - ANIMAL
   securitySchemes:
     apiKey:
       in: query

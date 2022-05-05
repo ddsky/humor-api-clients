@@ -10,96 +10,92 @@
  * Do not edit the class manually.
  */
 
-
 #include "OAIInline_response_200_5.h"
 
-#include "OAIHelpers.h"
-
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QObject>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QObject>
+
+#include "OAIHelpers.h"
 
 namespace OpenAPI {
 
 OAIInline_response_200_5::OAIInline_response_200_5(QString json) {
-    this->init();
+    this->initializeModel();
     this->fromJson(json);
 }
 
 OAIInline_response_200_5::OAIInline_response_200_5() {
-    this->init();
+    this->initializeModel();
 }
 
-OAIInline_response_200_5::~OAIInline_response_200_5() {
+OAIInline_response_200_5::~OAIInline_response_200_5() {}
 
-}
+void OAIInline_response_200_5::initializeModel() {
 
-void
-OAIInline_response_200_5::init() {
-    
     m_text_isSet = false;
     m_text_isValid = false;
-    }
+}
 
-void
-OAIInline_response_200_5::fromJson(QString jsonString) {
-    QByteArray array (jsonString.toStdString().c_str());
+void OAIInline_response_200_5::fromJson(QString jsonString) {
+    QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();
     this->fromJsonObject(jsonObject);
 }
 
-void
-OAIInline_response_200_5::fromJsonObject(QJsonObject json) {
-    
+void OAIInline_response_200_5::fromJsonObject(QJsonObject json) {
+
     m_text_isValid = ::OpenAPI::fromJsonValue(text, json[QString("text")]);
-    
-    
+    m_text_isSet = !json[QString("text")].isNull() && m_text_isValid;
 }
 
-QString
-OAIInline_response_200_5::asJson () const {
+QString OAIInline_response_200_5::asJson() const {
     QJsonObject obj = this->asJsonObject();
     QJsonDocument doc(obj);
     QByteArray bytes = doc.toJson();
     return QString(bytes);
 }
 
-QJsonObject
-OAIInline_response_200_5::asJsonObject() const {
+QJsonObject OAIInline_response_200_5::asJsonObject() const {
     QJsonObject obj;
-	if(m_text_isSet){
+    if (m_text_isSet) {
         obj.insert(QString("text"), ::OpenAPI::toJsonValue(text));
     }
     return obj;
 }
 
-
-QString
-OAIInline_response_200_5::getText() const {
+QString OAIInline_response_200_5::getText() const {
     return text;
 }
-void
-OAIInline_response_200_5::setText(const QString &text) {
+void OAIInline_response_200_5::setText(const QString &text) {
     this->text = text;
     this->m_text_isSet = true;
 }
 
-bool
-OAIInline_response_200_5::isSet() const {
+bool OAIInline_response_200_5::is_text_Set() const{
+    return m_text_isSet;
+}
+
+bool OAIInline_response_200_5::is_text_Valid() const{
+    return m_text_isValid;
+}
+
+bool OAIInline_response_200_5::isSet() const {
     bool isObjectUpdated = false;
-    do{ 
-        if(m_text_isSet){ isObjectUpdated = true; break;}
-    }while(false);
+    do {
+        if (m_text_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+    } while (false);
     return isObjectUpdated;
 }
 
-bool
-OAIInline_response_200_5::isValid() const {
+bool OAIInline_response_200_5::isValid() const {
     // only required properties are required for the object to be considered valid
     return m_text_isValid && true;
 }
 
-}
-
+} // namespace OpenAPI

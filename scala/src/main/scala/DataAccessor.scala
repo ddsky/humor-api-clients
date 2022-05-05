@@ -1,4 +1,4 @@
-package humorapi
+package org.openapitools
 
 // TODO: properly handle custom imports
 import java.io._

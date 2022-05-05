@@ -9,10 +9,9 @@
  */
 
 
-#[allow(unused_imports)]
-use serde_json::Value;
 
-#[derive(Debug, Serialize, Deserialize)]
+
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineResponse2007 {
     #[serde(rename = "word")]
     pub word: String,
@@ -23,8 +22,10 @@ pub struct InlineResponse2007 {
 impl InlineResponse2007 {
     pub fn new(word: String, rating: f32) -> InlineResponse2007 {
         InlineResponse2007 {
-            word: word,
-            rating: rating,
+            word,
+            rating,
         }
     }
 }
+
+

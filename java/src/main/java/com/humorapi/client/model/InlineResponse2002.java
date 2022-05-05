@@ -23,19 +23,24 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * InlineResponse2002
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-16T19:38:20.770+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-05T21:05:51.248+02:00[Europe/Berlin]")
 public class InlineResponse2002 {
   public static final String SERIALIZED_NAME_MEMES = "memes";
   @SerializedName(SERIALIZED_NAME_MEMES)
-  private List<Object> memes = new ArrayList<>();
+  private Set<Object> memes = new LinkedHashSet<>();
 
-  public InlineResponse2002 memes(List<Object> memes) {
+  public InlineResponse2002() { 
+  }
+
+  public InlineResponse2002 memes(Set<Object> memes) {
+    
     this.memes = memes;
     return this;
   }
@@ -49,18 +54,21 @@ public class InlineResponse2002 {
    * Get memes
    * @return memes
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
-  public List<Object> getMemes() {
+
+  public Set<Object> getMemes() {
     return memes;
   }
 
-  public void setMemes(List<Object> memes) {
+
+  public void setMemes(Set<Object> memes) {
     this.memes = memes;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -76,7 +84,6 @@ public class InlineResponse2002 {
     return Objects.hash(memes);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -90,7 +97,7 @@ public class InlineResponse2002 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

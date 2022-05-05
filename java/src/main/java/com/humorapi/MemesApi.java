@@ -40,6 +40,8 @@ import java.util.Map;
 
 public class MemesApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public MemesApi() {
         this(Configuration.getDefaultApiClient());
@@ -57,15 +59,50 @@ public class MemesApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for downvoteMeme
      * @param id The object&#39;s id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful downvote </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call downvoteMemeCall(Integer id, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/memes/{id}/downvote"
@@ -74,7 +111,9 @@ public class MemesApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -87,10 +126,12 @@ public class MemesApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -113,6 +154,11 @@ public class MemesApi {
      * @param id The object&#39;s id. (required)
      * @return InlineResponse2008
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful downvote </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2008 downvoteMeme(Integer id) throws ApiException {
         ApiResponse<InlineResponse2008> localVarResp = downvoteMemeWithHttpInfo(id);
@@ -125,6 +171,11 @@ public class MemesApi {
      * @param id The object&#39;s id. (required)
      * @return ApiResponse&lt;InlineResponse2008&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful downvote </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2008> downvoteMemeWithHttpInfo(Integer id) throws ApiException {
         okhttp3.Call localVarCall = downvoteMemeValidateBeforeCall(id, null);
@@ -139,6 +190,11 @@ public class MemesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful downvote </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call downvoteMemeAsync(Integer id, final ApiCallback<InlineResponse2008> _callback) throws ApiException {
 
@@ -157,15 +213,38 @@ public class MemesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Random Meme Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call randomMemeCall(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/memes/random";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (keywords != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("keywords", keywords));
         }
@@ -186,8 +265,6 @@ public class MemesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("min-rating", minRating));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -200,10 +277,12 @@ public class MemesApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -225,6 +304,11 @@ public class MemesApi {
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
      * @return InlineResponse2003
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Random Meme Response </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2003 randomMeme(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating) throws ApiException {
         ApiResponse<InlineResponse2003> localVarResp = randomMemeWithHttpInfo(keywords, keywordsInImage, mediaType, number, minRating);
@@ -241,6 +325,11 @@ public class MemesApi {
      * @param minRating The minimum rating between 0 and 10 the result should have. (optional)
      * @return ApiResponse&lt;InlineResponse2003&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Random Meme Response </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2003> randomMemeWithHttpInfo(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating) throws ApiException {
         okhttp3.Call localVarCall = randomMemeValidateBeforeCall(keywords, keywordsInImage, mediaType, number, minRating, null);
@@ -259,6 +348,11 @@ public class MemesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Random Meme Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call randomMemeAsync(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, final ApiCallback<InlineResponse2003> _callback) throws ApiException {
 
@@ -278,15 +372,38 @@ public class MemesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Meme Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call searchMemesCall(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/memes/search";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (keywords != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("keywords", keywords));
         }
@@ -311,8 +428,6 @@ public class MemesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -325,10 +440,12 @@ public class MemesApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -351,6 +468,11 @@ public class MemesApi {
      * @param offset The number of results to skip. (optional)
      * @return InlineResponse2002
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Meme Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2002 searchMemes(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset) throws ApiException {
         ApiResponse<InlineResponse2002> localVarResp = searchMemesWithHttpInfo(keywords, keywordsInImage, mediaType, number, minRating, offset);
@@ -368,6 +490,11 @@ public class MemesApi {
      * @param offset The number of results to skip. (optional)
      * @return ApiResponse&lt;InlineResponse2002&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Meme Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2002> searchMemesWithHttpInfo(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset) throws ApiException {
         okhttp3.Call localVarCall = searchMemesValidateBeforeCall(keywords, keywordsInImage, mediaType, number, minRating, offset, null);
@@ -387,6 +514,11 @@ public class MemesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Meme Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call searchMemesAsync(String keywords, Boolean keywordsInImage, String mediaType, Integer number, Integer minRating, BigDecimal offset, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
 
@@ -401,9 +533,28 @@ public class MemesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful upvote </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call upvoteMemeCall(Integer id, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/memes/{id}/upvote"
@@ -412,7 +563,9 @@ public class MemesApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -425,10 +578,12 @@ public class MemesApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -451,6 +606,11 @@ public class MemesApi {
      * @param id The object&#39;s id. (required)
      * @return InlineResponse2008
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful upvote </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2008 upvoteMeme(Integer id) throws ApiException {
         ApiResponse<InlineResponse2008> localVarResp = upvoteMemeWithHttpInfo(id);
@@ -463,6 +623,11 @@ public class MemesApi {
      * @param id The object&#39;s id. (required)
      * @return ApiResponse&lt;InlineResponse2008&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful upvote </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2008> upvoteMemeWithHttpInfo(Integer id) throws ApiException {
         okhttp3.Call localVarCall = upvoteMemeValidateBeforeCall(id, null);
@@ -477,6 +642,11 @@ public class MemesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful upvote </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call upvoteMemeAsync(Integer id, final ApiCallback<InlineResponse2008> _callback) throws ApiException {
 

@@ -10,97 +10,92 @@
  * Do not edit the class manually.
  */
 
-
 #include "OAIInline_response_200_1.h"
 
-#include "OAIHelpers.h"
-
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QObject>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QObject>
+
+#include "OAIHelpers.h"
 
 namespace OpenAPI {
 
 OAIInline_response_200_1::OAIInline_response_200_1(QString json) {
-    this->init();
+    this->initializeModel();
     this->fromJson(json);
 }
 
 OAIInline_response_200_1::OAIInline_response_200_1() {
-    this->init();
+    this->initializeModel();
 }
 
-OAIInline_response_200_1::~OAIInline_response_200_1() {
+OAIInline_response_200_1::~OAIInline_response_200_1() {}
 
-}
+void OAIInline_response_200_1::initializeModel() {
 
-void
-OAIInline_response_200_1::init() {
-    
     m_images_isSet = false;
     m_images_isValid = false;
-    }
+}
 
-void
-OAIInline_response_200_1::fromJson(QString jsonString) {
-    QByteArray array (jsonString.toStdString().c_str());
+void OAIInline_response_200_1::fromJson(QString jsonString) {
+    QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();
     this->fromJsonObject(jsonObject);
 }
 
-void
-OAIInline_response_200_1::fromJsonObject(QJsonObject json) {
-    
-    
+void OAIInline_response_200_1::fromJsonObject(QJsonObject json) {
+
     m_images_isValid = ::OpenAPI::fromJsonValue(images, json[QString("images")]);
-    
+    m_images_isSet = !json[QString("images")].isNull() && m_images_isValid;
 }
 
-QString
-OAIInline_response_200_1::asJson () const {
+QString OAIInline_response_200_1::asJson() const {
     QJsonObject obj = this->asJsonObject();
     QJsonDocument doc(obj);
     QByteArray bytes = doc.toJson();
     return QString(bytes);
 }
 
-QJsonObject
-OAIInline_response_200_1::asJsonObject() const {
+QJsonObject OAIInline_response_200_1::asJsonObject() const {
     QJsonObject obj;
-	
-    if(images.size() > 0){
+    if (images.size() > 0) {
         obj.insert(QString("images"), ::OpenAPI::toJsonValue(images));
-    } 
+    }
     return obj;
 }
 
-
-QList<OAIObject>
-OAIInline_response_200_1::getImages() const {
+QSet<OAIObject> OAIInline_response_200_1::getImages() const {
     return images;
 }
-void
-OAIInline_response_200_1::setImages(const QList<OAIObject> &images) {
+void OAIInline_response_200_1::setImages(const QSet<OAIObject> &images) {
     this->images = images;
     this->m_images_isSet = true;
 }
 
-bool
-OAIInline_response_200_1::isSet() const {
+bool OAIInline_response_200_1::is_images_Set() const{
+    return m_images_isSet;
+}
+
+bool OAIInline_response_200_1::is_images_Valid() const{
+    return m_images_isValid;
+}
+
+bool OAIInline_response_200_1::isSet() const {
     bool isObjectUpdated = false;
-    do{ 
-        if(images.size() > 0){ isObjectUpdated = true; break;}
-    }while(false);
+    do {
+        if (images.size() > 0) {
+            isObjectUpdated = true;
+            break;
+        }
+    } while (false);
     return isObjectUpdated;
 }
 
-bool
-OAIInline_response_200_1::isValid() const {
+bool OAIInline_response_200_1::isValid() const {
     // only required properties are required for the object to be considered valid
     return m_images_isValid && true;
 }
 
-}
-
+} // namespace OpenAPI

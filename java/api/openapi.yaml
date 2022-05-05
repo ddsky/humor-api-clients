@@ -1,0 +1,1296 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: mail@humorapi.com
+    name: David
+    url: https://humorapi.com
+  description: Awesome Humor API.
+  termsOfService: https://humorapi.com/terms
+  title: Humor API
+  version: "1.0"
+servers:
+- url: https://api.humorapi.com
+security:
+- apiKey: []
+tags:
+- name: jokes
+- name: memes
+- name: other
+paths:
+  /jokes/search:
+    get:
+      description: |-
+        Search for jokes.
+        See https://humorapi.com/docs/#Search-Jokes for more.
+      operationId: search-jokes
+      parameters:
+      - description: A comma separated list of keywords.
+        explode: true
+        in: query
+        name: keywords
+        required: false
+        schema:
+          example: rocket
+          type: string
+        style: form
+      - description: A comma separated list of tags that the joke must have.
+        explode: true
+        in: query
+        name: include-tags
+        required: false
+        schema:
+          enum:
+          - clean
+          - yo_mama
+          - chuck_norris
+          - nsfw
+          - racist
+          - sexist
+          - sexual
+          - political
+          - religious
+          - knock_knock
+          - christmas
+          - nerdy
+          - analogy
+          - one_liner
+          - dark
+          - jewish
+          - school
+          - sport
+          - law
+          - kids
+          - animal
+          - relationship
+          - insults
+          - blondes
+          - deep_thoughts
+          - food
+          - holiday
+          example: one_liner
+          type: string
+        style: form
+      - description: A comma separated list of tags that the joke must not have.
+        explode: true
+        in: query
+        name: exclude-tags
+        required: false
+        schema:
+          enum:
+          - clean
+          - yo_mama
+          - chuck_norris
+          - nsfw
+          - racist
+          - sexist
+          - sexual
+          - political
+          - religious
+          - knock_knock
+          - christmas
+          - nerdy
+          - analogy
+          - one_liner
+          - dark
+          - jewish
+          - school
+          - sport
+          - law
+          - kids
+          - animal
+          - relationship
+          - insults
+          - blondes
+          - deep_thoughts
+          - food
+          - holiday
+          example: nsfw
+          type: string
+        style: form
+      - description: The number of results to retrieve between 1 and 10.
+        explode: true
+        in: query
+        name: number
+        required: false
+        schema:
+          example: 3
+          maximum: 10
+          minimum: 1
+          type: integer
+        style: form
+      - description: The minimum rating between 0 and 10 the result should have.
+        explode: true
+        in: query
+        name: min-rating
+        required: false
+        schema:
+          example: 7
+          maximum: 10
+          minLength: 0
+          minimum: 0
+          type: integer
+        style: form
+      - description: The maximum number of letters in the joke.
+        explode: true
+        in: query
+        name: max-length
+        required: false
+        schema:
+          example: 200
+          maximum: 9999
+          minimum: 10
+          type: integer
+        style: form
+      - description: The number of results to skip.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          maximum: 1000
+          minimum: 0
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Jokes-with-Cars:
+                  value:
+                    jokes:
+                    - id: 1
+                      joke: this is a car joke
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: Joke Search Response
+      summary: Search Jokes
+      tags:
+      - jokes
+      x-accepts: application/json
+  /gif/search:
+    get:
+      description: |-
+        Search for gifs.
+        See https://humorapi.com/docs/#Search-Gifs for more.
+      operationId: search-gifs
+      parameters:
+      - description: A search query.
+        explode: true
+        in: query
+        name: query
+        required: true
+        schema:
+          example: cat
+          type: string
+        style: form
+      - description: The number of results to retrieve between 1 and 10.
+        explode: true
+        in: query
+        name: number
+        required: false
+        schema:
+          example: 3
+          maximum: 10
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Gifs-with-Dogs:
+                  value:
+                    images:
+                    - url: https://media.tenor.com/images/f97a4505bb4f972cef00bc377aff7f4e/tenor.gif
+                      width: 498
+                      height: 364
+                    - url: https://media.tenor.com/images/1d73fd5b39730fd356b482128eb3746a/tenor.gif
+                      width: 498
+                      height: 490
+                    - url: https://media.tenor.com/images/6e45dbbc34d8427ffcc322024c73f8fc/tenor.gif
+                      width: 498
+                      height: 498
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+          description: Gif Search Response
+      summary: Search Gifs
+      tags:
+      - other
+      x-accepts: application/json
+  /memes/search:
+    get:
+      description: |-
+        Search for memes.
+        See https://humorapi.com/docs/#Search-Memes for more.
+      operationId: search-memes
+      parameters:
+      - description: A comma separated list of keywords.
+        explode: true
+        in: query
+        name: keywords
+        required: false
+        schema:
+          example: rocket
+          type: string
+        style: form
+      - description: Whether the keywords should be found in the meme's image.
+        explode: true
+        in: query
+        name: keywords-in-image
+        required: false
+        schema:
+          enum:
+          - true
+          - false
+          example: false
+          type: boolean
+        style: form
+      - description: The type of the content. Can be either 'image' or 'video' or
+          specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
+        explode: true
+        in: query
+        name: media-type
+        required: false
+        schema:
+          enum:
+          - image
+          - video
+          - jpg
+          - gif
+          - png
+          - mp4
+          example: image
+          type: string
+        style: form
+      - description: The number of results to retrieve between 1 and 10.
+        explode: true
+        in: query
+        name: number
+        required: false
+        schema:
+          example: 3
+          maximum: 10
+          minimum: 1
+          type: integer
+        style: form
+      - description: The minimum rating between 0 and 10 the result should have.
+        explode: true
+        in: query
+        name: min-rating
+        required: false
+        schema:
+          example: 7
+          maximum: 10
+          minLength: 0
+          minimum: 0
+          type: integer
+        style: form
+      - description: The number of results to skip.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          maximum: 1000
+          minimum: 0
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Memes-about-Rockets:
+                  value:
+                    memes:
+                    - id: 6696
+                      url: https://i.imgur.com/1rmAxUG.jpg
+                      type: image/jpeg
+                    - id: 6697
+                      url: https://i.imgur.com/ELT8zMQ.jpg
+                      type: image/jpeg
+                    - id: 6698
+                      url: https://i.imgur.com/8JTc5z3.jpg
+                      type: image/jpeg
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+          description: Meme Search Response
+      summary: Search Memes
+      tags:
+      - memes
+      x-accepts: application/json
+  /memes/random:
+    get:
+      description: |-
+        Get a random meme.
+        See https://humorapi.com/docs/#Random-Meme for more.
+      operationId: random-meme
+      parameters:
+      - description: A comma separated list of keywords.
+        explode: true
+        in: query
+        name: keywords
+        required: false
+        schema:
+          example: rocket
+          type: string
+        style: form
+      - description: Whether the keywords should be found in the meme's image.
+        explode: true
+        in: query
+        name: keywords-in-image
+        required: false
+        schema:
+          enum:
+          - true
+          - false
+          example: false
+          type: boolean
+        style: form
+      - description: The type of the content. Can be either 'image' or 'video' or
+          specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
+        explode: true
+        in: query
+        name: media-type
+        required: false
+        schema:
+          enum:
+          - image
+          - video
+          - jpg
+          - gif
+          - png
+          - mp4
+          example: image
+          type: string
+        style: form
+      - description: The number of results to retrieve between 1 and 10.
+        explode: true
+        in: query
+        name: number
+        required: false
+        schema:
+          example: 3
+          maximum: 10
+          minimum: 1
+          type: integer
+        style: form
+      - description: The minimum rating between 0 and 10 the result should have.
+        explode: true
+        in: query
+        name: min-rating
+        required: false
+        schema:
+          example: 7
+          maximum: 10
+          minLength: 0
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Random-Meme:
+                  value:
+                    id: 50561
+                    url: https://preview.redd.it/hg0zn2mhjsh01.png?width=640&crop=smart&auto=webp&s=f19b0a87edfc6c71b35ec9aceb64799cd532ff59
+                    type: image/png
+              schema:
+                $ref: '#/components/schemas/inline_response_200_3'
+          description: Random Meme Response
+      summary: Random Meme
+      tags:
+      - memes
+      x-accepts: application/json
+  /jokes/random:
+    get:
+      description: |-
+        Get a random joke.
+        See https://humorapi.com/docs/#Random-Joke for more.
+      operationId: random-joke
+      parameters:
+      - description: A comma separated list of keywords.
+        explode: true
+        in: query
+        name: keywords
+        required: false
+        schema:
+          example: rocket
+          type: string
+        style: form
+      - description: A comma separated list of tags that the joke must have.
+        explode: true
+        in: query
+        name: include-tags
+        required: false
+        schema:
+          enum:
+          - clean
+          - yo_mama
+          - chuck_norris
+          - nsfw
+          - racist
+          - sexist
+          - sexual
+          - political
+          - religious
+          - knock_knock
+          - christmas
+          - nerdy
+          - analogy
+          - one_liner
+          - dark
+          - jewish
+          - school
+          - sport
+          - law
+          - kids
+          - animal
+          - relationship
+          - insults
+          - blondes
+          - deep_thoughts
+          - food
+          - holiday
+          example: one_liner
+          type: string
+        style: form
+      - description: A comma separated list of tags that the joke must not have.
+        explode: true
+        in: query
+        name: exclude-tags
+        required: false
+        schema:
+          enum:
+          - clean
+          - yo_mama
+          - chuck_norris
+          - nsfw
+          - racist
+          - sexist
+          - sexual
+          - political
+          - religious
+          - knock_knock
+          - christmas
+          - nerdy
+          - analogy
+          - one_liner
+          - dark
+          - jewish
+          - school
+          - sport
+          - law
+          - kids
+          - animal
+          - relationship
+          - insults
+          - blondes
+          - deep_thoughts
+          - food
+          - holiday
+          example: nsfw
+          type: string
+        style: form
+      - description: The minimum rating between 0 and 10 the result should have.
+        explode: true
+        in: query
+        name: min-rating
+        required: false
+        schema:
+          example: 7
+          maximum: 10
+          minLength: 0
+          minimum: 0
+          type: integer
+        style: form
+      - description: The maximum number of letters in the joke.
+        explode: true
+        in: query
+        name: max-length
+        required: false
+        schema:
+          example: 200
+          maximum: 9999
+          minimum: 10
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Random-Car-Joke:
+                  value:
+                    id: 1
+                    joke: this is a car joke
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+          description: Random Joke Response
+      summary: Random Joke
+      tags:
+      - jokes
+      x-accepts: application/json
+  /praise:
+    get:
+      description: |-
+        Praise somebody for doing something.
+        See https://humorapi.com/docs/#Praise for more.
+      operationId: praise
+      parameters:
+      - description: The person's name.
+        explode: true
+        in: query
+        name: name
+        required: true
+        schema:
+          example: Alex
+          type: string
+        style: form
+      - description: The reason for the praise/insult.
+        explode: true
+        in: query
+        name: reason
+        required: true
+        schema:
+          example: you did it again
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Praise:
+                  value:
+                    text: Bravo Alex, you mastermind, you did it again.
+              schema:
+                $ref: '#/components/schemas/inline_response_200_5'
+          description: Praise Response
+      summary: Praise
+      tags:
+      - other
+      x-accepts: application/json
+  /insult:
+    get:
+      description: |-
+        Insult somebody for doing something.
+        See https://humorapi.com/docs/#Insult for more.
+      operationId: insult
+      parameters:
+      - description: The person's name.
+        explode: true
+        in: query
+        name: name
+        required: true
+        schema:
+          example: Alex
+          type: string
+        style: form
+      - description: The reason for the praise/insult.
+        explode: true
+        in: query
+        name: reason
+        required: true
+        schema:
+          example: you did it again
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Insult:
+                  value:
+                    text: Holy moley, you dropped the ball Alex, you dingbat.
+              schema:
+                $ref: '#/components/schemas/inline_response_200_5'
+          description: Insult Response
+      summary: Insult
+      tags:
+      - other
+      x-accepts: application/json
+  /words/rate:
+    get:
+      description: |-
+        Rate the funniness of a word.
+        See https://humorapi.com/docs/#Rate-Word for more.
+      operationId: rate-word
+      parameters:
+      - description: The word to be rated.
+        explode: true
+        in: query
+        name: word
+        required: true
+        schema:
+          example: cookie
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Word-Funniness-Rating:
+                  value:
+                    rating: 0.57
+              schema:
+                $ref: '#/components/schemas/inline_response_200_6'
+          description: Word Rating Response
+      summary: Rate Word
+      tags:
+      - other
+      x-accepts: application/json
+  /words/nonsense/random:
+    get:
+      description: |-
+        Generate a nonsense word.
+        See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
+      operationId: generate-nonsense-word
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Generated-Nonsense-Word:
+                  value:
+                    word: caboo
+                    rating: 0.41
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+          description: Generate Nonsense Word Response
+      summary: Generate Nonsense Word
+      tags:
+      - other
+      x-accepts: application/json
+  /jokes:
+    post:
+      description: |-
+        Submit a joke.
+        See https://humorapi.com/docs/#Submit-Joke for more.
+      operationId: submit-joke
+      requestBody:
+        content:
+          text/plain:
+            examples:
+              Joke-Request-Body:
+                $ref: '#/components/examples/Plain-Joke'
+            schema:
+              type: string
+              x-examples:
+                example-1: asdf
+        description: Post the joke as plain text.
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Successful-Joke-Submission:
+                  value:
+                    message: Thanks for submitting the joke.
+              schema:
+                $ref: '#/components/schemas/inline_response_200_8'
+          description: Successful submission.
+      summary: Submit Joke
+      tags:
+      - jokes
+      x-contentType: text/plain
+      x-accepts: application/json
+  /jokes/analyze:
+    post:
+      description: |-
+        Analyze a joke.
+        See https://humorapi.com/docs/#Analyze-Joke for more.
+      operationId: analyze-joke
+      requestBody:
+        content:
+          text/plain:
+            examples:
+              Joke-Request-Body:
+                $ref: '#/components/examples/Plain-Joke'
+            schema:
+              type: string
+              x-examples:
+                example-1: abc
+        description: Post the joke as plain text.
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Successful-Joke-Analysis:
+                  value:
+                    joke: What do you call a deer without eyes? No ideer.
+                    tags:
+                    - ANIMAL
+              schema:
+                $ref: '#/components/schemas/inline_response_200_9'
+          description: Successful analysis
+      summary: Analyze Joke
+      tags:
+      - jokes
+      x-contentType: text/plain
+      x-accepts: application/json
+  /jokes/{id}/upvote:
+    post:
+      description: |-
+        Upvote a joke.
+        See https://humorapi.com/docs/#Upvote-Joke for more.
+      operationId: upvote-joke
+      parameters:
+      - description: The object's id.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 1
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Successful-Vote:
+                  $ref: '#/components/examples/Successful-Vote'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_8'
+          description: Successful upvote
+      summary: Upvote a Joke
+      tags:
+      - jokes
+      x-accepts: application/json
+  /memes/{id}/upvote:
+    post:
+      description: |-
+        Upvote a meme.
+        See https://humorapi.com/docs/#Upvote-Meme for more.
+      operationId: upvote-meme
+      parameters:
+      - description: The object's id.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 1
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Successful-Vote:
+                  $ref: '#/components/examples/Successful-Vote'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_8'
+          description: Successful upvote
+      summary: Upvote a Meme
+      tags:
+      - memes
+      x-accepts: application/json
+  /jokes/{id}/downvote:
+    post:
+      description: |-
+        Downvote a joke.
+        See https://humorapi.com/docs/#Downvote-Joke for more.
+      operationId: downvote-joke
+      parameters:
+      - description: The object's id.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 1
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Successful-Vote:
+                  $ref: '#/components/examples/Successful-Vote'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_8'
+          description: Successful downvote
+      summary: Downvote a Joke
+      tags:
+      - jokes
+      x-accepts: application/json
+  /memes/{id}/downvote:
+    post:
+      description: |-
+        Downvote a meme.
+        See https://humorapi.com/docs/#Downvote-Meme for more.
+      operationId: downvote-meme
+      parameters:
+      - description: The object's id.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 1
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Successful-Vote:
+                  $ref: '#/components/examples/Successful-Vote'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_8'
+          description: Successful downvote
+      summary: Downvote a Meme
+      tags:
+      - memes
+      x-accepts: application/json
+components:
+  examples:
+    Successful-Vote:
+      value:
+        message: Thanks for submitting an upvote.
+    Plain-Joke:
+      value: What do you call a deer without eyes? No ideer.
+  parameters:
+    keywords:
+      description: A comma separated list of keywords.
+      explode: true
+      in: query
+      name: keywords
+      required: false
+      schema:
+        example: rocket
+        type: string
+      style: form
+    id:
+      description: The object's id.
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        example: 1
+        minimum: 1
+        type: integer
+      style: simple
+    include-tags:
+      description: A comma separated list of tags that the joke must have.
+      explode: true
+      in: query
+      name: include-tags
+      required: false
+      schema:
+        enum:
+        - clean
+        - yo_mama
+        - chuck_norris
+        - nsfw
+        - racist
+        - sexist
+        - sexual
+        - political
+        - religious
+        - knock_knock
+        - christmas
+        - nerdy
+        - analogy
+        - one_liner
+        - dark
+        - jewish
+        - school
+        - sport
+        - law
+        - kids
+        - animal
+        - relationship
+        - insults
+        - blondes
+        - deep_thoughts
+        - food
+        - holiday
+        example: one_liner
+        type: string
+      style: form
+    exclude-tags:
+      description: A comma separated list of tags that the joke must not have.
+      explode: true
+      in: query
+      name: exclude-tags
+      required: false
+      schema:
+        enum:
+        - clean
+        - yo_mama
+        - chuck_norris
+        - nsfw
+        - racist
+        - sexist
+        - sexual
+        - political
+        - religious
+        - knock_knock
+        - christmas
+        - nerdy
+        - analogy
+        - one_liner
+        - dark
+        - jewish
+        - school
+        - sport
+        - law
+        - kids
+        - animal
+        - relationship
+        - insults
+        - blondes
+        - deep_thoughts
+        - food
+        - holiday
+        example: nsfw
+        type: string
+      style: form
+    number:
+      description: The number of results to retrieve between 1 and 10.
+      explode: true
+      in: query
+      name: number
+      required: false
+      schema:
+        example: 3
+        maximum: 10
+        minimum: 1
+        type: integer
+      style: form
+    min-rating:
+      description: The minimum rating between 0 and 10 the result should have.
+      explode: true
+      in: query
+      name: min-rating
+      required: false
+      schema:
+        example: 7
+        maximum: 10
+        minLength: 0
+        minimum: 0
+        type: integer
+      style: form
+    max-length:
+      description: The maximum number of letters in the joke.
+      explode: true
+      in: query
+      name: max-length
+      required: false
+      schema:
+        example: 200
+        maximum: 9999
+        minimum: 10
+        type: integer
+      style: form
+    media-type:
+      description: The type of the content. Can be either 'image' or 'video' or specific
+        formats such as 'jpg', 'png', 'gif', or 'mp4'.
+      explode: true
+      in: query
+      name: media-type
+      required: false
+      schema:
+        enum:
+        - image
+        - video
+        - jpg
+        - gif
+        - png
+        - mp4
+        example: image
+        type: string
+      style: form
+    name:
+      description: The person's name.
+      explode: true
+      in: query
+      name: name
+      required: true
+      schema:
+        example: Alex
+        type: string
+      style: form
+    reason:
+      description: The reason for the praise/insult.
+      explode: true
+      in: query
+      name: reason
+      required: true
+      schema:
+        example: you did it again
+        type: string
+      style: form
+    query:
+      description: A search query.
+      explode: true
+      in: query
+      name: query
+      required: true
+      schema:
+        example: cat
+        type: string
+      style: form
+    offset:
+      description: The number of results to skip.
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        maximum: 1000
+        minimum: 0
+        type: number
+      style: form
+  schemas:
+    inline_response_200:
+      example:
+        jokes:
+        - '{}'
+        - '{}'
+      properties:
+        jokes:
+          items:
+            properties:
+              id:
+                type: integer
+              joke:
+                minLength: 1
+                type: string
+            required:
+            - id
+            - joke
+          minItems: 1
+          type: array
+          uniqueItems: true
+      required:
+      - jokes
+      type: object
+      x-examples:
+        example-1:
+          jokes:
+          - id: 1
+            joke: This is a joke
+    inline_response_200_1:
+      example:
+        images:
+        - '{}'
+        - '{}'
+      properties:
+        images:
+          items:
+            properties:
+              url:
+                minLength: 1
+                type: string
+              width:
+                type: integer
+              height:
+                type: integer
+            required:
+            - height
+            - url
+            - width
+          minItems: 1
+          type: array
+          uniqueItems: true
+      required:
+      - images
+      type: object
+      x-examples:
+        example-1:
+          images:
+          - url: https://media.tenor.com/images/f97a4505bb4f972cef00bc377aff7f4e/tenor.gif
+            width: 498
+            height: 364
+          - url: https://media.tenor.com/images/1d73fd5b39730fd356b482128eb3746a/tenor.gif
+            width: 498
+            height: 490
+          - url: https://media.tenor.com/images/6e45dbbc34d8427ffcc322024c73f8fc/tenor.gif
+            width: 498
+            height: 498
+    inline_response_200_2:
+      example:
+        memes:
+        - '{}'
+        - '{}'
+      properties:
+        memes:
+          items:
+            properties:
+              id:
+                type: integer
+              url:
+                minLength: 1
+                type: string
+              type:
+                minLength: 1
+                type: string
+            required:
+            - id
+            - type
+            - url
+          minItems: 1
+          type: array
+          uniqueItems: true
+      required:
+      - memes
+      type: object
+      x-examples:
+        example-1:
+          memes:
+          - id: 6696
+            url: https://i.imgur.com/1rmAxUG.jpg
+            type: image/jpeg
+          - id: 6697
+            url: https://i.imgur.com/ELT8zMQ.jpg
+            type: image/jpeg
+          - id: 6698
+            url: https://i.imgur.com/8JTc5z3.jpg
+            type: image/jpeg
+    inline_response_200_3:
+      example:
+        id: 0
+        type: type
+        url: url
+      properties:
+        id:
+          type: integer
+        url:
+          minLength: 1
+          type: string
+        type:
+          minLength: 1
+          type: string
+      required:
+      - id
+      - type
+      - url
+      type: object
+      x-examples:
+        example-1:
+          id: 50561
+          url: https://preview.redd.it/hg0zn2mhjsh01.png?width=640&crop=smart&auto=webp&s=f19b0a87edfc6c71b35ec9aceb64799cd532ff59
+          type: image/png
+    inline_response_200_4:
+      example:
+        id: 0
+        joke: joke
+      properties:
+        id:
+          type: integer
+        joke:
+          minLength: 1
+          type: string
+      required:
+      - id
+      - joke
+      type: object
+      x-examples:
+        example-1:
+          id: 1
+          joke: this is a car joke
+    inline_response_200_5:
+      example:
+        text: text
+      properties:
+        text:
+          minLength: 1
+          type: string
+      required:
+      - text
+      type: object
+      x-examples:
+        example-1:
+          text: Bravo Alex, you mastermind, you did it again.
+    inline_response_200_6:
+      example:
+        rating: 0.8008281904610115
+      properties:
+        rating:
+          type: number
+      required:
+      - rating
+      type: object
+      x-examples:
+        example-1:
+          rating: 0.57
+    inline_response_200_7:
+      example:
+        rating: 0.8008281904610115
+        word: word
+      properties:
+        word:
+          minLength: 1
+          type: string
+        rating:
+          type: number
+      required:
+      - rating
+      - word
+      type: object
+      x-examples:
+        example-1:
+          word: caboo
+          rating: 0.41
+    inline_response_200_8:
+      example:
+        message: message
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      type: object
+      x-examples:
+        example-1:
+          message: ""
+    inline_response_200_9:
+      example:
+        joke: joke
+        tags:
+        - tags
+        - tags
+      properties:
+        joke:
+          minLength: 1
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+      required:
+      - joke
+      - tags
+      type: object
+      x-examples:
+        example-1:
+          joke: What do you call a deer without eyes? No ideer.
+          tags:
+          - ANIMAL
+  securitySchemes:
+    apiKey:
+      in: query
+      name: api-key
+      type: apiKey
+

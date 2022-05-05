@@ -34,14 +34,13 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure API key authorization: apiKey
             Configuration.Default.ApiKey.Add("api-key", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("api-key", "Bearer");
 
             var apiInstance = new JokesApi();
-            var body = body_example;  // string | Post the joke as plain text. (optional) 
+            var body = "body_example";  // string | Post the joke as plain text. (optional) 
 
             try
             {
@@ -101,7 +100,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure API key authorization: apiKey
             Configuration.Default.ApiKey.Add("api-key", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -168,7 +166,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure API key authorization: apiKey
             Configuration.Default.ApiKey.Add("api-key", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -243,7 +240,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure API key authorization: apiKey
             Configuration.Default.ApiKey.Add("api-key", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -256,7 +252,7 @@ namespace Example
             var number = 3;  // int? | The number of results to retrieve between 1 and 10. (optional) 
             var minRating = 7;  // int? | The minimum rating between 0 and 10 the result should have. (optional) 
             var maxLength = 200;  // int? | The maximum number of letters in the joke. (optional) 
-            var offset = 8.14;  // decimal? | The number of results to skip. (optional) 
+            var offset = 8.14D;  // decimal? | The number of results to skip. (optional) 
 
             try
             {
@@ -322,14 +318,13 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure API key authorization: apiKey
             Configuration.Default.ApiKey.Add("api-key", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("api-key", "Bearer");
 
             var apiInstance = new JokesApi();
-            var body = body_example;  // string | Post the joke as plain text. (optional) 
+            var body = "body_example";  // string | Post the joke as plain text. (optional) 
 
             try
             {
@@ -389,7 +384,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure API key authorization: apiKey
             Configuration.Default.ApiKey.Add("api-key", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed

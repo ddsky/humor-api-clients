@@ -202,7 +202,7 @@ let opts = {
   'keywords': rocket, // String | A comma separated list of keywords.
   'includeTags': one_liner, // String | A comma separated list of tags that the joke must have.
   'excludeTags': nsfw, // String | A comma separated list of tags that the joke must not have.
-  '_number': 3, // Number | The number of results to retrieve between 1 and 10.
+  'number': 3, // Number | The number of results to retrieve between 1 and 10.
   'minRating': 7, // Number | The minimum rating between 0 and 10 the result should have.
   'maxLength': 200, // Number | The maximum number of letters in the joke.
   'offset': 3.4 // Number | The number of results to skip.
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
  **keywords** | **String**| A comma separated list of keywords. | [optional] 
  **includeTags** | **String**| A comma separated list of tags that the joke must have. | [optional] 
  **excludeTags** | **String**| A comma separated list of tags that the joke must not have. | [optional] 
- **_number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
+ **number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
  **minRating** | **Number**| The minimum rating between 0 and 10 the result should have. | [optional] 
  **maxLength** | **Number**| The maximum number of letters in the joke. | [optional] 
  **offset** | **Number**| The number of results to skip. | [optional] 

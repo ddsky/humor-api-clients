@@ -22,14 +22,15 @@ defmodule com.humorapi.client.Api.Memes do
   - opts (KeywordList): [optional] Optional parameters
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2008{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2008.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec downvote_meme(Tesla.Env.client, integer(), keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2008.t} | {:error, Tesla.Env.t}
   def downvote_meme(connection, id, _opts \\ []) do
     %{}
     |> method(:post)
     |> url("/memes/#{id}/downvote")
+    |> ensure_body()
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> evaluate_response([
@@ -52,8 +53,8 @@ defmodule com.humorapi.client.Api.Memes do
     - :min_rating (integer()): The minimum rating between 0 and 10 the result should have.
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2003{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2003.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec random_meme(Tesla.Env.client, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2003.t} | {:error, Tesla.Env.t}
   def random_meme(connection, opts \\ []) do
@@ -91,8 +92,8 @@ defmodule com.humorapi.client.Api.Memes do
     - :offset (float()): The number of results to skip.
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2002{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2002.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec search_memes(Tesla.Env.client, keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2002.t} | {:error, Tesla.Env.t}
   def search_memes(connection, opts \\ []) do
@@ -126,14 +127,15 @@ defmodule com.humorapi.client.Api.Memes do
   - opts (KeywordList): [optional] Optional parameters
   ## Returns
 
-  {:ok, %com.humorapi.client.Model.InlineResponse2008{}} on success
-  {:error, info} on failure
+  {:ok, com.humorapi.client.Model.InlineResponse2008.t} on success
+  {:error, Tesla.Env.t} on failure
   """
   @spec upvote_meme(Tesla.Env.client, integer(), keyword()) :: {:ok, com.humorapi.client.Model.InlineResponse2008.t} | {:error, Tesla.Env.t}
   def upvote_meme(connection, id, _opts \\ []) do
     %{}
     |> method(:post)
     |> url("/memes/#{id}/upvote")
+    |> ensure_body()
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> evaluate_response([

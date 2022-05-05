@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * InlineResponse2004
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-16T19:38:20.770+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-05T21:05:51.248+02:00[Europe/Berlin]")
 public class InlineResponse2004 {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -37,7 +37,11 @@ public class InlineResponse2004 {
   @SerializedName(SERIALIZED_NAME_JOKE)
   private String joke;
 
+  public InlineResponse2004() { 
+  }
+
   public InlineResponse2004 id(Integer id) {
+    
     this.id = id;
     return this;
   }
@@ -46,16 +50,21 @@ public class InlineResponse2004 {
    * Get id
    * @return id
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public Integer getId() {
     return id;
   }
+
 
   public void setId(Integer id) {
     this.id = id;
   }
 
+
   public InlineResponse2004 joke(String joke) {
+    
     this.joke = joke;
     return this;
   }
@@ -64,10 +73,13 @@ public class InlineResponse2004 {
    * Get joke
    * @return joke
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+
   public String getJoke() {
     return joke;
   }
+
 
   public void setJoke(String joke) {
     this.joke = joke;
@@ -75,7 +87,7 @@ public class InlineResponse2004 {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -92,7 +104,6 @@ public class InlineResponse2004 {
     return Objects.hash(id, joke);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -107,7 +118,7 @@ public class InlineResponse2004 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

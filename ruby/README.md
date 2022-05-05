@@ -60,9 +60,9 @@ require 'openapi_client'
 # Setup authorization
 OpenapiClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['api-key'] = 'YOUR API KEY'
+  config.api_key['apiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['api-key'] = 'Bearer'
+  # config.api_key_prefix['apiKey'] = 'Bearer'
 end
 
 api_instance = OpenapiClient::JokesApi.new

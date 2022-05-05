@@ -1,20 +1,21 @@
 # com.humorapi.client\OtherApi
 
-All URIs are relative to *https://api.humorapi.com*
+All URIs are relative to https://api.humorapi.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**generateNonsenseWord**](OtherApi.md#generateNonsenseWord) | **GET** /words/nonsense/random | Generate Nonsense Word
-[**insult**](OtherApi.md#insult) | **GET** /insult | Insult
-[**praise**](OtherApi.md#praise) | **GET** /praise | Praise
-[**rateWord**](OtherApi.md#rateWord) | **GET** /words/rate | Rate Word
-[**searchGifs**](OtherApi.md#searchGifs) | **GET** /gif/search | Search Gifs
+[**generateNonsenseWord()**](OtherApi.md#generateNonsenseWord) | **GET** /words/nonsense/random | Generate Nonsense Word
+[**insult()**](OtherApi.md#insult) | **GET** /insult | Insult
+[**praise()**](OtherApi.md#praise) | **GET** /praise | Praise
+[**rateWord()**](OtherApi.md#rateWord) | **GET** /words/rate | Rate Word
+[**searchGifs()**](OtherApi.md#searchGifs) | **GET** /gif/search | Search Gifs
 
 
+## `generateNonsenseWord()`
 
-## generateNonsenseWord
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2007 generateNonsenseWord()
+```php
+generateNonsenseWord(): \com.humorapi.client\com.humorapi.client.model\InlineResponse2007
+```
 
 Generate Nonsense Word
 
@@ -46,7 +47,6 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling OtherApi->generateNonsenseWord: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
@@ -64,16 +64,17 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `insult()`
 
-## insult
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2005 insult($name, $reason)
+```php
+insult($name, $reason): \com.humorapi.client\com.humorapi.client.model\InlineResponse2005
+```
 
 Insult
 
@@ -107,11 +108,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling OtherApi->insult: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -129,16 +128,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `praise()`
 
-## praise
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2005 praise($name, $reason)
+```php
+praise($name, $reason): \com.humorapi.client\com.humorapi.client.model\InlineResponse2005
+```
 
 Praise
 
@@ -172,11 +172,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling OtherApi->praise: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -194,16 +192,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `rateWord()`
 
-## rateWord
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2006 rateWord($word)
+```php
+rateWord($word): \com.humorapi.client\com.humorapi.client.model\InlineResponse2006
+```
 
 Rate Word
 
@@ -236,11 +235,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling OtherApi->rateWord: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -257,16 +254,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `searchGifs()`
 
-## searchGifs
-
-> \com.humorapi.client\com.humorapi.client.model\InlineResponse2001 searchGifs($query, $number)
+```php
+searchGifs($query, $number): \com.humorapi.client\com.humorapi.client.model\InlineResponse2001
+```
 
 Search Gifs
 
@@ -300,11 +298,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling OtherApi->searchGifs: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -322,9 +318,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

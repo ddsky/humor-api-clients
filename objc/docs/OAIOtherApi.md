@@ -21,7 +21,7 @@ Generate Nonsense Word
 
 Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -75,7 +75,7 @@ Insult
 
 Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -136,7 +136,7 @@ Praise
 
 Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -196,7 +196,7 @@ Rate Word
 
 Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -254,7 +254,7 @@ Search Gifs
 
 Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 

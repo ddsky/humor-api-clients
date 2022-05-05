@@ -238,7 +238,7 @@ apiKey.apiKey = 'YOUR API KEY';
 let apiInstance = new HumorApi.OtherApi();
 let query = cat; // String | A search query.
 let opts = {
-  '_number': 3 // Number | The number of results to retrieve between 1 and 10.
+  'number': 3 // Number | The number of results to retrieve between 1 and 10.
 };
 apiInstance.searchGifs(query, opts, (error, data, response) => {
   if (error) {
@@ -255,7 +255,7 @@ apiInstance.searchGifs(query, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| A search query. | 
- **_number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
+ **number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
 
 ### Return type
 

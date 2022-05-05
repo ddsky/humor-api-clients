@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **joke** | **kotlin.String** |  | 
-**tags** | **kotlin.Array&lt;kotlin.String&gt;** |  | 
+**tags** | **kotlin.collections.List&lt;kotlin.String&gt;** |  | 
 
 
 

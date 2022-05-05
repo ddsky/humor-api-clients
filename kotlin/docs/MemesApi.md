@@ -21,7 +21,7 @@ Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = MemesApi()
@@ -50,7 +50,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -59,7 +62,7 @@ Name | Type | Description  | Notes
 
 <a name="randomMeme"></a>
 # **randomMeme**
-> InlineResponse2003 randomMeme(keywords, keywordsMinusInMinusImage, mediaMinusType, number, minMinusRating)
+> InlineResponse2003 randomMeme(keywords, keywordsInImage, mediaType, number, minRating)
 
 Random Meme
 
@@ -68,17 +71,17 @@ Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = MemesApi()
 val keywords : kotlin.String = rocket // kotlin.String | A comma separated list of keywords.
-val keywordsMinusInMinusImage : kotlin.Boolean = false // kotlin.Boolean | Whether the keywords should be found in the meme's image.
-val mediaMinusType : kotlin.String = image // kotlin.String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
+val keywordsInImage : kotlin.Boolean = false // kotlin.Boolean | Whether the keywords should be found in the meme's image.
+val mediaType : kotlin.String = image // kotlin.String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
 val number : kotlin.Int = 3 // kotlin.Int | The number of results to retrieve between 1 and 10.
-val minMinusRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
+val minRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
 try {
-    val result : InlineResponse2003 = apiInstance.randomMeme(keywords, keywordsMinusInMinusImage, mediaMinusType, number, minMinusRating)
+    val result : InlineResponse2003 = apiInstance.randomMeme(keywords, keywordsInImage, mediaType, number, minRating)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MemesApi#randomMeme")
@@ -94,10 +97,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keywords** | **kotlin.String**| A comma separated list of keywords. | [optional]
- **keywordsMinusInMinusImage** | **kotlin.Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] [enum: true, false]
- **mediaMinusType** | **kotlin.String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] [enum: image, video, jpg, gif, png, mp4]
+ **keywordsInImage** | **kotlin.Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] [enum: true, false]
+ **mediaType** | **kotlin.String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] [enum: image, video, jpg, gif, png, mp4]
  **number** | **kotlin.Int**| The number of results to retrieve between 1 and 10. | [optional]
- **minMinusRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
+ **minRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
 
 ### Return type
 
@@ -105,7 +108,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -114,7 +120,7 @@ Name | Type | Description  | Notes
 
 <a name="searchMemes"></a>
 # **searchMemes**
-> InlineResponse2002 searchMemes(keywords, keywordsMinusInMinusImage, mediaMinusType, number, minMinusRating, offset)
+> InlineResponse2002 searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
 
 Search Memes
 
@@ -123,18 +129,18 @@ Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = MemesApi()
 val keywords : kotlin.String = rocket // kotlin.String | A comma separated list of keywords.
-val keywordsMinusInMinusImage : kotlin.Boolean = false // kotlin.Boolean | Whether the keywords should be found in the meme's image.
-val mediaMinusType : kotlin.String = image // kotlin.String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
+val keywordsInImage : kotlin.Boolean = false // kotlin.Boolean | Whether the keywords should be found in the meme's image.
+val mediaType : kotlin.String = image // kotlin.String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
 val number : kotlin.Int = 3 // kotlin.Int | The number of results to retrieve between 1 and 10.
-val minMinusRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
+val minRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | The number of results to skip.
 try {
-    val result : InlineResponse2002 = apiInstance.searchMemes(keywords, keywordsMinusInMinusImage, mediaMinusType, number, minMinusRating, offset)
+    val result : InlineResponse2002 = apiInstance.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MemesApi#searchMemes")
@@ -150,10 +156,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keywords** | **kotlin.String**| A comma separated list of keywords. | [optional]
- **keywordsMinusInMinusImage** | **kotlin.Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] [enum: true, false]
- **mediaMinusType** | **kotlin.String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] [enum: image, video, jpg, gif, png, mp4]
+ **keywordsInImage** | **kotlin.Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] [enum: true, false]
+ **mediaType** | **kotlin.String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] [enum: image, video, jpg, gif, png, mp4]
  **number** | **kotlin.Int**| The number of results to retrieve between 1 and 10. | [optional]
- **minMinusRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
+ **minRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
  **offset** | **java.math.BigDecimal**| The number of results to skip. | [optional]
 
 ### Return type
@@ -162,7 +168,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 
@@ -180,7 +189,7 @@ Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
 ### Example
 ```kotlin
 // Import classes:
-//import humorapi.infrastructure.*
+//import org.openapitools.client.infrastructure.*
 //import com.humorapi.client.model.*
 
 val apiInstance = MemesApi()
@@ -209,7 +218,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../README.md#apiKey)
+
+Configure apiKey:
+    ApiClient.apiKey["api-key"] = ""
+    ApiClient.apiKeyPrefix["api-key"] = ""
 
 ### HTTP request headers
 

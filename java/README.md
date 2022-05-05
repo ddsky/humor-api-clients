@@ -2,7 +2,7 @@
 
 Humor API
 - API version: 1.0
-  - Build date: 2021-12-16T19:38:20.770+01:00[Europe/Berlin]
+  - Build date: 2022-05-05T21:05:51.248+02:00[Europe/Berlin]
 
 Awesome Humor API.
 
@@ -15,7 +15,7 @@ Awesome Humor API.
 
 Building the API client library requires:
 1. Java 1.8+
-2. Maven/Gradle
+2. Maven (3.8.3+)/Gradle (7.2+)
 
 ## Installation
 
@@ -51,7 +51,14 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.humorapi:java-client:1.0"
+  repositories {
+    mavenCentral()     // Needed if the 'java-client' jar has been published to maven central.
+    mavenLocal()       // Needed if the 'java-client' jar has been published to the local maven repo.
+  }
+
+  dependencies {
+     implementation "com.humorapi:java-client:1.0"
+  }
 ```
 
 ### Others
@@ -73,35 +80,38 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
 
-import com.humorapi.client.*;
+// Import classes:
+import com.humorapi.client.ApiClient;
+import com.humorapi.client.ApiException;
+import com.humorapi.client.Configuration;
 import com.humorapi.client.auth.*;
-import com.humorapi.client.model.*;
+import com.humorapi.client.models.*;
 import com.humorapi.JokesApi;
 
-import java.io.File;
-import java.util.*;
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.humorapi.com");
+    
+    // Configure API key authorization: apiKey
+    ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
+    apiKey.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //apiKey.setApiKeyPrefix("Token");
 
-public class JokesApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure API key authorization: apiKey
-        ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-        apiKey.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //apiKey.setApiKeyPrefix("Token");
-
-        JokesApi apiInstance = new JokesApi();
-        String body = "body_example"; // String | Post the joke as plain text.
-        try {
-            InlineResponse2009 result = apiInstance.analyzeJoke(body);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling JokesApi#analyzeJoke");
-            e.printStackTrace();
-        }
+    JokesApi apiInstance = new JokesApi(defaultClient);
+    String body = "body_example"; // String | Post the joke as plain text.
+    try {
+      InlineResponse2009 result = apiInstance.analyzeJoke(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JokesApi#analyzeJoke");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 
 ```

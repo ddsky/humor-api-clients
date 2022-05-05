@@ -21,43 +21,42 @@
 
 #include <QJsonObject>
 
-
 #include <QString>
 
-#include "OAIObject.h"
 #include "OAIEnum.h"
+#include "OAIObject.h"
 
 namespace OpenAPI {
 
-class OAIInline_response_200_5: public OAIObject {
+class OAIInline_response_200_5 : public OAIObject {
 public:
     OAIInline_response_200_5();
     OAIInline_response_200_5(QString json);
     ~OAIInline_response_200_5() override;
 
-    QString asJson () const override;
+    QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    
     QString getText() const;
     void setText(const QString &text);
+    bool is_text_Set() const;
+    bool is_text_Valid() const;
 
-    
-    
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
-    void init();
-    
+    void initializeModel();
+
     QString text;
     bool m_text_isSet;
     bool m_text_isValid;
-    
-    };
+};
 
-}
+} // namespace OpenAPI
+
+Q_DECLARE_METATYPE(OpenAPI::OAIInline_response_200_5)
 
 #endif // OAIInline_response_200_5_H

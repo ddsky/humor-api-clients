@@ -40,6 +40,8 @@ import java.util.Map;
 
 public class OtherApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public OtherApi() {
         this(Configuration.getDefaultApiClient());
@@ -57,14 +59,49 @@ public class OtherApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for generateNonsenseWord
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Generate Nonsense Word Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call generateNonsenseWordCall(final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/words/nonsense/random";
@@ -72,7 +109,9 @@ public class OtherApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -85,10 +124,12 @@ public class OtherApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -105,6 +146,11 @@ public class OtherApi {
      * Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
      * @return InlineResponse2007
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Generate Nonsense Word Response </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2007 generateNonsenseWord() throws ApiException {
         ApiResponse<InlineResponse2007> localVarResp = generateNonsenseWordWithHttpInfo();
@@ -116,6 +162,11 @@ public class OtherApi {
      * Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
      * @return ApiResponse&lt;InlineResponse2007&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Generate Nonsense Word Response </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2007> generateNonsenseWordWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = generateNonsenseWordValidateBeforeCall(null);
@@ -129,6 +180,11 @@ public class OtherApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Generate Nonsense Word Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call generateNonsenseWordAsync(final ApiCallback<InlineResponse2007> _callback) throws ApiException {
 
@@ -144,15 +200,38 @@ public class OtherApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Insult Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call insultCall(String name, String reason, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/insult";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (name != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
         }
@@ -161,8 +240,6 @@ public class OtherApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("reason", reason));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -175,10 +252,12 @@ public class OtherApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -207,6 +286,11 @@ public class OtherApi {
      * @param reason The reason for the praise/insult. (required)
      * @return InlineResponse2005
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Insult Response </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2005 insult(String name, String reason) throws ApiException {
         ApiResponse<InlineResponse2005> localVarResp = insultWithHttpInfo(name, reason);
@@ -220,6 +304,11 @@ public class OtherApi {
      * @param reason The reason for the praise/insult. (required)
      * @return ApiResponse&lt;InlineResponse2005&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Insult Response </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2005> insultWithHttpInfo(String name, String reason) throws ApiException {
         okhttp3.Call localVarCall = insultValidateBeforeCall(name, reason, null);
@@ -235,6 +324,11 @@ public class OtherApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Insult Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call insultAsync(String name, String reason, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
 
@@ -250,15 +344,38 @@ public class OtherApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Praise Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call praiseCall(String name, String reason, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/praise";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (name != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
         }
@@ -267,8 +384,6 @@ public class OtherApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("reason", reason));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -281,10 +396,12 @@ public class OtherApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -313,6 +430,11 @@ public class OtherApi {
      * @param reason The reason for the praise/insult. (required)
      * @return InlineResponse2005
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Praise Response </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2005 praise(String name, String reason) throws ApiException {
         ApiResponse<InlineResponse2005> localVarResp = praiseWithHttpInfo(name, reason);
@@ -326,6 +448,11 @@ public class OtherApi {
      * @param reason The reason for the praise/insult. (required)
      * @return ApiResponse&lt;InlineResponse2005&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Praise Response </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2005> praiseWithHttpInfo(String name, String reason) throws ApiException {
         okhttp3.Call localVarCall = praiseValidateBeforeCall(name, reason, null);
@@ -341,6 +468,11 @@ public class OtherApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Praise Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call praiseAsync(String name, String reason, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
 
@@ -355,21 +487,42 @@ public class OtherApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Word Rating Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call rateWordCall(String word, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/words/rate";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (word != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("word", word));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -382,10 +535,12 @@ public class OtherApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -408,6 +563,11 @@ public class OtherApi {
      * @param word The word to be rated. (required)
      * @return InlineResponse2006
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Word Rating Response </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2006 rateWord(String word) throws ApiException {
         ApiResponse<InlineResponse2006> localVarResp = rateWordWithHttpInfo(word);
@@ -420,6 +580,11 @@ public class OtherApi {
      * @param word The word to be rated. (required)
      * @return ApiResponse&lt;InlineResponse2006&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Word Rating Response </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2006> rateWordWithHttpInfo(String word) throws ApiException {
         okhttp3.Call localVarCall = rateWordValidateBeforeCall(word, null);
@@ -434,6 +599,11 @@ public class OtherApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Word Rating Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call rateWordAsync(String word, final ApiCallback<InlineResponse2006> _callback) throws ApiException {
 
@@ -449,15 +619,38 @@ public class OtherApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Gif Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call searchGifsCall(String query, Integer number, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/gif/search";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (query != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("query", query));
         }
@@ -466,8 +659,6 @@ public class OtherApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("number", number));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -480,10 +671,12 @@ public class OtherApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "apiKey" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -507,6 +700,11 @@ public class OtherApi {
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Gif Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public InlineResponse2001 searchGifs(String query, Integer number) throws ApiException {
         ApiResponse<InlineResponse2001> localVarResp = searchGifsWithHttpInfo(query, number);
@@ -520,6 +718,11 @@ public class OtherApi {
      * @param number The number of results to retrieve between 1 and 10. (optional)
      * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Gif Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<InlineResponse2001> searchGifsWithHttpInfo(String query, Integer number) throws ApiException {
         okhttp3.Call localVarCall = searchGifsValidateBeforeCall(query, number, null);
@@ -535,6 +738,11 @@ public class OtherApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Gif Search Response </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call searchGifsAsync(String query, Integer number, final ApiCallback<InlineResponse2001> _callback) throws ApiException {
 

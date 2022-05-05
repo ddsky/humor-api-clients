@@ -32,44 +32,37 @@ isa_ok($api, 'WWW::OpenAPIClient::OtherApi');
 #
 # generate_nonsense_word test
 #
-{
-    my $result = $api->generate_nonsense_word();
-}
+# uncomment below and update the test
+#my $generate_nonsense_word_result = $api->generate_nonsense_word();
 
 #
 # insult test
 #
-{
-    my $name = undef; # replace NULL with a proper value
-    my $reason = undef; # replace NULL with a proper value
-    my $result = $api->insult(name => $name, reason => $reason);
-}
+# uncomment below and update the test
+#my $insult_name = undef; # replace NULL with a proper value
+#my $insult_reason = undef; # replace NULL with a proper value
+#my $insult_result = $api->insult(name => $insult_name, reason => $insult_reason);
 
 #
 # praise test
 #
-{
-    my $name = undef; # replace NULL with a proper value
-    my $reason = undef; # replace NULL with a proper value
-    my $result = $api->praise(name => $name, reason => $reason);
-}
+# uncomment below and update the test
+#my $praise_name = undef; # replace NULL with a proper value
+#my $praise_reason = undef; # replace NULL with a proper value
+#my $praise_result = $api->praise(name => $praise_name, reason => $praise_reason);
 
 #
 # rate_word test
 #
-{
-    my $word = undef; # replace NULL with a proper value
-    my $result = $api->rate_word(word => $word);
-}
+# uncomment below and update the test
+#my $rate_word_word = undef; # replace NULL with a proper value
+#my $rate_word_result = $api->rate_word(word => $rate_word_word);
 
 #
 # search_gifs test
 #
-{
-    my $query = undef; # replace NULL with a proper value
-    my $number = undef; # replace NULL with a proper value
-    my $result = $api->search_gifs(query => $query, number => $number);
-}
+# uncomment below and update the test
+#my $search_gifs_query = undef; # replace NULL with a proper value
+#my $search_gifs_number = undef; # replace NULL with a proper value
+#my $search_gifs_result = $api->search_gifs(query => $search_gifs_query, number => $search_gifs_number);
 
-
-1;

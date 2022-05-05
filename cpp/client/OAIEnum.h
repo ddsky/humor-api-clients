@@ -13,24 +13,21 @@
 #ifndef OAI_ENUM_H
 #define OAI_ENUM_H
 
-#include <QString>
 #include <QJsonValue>
+#include <QMetaType>
+#include <QString>
 
 namespace OpenAPI {
 
 class OAIEnum {
-  public:
-    OAIEnum() {
+public:
+    OAIEnum() {}
 
-    }
-    
     OAIEnum(QString jsonString) {
         fromJson(jsonString);
     }
 
-    virtual ~OAIEnum(){
-
-    }
+    virtual ~OAIEnum() {}
 
     virtual QJsonValue asJsonValue() const {
         return QJsonValue(jstr);
@@ -55,10 +52,13 @@ class OAIEnum {
     virtual bool isValid() const {
         return true;
     }
-private :
-    QString jstr; 
+
+private:
+    QString jstr;
 };
 
-}
+} // namespace OpenAPI
+
+Q_DECLARE_METATYPE(OpenAPI::OAIEnum)
 
 #endif // OAI_ENUM_H

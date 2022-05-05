@@ -15,31 +15,55 @@ Method | HTTP request | Description
 
 ## AnalyzeJoke
 
-> InlineResponse2009 AnalyzeJoke(ctx, optional)
+> InlineResponse2009 AnalyzeJoke(ctx).Body(body).Execute()
+
 Analyze Joke
 
-Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := "body_example" // string | Post the joke as plain text. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JokesApi.AnalyzeJoke(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.AnalyzeJoke``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AnalyzeJoke`: InlineResponse2009
+    fmt.Fprintf(os.Stdout, "Response from `JokesApi.AnalyzeJoke`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAnalyzeJokeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***AnalyzeJokeOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a AnalyzeJokeOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | **optional.String**| Post the joke as plain text. | 
+ **body** | **string** | Post the joke as plain text. | 
 
 ### Return type
 
-[**InlineResponse2009**](inline_response_200_9.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -57,22 +81,59 @@ Name | Type | Description  | Notes
 
 ## DownvoteJoke
 
-> InlineResponse2008 DownvoteJoke(ctx, id)
+> InlineResponse2008 DownvoteJoke(ctx, id).Execute()
+
 Downvote a Joke
 
-Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(1) // int32 | The object's id.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JokesApi.DownvoteJoke(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.DownvoteJoke``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DownvoteJoke`: InlineResponse2008
+    fmt.Fprintf(os.Stdout, "Response from `JokesApi.DownvoteJoke`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**| The object&#39;s id. | 
+**id** | **int32** | The object&#39;s id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDownvoteJokeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
-[**InlineResponse2008**](inline_response_200_8.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -90,35 +151,63 @@ Name | Type | Description  | Notes
 
 ## RandomJoke
 
-> InlineResponse2004 RandomJoke(ctx, optional)
+> InlineResponse2004 RandomJoke(ctx).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).MinRating(minRating).MaxLength(maxLength).Execute()
+
 Random Joke
 
-Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    keywords := "rocket" // string | A comma separated list of keywords. (optional)
+    includeTags := "one_liner" // string | A comma separated list of tags that the joke must have. (optional)
+    excludeTags := "nsfw" // string | A comma separated list of tags that the joke must not have. (optional)
+    minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
+    maxLength := int32(200) // int32 | The maximum number of letters in the joke. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JokesApi.RandomJoke(context.Background()).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).MinRating(minRating).MaxLength(maxLength).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.RandomJoke``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RandomJoke`: InlineResponse2004
+    fmt.Fprintf(os.Stdout, "Response from `JokesApi.RandomJoke`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRandomJokeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***RandomJokeOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a RandomJokeOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **keywords** | **optional.String**| A comma separated list of keywords. | 
- **includeTags** | **optional.String**| A comma separated list of tags that the joke must have. | 
- **excludeTags** | **optional.String**| A comma separated list of tags that the joke must not have. | 
- **minRating** | **optional.Int32**| The minimum rating between 0 and 10 the result should have. | 
- **maxLength** | **optional.Int32**| The maximum number of letters in the joke. | 
+ **keywords** | **string** | A comma separated list of keywords. | 
+ **includeTags** | **string** | A comma separated list of tags that the joke must have. | 
+ **excludeTags** | **string** | A comma separated list of tags that the joke must not have. | 
+ **minRating** | **int32** | The minimum rating between 0 and 10 the result should have. | 
+ **maxLength** | **int32** | The maximum number of letters in the joke. | 
 
 ### Return type
 
-[**InlineResponse2004**](inline_response_200_4.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -136,37 +225,67 @@ Name | Type | Description  | Notes
 
 ## SearchJokes
 
-> InlineResponse200 SearchJokes(ctx, optional)
+> InlineResponse200 SearchJokes(ctx).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).Number(number).MinRating(minRating).MaxLength(maxLength).Offset(offset).Execute()
+
 Search Jokes
 
-Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    keywords := "rocket" // string | A comma separated list of keywords. (optional)
+    includeTags := "one_liner" // string | A comma separated list of tags that the joke must have. (optional)
+    excludeTags := "nsfw" // string | A comma separated list of tags that the joke must not have. (optional)
+    number := int32(3) // int32 | The number of results to retrieve between 1 and 10. (optional)
+    minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
+    maxLength := int32(200) // int32 | The maximum number of letters in the joke. (optional)
+    offset := float32(8.14) // float32 | The number of results to skip. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JokesApi.SearchJokes(context.Background()).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).Number(number).MinRating(minRating).MaxLength(maxLength).Offset(offset).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.SearchJokes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchJokes`: InlineResponse200
+    fmt.Fprintf(os.Stdout, "Response from `JokesApi.SearchJokes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchJokesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***SearchJokesOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a SearchJokesOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **keywords** | **optional.String**| A comma separated list of keywords. | 
- **includeTags** | **optional.String**| A comma separated list of tags that the joke must have. | 
- **excludeTags** | **optional.String**| A comma separated list of tags that the joke must not have. | 
- **number** | **optional.Int32**| The number of results to retrieve between 1 and 10. | 
- **minRating** | **optional.Int32**| The minimum rating between 0 and 10 the result should have. | 
- **maxLength** | **optional.Int32**| The maximum number of letters in the joke. | 
- **offset** | **optional.Float32**| The number of results to skip. | 
+ **keywords** | **string** | A comma separated list of keywords. | 
+ **includeTags** | **string** | A comma separated list of tags that the joke must have. | 
+ **excludeTags** | **string** | A comma separated list of tags that the joke must not have. | 
+ **number** | **int32** | The number of results to retrieve between 1 and 10. | 
+ **minRating** | **int32** | The minimum rating between 0 and 10 the result should have. | 
+ **maxLength** | **int32** | The maximum number of letters in the joke. | 
+ **offset** | **float32** | The number of results to skip. | 
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -184,31 +303,55 @@ Name | Type | Description  | Notes
 
 ## SubmitJoke
 
-> InlineResponse2008 SubmitJoke(ctx, optional)
+> InlineResponse2008 SubmitJoke(ctx).Body(body).Execute()
+
 Submit Joke
 
-Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := "body_example" // string | Post the joke as plain text. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JokesApi.SubmitJoke(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.SubmitJoke``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SubmitJoke`: InlineResponse2008
+    fmt.Fprintf(os.Stdout, "Response from `JokesApi.SubmitJoke`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSubmitJokeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***SubmitJokeOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a SubmitJokeOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | **optional.String**| Post the joke as plain text. | 
+ **body** | **string** | Post the joke as plain text. | 
 
 ### Return type
 
-[**InlineResponse2008**](inline_response_200_8.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -226,22 +369,59 @@ Name | Type | Description  | Notes
 
 ## UpvoteJoke
 
-> InlineResponse2008 UpvoteJoke(ctx, id)
+> InlineResponse2008 UpvoteJoke(ctx, id).Execute()
+
 Upvote a Joke
 
-Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(1) // int32 | The object's id.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JokesApi.UpvoteJoke(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.UpvoteJoke``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpvoteJoke`: InlineResponse2008
+    fmt.Fprintf(os.Stdout, "Response from `JokesApi.UpvoteJoke`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**| The object&#39;s id. | 
+**id** | **int32** | The object&#39;s id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpvoteJokeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
-[**InlineResponse2008**](inline_response_200_8.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 

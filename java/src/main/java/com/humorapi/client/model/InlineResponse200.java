@@ -23,19 +23,24 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * InlineResponse200
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-16T19:38:20.770+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-05T21:05:51.248+02:00[Europe/Berlin]")
 public class InlineResponse200 {
   public static final String SERIALIZED_NAME_JOKES = "jokes";
   @SerializedName(SERIALIZED_NAME_JOKES)
-  private List<Object> jokes = new ArrayList<>();
+  private Set<Object> jokes = new LinkedHashSet<>();
 
-  public InlineResponse200 jokes(List<Object> jokes) {
+  public InlineResponse200() { 
+  }
+
+  public InlineResponse200 jokes(Set<Object> jokes) {
+    
     this.jokes = jokes;
     return this;
   }
@@ -49,18 +54,21 @@ public class InlineResponse200 {
    * Get jokes
    * @return jokes
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
-  public List<Object> getJokes() {
+
+  public Set<Object> getJokes() {
     return jokes;
   }
 
-  public void setJokes(List<Object> jokes) {
+
+  public void setJokes(Set<Object> jokes) {
     this.jokes = jokes;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -76,7 +84,6 @@ public class InlineResponse200 {
     return Objects.hash(jokes);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -90,7 +97,7 @@ public class InlineResponse200 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

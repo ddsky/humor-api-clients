@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Humor API
 
@@ -11,20 +9,17 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
-import humorapi
+import openapi_client
 from com.humorapi.other_api import OtherApi  # noqa: E501
-from humorapi.rest import ApiException
 
 
 class TestOtherApi(unittest.TestCase):
     """OtherApi unit test stubs"""
 
     def setUp(self):
-        self.api = com.humorapi.other_api.OtherApi()  # noqa: E501
+        self.api = OtherApi()  # noqa: E501
 
     def tearDown(self):
         pass

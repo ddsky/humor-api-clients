@@ -4,7 +4,7 @@ import io.circe._
 import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
-import humorapi._
+import org.openapitools._
 
 /**
  * 

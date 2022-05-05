@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | **List&lt;Object&gt;** |  | 
+**images** | **Set&lt;Object&gt;** |  | 
 
 
 

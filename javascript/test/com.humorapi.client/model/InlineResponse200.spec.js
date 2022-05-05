@@ -50,13 +50,13 @@
   describe('InlineResponse200', function() {
     it('should create an instance of InlineResponse200', function() {
       // uncomment below and update the code to test InlineResponse200
-      //var instane = new HumorApi.InlineResponse200();
+      //var instance = new HumorApi.InlineResponse200();
       //expect(instance).to.be.a(HumorApi.InlineResponse200);
     });
 
     it('should have the property jokes (base name: "jokes")', function() {
       // uncomment below and update the code to test the property jokes
-      //var instane = new HumorApi.InlineResponse200();
+      //var instance = new HumorApi.InlineResponse200();
       //expect(instance).to.be();
     });
 

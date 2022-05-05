@@ -86,7 +86,7 @@ let opts = {
   'keywords': rocket, // String | A comma separated list of keywords.
   'keywordsInImage': false, // Boolean | Whether the keywords should be found in the meme's image.
   'mediaType': image, // String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
-  '_number': 3, // Number | The number of results to retrieve between 1 and 10.
+  'number': 3, // Number | The number of results to retrieve between 1 and 10.
   'minRating': 7 // Number | The minimum rating between 0 and 10 the result should have.
 };
 apiInstance.randomMeme(opts, (error, data, response) => {
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
  **keywords** | **String**| A comma separated list of keywords. | [optional] 
  **keywordsInImage** | **Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] 
  **mediaType** | **String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
- **_number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
+ **number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
  **minRating** | **Number**| The minimum rating between 0 and 10 the result should have. | [optional] 
 
 ### Return type
@@ -147,7 +147,7 @@ let opts = {
   'keywords': rocket, // String | A comma separated list of keywords.
   'keywordsInImage': false, // Boolean | Whether the keywords should be found in the meme's image.
   'mediaType': image, // String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
-  '_number': 3, // Number | The number of results to retrieve between 1 and 10.
+  'number': 3, // Number | The number of results to retrieve between 1 and 10.
   'minRating': 7, // Number | The minimum rating between 0 and 10 the result should have.
   'offset': 3.4 // Number | The number of results to skip.
 };
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
  **keywords** | **String**| A comma separated list of keywords. | [optional] 
  **keywordsInImage** | **Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] 
  **mediaType** | **String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
- **_number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
+ **number** | **Number**| The number of results to retrieve between 1 and 10. | [optional] 
  **minRating** | **Number**| The minimum rating between 0 and 10 the result should have. | [optional] 
  **offset** | **Number**| The number of results to skip. | [optional] 
 

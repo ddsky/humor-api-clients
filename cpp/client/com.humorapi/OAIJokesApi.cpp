@@ -11,62 +11,266 @@
  */
 
 #include "OAIJokesApi.h"
-#include "OAIHelpers.h"
-
+#include "OAIServerConfiguration.h"
 #include <QJsonArray>
 #include <QJsonDocument>
 
 namespace OpenAPI {
 
-OAIJokesApi::OAIJokesApi() {
-
+OAIJokesApi::OAIJokesApi(const int timeOut)
+    : _timeOut(timeOut),
+      _manager(nullptr),
+      _isResponseCompressionEnabled(false),
+      _isRequestCompressionEnabled(false) {
+    initializeServerConfigs();
 }
 
 OAIJokesApi::~OAIJokesApi() {
-
 }
 
-OAIJokesApi::OAIJokesApi(QString host, QString basePath) {
-    this->host = host;
-    this->basePath = basePath;
+void OAIJokesApi::initializeServerConfigs() {
+    //Default server
+    QList<OAIServerConfiguration> defaultConf = QList<OAIServerConfiguration>();
+    //varying endpoint server
+    defaultConf.append(OAIServerConfiguration(
+    QUrl("https://api.humorapi.com"),
+    "No description provided",
+    QMap<QString, OAIServerVariable>()));
+    _serverConfigs.insert("analyzeJoke", defaultConf);
+    _serverIndices.insert("analyzeJoke", 0);
+    _serverConfigs.insert("downvoteJoke", defaultConf);
+    _serverIndices.insert("downvoteJoke", 0);
+    _serverConfigs.insert("randomJoke", defaultConf);
+    _serverIndices.insert("randomJoke", 0);
+    _serverConfigs.insert("searchJokes", defaultConf);
+    _serverIndices.insert("searchJokes", 0);
+    _serverConfigs.insert("submitJoke", defaultConf);
+    _serverIndices.insert("submitJoke", 0);
+    _serverConfigs.insert("upvoteJoke", defaultConf);
+    _serverIndices.insert("upvoteJoke", 0);
 }
 
-void
-OAIJokesApi::analyzeJoke(const QString& body) {
-    QString fullPath;
-    fullPath.append(this->host).append(this->basePath).append("/jokes/analyze");
+/**
+* returns 0 on success and -1, -2 or -3 on failure.
+* -1 when the variable does not exist and -2 if the value is not defined in the enum and -3 if the operation or server index is not found
+*/
+int OAIJokesApi::setDefaultServerValue(int serverIndex, const QString &operation, const QString &variable, const QString &value) {
+    auto it = _serverConfigs.find(operation);
+    if (it != _serverConfigs.end() && serverIndex < it.value().size()) {
+      return _serverConfigs[operation][serverIndex].setDefaultValue(variable,value);
+    }
+    return -3;
+}
+void OAIJokesApi::setServerIndex(const QString &operation, int serverIndex) {
+    if (_serverIndices.contains(operation) && serverIndex < _serverConfigs.find(operation).value().size()) {
+        _serverIndices[operation] = serverIndex;
+    }
+}
+
+void OAIJokesApi::setApiKey(const QString &apiKeyName, const QString &apiKey) {
+    _apiKeys.insert(apiKeyName,apiKey);
+}
+
+void OAIJokesApi::setBearerToken(const QString &token) {
+    _bearerToken = token;
+}
+
+void OAIJokesApi::setUsername(const QString &username) {
+    _username = username;
+}
+
+void OAIJokesApi::setPassword(const QString &password) {
+    _password = password;
+}
+
+
+void OAIJokesApi::setTimeOut(const int timeOut) {
+    _timeOut = timeOut;
+}
+
+void OAIJokesApi::setWorkingDirectory(const QString &path) {
+    _workingDirectory = path;
+}
+
+void OAIJokesApi::setNetworkAccessManager(QNetworkAccessManager* manager) {
+    _manager = manager;
+}
+
+/**
+    * Appends a new ServerConfiguration to the config map for a specific operation.
+    * @param operation The id to the target operation.
+    * @param url A string that contains the URL of the server
+    * @param description A String that describes the server
+    * @param variables A map between a variable name and its value. The value is used for substitution in the server's URL template.
+    * returns the index of the new server config on success and -1 if the operation is not found
+    */
+int OAIJokesApi::addServerConfiguration(const QString &operation, const QUrl &url, const QString &description, const QMap<QString, OAIServerVariable> &variables) {
+    if (_serverConfigs.contains(operation)) {
+        _serverConfigs[operation].append(OAIServerConfiguration(
+                    url,
+                    description,
+                    variables));
+        return _serverConfigs[operation].size()-1;
+    } else {
+        return -1;
+    }
+}
+
+/**
+    * Appends a new ServerConfiguration to the config map for a all operations and sets the index to that server.
+    * @param url A string that contains the URL of the server
+    * @param description A String that describes the server
+    * @param variables A map between a variable name and its value. The value is used for substitution in the server's URL template.
+    */
+void OAIJokesApi::setNewServerForAllOperations(const QUrl &url, const QString &description, const QMap<QString, OAIServerVariable> &variables) {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+    for (auto keyIt = _serverIndices.keyBegin(); keyIt != _serverIndices.keyEnd(); keyIt++) {
+        setServerIndex(*keyIt, addServerConfiguration(*keyIt, url, description, variables));
+    }
+#else
+    for (auto &e : _serverIndices.keys()) {
+        setServerIndex(e, addServerConfiguration(e, url, description, variables));
+    }
+#endif
+}
+
+/**
+    * Appends a new ServerConfiguration to the config map for an operations and sets the index to that server.
+    * @param URL A string that contains the URL of the server
+    * @param description A String that describes the server
+    * @param variables A map between a variable name and its value. The value is used for substitution in the server's URL template.
+    */
+void OAIJokesApi::setNewServer(const QString &operation, const QUrl &url, const QString &description, const QMap<QString, OAIServerVariable> &variables) {
+    setServerIndex(operation, addServerConfiguration(operation, url, description, variables));
+}
+
+void OAIJokesApi::addHeaders(const QString &key, const QString &value) {
+    _defaultHeaders.insert(key, value);
+}
+
+void OAIJokesApi::enableRequestCompression() {
+    _isRequestCompressionEnabled = true;
+}
+
+void OAIJokesApi::enableResponseCompression() {
+    _isResponseCompressionEnabled = true;
+}
+
+void OAIJokesApi::abortRequests() {
+    emit abortRequestsSignal();
+}
+
+QString OAIJokesApi::getParamStylePrefix(const QString &style) {
+    if (style == "matrix") {
+        return ";";
+    } else if (style == "label") {
+        return ".";
+    } else if (style == "form") {
+        return "&";
+    } else if (style == "simple") {
+        return "";
+    } else if (style == "spaceDelimited") {
+        return "&";
+    } else if (style == "pipeDelimited") {
+        return "&";
+    } else {
+        return "none";
+    }
+}
+
+QString OAIJokesApi::getParamStyleSuffix(const QString &style) {
+    if (style == "matrix") {
+        return "=";
+    } else if (style == "label") {
+        return "";
+    } else if (style == "form") {
+        return "=";
+    } else if (style == "simple") {
+        return "";
+    } else if (style == "spaceDelimited") {
+        return "=";
+    } else if (style == "pipeDelimited") {
+        return "=";
+    } else {
+        return "none";
+    }
+}
+
+QString OAIJokesApi::getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode) {
+
+    if (style == "matrix") {
+        return (isExplode) ? ";" + name + "=" : ",";
+
+    } else if (style == "label") {
+        return (isExplode) ? "." : ",";
+
+    } else if (style == "form") {
+        return (isExplode) ? "&" + name + "=" : ",";
+
+    } else if (style == "simple") {
+        return ",";
+    } else if (style == "spaceDelimited") {
+        return (isExplode) ? "&" + name + "=" : " ";
+
+    } else if (style == "pipeDelimited") {
+        return (isExplode) ? "&" + name + "=" : "|";
+
+    } else if (style == "deepObject") {
+        return (isExplode) ? "&" : "none";
+
+    } else {
+        return "none";
+    }
+}
+
+void OAIJokesApi::analyzeJoke(const ::OpenAPI::OptionalParam<QString> &body) {
+    QString fullPath = QString(_serverConfigs["analyzeJoke"][_serverIndices.value("analyzeJoke")].URL()+"/jokes/analyze");
     
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker();
+    if (_apiKeys.contains("apiKey")) {
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+        else
+            fullPath.append("?");
+        fullPath.append("apiKey=").append(_apiKeys.find("apiKey").value());
+    }
+    
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
-    
-    QString output(body);
-    input.request_body.append(output);
-    
+    if (body.hasValue()){
 
-    foreach(QString key, this->defaultHeaders.keys()) {
-        input.headers.insert(key, this->defaultHeaders.value(key));
+        QByteArray output = body.value().toUtf8();
+        input.request_body.append(output);
     }
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+#else
+    for (auto key : _defaultHeaders.keys()) {
+        input.headers.insert(key, _defaultHeaders[key]);
+    }
+#endif
 
-    connect(worker,
-            &OAIHttpRequestWorker::on_execution_finished,
-            this,
-            &OAIJokesApi::analyzeJokeCallback);
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIJokesApi::analyzeJokeCallback);
+    connect(this, &OAIJokesApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this]() {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            emit allPendingRequestsCompleted();
+        }
+    });
 
     worker->execute(&input);
 }
 
-void
-OAIJokesApi::analyzeJokeCallback(OAIHttpRequestWorker * worker) {
-    QString msg;
+void OAIJokesApi::analyzeJokeCallback(OAIHttpRequestWorker *worker) {
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
 
-    if (worker->error_type == QNetworkReply::NoError) {
-        msg = QString("Success! %1 bytes").arg(worker->response.length());
-    }
-    else {
-        msg = "Error: " + worker->error_str;
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
     OAIInline_response_200_9 output(QString(worker->response));
     worker->deleteLater();
@@ -80,41 +284,64 @@ OAIJokesApi::analyzeJokeCallback(OAIHttpRequestWorker * worker) {
     }
 }
 
-void
-OAIJokesApi::downvoteJoke(const qint32& id) {
-    QString fullPath;
-    fullPath.append(this->host).append(this->basePath).append("/jokes/{id}/downvote");
-    QString idPathParam("{"); 
-    idPathParam.append("id").append("}");
-    fullPath.replace(idPathParam, QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+void OAIJokesApi::downvoteJoke(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["downvoteJoke"][_serverIndices.value("downvoteJoke")].URL()+"/jokes/{id}/downvote");
     
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker();
+    if (_apiKeys.contains("apiKey")) {
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+        else
+            fullPath.append("?");
+        fullPath.append("apiKey=").append(_apiKeys.find("apiKey").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
 
-    foreach(QString key, this->defaultHeaders.keys()) {
-        input.headers.insert(key, this->defaultHeaders.value(key));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
+#else
+    for (auto key : _defaultHeaders.keys()) {
+        input.headers.insert(key, _defaultHeaders[key]);
+    }
+#endif
 
-    connect(worker,
-            &OAIHttpRequestWorker::on_execution_finished,
-            this,
-            &OAIJokesApi::downvoteJokeCallback);
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIJokesApi::downvoteJokeCallback);
+    connect(this, &OAIJokesApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this]() {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            emit allPendingRequestsCompleted();
+        }
+    });
 
     worker->execute(&input);
 }
 
-void
-OAIJokesApi::downvoteJokeCallback(OAIHttpRequestWorker * worker) {
-    QString msg;
+void OAIJokesApi::downvoteJokeCallback(OAIHttpRequestWorker *worker) {
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
 
-    if (worker->error_type == QNetworkReply::NoError) {
-        msg = QString("Success! %1 bytes").arg(worker->response.length());
-    }
-    else {
-        msg = "Error: " + worker->error_str;
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
     OAIInline_response_200_8 output(QString(worker->response));
     worker->deleteLater();
@@ -128,78 +355,126 @@ OAIJokesApi::downvoteJokeCallback(OAIHttpRequestWorker * worker) {
     }
 }
 
-void
-OAIJokesApi::randomJoke(const QString& keywords, const QString& include_tags, const QString& exclude_tags, const qint32& min_rating, const qint32& max_length) {
-    QString fullPath;
-    fullPath.append(this->host).append(this->basePath).append("/jokes/random");
+void OAIJokesApi::randomJoke(const ::OpenAPI::OptionalParam<QString> &keywords, const ::OpenAPI::OptionalParam<QString> &include_tags, const ::OpenAPI::OptionalParam<QString> &exclude_tags, const ::OpenAPI::OptionalParam<qint32> &min_rating, const ::OpenAPI::OptionalParam<qint32> &max_length) {
+    QString fullPath = QString(_serverConfigs["randomJoke"][_serverIndices.value("randomJoke")].URL()+"/jokes/random");
     
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("keywords"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(keywords)));
+    if (_apiKeys.contains("apiKey")) {
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+        else
+            fullPath.append("?");
+        fullPath.append("apiKey=").append(_apiKeys.find("apiKey").value());
+    }
     
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("include-tags"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(include_tags)));
-    
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("exclude-tags"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(exclude_tags)));
-    
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("min-rating"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(min_rating)));
-    
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("max-length"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(max_length)));
-    
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker();
+    QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
+    if (keywords.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "keywords", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("keywords")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(keywords.value())));
+    }
+    if (include_tags.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "include-tags", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("include-tags")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(include_tags.value())));
+    }
+    if (exclude_tags.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "exclude-tags", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("exclude-tags")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(exclude_tags.value())));
+    }
+    if (min_rating.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "min-rating", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("min-rating")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(min_rating.value())));
+    }
+    if (max_length.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "max-length", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("max-length")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(max_length.value())));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "GET");
 
 
-    foreach(QString key, this->defaultHeaders.keys()) {
-        input.headers.insert(key, this->defaultHeaders.value(key));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
+#else
+    for (auto key : _defaultHeaders.keys()) {
+        input.headers.insert(key, _defaultHeaders[key]);
+    }
+#endif
 
-    connect(worker,
-            &OAIHttpRequestWorker::on_execution_finished,
-            this,
-            &OAIJokesApi::randomJokeCallback);
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIJokesApi::randomJokeCallback);
+    connect(this, &OAIJokesApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this]() {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            emit allPendingRequestsCompleted();
+        }
+    });
 
     worker->execute(&input);
 }
 
-void
-OAIJokesApi::randomJokeCallback(OAIHttpRequestWorker * worker) {
-    QString msg;
+void OAIJokesApi::randomJokeCallback(OAIHttpRequestWorker *worker) {
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
 
-    if (worker->error_type == QNetworkReply::NoError) {
-        msg = QString("Success! %1 bytes").arg(worker->response.length());
-    }
-    else {
-        msg = "Error: " + worker->error_str;
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
     OAIInline_response_200_4 output(QString(worker->response));
     worker->deleteLater();
@@ -213,94 +488,156 @@ OAIJokesApi::randomJokeCallback(OAIHttpRequestWorker * worker) {
     }
 }
 
-void
-OAIJokesApi::searchJokes(const QString& keywords, const QString& include_tags, const QString& exclude_tags, const qint32& number, const qint32& min_rating, const qint32& max_length, const OAINumber& offset) {
-    QString fullPath;
-    fullPath.append(this->host).append(this->basePath).append("/jokes/search");
+void OAIJokesApi::searchJokes(const ::OpenAPI::OptionalParam<QString> &keywords, const ::OpenAPI::OptionalParam<QString> &include_tags, const ::OpenAPI::OptionalParam<QString> &exclude_tags, const ::OpenAPI::OptionalParam<qint32> &number, const ::OpenAPI::OptionalParam<qint32> &min_rating, const ::OpenAPI::OptionalParam<qint32> &max_length, const ::OpenAPI::OptionalParam<double> &offset) {
+    QString fullPath = QString(_serverConfigs["searchJokes"][_serverIndices.value("searchJokes")].URL()+"/jokes/search");
     
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("keywords"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(keywords)));
+    if (_apiKeys.contains("apiKey")) {
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+        else
+            fullPath.append("?");
+        fullPath.append("apiKey=").append(_apiKeys.find("apiKey").value());
+    }
     
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("include-tags"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(include_tags)));
-    
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("exclude-tags"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(exclude_tags)));
-    
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("number"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(number)));
-    
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("min-rating"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(min_rating)));
-    
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("max-length"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(max_length)));
-    
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("offset"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(offset)));
-    
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker();
+    QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
+    if (keywords.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "keywords", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("keywords")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(keywords.value())));
+    }
+    if (include_tags.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "include-tags", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("include-tags")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(include_tags.value())));
+    }
+    if (exclude_tags.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "exclude-tags", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("exclude-tags")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(exclude_tags.value())));
+    }
+    if (number.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "number", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("number")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(number.value())));
+    }
+    if (min_rating.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "min-rating", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("min-rating")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(min_rating.value())));
+    }
+    if (max_length.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "max-length", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("max-length")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(max_length.value())));
+    }
+    if (offset.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "offset", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("offset")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(offset.value())));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "GET");
 
 
-    foreach(QString key, this->defaultHeaders.keys()) {
-        input.headers.insert(key, this->defaultHeaders.value(key));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
+#else
+    for (auto key : _defaultHeaders.keys()) {
+        input.headers.insert(key, _defaultHeaders[key]);
+    }
+#endif
 
-    connect(worker,
-            &OAIHttpRequestWorker::on_execution_finished,
-            this,
-            &OAIJokesApi::searchJokesCallback);
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIJokesApi::searchJokesCallback);
+    connect(this, &OAIJokesApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this]() {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            emit allPendingRequestsCompleted();
+        }
+    });
 
     worker->execute(&input);
 }
 
-void
-OAIJokesApi::searchJokesCallback(OAIHttpRequestWorker * worker) {
-    QString msg;
+void OAIJokesApi::searchJokesCallback(OAIHttpRequestWorker *worker) {
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
 
-    if (worker->error_type == QNetworkReply::NoError) {
-        msg = QString("Success! %1 bytes").arg(worker->response.length());
-    }
-    else {
-        msg = "Error: " + worker->error_str;
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
     OAIInline_response_200 output(QString(worker->response));
     worker->deleteLater();
@@ -314,42 +651,54 @@ OAIJokesApi::searchJokesCallback(OAIHttpRequestWorker * worker) {
     }
 }
 
-void
-OAIJokesApi::submitJoke(const QString& body) {
-    QString fullPath;
-    fullPath.append(this->host).append(this->basePath).append("/jokes");
+void OAIJokesApi::submitJoke(const ::OpenAPI::OptionalParam<QString> &body) {
+    QString fullPath = QString(_serverConfigs["submitJoke"][_serverIndices.value("submitJoke")].URL()+"/jokes");
     
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker();
+    if (_apiKeys.contains("apiKey")) {
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+        else
+            fullPath.append("?");
+        fullPath.append("apiKey=").append(_apiKeys.find("apiKey").value());
+    }
+    
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
-    
-    QString output(body);
-    input.request_body.append(output);
-    
+    if (body.hasValue()){
 
-    foreach(QString key, this->defaultHeaders.keys()) {
-        input.headers.insert(key, this->defaultHeaders.value(key));
+        QByteArray output = body.value().toUtf8();
+        input.request_body.append(output);
     }
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+#else
+    for (auto key : _defaultHeaders.keys()) {
+        input.headers.insert(key, _defaultHeaders[key]);
+    }
+#endif
 
-    connect(worker,
-            &OAIHttpRequestWorker::on_execution_finished,
-            this,
-            &OAIJokesApi::submitJokeCallback);
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIJokesApi::submitJokeCallback);
+    connect(this, &OAIJokesApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this]() {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            emit allPendingRequestsCompleted();
+        }
+    });
 
     worker->execute(&input);
 }
 
-void
-OAIJokesApi::submitJokeCallback(OAIHttpRequestWorker * worker) {
-    QString msg;
+void OAIJokesApi::submitJokeCallback(OAIHttpRequestWorker *worker) {
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
 
-    if (worker->error_type == QNetworkReply::NoError) {
-        msg = QString("Success! %1 bytes").arg(worker->response.length());
-    }
-    else {
-        msg = "Error: " + worker->error_str;
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
     OAIInline_response_200_8 output(QString(worker->response));
     worker->deleteLater();
@@ -363,41 +712,64 @@ OAIJokesApi::submitJokeCallback(OAIHttpRequestWorker * worker) {
     }
 }
 
-void
-OAIJokesApi::upvoteJoke(const qint32& id) {
-    QString fullPath;
-    fullPath.append(this->host).append(this->basePath).append("/jokes/{id}/upvote");
-    QString idPathParam("{"); 
-    idPathParam.append("id").append("}");
-    fullPath.replace(idPathParam, QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+void OAIJokesApi::upvoteJoke(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["upvoteJoke"][_serverIndices.value("upvoteJoke")].URL()+"/jokes/{id}/upvote");
     
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker();
+    if (_apiKeys.contains("apiKey")) {
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+        else
+            fullPath.append("?");
+        fullPath.append("apiKey=").append(_apiKeys.find("apiKey").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
 
-    foreach(QString key, this->defaultHeaders.keys()) {
-        input.headers.insert(key, this->defaultHeaders.value(key));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
+#else
+    for (auto key : _defaultHeaders.keys()) {
+        input.headers.insert(key, _defaultHeaders[key]);
+    }
+#endif
 
-    connect(worker,
-            &OAIHttpRequestWorker::on_execution_finished,
-            this,
-            &OAIJokesApi::upvoteJokeCallback);
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIJokesApi::upvoteJokeCallback);
+    connect(this, &OAIJokesApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this]() {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            emit allPendingRequestsCompleted();
+        }
+    });
 
     worker->execute(&input);
 }
 
-void
-OAIJokesApi::upvoteJokeCallback(OAIHttpRequestWorker * worker) {
-    QString msg;
+void OAIJokesApi::upvoteJokeCallback(OAIHttpRequestWorker *worker) {
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
 
-    if (worker->error_type == QNetworkReply::NoError) {
-        msg = QString("Success! %1 bytes").arg(worker->response.length());
-    }
-    else {
-        msg = "Error: " + worker->error_str;
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
     OAIInline_response_200_8 output(QString(worker->response));
     worker->deleteLater();
@@ -411,5 +783,53 @@ OAIJokesApi::upvoteJokeCallback(OAIHttpRequestWorker * worker) {
     }
 }
 
-
+void OAIJokesApi::tokenAvailable(){
+  
+    oauthToken token; 
+    switch (_OauthMethod) {
+    case 1: //implicit flow
+        token = _implicitFlow.getToken(_latestScope.join(" "));
+        if(token.isValid()){
+            _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
+            _latestWorker->execute(&_latestInput);
+        }else{
+            _implicitFlow.removeToken(_latestScope.join(" "));
+            qDebug() << "Could not retreive a valid token";
+        }
+        break;
+    case 2: //authorization flow
+        token = _authFlow.getToken(_latestScope.join(" "));
+        if(token.isValid()){
+            _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
+            _latestWorker->execute(&_latestInput);
+        }else{
+            _authFlow.removeToken(_latestScope.join(" "));    
+            qDebug() << "Could not retreive a valid token";
+        }
+        break;
+    case 3: //client credentials flow
+        token = _credentialFlow.getToken(_latestScope.join(" "));
+        if(token.isValid()){
+            _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
+            _latestWorker->execute(&_latestInput);
+        }else{
+            _credentialFlow.removeToken(_latestScope.join(" "));    
+            qDebug() << "Could not retreive a valid token";
+        }
+        break;
+    case 4: //resource owner password flow
+        token = _passwordFlow.getToken(_latestScope.join(" "));
+        if(token.isValid()){
+            _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
+            _latestWorker->execute(&_latestInput);
+        }else{
+            _credentialFlow.removeToken(_latestScope.join(" "));    
+            qDebug() << "Could not retreive a valid token";
+        }
+        break;
+    default:
+        qDebug() << "No Oauth method set!";
+        break;
+    }
 }
+} // namespace OpenAPI

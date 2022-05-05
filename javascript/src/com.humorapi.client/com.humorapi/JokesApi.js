@@ -184,7 +184,7 @@ export default class JokesApi {
      * @param {String} opts.keywords A comma separated list of keywords.
      * @param {module:com.humorapi.client/com.humorapi.client.model/String} opts.includeTags A comma separated list of tags that the joke must have.
      * @param {module:com.humorapi.client/com.humorapi.client.model/String} opts.excludeTags A comma separated list of tags that the joke must not have.
-     * @param {Number} opts._number The number of results to retrieve between 1 and 10.
+     * @param {Number} opts.number The number of results to retrieve between 1 and 10.
      * @param {Number} opts.minRating The minimum rating between 0 and 10 the result should have.
      * @param {Number} opts.maxLength The maximum number of letters in the joke.
      * @param {Number} opts.offset The number of results to skip.
@@ -201,7 +201,7 @@ export default class JokesApi {
         'keywords': opts['keywords'],
         'include-tags': opts['includeTags'],
         'exclude-tags': opts['excludeTags'],
-        'number': opts['_number'],
+        'number': opts['number'],
         'min-rating': opts['minRating'],
         'max-length': opts['maxLength'],
         'offset': opts['offset']

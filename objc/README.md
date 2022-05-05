@@ -145,4 +145,3 @@ Class | Method | HTTP request | Description
 
 mail@humorapi.com
 
-

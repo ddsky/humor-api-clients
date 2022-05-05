@@ -1,4 +1,5 @@
-# humorapi.Model.InlineResponse2007
+# Org.OpenAPITools.Model.InlineResponse2007
+
 ## Properties
 
 Name | Type | Description | Notes

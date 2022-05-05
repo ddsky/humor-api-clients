@@ -20,7 +20,7 @@ Downvote a Meme
 
 Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -81,7 +81,7 @@ Random Meme
 
 Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -155,7 +155,7 @@ Search Memes
 
 Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -227,7 +227,7 @@ Upvote a Meme
 
 Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 

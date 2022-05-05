@@ -1,4 +1,4 @@
-# javascript-client
+# android-client
 
 ## Requirements
 
@@ -27,7 +27,7 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
     <groupId>com.humorapi</groupId>
-    <artifactId>javascript-client</artifactId>
+    <artifactId>android-client</artifactId>
     <version>1.0</version>
     <scope>compile</scope>
 </dependency>
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.humorapi:javascript-client:1.0"
+compile "com.humorapi:android-client:1.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- target/javascript-client-1.0.jar
+- target/android-client-1.0.jar
 - target/lib/*.jar
 
 ## Getting Started

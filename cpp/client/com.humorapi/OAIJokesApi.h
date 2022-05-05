@@ -13,76 +13,160 @@
 #ifndef OAI_OAIJokesApi_H
 #define OAI_OAIJokesApi_H
 
+#include "OAIHelpers.h"
 #include "OAIHttpRequest.h"
+#include "OAIServerConfiguration.h"
+#include "OAIOauth.h"
 
 #include "com.humorapi.client.model\OAIInline_response_200.h"
 #include "com.humorapi.client.model\OAIInline_response_200_4.h"
 #include "com.humorapi.client.model\OAIInline_response_200_8.h"
 #include "com.humorapi.client.model\OAIInline_response_200_9.h"
-#include "com.humorapi.client.model\OAINumber.h"
 #include <QString>
 
 #include <QObject>
+#include <QByteArray>
+#include <QStringList>
+#include <QList>
+#include <QNetworkAccessManager>
 
 namespace OpenAPI {
 
-class OAIJokesApi: public QObject {
+class OAIJokesApi : public QObject {
     Q_OBJECT
 
 public:
-    OAIJokesApi();
-    OAIJokesApi(QString host, QString basePath);
+    OAIJokesApi(const int timeOut = 0);
     ~OAIJokesApi();
 
-    QString host;
-    QString basePath;
-    QMap<QString, QString> defaultHeaders;
+    void initializeServerConfigs();
+    int setDefaultServerValue(int serverIndex,const QString &operation, const QString &variable,const QString &val);
+    void setServerIndex(const QString &operation, int serverIndex);
+    void setApiKey(const QString &apiKeyName, const QString &apiKey);
+    void setBearerToken(const QString &token);
+    void setUsername(const QString &username);
+    void setPassword(const QString &password);
+    void setTimeOut(const int timeOut);
+    void setWorkingDirectory(const QString &path);
+    void setNetworkAccessManager(QNetworkAccessManager* manager);
+    int addServerConfiguration(const QString &operation, const QUrl &url, const QString &description = "", const QMap<QString, OAIServerVariable> &variables = QMap<QString, OAIServerVariable>());
+    void setNewServerForAllOperations(const QUrl &url, const QString &description = "", const QMap<QString, OAIServerVariable> &variables =  QMap<QString, OAIServerVariable>());
+    void setNewServer(const QString &operation, const QUrl &url, const QString &description = "", const QMap<QString, OAIServerVariable> &variables =  QMap<QString, OAIServerVariable>());
+    void addHeaders(const QString &key, const QString &value);
+    void enableRequestCompression();
+    void enableResponseCompression();
+    void abortRequests();
+    QString getParamStylePrefix(const QString &style);
+    QString getParamStyleSuffix(const QString &style);
+    QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-    void analyzeJoke(const QString& body);
-    void downvoteJoke(const qint32& id);
-    void randomJoke(const QString& keywords, const QString& include_tags, const QString& exclude_tags, const qint32& min_rating, const qint32& max_length);
-    void searchJokes(const QString& keywords, const QString& include_tags, const QString& exclude_tags, const qint32& number, const qint32& min_rating, const qint32& max_length, const OAINumber& offset);
-    void submitJoke(const QString& body);
-    void upvoteJoke(const qint32& id);
-    
+    /**
+    * @param[in]  body QString [optional]
+    */
+    void analyzeJoke(const ::OpenAPI::OptionalParam<QString> &body = ::OpenAPI::OptionalParam<QString>());
+
+    /**
+    * @param[in]  id qint32 [required]
+    */
+    void downvoteJoke(const qint32 &id);
+
+    /**
+    * @param[in]  keywords QString [optional]
+    * @param[in]  include_tags QString [optional]
+    * @param[in]  exclude_tags QString [optional]
+    * @param[in]  min_rating qint32 [optional]
+    * @param[in]  max_length qint32 [optional]
+    */
+    void randomJoke(const ::OpenAPI::OptionalParam<QString> &keywords = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &include_tags = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &exclude_tags = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<qint32> &min_rating = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<qint32> &max_length = ::OpenAPI::OptionalParam<qint32>());
+
+    /**
+    * @param[in]  keywords QString [optional]
+    * @param[in]  include_tags QString [optional]
+    * @param[in]  exclude_tags QString [optional]
+    * @param[in]  number qint32 [optional]
+    * @param[in]  min_rating qint32 [optional]
+    * @param[in]  max_length qint32 [optional]
+    * @param[in]  offset double [optional]
+    */
+    void searchJokes(const ::OpenAPI::OptionalParam<QString> &keywords = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &include_tags = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &exclude_tags = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<qint32> &number = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<qint32> &min_rating = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<qint32> &max_length = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<double> &offset = ::OpenAPI::OptionalParam<double>());
+
+    /**
+    * @param[in]  body QString [optional]
+    */
+    void submitJoke(const ::OpenAPI::OptionalParam<QString> &body = ::OpenAPI::OptionalParam<QString>());
+
+    /**
+    * @param[in]  id qint32 [required]
+    */
+    void upvoteJoke(const qint32 &id);
+
+
 private:
-    void analyzeJokeCallback (OAIHttpRequestWorker * worker);
-    void downvoteJokeCallback (OAIHttpRequestWorker * worker);
-    void randomJokeCallback (OAIHttpRequestWorker * worker);
-    void searchJokesCallback (OAIHttpRequestWorker * worker);
-    void submitJokeCallback (OAIHttpRequestWorker * worker);
-    void upvoteJokeCallback (OAIHttpRequestWorker * worker);
-    
+    QMap<QString,int> _serverIndices;
+    QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
+    QMap<QString, QString> _apiKeys;
+    QString _bearerToken;
+    QString _username;
+    QString _password;
+    int _timeOut;
+    QString _workingDirectory;
+    QNetworkAccessManager* _manager;
+    QMap<QString, QString> _defaultHeaders;
+    bool _isResponseCompressionEnabled;
+    bool _isRequestCompressionEnabled;
+    OAIHttpRequestInput _latestInput;
+    OAIHttpRequestWorker *_latestWorker;
+    QStringList _latestScope;
+    OauthCode _authFlow;
+    OauthImplicit _implicitFlow;
+    OauthCredentials _credentialFlow;
+    OauthPassword _passwordFlow;
+    int _OauthMethod = 0;
+
+    void analyzeJokeCallback(OAIHttpRequestWorker *worker);
+    void downvoteJokeCallback(OAIHttpRequestWorker *worker);
+    void randomJokeCallback(OAIHttpRequestWorker *worker);
+    void searchJokesCallback(OAIHttpRequestWorker *worker);
+    void submitJokeCallback(OAIHttpRequestWorker *worker);
+    void upvoteJokeCallback(OAIHttpRequestWorker *worker);
+
 signals:
+
     void analyzeJokeSignal(OAIInline_response_200_9 summary);
     void downvoteJokeSignal(OAIInline_response_200_8 summary);
     void randomJokeSignal(OAIInline_response_200_4 summary);
     void searchJokesSignal(OAIInline_response_200 summary);
     void submitJokeSignal(OAIInline_response_200_8 summary);
     void upvoteJokeSignal(OAIInline_response_200_8 summary);
-    
-    void analyzeJokeSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_9 summary);
-    void downvoteJokeSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_8 summary);
-    void randomJokeSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_4 summary);
-    void searchJokesSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200 summary);
-    void submitJokeSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_8 summary);
-    void upvoteJokeSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_8 summary);
-    
-    void analyzeJokeSignalE(OAIInline_response_200_9 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void downvoteJokeSignalE(OAIInline_response_200_8 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void randomJokeSignalE(OAIInline_response_200_4 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void searchJokesSignalE(OAIInline_response_200 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void submitJokeSignalE(OAIInline_response_200_8 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void upvoteJokeSignalE(OAIInline_response_200_8 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    
-    void analyzeJokeSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void downvoteJokeSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void randomJokeSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void searchJokesSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void submitJokeSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void upvoteJokeSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
+
+    void analyzeJokeSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_9 summary);
+    void downvoteJokeSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_8 summary);
+    void randomJokeSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_4 summary);
+    void searchJokesSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200 summary);
+    void submitJokeSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_8 summary);
+    void upvoteJokeSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_8 summary);
+
+    void analyzeJokeSignalE(OAIInline_response_200_9 summary, QNetworkReply::NetworkError error_type, QString error_str);
+    void downvoteJokeSignalE(OAIInline_response_200_8 summary, QNetworkReply::NetworkError error_type, QString error_str);
+    void randomJokeSignalE(OAIInline_response_200_4 summary, QNetworkReply::NetworkError error_type, QString error_str);
+    void searchJokesSignalE(OAIInline_response_200 summary, QNetworkReply::NetworkError error_type, QString error_str);
+    void submitJokeSignalE(OAIInline_response_200_8 summary, QNetworkReply::NetworkError error_type, QString error_str);
+    void upvoteJokeSignalE(OAIInline_response_200_8 summary, QNetworkReply::NetworkError error_type, QString error_str);
+
+    void analyzeJokeSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+    void downvoteJokeSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+    void randomJokeSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+    void searchJokesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+    void submitJokeSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+    void upvoteJokeSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+
+    void abortRequestsSignal();
+    void allPendingRequestsCompleted();
+
+public slots:
+    void tokenAvailable();
     
 };
 
-}
+} // namespace OpenAPI
 #endif

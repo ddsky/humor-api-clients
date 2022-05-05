@@ -28,13 +28,18 @@ import querystring from "querystring";
 * @class
 */
 class ApiClient {
-    constructor() {
+    /**
+     * The base URL against which to resolve every API call's (relative) path.
+     * Overrides the default value set in spec file if present
+     * @param {String} basePath
+     */
+    constructor(basePath = 'https://api.humorapi.com') {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
          * @default https://api.humorapi.com
          */
-        this.basePath = 'https://api.humorapi.com'.replace(/\/+$/, '');
+        this.basePath = basePath.replace(/\/+$/, '');
 
         /**
          * The authentication methods to be included for all API calls.
@@ -49,7 +54,9 @@ class ApiClient {
          * @type {Array.<String>}
          * @default {}
          */
-        this.defaultHeaders = {};
+        this.defaultHeaders = {
+            'User-Agent': 'OpenAPI-Generator/1.0/Javascript'
+        };
 
         /**
          * The default HTTP timeout for all API calls.
@@ -105,9 +112,28 @@ class ApiClient {
         if (param instanceof Date) {
             return param.toJSON();
         }
+        if (ApiClient.canBeJsonified(param)) {
+            return JSON.stringify(param);
+        }
 
         return param.toString();
     }
+
+    /**
+    * Returns a boolean indicating if the parameter could be JSON.stringified
+    * @param param The actual parameter
+    * @returns {Boolean} Flag indicating if <code>param</code> can be JSON.stringified
+    */
+    static canBeJsonified(str) {
+        if (typeof str !== 'string' && typeof str !== 'object') return false;
+        try {
+            const type = str.toString();
+            return type === '[object Object]'
+                || type === '[object Array]';
+        } catch (err) {
+            return false;
+        }
+    };
 
    /**
     * Builds full URL by appending the given path to the base URL and replacing path parameter place-holders with parameter values.
@@ -129,7 +155,7 @@ class ApiClient {
             url = apiBasePath + path;
         }
 
-        url = url.replace(/\{([\w-]+)\}/g, (fullMatch, key) => {
+        url = url.replace(/\{([\w-\.]+)\}/g, (fullMatch, key) => {
             var value;
             if (pathParams.hasOwnProperty(key)) {
                 value = this.paramToString(pathParams[key]);
@@ -247,16 +273,18 @@ class ApiClient {
         }
         switch (collectionFormat) {
             case 'csv':
-                return param.map(this.paramToString).join(',');
+                return param.map(this.paramToString, this).join(',');
             case 'ssv':
-                return param.map(this.paramToString).join(' ');
+                return param.map(this.paramToString, this).join(' ');
             case 'tsv':
-                return param.map(this.paramToString).join('\t');
+                return param.map(this.paramToString, this).join('\t');
             case 'pipes':
-                return param.map(this.paramToString).join('|');
+                return param.map(this.paramToString, this).join('|');
             case 'multi':
                 //return the array directly as SuperAgent will handle it as expected
-                return param.map(this.paramToString);
+                return param.map(this.paramToString, this);
+            case 'passthrough':
+                return param;
             default:
                 throw new Error('Unknown collection format: ' + collectionFormat);
         }
@@ -279,7 +307,10 @@ class ApiClient {
                     break;
                 case 'bearer':
                     if (auth.accessToken) {
-                        request.set({'Authorization': 'Bearer ' + auth.accessToken});
+                        var localVarBearerToken = typeof auth.accessToken === 'function'
+                          ? auth.accessToken()
+                          : auth.accessToken
+                        request.set({'Authorization': 'Bearer ' + localVarBearerToken});
                     }
 
                     break;
@@ -359,7 +390,7 @@ class ApiClient {
     * @param {Array.<String>} accepts An array of acceptable response MIME types.
     * @param {(String|Array|ObjectFunction)} returnType The required type to return; can be a string for simple types or the
     * constructor for a complex type.
-    * @param {String} apiBasePath base path defined in the operation/path level to override the default one 
+    * @param {String} apiBasePath base path defined in the operation/path level to override the default one
     * @param {module:com.humorapi.client/ApiClient~callApiCallback} callback The callback function.
     * @returns {Object} The SuperAgent request object.
     */
@@ -405,8 +436,6 @@ class ApiClient {
             if(contentType != 'multipart/form-data') {
                 request.type(contentType);
             }
-        } else if (!request.header['Content-Type']) {
-            request.type('application/json');
         }
 
         if (contentType === 'application/x-www-form-urlencoded') {
@@ -415,15 +444,23 @@ class ApiClient {
             var _formParams = this.normalizeParams(formParams);
             for (var key in _formParams) {
                 if (_formParams.hasOwnProperty(key)) {
-                    if (this.isFileParam(_formParams[key])) {
+                    let _formParamsValue = _formParams[key];
+                    if (this.isFileParam(_formParamsValue)) {
                         // file field
-                        request.attach(key, _formParams[key]);
+                        request.attach(key, _formParamsValue);
+                    } else if (Array.isArray(_formParamsValue) && _formParamsValue.length
+                        && this.isFileParam(_formParamsValue[0])) {
+                        // multiple files
+                        _formParamsValue.forEach(file => request.attach(key, file));
                     } else {
-                        request.field(key, _formParams[key]);
+                        request.field(key, _formParamsValue);
                     }
                 }
             }
         } else if (bodyParam !== null && bodyParam !== undefined) {
+            if (!request.header['Content-Type']) {
+                request.type('application/json');
+            }
             request.send(bodyParam);
         }
 
@@ -470,12 +507,15 @@ class ApiClient {
     }
 
     /**
-    * Parses an ISO-8601 string representation of a date value.
+    * Parses an ISO-8601 string representation or epoch representation of a date value.
     * @param {String} str The date value as a string.
     * @returns {Date} The parsed date object.
     */
     static parseDate(str) {
-        return new Date(str);
+        if (isNaN(str)) {
+            return new Date(str.replace(/(\d)(T)(\d)/i, '$1 $3'));
+        }
+        return new Date(+str);
     }
 
     /**

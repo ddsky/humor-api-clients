@@ -13,24 +13,21 @@
 #ifndef OAI_OBJECT_H
 #define OAI_OBJECT_H
 
-#include <QJsonObject>
 #include <QJsonDocument>
+#include <QJsonObject>
+#include <QMetaType>
 
 namespace OpenAPI {
 
 class OAIObject {
-  public:
-    OAIObject() {
+public:
+    OAIObject() {}
 
-    }
-    
     OAIObject(QString jsonString) {
         fromJson(jsonString);
     }
 
-    virtual ~OAIObject(){
-
-    }
+    virtual ~OAIObject() {}
 
     virtual QJsonObject asJsonObject() const {
         return jObj;
@@ -57,10 +54,13 @@ class OAIObject {
     virtual bool isValid() const {
         return true;
     }
-private :
+
+private:
     QJsonObject jObj;
 };
 
-}
+} // namespace OpenAPI
+
+Q_DECLARE_METATYPE(OpenAPI::OAIObject)
 
 #endif // OAI_OBJECT_H

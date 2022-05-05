@@ -13,7 +13,10 @@
 #ifndef OAI_OAIOtherApi_H
 #define OAI_OAIOtherApi_H
 
+#include "OAIHelpers.h"
 #include "OAIHttpRequest.h"
+#include "OAIServerConfiguration.h"
+#include "OAIOauth.h"
 
 #include "com.humorapi.client.model\OAIInline_response_200_1.h"
 #include "com.humorapi.client.model\OAIInline_response_200_5.h"
@@ -22,60 +25,129 @@
 #include <QString>
 
 #include <QObject>
+#include <QByteArray>
+#include <QStringList>
+#include <QList>
+#include <QNetworkAccessManager>
 
 namespace OpenAPI {
 
-class OAIOtherApi: public QObject {
+class OAIOtherApi : public QObject {
     Q_OBJECT
 
 public:
-    OAIOtherApi();
-    OAIOtherApi(QString host, QString basePath);
+    OAIOtherApi(const int timeOut = 0);
     ~OAIOtherApi();
 
-    QString host;
-    QString basePath;
-    QMap<QString, QString> defaultHeaders;
+    void initializeServerConfigs();
+    int setDefaultServerValue(int serverIndex,const QString &operation, const QString &variable,const QString &val);
+    void setServerIndex(const QString &operation, int serverIndex);
+    void setApiKey(const QString &apiKeyName, const QString &apiKey);
+    void setBearerToken(const QString &token);
+    void setUsername(const QString &username);
+    void setPassword(const QString &password);
+    void setTimeOut(const int timeOut);
+    void setWorkingDirectory(const QString &path);
+    void setNetworkAccessManager(QNetworkAccessManager* manager);
+    int addServerConfiguration(const QString &operation, const QUrl &url, const QString &description = "", const QMap<QString, OAIServerVariable> &variables = QMap<QString, OAIServerVariable>());
+    void setNewServerForAllOperations(const QUrl &url, const QString &description = "", const QMap<QString, OAIServerVariable> &variables =  QMap<QString, OAIServerVariable>());
+    void setNewServer(const QString &operation, const QUrl &url, const QString &description = "", const QMap<QString, OAIServerVariable> &variables =  QMap<QString, OAIServerVariable>());
+    void addHeaders(const QString &key, const QString &value);
+    void enableRequestCompression();
+    void enableResponseCompression();
+    void abortRequests();
+    QString getParamStylePrefix(const QString &style);
+    QString getParamStyleSuffix(const QString &style);
+    QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
+
 
     void generateNonsenseWord();
-    void insult(const QString& name, const QString& reason);
-    void praise(const QString& name, const QString& reason);
-    void rateWord(const QString& word);
-    void searchGifs(const QString& query, const qint32& number);
-    
+
+    /**
+    * @param[in]  name QString [required]
+    * @param[in]  reason QString [required]
+    */
+    void insult(const QString &name, const QString &reason);
+
+    /**
+    * @param[in]  name QString [required]
+    * @param[in]  reason QString [required]
+    */
+    void praise(const QString &name, const QString &reason);
+
+    /**
+    * @param[in]  word QString [required]
+    */
+    void rateWord(const QString &word);
+
+    /**
+    * @param[in]  query QString [required]
+    * @param[in]  number qint32 [optional]
+    */
+    void searchGifs(const QString &query, const ::OpenAPI::OptionalParam<qint32> &number = ::OpenAPI::OptionalParam<qint32>());
+
+
 private:
-    void generateNonsenseWordCallback (OAIHttpRequestWorker * worker);
-    void insultCallback (OAIHttpRequestWorker * worker);
-    void praiseCallback (OAIHttpRequestWorker * worker);
-    void rateWordCallback (OAIHttpRequestWorker * worker);
-    void searchGifsCallback (OAIHttpRequestWorker * worker);
-    
+    QMap<QString,int> _serverIndices;
+    QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
+    QMap<QString, QString> _apiKeys;
+    QString _bearerToken;
+    QString _username;
+    QString _password;
+    int _timeOut;
+    QString _workingDirectory;
+    QNetworkAccessManager* _manager;
+    QMap<QString, QString> _defaultHeaders;
+    bool _isResponseCompressionEnabled;
+    bool _isRequestCompressionEnabled;
+    OAIHttpRequestInput _latestInput;
+    OAIHttpRequestWorker *_latestWorker;
+    QStringList _latestScope;
+    OauthCode _authFlow;
+    OauthImplicit _implicitFlow;
+    OauthCredentials _credentialFlow;
+    OauthPassword _passwordFlow;
+    int _OauthMethod = 0;
+
+    void generateNonsenseWordCallback(OAIHttpRequestWorker *worker);
+    void insultCallback(OAIHttpRequestWorker *worker);
+    void praiseCallback(OAIHttpRequestWorker *worker);
+    void rateWordCallback(OAIHttpRequestWorker *worker);
+    void searchGifsCallback(OAIHttpRequestWorker *worker);
+
 signals:
+
     void generateNonsenseWordSignal(OAIInline_response_200_7 summary);
     void insultSignal(OAIInline_response_200_5 summary);
     void praiseSignal(OAIInline_response_200_5 summary);
     void rateWordSignal(OAIInline_response_200_6 summary);
     void searchGifsSignal(OAIInline_response_200_1 summary);
-    
-    void generateNonsenseWordSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_7 summary);
-    void insultSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_5 summary);
-    void praiseSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_5 summary);
-    void rateWordSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_6 summary);
-    void searchGifsSignalFull(OAIHttpRequestWorker* worker, OAIInline_response_200_1 summary);
-    
-    void generateNonsenseWordSignalE(OAIInline_response_200_7 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void insultSignalE(OAIInline_response_200_5 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void praiseSignalE(OAIInline_response_200_5 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void rateWordSignalE(OAIInline_response_200_6 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void searchGifsSignalE(OAIInline_response_200_1 summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    
-    void generateNonsenseWordSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void insultSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void praiseSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void rateWordSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void searchGifsSignalEFull(OAIHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
+
+    void generateNonsenseWordSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_7 summary);
+    void insultSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_5 summary);
+    void praiseSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_5 summary);
+    void rateWordSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_6 summary);
+    void searchGifsSignalFull(OAIHttpRequestWorker *worker, OAIInline_response_200_1 summary);
+
+    void generateNonsenseWordSignalE(OAIInline_response_200_7 summary, QNetworkReply::NetworkError error_type, QString error_str);
+    void insultSignalE(OAIInline_response_200_5 summary, QNetworkReply::NetworkError error_type, QString error_str);
+    void praiseSignalE(OAIInline_response_200_5 summary, QNetworkReply::NetworkError error_type, QString error_str);
+    void rateWordSignalE(OAIInline_response_200_6 summary, QNetworkReply::NetworkError error_type, QString error_str);
+    void searchGifsSignalE(OAIInline_response_200_1 summary, QNetworkReply::NetworkError error_type, QString error_str);
+
+    void generateNonsenseWordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+    void insultSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+    void praiseSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+    void rateWordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+    void searchGifsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
+
+    void abortRequestsSignal();
+    void allPendingRequestsCompleted();
+
+public slots:
+    void tokenAvailable();
     
 };
 
-}
+} // namespace OpenAPI
 #endif

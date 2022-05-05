@@ -22,7 +22,7 @@ Analyze Joke
 
 Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -79,7 +79,7 @@ Downvote a Joke
 
 Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -140,7 +140,7 @@ Random Joke
 
 Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -215,7 +215,7 @@ Search Jokes
 
 Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -290,7 +290,7 @@ Submit Joke
 
 Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
@@ -347,7 +347,7 @@ Upvote a Joke
 
 Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 
-### Example 
+### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 

@@ -1,4 +1,4 @@
-# humorapi.MemesApi
+# openapi_client.MemesApi
 
 All URIs are relative to *https://api.humorapi.com*
 
@@ -20,35 +20,51 @@ Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
 ### Example
 
 * Api Key Authentication (apiKey):
+
 ```python
-from __future__ import print_function
 import time
-import humorapi
-from humorapi.rest import ApiException
+import openapi_client
+from com.humorapi import memes_api
+from openapi_client.model.inline_response2008 import InlineResponse2008
 from pprint import pprint
-configuration = humorapi.Configuration()
+# Defining the host is optional and defaults to https://api.humorapi.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://api.humorapi.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: apiKey
-configuration.api_key['api-key'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api-key'] = 'Bearer'
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = humorapi.MemesApi(humorapi.ApiClient(configuration))
-id = 1 # int | The object's id.
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = memes_api.MemesApi(api_client)
+    id = 1 # int | The object's id.
 
-try:
-    # Downvote a Meme
-    api_response = api_instance.downvote_meme(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling MemesApi->downvote_meme: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Downvote a Meme
+        api_response = api_instance.downvote_meme(id)
+        pprint(api_response)
+    except openapi_client.ApiException as e:
+        print("Exception when calling MemesApi->downvote_meme: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| The object&#39;s id. | 
+ **id** | **int**| The object&#39;s id. |
 
 ### Return type
 
@@ -63,10 +79,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful downvote |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **random_meme**
-> InlineResponse2003 random_meme(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating)
+> InlineResponse2003 random_meme()
 
 Random Meme
 
@@ -75,43 +98,60 @@ Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
 ### Example
 
 * Api Key Authentication (apiKey):
+
 ```python
-from __future__ import print_function
 import time
-import humorapi
-from humorapi.rest import ApiException
+import openapi_client
+from com.humorapi import memes_api
+from openapi_client.model.inline_response2003 import InlineResponse2003
 from pprint import pprint
-configuration = humorapi.Configuration()
+# Defining the host is optional and defaults to https://api.humorapi.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://api.humorapi.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: apiKey
-configuration.api_key['api-key'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api-key'] = 'Bearer'
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = humorapi.MemesApi(humorapi.ApiClient(configuration))
-keywords = 'rocket' # str | A comma separated list of keywords. (optional)
-keywords_in_image = false # bool | Whether the keywords should be found in the meme's image. (optional)
-media_type = 'image' # str | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
-number = 3 # int | The number of results to retrieve between 1 and 10. (optional)
-min_rating = 7 # int | The minimum rating between 0 and 10 the result should have. (optional)
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = memes_api.MemesApi(api_client)
+    keywords = "rocket" # str | A comma separated list of keywords. (optional)
+    keywords_in_image = False # bool | Whether the keywords should be found in the meme's image. (optional)
+    media_type = "image" # str | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
+    number = 3 # int | The number of results to retrieve between 1 and 10. (optional)
+    min_rating = 7 # int | The minimum rating between 0 and 10 the result should have. (optional)
 
-try:
-    # Random Meme
-    api_response = api_instance.random_meme(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling MemesApi->random_meme: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Random Meme
+        api_response = api_instance.random_meme(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating)
+        pprint(api_response)
+    except openapi_client.ApiException as e:
+        print("Exception when calling MemesApi->random_meme: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keywords** | **str**| A comma separated list of keywords. | [optional] 
- **keywords_in_image** | **bool**| Whether the keywords should be found in the meme&#39;s image. | [optional] 
- **media_type** | **str**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
- **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] 
- **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
+ **keywords** | **str**| A comma separated list of keywords. | [optional]
+ **keywords_in_image** | **bool**| Whether the keywords should be found in the meme&#39;s image. | [optional]
+ **media_type** | **str**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional]
+ **number** | **int**| The number of results to retrieve between 1 and 10. | [optional]
+ **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
 
 ### Return type
 
@@ -126,10 +166,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Random Meme Response |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_memes**
-> InlineResponse2002 search_memes(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating, offset=offset)
+> InlineResponse2002 search_memes()
 
 Search Memes
 
@@ -138,45 +185,62 @@ Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
 ### Example
 
 * Api Key Authentication (apiKey):
+
 ```python
-from __future__ import print_function
 import time
-import humorapi
-from humorapi.rest import ApiException
+import openapi_client
+from com.humorapi import memes_api
+from openapi_client.model.inline_response2002 import InlineResponse2002
 from pprint import pprint
-configuration = humorapi.Configuration()
+# Defining the host is optional and defaults to https://api.humorapi.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://api.humorapi.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: apiKey
-configuration.api_key['api-key'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api-key'] = 'Bearer'
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = humorapi.MemesApi(humorapi.ApiClient(configuration))
-keywords = 'rocket' # str | A comma separated list of keywords. (optional)
-keywords_in_image = false # bool | Whether the keywords should be found in the meme's image. (optional)
-media_type = 'image' # str | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
-number = 3 # int | The number of results to retrieve between 1 and 10. (optional)
-min_rating = 7 # int | The minimum rating between 0 and 10 the result should have. (optional)
-offset = 3.4 # float | The number of results to skip. (optional)
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = memes_api.MemesApi(api_client)
+    keywords = "rocket" # str | A comma separated list of keywords. (optional)
+    keywords_in_image = False # bool | Whether the keywords should be found in the meme's image. (optional)
+    media_type = "image" # str | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
+    number = 3 # int | The number of results to retrieve between 1 and 10. (optional)
+    min_rating = 7 # int | The minimum rating between 0 and 10 the result should have. (optional)
+    offset = 0 # float | The number of results to skip. (optional)
 
-try:
-    # Search Memes
-    api_response = api_instance.search_memes(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating, offset=offset)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling MemesApi->search_memes: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Search Memes
+        api_response = api_instance.search_memes(keywords=keywords, keywords_in_image=keywords_in_image, media_type=media_type, number=number, min_rating=min_rating, offset=offset)
+        pprint(api_response)
+    except openapi_client.ApiException as e:
+        print("Exception when calling MemesApi->search_memes: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keywords** | **str**| A comma separated list of keywords. | [optional] 
- **keywords_in_image** | **bool**| Whether the keywords should be found in the meme&#39;s image. | [optional] 
- **media_type** | **str**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] 
- **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] 
- **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
- **offset** | **float**| The number of results to skip. | [optional] 
+ **keywords** | **str**| A comma separated list of keywords. | [optional]
+ **keywords_in_image** | **bool**| Whether the keywords should be found in the meme&#39;s image. | [optional]
+ **media_type** | **str**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional]
+ **number** | **int**| The number of results to retrieve between 1 and 10. | [optional]
+ **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
+ **offset** | **float**| The number of results to skip. | [optional]
 
 ### Return type
 
@@ -191,6 +255,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Meme Search Response |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upvote_meme**
@@ -203,35 +274,51 @@ Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
 ### Example
 
 * Api Key Authentication (apiKey):
+
 ```python
-from __future__ import print_function
 import time
-import humorapi
-from humorapi.rest import ApiException
+import openapi_client
+from com.humorapi import memes_api
+from openapi_client.model.inline_response2008 import InlineResponse2008
 from pprint import pprint
-configuration = humorapi.Configuration()
+# Defining the host is optional and defaults to https://api.humorapi.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://api.humorapi.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: apiKey
-configuration.api_key['api-key'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api-key'] = 'Bearer'
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = humorapi.MemesApi(humorapi.ApiClient(configuration))
-id = 1 # int | The object's id.
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = memes_api.MemesApi(api_client)
+    id = 1 # int | The object's id.
 
-try:
-    # Upvote a Meme
-    api_response = api_instance.upvote_meme(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling MemesApi->upvote_meme: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Upvote a Meme
+        api_response = api_instance.upvote_meme(id)
+        pprint(api_response)
+    except openapi_client.ApiException as e:
+        print("Exception when calling MemesApi->upvote_meme: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| The object&#39;s id. | 
+ **id** | **int**| The object&#39;s id. |
 
 ### Return type
 
@@ -245,6 +332,13 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful upvote |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

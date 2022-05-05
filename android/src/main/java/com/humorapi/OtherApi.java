@@ -12,24 +12,31 @@
 
 package com.humorapi;
 
-import com.humorapi.client.ApiException;
 import com.humorapi.client.ApiInvoker;
+import com.humorapi.client.ApiException;
 import com.humorapi.client.Pair;
 
 import com.humorapi.client.model.*;
 
 import java.util.*;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 import com.humorapi.client.model.InlineResponse2001;
 import com.humorapi.client.model.InlineResponse2005;
 import com.humorapi.client.model.InlineResponse2006;
 import com.humorapi.client.model.InlineResponse2007;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class OtherApi {
   String basePath = "https://api.humorapi.com";
@@ -52,276 +59,664 @@ public class OtherApi {
   }
 
   /**
+  * Generate Nonsense Word
+  * Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
+   * @return InlineResponse2007
+  */
+  public InlineResponse2007 generateNonsenseWord () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+
+    // create path and map variables
+    String path = "/words/nonsense/random";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "apiKey" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (InlineResponse2007) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2007.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
    * Generate Nonsense Word
    * Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
-   * @return InlineResponse2007
-   */
-  public InlineResponse2007  generateNonsenseWord () throws ApiException {
-    Object localVarPostBody = null;
+
+  */
+  public void generateNonsenseWord (final Response.Listener<InlineResponse2007> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
 
     // create path and map variables
-    String localVarPath = "/words/nonsense/random".replaceAll("\\{format\\}","json");
+    String path = "/words/nonsense/random".replaceAll("\\{format\\}","json");
 
     // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     // header params
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
     // form params
-    Map<String, String> localVarFormParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
 
 
 
-    String[] localVarContentTypes = {
+    String[] contentTypes = {
       
     };
-    String localVarContentType = localVarContentTypes.length > 0 ? localVarContentTypes[0] : "application/json";
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
-    if (localVarContentType.startsWith("multipart/form-data")) {
+    if (contentType.startsWith("multipart/form-data")) {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       
 
-      localVarPostBody = localVarBuilder.build();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
     } else {
       // normal form params
           }
 
+    String[] authNames = new String[] { "apiKey" };
+
     try {
-      String localVarResponse = apiInvoker.invokeAPI(basePath, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarContentType);
-      if(localVarResponse != null){
-        return (InlineResponse2007) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2007.class);
-      }
-      else {
-        return null;
-      }
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((InlineResponse2007) ApiInvoker.deserialize(localVarResponse,  "", InlineResponse2007.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
     } catch (ApiException ex) {
-      throw ex;
+      errorListener.onErrorResponse(new VolleyError(ex));
     }
   }
   /**
+  * Insult
+  * Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
+   * @param name The person&#39;s name.
+   * @param reason The reason for the praise/insult.
+   * @return InlineResponse2005
+  */
+  public InlineResponse2005 insult (String name, String reason) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'name' is set
+    if (name == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'name' when calling insult",
+        new ApiException(400, "Missing the required parameter 'name' when calling insult"));
+    }
+    // verify the required parameter 'reason' is set
+    if (reason == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'reason' when calling insult",
+        new ApiException(400, "Missing the required parameter 'reason' when calling insult"));
+    }
+
+    // create path and map variables
+    String path = "/insult";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "name", name));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "reason", reason));
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "apiKey" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (InlineResponse2005) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2005.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
    * Insult
    * Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
-   * @param name The person&#39;s name.
-   * @param reason The reason for the praise/insult.
-   * @return InlineResponse2005
-   */
-  public InlineResponse2005  insult (String name, String reason) throws ApiException {
-    Object localVarPostBody = null;
+   * @param name The person&#39;s name.   * @param reason The reason for the praise/insult.
+  */
+  public void insult (String name, String reason, final Response.Listener<InlineResponse2005> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
     // verify the required parameter 'name' is set
     if (name == null) {
-       throw new ApiException(400, "Missing the required parameter 'name' when calling insult");
+      VolleyError error = new VolleyError("Missing the required parameter 'name' when calling insult",
+        new ApiException(400, "Missing the required parameter 'name' when calling insult"));
     }
     // verify the required parameter 'reason' is set
     if (reason == null) {
-       throw new ApiException(400, "Missing the required parameter 'reason' when calling insult");
+      VolleyError error = new VolleyError("Missing the required parameter 'reason' when calling insult",
+        new ApiException(400, "Missing the required parameter 'reason' when calling insult"));
     }
 
     // create path and map variables
-    String localVarPath = "/insult".replaceAll("\\{format\\}","json");
+    String path = "/insult".replaceAll("\\{format\\}","json");
 
     // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     // header params
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
     // form params
-    Map<String, String> localVarFormParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
 
-    localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "name", name));
-    localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "reason", reason));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "name", name));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "reason", reason));
 
 
-    String[] localVarContentTypes = {
+    String[] contentTypes = {
       
     };
-    String localVarContentType = localVarContentTypes.length > 0 ? localVarContentTypes[0] : "application/json";
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
-    if (localVarContentType.startsWith("multipart/form-data")) {
+    if (contentType.startsWith("multipart/form-data")) {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       
 
-      localVarPostBody = localVarBuilder.build();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
     } else {
       // normal form params
           }
 
+    String[] authNames = new String[] { "apiKey" };
+
     try {
-      String localVarResponse = apiInvoker.invokeAPI(basePath, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarContentType);
-      if(localVarResponse != null){
-        return (InlineResponse2005) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2005.class);
-      }
-      else {
-        return null;
-      }
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((InlineResponse2005) ApiInvoker.deserialize(localVarResponse,  "", InlineResponse2005.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
     } catch (ApiException ex) {
-      throw ex;
+      errorListener.onErrorResponse(new VolleyError(ex));
     }
   }
   /**
+  * Praise
+  * Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
+   * @param name The person&#39;s name.
+   * @param reason The reason for the praise/insult.
+   * @return InlineResponse2005
+  */
+  public InlineResponse2005 praise (String name, String reason) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'name' is set
+    if (name == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'name' when calling praise",
+        new ApiException(400, "Missing the required parameter 'name' when calling praise"));
+    }
+    // verify the required parameter 'reason' is set
+    if (reason == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'reason' when calling praise",
+        new ApiException(400, "Missing the required parameter 'reason' when calling praise"));
+    }
+
+    // create path and map variables
+    String path = "/praise";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "name", name));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "reason", reason));
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "apiKey" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (InlineResponse2005) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2005.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
    * Praise
    * Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
-   * @param name The person&#39;s name.
-   * @param reason The reason for the praise/insult.
-   * @return InlineResponse2005
-   */
-  public InlineResponse2005  praise (String name, String reason) throws ApiException {
-    Object localVarPostBody = null;
+   * @param name The person&#39;s name.   * @param reason The reason for the praise/insult.
+  */
+  public void praise (String name, String reason, final Response.Listener<InlineResponse2005> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
     // verify the required parameter 'name' is set
     if (name == null) {
-       throw new ApiException(400, "Missing the required parameter 'name' when calling praise");
+      VolleyError error = new VolleyError("Missing the required parameter 'name' when calling praise",
+        new ApiException(400, "Missing the required parameter 'name' when calling praise"));
     }
     // verify the required parameter 'reason' is set
     if (reason == null) {
-       throw new ApiException(400, "Missing the required parameter 'reason' when calling praise");
+      VolleyError error = new VolleyError("Missing the required parameter 'reason' when calling praise",
+        new ApiException(400, "Missing the required parameter 'reason' when calling praise"));
     }
 
     // create path and map variables
-    String localVarPath = "/praise".replaceAll("\\{format\\}","json");
+    String path = "/praise".replaceAll("\\{format\\}","json");
 
     // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     // header params
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
     // form params
-    Map<String, String> localVarFormParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
 
-    localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "name", name));
-    localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "reason", reason));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "name", name));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "reason", reason));
 
 
-    String[] localVarContentTypes = {
+    String[] contentTypes = {
       
     };
-    String localVarContentType = localVarContentTypes.length > 0 ? localVarContentTypes[0] : "application/json";
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
-    if (localVarContentType.startsWith("multipart/form-data")) {
+    if (contentType.startsWith("multipart/form-data")) {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       
 
-      localVarPostBody = localVarBuilder.build();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
     } else {
       // normal form params
           }
 
+    String[] authNames = new String[] { "apiKey" };
+
     try {
-      String localVarResponse = apiInvoker.invokeAPI(basePath, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarContentType);
-      if(localVarResponse != null){
-        return (InlineResponse2005) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2005.class);
-      }
-      else {
-        return null;
-      }
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((InlineResponse2005) ApiInvoker.deserialize(localVarResponse,  "", InlineResponse2005.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
     } catch (ApiException ex) {
-      throw ex;
+      errorListener.onErrorResponse(new VolleyError(ex));
     }
   }
   /**
+  * Rate Word
+  * Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
+   * @param word The word to be rated.
+   * @return InlineResponse2006
+  */
+  public InlineResponse2006 rateWord (String word) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'word' is set
+    if (word == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'word' when calling rateWord",
+        new ApiException(400, "Missing the required parameter 'word' when calling rateWord"));
+    }
+
+    // create path and map variables
+    String path = "/words/rate";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "word", word));
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "apiKey" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (InlineResponse2006) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2006.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
    * Rate Word
    * Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
    * @param word The word to be rated.
-   * @return InlineResponse2006
-   */
-  public InlineResponse2006  rateWord (String word) throws ApiException {
-    Object localVarPostBody = null;
+  */
+  public void rateWord (String word, final Response.Listener<InlineResponse2006> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
     // verify the required parameter 'word' is set
     if (word == null) {
-       throw new ApiException(400, "Missing the required parameter 'word' when calling rateWord");
+      VolleyError error = new VolleyError("Missing the required parameter 'word' when calling rateWord",
+        new ApiException(400, "Missing the required parameter 'word' when calling rateWord"));
     }
 
     // create path and map variables
-    String localVarPath = "/words/rate".replaceAll("\\{format\\}","json");
+    String path = "/words/rate".replaceAll("\\{format\\}","json");
 
     // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     // header params
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
     // form params
-    Map<String, String> localVarFormParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
 
-    localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "word", word));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "word", word));
 
 
-    String[] localVarContentTypes = {
+    String[] contentTypes = {
       
     };
-    String localVarContentType = localVarContentTypes.length > 0 ? localVarContentTypes[0] : "application/json";
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
-    if (localVarContentType.startsWith("multipart/form-data")) {
+    if (contentType.startsWith("multipart/form-data")) {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       
 
-      localVarPostBody = localVarBuilder.build();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
     } else {
       // normal form params
           }
 
+    String[] authNames = new String[] { "apiKey" };
+
     try {
-      String localVarResponse = apiInvoker.invokeAPI(basePath, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarContentType);
-      if(localVarResponse != null){
-        return (InlineResponse2006) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2006.class);
-      }
-      else {
-        return null;
-      }
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((InlineResponse2006) ApiInvoker.deserialize(localVarResponse,  "", InlineResponse2006.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
     } catch (ApiException ex) {
-      throw ex;
+      errorListener.onErrorResponse(new VolleyError(ex));
     }
   }
   /**
-   * Search Gifs
-   * Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
+  * Search Gifs
+  * Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
    * @param query A search query.
    * @param number The number of results to retrieve between 1 and 10.
    * @return InlineResponse2001
-   */
-  public InlineResponse2001  searchGifs (String query, Integer number) throws ApiException {
-    Object localVarPostBody = null;
+  */
+  public InlineResponse2001 searchGifs (String query, Integer number) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
     // verify the required parameter 'query' is set
     if (query == null) {
-       throw new ApiException(400, "Missing the required parameter 'query' when calling searchGifs");
+      VolleyError error = new VolleyError("Missing the required parameter 'query' when calling searchGifs",
+        new ApiException(400, "Missing the required parameter 'query' when calling searchGifs"));
     }
 
     // create path and map variables
-    String localVarPath = "/gif/search".replaceAll("\\{format\\}","json");
+    String path = "/gif/search";
 
     // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     // header params
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
     // form params
-    Map<String, String> localVarFormParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "query", query));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "number", number));
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
-    localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "query", query));
-    localVarQueryParams.addAll(ApiInvoker.parameterToPairs("", "number", number));
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "apiKey" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (InlineResponse2001) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2001.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Search Gifs
+   * Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
+   * @param query A search query.   * @param number The number of results to retrieve between 1 and 10.
+  */
+  public void searchGifs (String query, Integer number, final Response.Listener<InlineResponse2001> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'query' is set
+    if (query == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'query' when calling searchGifs",
+        new ApiException(400, "Missing the required parameter 'query' when calling searchGifs"));
+    }
+
+    // create path and map variables
+    String path = "/gif/search".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "query", query));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "number", number));
 
 
-    String[] localVarContentTypes = {
+    String[] contentTypes = {
       
     };
-    String localVarContentType = localVarContentTypes.length > 0 ? localVarContentTypes[0] : "application/json";
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
-    if (localVarContentType.startsWith("multipart/form-data")) {
+    if (contentType.startsWith("multipart/form-data")) {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       
 
-      localVarPostBody = localVarBuilder.build();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
     } else {
       // normal form params
           }
 
+    String[] authNames = new String[] { "apiKey" };
+
     try {
-      String localVarResponse = apiInvoker.invokeAPI(basePath, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarContentType);
-      if(localVarResponse != null){
-        return (InlineResponse2001) ApiInvoker.deserialize(localVarResponse, "", InlineResponse2001.class);
-      }
-      else {
-        return null;
-      }
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((InlineResponse2001) ApiInvoker.deserialize(localVarResponse,  "", InlineResponse2001.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
     } catch (ApiException ex) {
-      throw ex;
+      errorListener.onErrorResponse(new VolleyError(ex));
     }
   }
 }

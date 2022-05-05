@@ -23,7 +23,7 @@ Generate Nonsense Word
 
 Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::OtherApi;
@@ -36,7 +36,7 @@ my $api_instance = WWW::OpenAPIClient::OtherApi->new(
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->generate_nonsense_word();
     print Dumper($result);
 };
@@ -70,7 +70,7 @@ Insult
 
 Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::OtherApi;
@@ -85,7 +85,7 @@ my $api_instance = WWW::OpenAPIClient::OtherApi->new(
 my $name = Alex; # string | The person's name.
 my $reason = you did it again; # string | The reason for the praise/insult.
 
-eval { 
+eval {
     my $result = $api_instance->insult(name => $name, reason => $reason);
     print Dumper($result);
 };
@@ -123,7 +123,7 @@ Praise
 
 Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::OtherApi;
@@ -138,7 +138,7 @@ my $api_instance = WWW::OpenAPIClient::OtherApi->new(
 my $name = Alex; # string | The person's name.
 my $reason = you did it again; # string | The reason for the praise/insult.
 
-eval { 
+eval {
     my $result = $api_instance->praise(name => $name, reason => $reason);
     print Dumper($result);
 };
@@ -176,7 +176,7 @@ Rate Word
 
 Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::OtherApi;
@@ -190,7 +190,7 @@ my $api_instance = WWW::OpenAPIClient::OtherApi->new(
 
 my $word = cookie; # string | The word to be rated.
 
-eval { 
+eval {
     my $result = $api_instance->rate_word(word => $word);
     print Dumper($result);
 };
@@ -227,7 +227,7 @@ Search Gifs
 
 Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::OtherApi;
@@ -242,7 +242,7 @@ my $api_instance = WWW::OpenAPIClient::OtherApi->new(
 my $query = cat; # string | A search query.
 my $number = 3; # int | The number of results to retrieve between 1 and 10.
 
-eval { 
+eval {
     my $result = $api_instance->search_gifs(query => $query, number => $number);
     print Dumper($result);
 };
