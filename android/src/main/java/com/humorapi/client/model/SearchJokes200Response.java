@@ -10,10 +10,10 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client.model;
+package com.humorapi.client.model;
 
+import com.humorapi.client.model.SearchJokes200ResponseJokesInner;
 import java.util.*;
-import org.openapitools.client.model.SearchJokes200ResponseJokesInner;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 

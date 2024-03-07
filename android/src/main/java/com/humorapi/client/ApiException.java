@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client;
+package com.humorapi.client;
 
 public class ApiException extends Exception {
   int code = 0;

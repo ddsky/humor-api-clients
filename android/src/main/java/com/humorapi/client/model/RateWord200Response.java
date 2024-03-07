@@ -10,8 +10,9 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client.model;
+package com.humorapi.client.model;
 
+import java.math.BigDecimal;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
@@ -19,19 +20,19 @@ import com.google.gson.annotations.SerializedName;
  * 
  **/
 @ApiModel(description = "")
-public class SubmitJoke200Response {
+public class RateWord200Response {
   
-  @SerializedName("message")
-  private String message = null;
+  @SerializedName("rating")
+  private BigDecimal rating = null;
 
   /**
    **/
   @ApiModelProperty(required = true, value = "")
-  public String getMessage() {
-    return message;
+  public BigDecimal getRating() {
+    return rating;
   }
-  public void setMessage(String message) {
-    this.message = message;
+  public void setRating(BigDecimal rating) {
+    this.rating = rating;
   }
 
 
@@ -43,23 +44,23 @@ public class SubmitJoke200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SubmitJoke200Response submitJoke200Response = (SubmitJoke200Response) o;
-    return (this.message == null ? submitJoke200Response.message == null : this.message.equals(submitJoke200Response.message));
+    RateWord200Response rateWord200Response = (RateWord200Response) o;
+    return (this.rating == null ? rateWord200Response.rating == null : this.rating.equals(rateWord200Response.rating));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.message == null ? 0: this.message.hashCode());
+    result = 31 * result + (this.rating == null ? 0: this.rating.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SubmitJoke200Response {\n");
+    sb.append("class RateWord200Response {\n");
     
-    sb.append("  message: ").append(message).append("\n");
+    sb.append("  rating: ").append(rating).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client.model;
+package com.humorapi.client.model;
 
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -19,19 +19,19 @@ import com.google.gson.annotations.SerializedName;
  * 
  **/
 @ApiModel(description = "")
-public class Praise200Response {
+public class SubmitJoke200Response {
   
-  @SerializedName("text")
-  private String text = null;
+  @SerializedName("message")
+  private String message = null;
 
   /**
    **/
   @ApiModelProperty(required = true, value = "")
-  public String getText() {
-    return text;
+  public String getMessage() {
+    return message;
   }
-  public void setText(String text) {
-    this.text = text;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
@@ -43,23 +43,23 @@ public class Praise200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Praise200Response praise200Response = (Praise200Response) o;
-    return (this.text == null ? praise200Response.text == null : this.text.equals(praise200Response.text));
+    SubmitJoke200Response submitJoke200Response = (SubmitJoke200Response) o;
+    return (this.message == null ? submitJoke200Response.message == null : this.message.equals(submitJoke200Response.message));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.text == null ? 0: this.text.hashCode());
+    result = 31 * result + (this.message == null ? 0: this.message.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Praise200Response {\n");
+    sb.append("class SubmitJoke200Response {\n");
     
-    sb.append("  text: ").append(text).append("\n");
+    sb.append("  message: ").append(message).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

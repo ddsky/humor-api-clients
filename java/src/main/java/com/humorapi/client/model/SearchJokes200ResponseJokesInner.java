@@ -49,7 +49,7 @@ import com.humorapi.client.JSON;
 /**
  * SearchJokes200ResponseJokesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-08T00:10:49.823812600+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-08T00:35:54.224961200+01:00[Europe/Berlin]")
 public class SearchJokes200ResponseJokesInner {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

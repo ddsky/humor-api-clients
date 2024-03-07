@@ -1,4 +1,4 @@
-group = 'org.openapitools'
+group = 'com.humorapi'
 project.version = '1.0.8'
 
 buildscript {

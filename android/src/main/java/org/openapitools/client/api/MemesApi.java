@@ -12,11 +12,11 @@
 
 package org.openapitools.client.api;
 
-import org.openapitools.client.ApiInvoker;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Pair;
+import com.humorapi.client.ApiInvoker;
+import com.humorapi.client.ApiException;
+import com.humorapi.client.Pair;
 
-import org.openapitools.client.model.*;
+import com.humorapi.client.model.*;
 
 import java.util.*;
 
@@ -24,9 +24,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import java.math.BigDecimal;
-import org.openapitools.client.model.RandomMeme200Response;
-import org.openapitools.client.model.SearchMemes200Response;
-import org.openapitools.client.model.SubmitJoke200Response;
+import com.humorapi.client.model.RandomMeme200Response;
+import com.humorapi.client.model.SearchMemes200Response;
+import com.humorapi.client.model.SubmitJoke200Response;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;

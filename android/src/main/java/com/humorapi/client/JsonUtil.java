@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client;
+package com.humorapi.client;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,7 +22,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Date;
-import org.openapitools.client.model.*;
+import com.humorapi.client.model.*;
 
 public class JsonUtil {
   public static GsonBuilder gsonBuilder;

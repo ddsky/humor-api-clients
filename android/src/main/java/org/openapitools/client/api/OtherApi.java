@@ -12,21 +12,21 @@
 
 package org.openapitools.client.api;
 
-import org.openapitools.client.ApiInvoker;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Pair;
+import com.humorapi.client.ApiInvoker;
+import com.humorapi.client.ApiException;
+import com.humorapi.client.Pair;
 
-import org.openapitools.client.model.*;
+import com.humorapi.client.model.*;
 
 import java.util.*;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-import org.openapitools.client.model.GenerateNonsenseWord200Response;
-import org.openapitools.client.model.Praise200Response;
-import org.openapitools.client.model.RateWord200Response;
-import org.openapitools.client.model.SearchGifs200Response;
+import com.humorapi.client.model.GenerateNonsenseWord200Response;
+import com.humorapi.client.model.Praise200Response;
+import com.humorapi.client.model.RateWord200Response;
+import com.humorapi.client.model.SearchGifs200Response;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;

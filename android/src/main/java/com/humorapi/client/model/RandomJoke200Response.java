@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client.model;
+package com.humorapi.client.model;
 
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -19,14 +19,12 @@ import com.google.gson.annotations.SerializedName;
  * 
  **/
 @ApiModel(description = "")
-public class RandomMeme200Response {
+public class RandomJoke200Response {
   
   @SerializedName("id")
   private Integer id = null;
-  @SerializedName("url")
-  private String url = null;
-  @SerializedName("type")
-  private String type = null;
+  @SerializedName("joke")
+  private String joke = null;
 
   /**
    **/
@@ -41,21 +39,11 @@ public class RandomMeme200Response {
   /**
    **/
   @ApiModelProperty(required = true, value = "")
-  public String getUrl() {
-    return url;
+  public String getJoke() {
+    return joke;
   }
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
+  public void setJoke(String joke) {
+    this.joke = joke;
   }
 
 
@@ -67,29 +55,26 @@ public class RandomMeme200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RandomMeme200Response randomMeme200Response = (RandomMeme200Response) o;
-    return (this.id == null ? randomMeme200Response.id == null : this.id.equals(randomMeme200Response.id)) &&
-        (this.url == null ? randomMeme200Response.url == null : this.url.equals(randomMeme200Response.url)) &&
-        (this.type == null ? randomMeme200Response.type == null : this.type.equals(randomMeme200Response.type));
+    RandomJoke200Response randomJoke200Response = (RandomJoke200Response) o;
+    return (this.id == null ? randomJoke200Response.id == null : this.id.equals(randomJoke200Response.id)) &&
+        (this.joke == null ? randomJoke200Response.joke == null : this.joke.equals(randomJoke200Response.joke));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.id == null ? 0: this.id.hashCode());
-    result = 31 * result + (this.url == null ? 0: this.url.hashCode());
-    result = 31 * result + (this.type == null ? 0: this.type.hashCode());
+    result = 31 * result + (this.joke == null ? 0: this.joke.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RandomMeme200Response {\n");
+    sb.append("class RandomJoke200Response {\n");
     
     sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  type: ").append(type).append("\n");
+    sb.append("  joke: ").append(joke).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

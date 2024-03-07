@@ -10,13 +10,16 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client.model;
+package com.humorapi.client.model;
 
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * 
+ **/
 @ApiModel(description = "")
-public class SearchMemes200ResponseMemesInner {
+public class RandomMeme200Response {
   
   @SerializedName("id")
   private Integer id = null;
@@ -64,10 +67,10 @@ public class SearchMemes200ResponseMemesInner {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchMemes200ResponseMemesInner searchMemes200ResponseMemesInner = (SearchMemes200ResponseMemesInner) o;
-    return (this.id == null ? searchMemes200ResponseMemesInner.id == null : this.id.equals(searchMemes200ResponseMemesInner.id)) &&
-        (this.url == null ? searchMemes200ResponseMemesInner.url == null : this.url.equals(searchMemes200ResponseMemesInner.url)) &&
-        (this.type == null ? searchMemes200ResponseMemesInner.type == null : this.type.equals(searchMemes200ResponseMemesInner.type));
+    RandomMeme200Response randomMeme200Response = (RandomMeme200Response) o;
+    return (this.id == null ? randomMeme200Response.id == null : this.id.equals(randomMeme200Response.id)) &&
+        (this.url == null ? randomMeme200Response.url == null : this.url.equals(randomMeme200Response.url)) &&
+        (this.type == null ? randomMeme200Response.type == null : this.type.equals(randomMeme200Response.type));
   }
 
   @Override
@@ -82,7 +85,7 @@ public class SearchMemes200ResponseMemesInner {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchMemes200ResponseMemesInner {\n");
+    sb.append("class RandomMeme200Response {\n");
     
     sb.append("  id: ").append(id).append("\n");
     sb.append("  url: ").append(url).append("\n");

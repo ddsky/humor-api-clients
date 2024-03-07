@@ -10,9 +10,9 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client.auth;
+package com.humorapi.client.auth;
 
-import org.openapitools.client.Pair;
+import com.humorapi.client.Pair;
 
 import java.util.Map;
 import java.util.List;

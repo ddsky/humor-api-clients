@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client.model;
+package com.humorapi.client.model;
 
 import java.math.BigDecimal;
 import io.swagger.annotations.*;
@@ -20,10 +20,22 @@ import com.google.gson.annotations.SerializedName;
  * 
  **/
 @ApiModel(description = "")
-public class RateWord200Response {
+public class GenerateNonsenseWord200Response {
   
+  @SerializedName("word")
+  private String word = null;
   @SerializedName("rating")
   private BigDecimal rating = null;
+
+  /**
+   **/
+  @ApiModelProperty(required = true, value = "")
+  public String getWord() {
+    return word;
+  }
+  public void setWord(String word) {
+    this.word = word;
+  }
 
   /**
    **/
@@ -44,13 +56,15 @@ public class RateWord200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RateWord200Response rateWord200Response = (RateWord200Response) o;
-    return (this.rating == null ? rateWord200Response.rating == null : this.rating.equals(rateWord200Response.rating));
+    GenerateNonsenseWord200Response generateNonsenseWord200Response = (GenerateNonsenseWord200Response) o;
+    return (this.word == null ? generateNonsenseWord200Response.word == null : this.word.equals(generateNonsenseWord200Response.word)) &&
+        (this.rating == null ? generateNonsenseWord200Response.rating == null : this.rating.equals(generateNonsenseWord200Response.rating));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this.word == null ? 0: this.word.hashCode());
     result = 31 * result + (this.rating == null ? 0: this.rating.hashCode());
     return result;
   }
@@ -58,8 +72,9 @@ public class RateWord200Response {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RateWord200Response {\n");
+    sb.append("class GenerateNonsenseWord200Response {\n");
     
+    sb.append("  word: ").append(word).append("\n");
     sb.append("  rating: ").append(rating).append("\n");
     sb.append("}\n");
     return sb.toString();

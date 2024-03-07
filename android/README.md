@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-    <groupId>org.openapitools</groupId>
+    <groupId>com.humorapi</groupId>
     <artifactId>android-client</artifactId>
     <version>1.0.8</version>
     <scope>compile</scope>
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:android-client:1.0.8"
+compile "com.humorapi:android-client:1.0.8"
 ```
 
 ### Others

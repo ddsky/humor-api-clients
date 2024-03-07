@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package org.openapitools.client;
+package com.humorapi.client;
 
 import com.android.volley.Cache;
 import com.android.volley.DefaultRetryPolicy;
@@ -46,14 +46,14 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.openapitools.client.auth.Authentication;
-import org.openapitools.client.auth.ApiKeyAuth;
-import org.openapitools.client.auth.HttpBasicAuth;
-import org.openapitools.client.request.GetRequest;
-import org.openapitools.client.request.PostRequest;
-import org.openapitools.client.request.PutRequest;
-import org.openapitools.client.request.DeleteRequest;
-import org.openapitools.client.request.PatchRequest;
+import com.humorapi.client.auth.Authentication;
+import com.humorapi.client.auth.ApiKeyAuth;
+import com.humorapi.client.auth.HttpBasicAuth;
+import com.humorapi.client.request.GetRequest;
+import com.humorapi.client.request.PostRequest;
+import com.humorapi.client.request.PutRequest;
+import com.humorapi.client.request.DeleteRequest;
+import com.humorapi.client.request.PatchRequest;
 
 public class ApiInvoker {
   private static ApiInvoker INSTANCE;
