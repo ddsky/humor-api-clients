@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## analyzeJoke
 
-> InlineResponse2009 analyzeJoke(opts)
+> AnalyzeJoke200Response analyzeJoke(opts)
 
 Analyze Joke
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**AnalyzeJoke200Response**](AnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ## downvoteJoke
 
-> InlineResponse2008 downvoteJoke(id)
+> SubmitJoke200Response downvoteJoke(id)
 
 Downvote a Joke
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ## randomJoke
 
-> InlineResponse2004 randomJoke(opts)
+> RandomJoke200Response randomJoke(opts)
 
 Random Joke
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**RandomJoke200Response**](RandomJoke200Response.md)
 
 ### Authorization
 
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 
 ## searchJokes
 
-> InlineResponse200 searchJokes(opts)
+> SearchJokes200Response searchJokes(opts)
 
 Search Jokes
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchJokes200Response**](SearchJokes200Response.md)
 
 ### Authorization
 
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 ## submitJoke
 
-> InlineResponse2008 submitJoke(opts)
+> SubmitJoke200Response submitJoke(opts)
 
 Submit Joke
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ## upvoteJoke
 
-> InlineResponse2008 upvoteJoke(id)
+> SubmitJoke200Response upvoteJoke(id)
 
 Upvote a Joke
 
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

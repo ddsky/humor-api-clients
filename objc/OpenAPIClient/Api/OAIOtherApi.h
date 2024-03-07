@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
-#import "OAIInlineResponse2001.h"
-#import "OAIInlineResponse2005.h"
-#import "OAIInlineResponse2006.h"
-#import "OAIInlineResponse2007.h"
+#import "OAIGenerateNonsenseWord200Response.h"
+#import "OAIPraise200Response.h"
+#import "OAIRateWord200Response.h"
+#import "OAISearchGifs200Response.h"
 #import "OAIApi.h"
 
 /**
@@ -32,9 +32,9 @@ extern NSInteger kOAIOtherApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Generate Nonsense Word Response"
 ///
-/// @return OAIInlineResponse2007*
+/// @return OAIGenerateNonsenseWord200Response*
 -(NSURLSessionTask*) generateNonsenseWordWithCompletionHandler: 
-    (void (^)(OAIInlineResponse2007* output, NSError* error)) handler;
+    (void (^)(OAIGenerateNonsenseWord200Response* output, NSError* error)) handler;
 
 
 /// Insult
@@ -45,10 +45,10 @@ extern NSInteger kOAIOtherApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Insult Response"
 ///
-/// @return OAIInlineResponse2005*
+/// @return OAIPraise200Response*
 -(NSURLSessionTask*) insultWithName: (NSString*) name
     reason: (NSString*) reason
-    completionHandler: (void (^)(OAIInlineResponse2005* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAIPraise200Response* output, NSError* error)) handler;
 
 
 /// Praise
@@ -59,10 +59,10 @@ extern NSInteger kOAIOtherApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Praise Response"
 ///
-/// @return OAIInlineResponse2005*
+/// @return OAIPraise200Response*
 -(NSURLSessionTask*) praiseWithName: (NSString*) name
     reason: (NSString*) reason
-    completionHandler: (void (^)(OAIInlineResponse2005* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAIPraise200Response* output, NSError* error)) handler;
 
 
 /// Rate Word
@@ -72,9 +72,9 @@ extern NSInteger kOAIOtherApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Word Rating Response"
 ///
-/// @return OAIInlineResponse2006*
+/// @return OAIRateWord200Response*
 -(NSURLSessionTask*) rateWordWithWord: (NSString*) word
-    completionHandler: (void (^)(OAIInlineResponse2006* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAIRateWord200Response* output, NSError* error)) handler;
 
 
 /// Search Gifs
@@ -85,10 +85,10 @@ extern NSInteger kOAIOtherApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Gif Search Response"
 ///
-/// @return OAIInlineResponse2001*
+/// @return OAISearchGifs200Response*
 -(NSURLSessionTask*) searchGifsWithQuery: (NSString*) query
     number: (NSNumber*) number
-    completionHandler: (void (^)(OAIInlineResponse2001* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAISearchGifs200Response* output, NSError* error)) handler;
 
 
 

@@ -1,9 +1,9 @@
 {
   "name": "humor_api",
   "version": "1.0",
-  "description": "Awesome_Humor_API_",
+  "description": "Awesome Humor API.",
   "license": "Unlicense",
-  "main": "dist/com.humorapi.client/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",

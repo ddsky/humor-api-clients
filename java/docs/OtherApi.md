@@ -2,18 +2,18 @@
 
 All URIs are relative to *https://api.humorapi.com*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**generateNonsenseWord**](OtherApi.md#generateNonsenseWord) | **GET** /words/nonsense/random | Generate Nonsense Word
-[**insult**](OtherApi.md#insult) | **GET** /insult | Insult
-[**praise**](OtherApi.md#praise) | **GET** /praise | Praise
-[**rateWord**](OtherApi.md#rateWord) | **GET** /words/rate | Rate Word
-[**searchGifs**](OtherApi.md#searchGifs) | **GET** /gif/search | Search Gifs
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**generateNonsenseWord**](OtherApi.md#generateNonsenseWord) | **GET** /words/nonsense/random | Generate Nonsense Word |
+| [**insult**](OtherApi.md#insult) | **GET** /insult | Insult |
+| [**praise**](OtherApi.md#praise) | **GET** /praise | Praise |
+| [**rateWord**](OtherApi.md#rateWord) | **GET** /words/rate | Rate Word |
+| [**searchGifs**](OtherApi.md#searchGifs) | **GET** /gif/search | Search Gifs |
 
 
-<a name="generateNonsenseWord"></a>
+<a id="generateNonsenseWord"></a>
 # **generateNonsenseWord**
-> InlineResponse2007 generateNonsenseWord()
+> GenerateNonsenseWord200Response generateNonsenseWord()
 
 Generate Nonsense Word
 
@@ -42,7 +42,7 @@ public class Example {
 
     OtherApi apiInstance = new OtherApi(defaultClient);
     try {
-      InlineResponse2007 result = apiInstance.generateNonsenseWord();
+      GenerateNonsenseWord200Response result = apiInstance.generateNonsenseWord();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OtherApi#generateNonsenseWord");
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**GenerateNonsenseWord200Response**](GenerateNonsenseWord200Response.md)
 
 ### Authorization
 
@@ -74,11 +74,11 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Generate Nonsense Word Response |  -  |
+| **200** | Generate Nonsense Word Response |  -  |
 
-<a name="insult"></a>
+<a id="insult"></a>
 # **insult**
-> InlineResponse2005 insult(name, reason)
+> Praise200Response insult(name, reason)
 
 Insult
 
@@ -109,7 +109,7 @@ public class Example {
     String name = "Alex"; // String | The person's name.
     String reason = "you did it again"; // String | The reason for the praise/insult.
     try {
-      InlineResponse2005 result = apiInstance.insult(name, reason);
+      Praise200Response result = apiInstance.insult(name, reason);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OtherApi#insult");
@@ -124,14 +124,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| The person&#39;s name. |
- **reason** | **String**| The reason for the praise/insult. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **name** | **String**| The person&#39;s name. | |
+| **reason** | **String**| The reason for the praise/insult. | |
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -145,11 +145,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Insult Response |  -  |
+| **200** | Insult Response |  -  |
 
-<a name="praise"></a>
+<a id="praise"></a>
 # **praise**
-> InlineResponse2005 praise(name, reason)
+> Praise200Response praise(name, reason)
 
 Praise
 
@@ -180,7 +180,7 @@ public class Example {
     String name = "Alex"; // String | The person's name.
     String reason = "you did it again"; // String | The reason for the praise/insult.
     try {
-      InlineResponse2005 result = apiInstance.praise(name, reason);
+      Praise200Response result = apiInstance.praise(name, reason);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OtherApi#praise");
@@ -195,14 +195,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| The person&#39;s name. |
- **reason** | **String**| The reason for the praise/insult. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **name** | **String**| The person&#39;s name. | |
+| **reason** | **String**| The reason for the praise/insult. | |
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -216,11 +216,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Praise Response |  -  |
+| **200** | Praise Response |  -  |
 
-<a name="rateWord"></a>
+<a id="rateWord"></a>
 # **rateWord**
-> InlineResponse2006 rateWord(word)
+> RateWord200Response rateWord(word)
 
 Rate Word
 
@@ -250,7 +250,7 @@ public class Example {
     OtherApi apiInstance = new OtherApi(defaultClient);
     String word = "cookie"; // String | The word to be rated.
     try {
-      InlineResponse2006 result = apiInstance.rateWord(word);
+      RateWord200Response result = apiInstance.rateWord(word);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OtherApi#rateWord");
@@ -265,13 +265,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **word** | **String**| The word to be rated. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **word** | **String**| The word to be rated. | |
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**RateWord200Response**](RateWord200Response.md)
 
 ### Authorization
 
@@ -285,11 +285,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Word Rating Response |  -  |
+| **200** | Word Rating Response |  -  |
 
-<a name="searchGifs"></a>
+<a id="searchGifs"></a>
 # **searchGifs**
-> InlineResponse2001 searchGifs(query, number)
+> SearchGifs200Response searchGifs(query, number)
 
 Search Gifs
 
@@ -320,7 +320,7 @@ public class Example {
     String query = "cat"; // String | A search query.
     Integer number = 3; // Integer | The number of results to retrieve between 1 and 10.
     try {
-      InlineResponse2001 result = apiInstance.searchGifs(query, number);
+      SearchGifs200Response result = apiInstance.searchGifs(query, number);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OtherApi#searchGifs");
@@ -335,14 +335,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **query** | **String**| A search query. |
- **number** | **Integer**| The number of results to retrieve between 1 and 10. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **query** | **String**| A search query. | |
+| **number** | **Integer**| The number of results to retrieve between 1 and 10. | [optional] |
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**SearchGifs200Response**](SearchGifs200Response.md)
 
 ### Authorization
 
@@ -356,5 +356,5 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Gif Search Response |  -  |
+| **200** | Gif Search Response |  -  |
 

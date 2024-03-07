@@ -12,7 +12,7 @@ All URIs are relative to *https://api.humorapi.com*
 
 ## downvote_meme
 
-> <InlineResponse2008> downvote_meme(id)
+> <SubmitJoke200Response> downvote_meme(id)
 
 Downvote a Meme
 
@@ -47,7 +47,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2008>, Integer, Hash)> downvote_meme_with_http_info(id)
+> <Array(<SubmitJoke200Response>, Integer, Hash)> downvote_meme_with_http_info(id)
 
 ```ruby
 begin
@@ -55,7 +55,7 @@ begin
   data, status_code, headers = api_instance.downvote_meme_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2008>
+  p data # => <SubmitJoke200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling MemesApi->downvote_meme_with_http_info: #{e}"
 end
@@ -69,7 +69,7 @@ end
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ end
 
 ## random_meme
 
-> <InlineResponse2003> random_meme(opts)
+> <RandomMeme200Response> random_meme(opts)
 
 Random Meme
 
@@ -105,7 +105,7 @@ end
 api_instance = OpenapiClient::MemesApi.new
 opts = {
   keywords: 'rocket', # String | A comma separated list of keywords.
-  keywords_in_image: true, # Boolean | Whether the keywords should be found in the meme's image.
+  keywords_in_image: false, # Boolean | Whether the keywords should be found in the meme's image.
   media_type: 'image', # String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
   number: 3, # Integer | The number of results to retrieve between 1 and 10.
   min_rating: 7 # Integer | The minimum rating between 0 and 10 the result should have.
@@ -124,7 +124,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2003>, Integer, Hash)> random_meme_with_http_info(opts)
+> <Array(<RandomMeme200Response>, Integer, Hash)> random_meme_with_http_info(opts)
 
 ```ruby
 begin
@@ -132,7 +132,7 @@ begin
   data, status_code, headers = api_instance.random_meme_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2003>
+  p data # => <RandomMeme200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling MemesApi->random_meme_with_http_info: #{e}"
 end
@@ -150,7 +150,7 @@ end
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**RandomMeme200Response**](RandomMeme200Response.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ end
 
 ## search_memes
 
-> <InlineResponse2002> search_memes(opts)
+> <SearchMemes200Response> search_memes(opts)
 
 Search Memes
 
@@ -186,7 +186,7 @@ end
 api_instance = OpenapiClient::MemesApi.new
 opts = {
   keywords: 'rocket', # String | A comma separated list of keywords.
-  keywords_in_image: true, # Boolean | Whether the keywords should be found in the meme's image.
+  keywords_in_image: false, # Boolean | Whether the keywords should be found in the meme's image.
   media_type: 'image', # String | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
   number: 3, # Integer | The number of results to retrieve between 1 and 10.
   min_rating: 7, # Integer | The minimum rating between 0 and 10 the result should have.
@@ -206,7 +206,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2002>, Integer, Hash)> search_memes_with_http_info(opts)
+> <Array(<SearchMemes200Response>, Integer, Hash)> search_memes_with_http_info(opts)
 
 ```ruby
 begin
@@ -214,7 +214,7 @@ begin
   data, status_code, headers = api_instance.search_memes_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2002>
+  p data # => <SearchMemes200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling MemesApi->search_memes_with_http_info: #{e}"
 end
@@ -233,7 +233,7 @@ end
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**SearchMemes200Response**](SearchMemes200Response.md)
 
 ### Authorization
 
@@ -247,7 +247,7 @@ end
 
 ## upvote_meme
 
-> <InlineResponse2008> upvote_meme(id)
+> <SubmitJoke200Response> upvote_meme(id)
 
 Upvote a Meme
 
@@ -282,7 +282,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2008>, Integer, Hash)> upvote_meme_with_http_info(id)
+> <Array(<SubmitJoke200Response>, Integer, Hash)> upvote_meme_with_http_info(id)
 
 ```ruby
 begin
@@ -290,7 +290,7 @@ begin
   data, status_code, headers = api_instance.upvote_meme_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2008>
+  p data # => <SubmitJoke200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling MemesApi->upvote_meme_with_http_info: #{e}"
 end
@@ -304,7 +304,7 @@ end
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

@@ -239,16 +239,19 @@ use WWW::OpenAPIClient::OtherApi;
 
 To load the models:
 ```perl
-use WWW::OpenAPIClient::Object::InlineResponse200;
-use WWW::OpenAPIClient::Object::InlineResponse2001;
-use WWW::OpenAPIClient::Object::InlineResponse2002;
-use WWW::OpenAPIClient::Object::InlineResponse2003;
-use WWW::OpenAPIClient::Object::InlineResponse2004;
-use WWW::OpenAPIClient::Object::InlineResponse2005;
-use WWW::OpenAPIClient::Object::InlineResponse2006;
-use WWW::OpenAPIClient::Object::InlineResponse2007;
-use WWW::OpenAPIClient::Object::InlineResponse2008;
-use WWW::OpenAPIClient::Object::InlineResponse2009;
+use WWW::OpenAPIClient::Object::AnalyzeJoke200Response;
+use WWW::OpenAPIClient::Object::GenerateNonsenseWord200Response;
+use WWW::OpenAPIClient::Object::Praise200Response;
+use WWW::OpenAPIClient::Object::RandomJoke200Response;
+use WWW::OpenAPIClient::Object::RandomMeme200Response;
+use WWW::OpenAPIClient::Object::RateWord200Response;
+use WWW::OpenAPIClient::Object::SearchGifs200Response;
+use WWW::OpenAPIClient::Object::SearchGifs200ResponseImagesInner;
+use WWW::OpenAPIClient::Object::SearchJokes200Response;
+use WWW::OpenAPIClient::Object::SearchJokes200ResponseJokesInner;
+use WWW::OpenAPIClient::Object::SearchMemes200Response;
+use WWW::OpenAPIClient::Object::SearchMemes200ResponseMemesInner;
+use WWW::OpenAPIClient::Object::SubmitJoke200Response;
 
 ````
 
@@ -265,16 +268,19 @@ use WWW::OpenAPIClient::MemesApi;
 use WWW::OpenAPIClient::OtherApi;
 
 # load the models
-use WWW::OpenAPIClient::Object::InlineResponse200;
-use WWW::OpenAPIClient::Object::InlineResponse2001;
-use WWW::OpenAPIClient::Object::InlineResponse2002;
-use WWW::OpenAPIClient::Object::InlineResponse2003;
-use WWW::OpenAPIClient::Object::InlineResponse2004;
-use WWW::OpenAPIClient::Object::InlineResponse2005;
-use WWW::OpenAPIClient::Object::InlineResponse2006;
-use WWW::OpenAPIClient::Object::InlineResponse2007;
-use WWW::OpenAPIClient::Object::InlineResponse2008;
-use WWW::OpenAPIClient::Object::InlineResponse2009;
+use WWW::OpenAPIClient::Object::AnalyzeJoke200Response;
+use WWW::OpenAPIClient::Object::GenerateNonsenseWord200Response;
+use WWW::OpenAPIClient::Object::Praise200Response;
+use WWW::OpenAPIClient::Object::RandomJoke200Response;
+use WWW::OpenAPIClient::Object::RandomMeme200Response;
+use WWW::OpenAPIClient::Object::RateWord200Response;
+use WWW::OpenAPIClient::Object::SearchGifs200Response;
+use WWW::OpenAPIClient::Object::SearchGifs200ResponseImagesInner;
+use WWW::OpenAPIClient::Object::SearchJokes200Response;
+use WWW::OpenAPIClient::Object::SearchJokes200ResponseJokesInner;
+use WWW::OpenAPIClient::Object::SearchMemes200Response;
+use WWW::OpenAPIClient::Object::SearchMemes200ResponseMemesInner;
+use WWW::OpenAPIClient::Object::SubmitJoke200Response;
 
 # for displaying the API response data
 use Data::Dumper;
@@ -323,20 +329,24 @@ Class | Method | HTTP request | Description
 
 
 # DOCUMENTATION FOR MODELS
- - [WWW::OpenAPIClient::Object::InlineResponse200](docs/InlineResponse200.md)
- - [WWW::OpenAPIClient::Object::InlineResponse2001](docs/InlineResponse2001.md)
- - [WWW::OpenAPIClient::Object::InlineResponse2002](docs/InlineResponse2002.md)
- - [WWW::OpenAPIClient::Object::InlineResponse2003](docs/InlineResponse2003.md)
- - [WWW::OpenAPIClient::Object::InlineResponse2004](docs/InlineResponse2004.md)
- - [WWW::OpenAPIClient::Object::InlineResponse2005](docs/InlineResponse2005.md)
- - [WWW::OpenAPIClient::Object::InlineResponse2006](docs/InlineResponse2006.md)
- - [WWW::OpenAPIClient::Object::InlineResponse2007](docs/InlineResponse2007.md)
- - [WWW::OpenAPIClient::Object::InlineResponse2008](docs/InlineResponse2008.md)
- - [WWW::OpenAPIClient::Object::InlineResponse2009](docs/InlineResponse2009.md)
+ - [WWW::OpenAPIClient::Object::AnalyzeJoke200Response](docs/AnalyzeJoke200Response.md)
+ - [WWW::OpenAPIClient::Object::GenerateNonsenseWord200Response](docs/GenerateNonsenseWord200Response.md)
+ - [WWW::OpenAPIClient::Object::Praise200Response](docs/Praise200Response.md)
+ - [WWW::OpenAPIClient::Object::RandomJoke200Response](docs/RandomJoke200Response.md)
+ - [WWW::OpenAPIClient::Object::RandomMeme200Response](docs/RandomMeme200Response.md)
+ - [WWW::OpenAPIClient::Object::RateWord200Response](docs/RateWord200Response.md)
+ - [WWW::OpenAPIClient::Object::SearchGifs200Response](docs/SearchGifs200Response.md)
+ - [WWW::OpenAPIClient::Object::SearchGifs200ResponseImagesInner](docs/SearchGifs200ResponseImagesInner.md)
+ - [WWW::OpenAPIClient::Object::SearchJokes200Response](docs/SearchJokes200Response.md)
+ - [WWW::OpenAPIClient::Object::SearchJokes200ResponseJokesInner](docs/SearchJokes200ResponseJokesInner.md)
+ - [WWW::OpenAPIClient::Object::SearchMemes200Response](docs/SearchMemes200Response.md)
+ - [WWW::OpenAPIClient::Object::SearchMemes200ResponseMemesInner](docs/SearchMemes200ResponseMemesInner.md)
+ - [WWW::OpenAPIClient::Object::SubmitJoke200Response](docs/SubmitJoke200Response.md)
 
 
 # DOCUMENTATION FOR AUTHORIZATION
 
+Authentication schemes defined for the API:
 ## apiKey
 
 - **Type**: API key

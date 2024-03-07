@@ -12,9 +12,9 @@ Method | HTTP request | Description
 [**upvoteJoke**](JokesApi.md#upvoteJoke) | **POST** /jokes/{id}/upvote | Upvote a Joke
 
 
-<a name="analyzeJoke"></a>
+<a id="analyzeJoke"></a>
 # **analyzeJoke**
-> InlineResponse2009 analyzeJoke(body)
+> AnalyzeJoke200Response analyzeJoke(body)
 
 Analyze Joke
 
@@ -23,13 +23,13 @@ Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = JokesApi()
 val body : kotlin.String = body_example // kotlin.String | Post the joke as plain text.
 try {
-    val result : InlineResponse2009 = apiInstance.analyzeJoke(body)
+    val result : AnalyzeJoke200Response = apiInstance.analyzeJoke(body)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling JokesApi#analyzeJoke")
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**AnalyzeJoke200Response**](AnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -62,9 +62,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="downvoteJoke"></a>
+<a id="downvoteJoke"></a>
 # **downvoteJoke**
-> InlineResponse2008 downvoteJoke(id)
+> SubmitJoke200Response downvoteJoke(id)
 
 Downvote a Joke
 
@@ -73,13 +73,13 @@ Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = JokesApi()
 val id : kotlin.Int = 1 // kotlin.Int | The object's id.
 try {
-    val result : InlineResponse2008 = apiInstance.downvoteJoke(id)
+    val result : SubmitJoke200Response = apiInstance.downvoteJoke(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling JokesApi#downvoteJoke")
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -112,9 +112,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="randomJoke"></a>
+<a id="randomJoke"></a>
 # **randomJoke**
-> InlineResponse2004 randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
+> RandomJoke200Response randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
 
 Random Joke
 
@@ -123,8 +123,8 @@ Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = JokesApi()
 val keywords : kotlin.String = rocket // kotlin.String | A comma separated list of keywords.
@@ -133,7 +133,7 @@ val excludeTags : kotlin.String = nsfw // kotlin.String | A comma separated list
 val minRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
 val maxLength : kotlin.Int = 200 // kotlin.Int | The maximum number of letters in the joke.
 try {
-    val result : InlineResponse2004 = apiInstance.randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
+    val result : RandomJoke200Response = apiInstance.randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling JokesApi#randomJoke")
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**RandomJoke200Response**](RandomJoke200Response.md)
 
 ### Authorization
 
@@ -170,9 +170,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="searchJokes"></a>
+<a id="searchJokes"></a>
 # **searchJokes**
-> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
+> SearchJokes200Response searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
 
 Search Jokes
 
@@ -181,8 +181,8 @@ Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = JokesApi()
 val keywords : kotlin.String = rocket // kotlin.String | A comma separated list of keywords.
@@ -193,7 +193,7 @@ val minRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 
 val maxLength : kotlin.Int = 200 // kotlin.Int | The maximum number of letters in the joke.
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | The number of results to skip.
 try {
-    val result : InlineResponse200 = apiInstance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
+    val result : SearchJokes200Response = apiInstance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling JokesApi#searchJokes")
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchJokes200Response**](SearchJokes200Response.md)
 
 ### Authorization
 
@@ -232,9 +232,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="submitJoke"></a>
+<a id="submitJoke"></a>
 # **submitJoke**
-> InlineResponse2008 submitJoke(body)
+> SubmitJoke200Response submitJoke(body)
 
 Submit Joke
 
@@ -243,13 +243,13 @@ Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = JokesApi()
 val body : kotlin.String = body_example // kotlin.String | Post the joke as plain text.
 try {
-    val result : InlineResponse2008 = apiInstance.submitJoke(body)
+    val result : SubmitJoke200Response = apiInstance.submitJoke(body)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling JokesApi#submitJoke")
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -282,9 +282,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="upvoteJoke"></a>
+<a id="upvoteJoke"></a>
 # **upvoteJoke**
-> InlineResponse2008 upvoteJoke(id)
+> SubmitJoke200Response upvoteJoke(id)
 
 Upvote a Joke
 
@@ -293,13 +293,13 @@ Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = JokesApi()
 val id : kotlin.Int = 1 // kotlin.Int | The object's id.
 try {
-    val result : InlineResponse2008 = apiInstance.upvoteJoke(id)
+    val result : SubmitJoke200Response = apiInstance.upvoteJoke(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling JokesApi#upvoteJoke")
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

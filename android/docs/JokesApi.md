@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## analyzeJoke
 
-> InlineResponse2009 analyzeJoke(body)
+> AnalyzeJoke200Response analyzeJoke(body)
 
 Analyze Joke
 
@@ -25,12 +25,12 @@ Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
 
 ```java
 // Import classes:
-//import com.humorapi.JokesApi;
+//import org.openapitools.client.api.JokesApi;
 
 JokesApi apiInstance = new JokesApi();
 String body = "body_example"; // String | Post the joke as plain text.
 try {
-    InlineResponse2009 result = apiInstance.analyzeJoke(body);
+    AnalyzeJoke200Response result = apiInstance.analyzeJoke(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JokesApi#analyzeJoke");
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**AnalyzeJoke200Response**](AnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ## downvoteJoke
 
-> InlineResponse2008 downvoteJoke(id)
+> SubmitJoke200Response downvoteJoke(id)
 
 Downvote a Joke
 
@@ -71,12 +71,12 @@ Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 
 ```java
 // Import classes:
-//import com.humorapi.JokesApi;
+//import org.openapitools.client.api.JokesApi;
 
 JokesApi apiInstance = new JokesApi();
 Integer id = 1; // Integer | The object's id.
 try {
-    InlineResponse2008 result = apiInstance.downvoteJoke(id);
+    SubmitJoke200Response result = apiInstance.downvoteJoke(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JokesApi#downvoteJoke");
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ## randomJoke
 
-> InlineResponse2004 randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
+> RandomJoke200Response randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
 
 Random Joke
 
@@ -117,7 +117,7 @@ Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
 
 ```java
 // Import classes:
-//import com.humorapi.JokesApi;
+//import org.openapitools.client.api.JokesApi;
 
 JokesApi apiInstance = new JokesApi();
 String keywords = rocket; // String | A comma separated list of keywords.
@@ -126,7 +126,7 @@ String excludeTags = nsfw; // String | A comma separated list of tags that the j
 Integer minRating = 7; // Integer | The minimum rating between 0 and 10 the result should have.
 Integer maxLength = 200; // Integer | The maximum number of letters in the joke.
 try {
-    InlineResponse2004 result = apiInstance.randomJoke(keywords, includeTags, excludeTags, minRating, maxLength);
+    RandomJoke200Response result = apiInstance.randomJoke(keywords, includeTags, excludeTags, minRating, maxLength);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JokesApi#randomJoke");
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**RandomJoke200Response**](RandomJoke200Response.md)
 
 ### Authorization
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## searchJokes
 
-> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
+> SearchJokes200Response searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
 
 Search Jokes
 
@@ -171,7 +171,7 @@ Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
 
 ```java
 // Import classes:
-//import com.humorapi.JokesApi;
+//import org.openapitools.client.api.JokesApi;
 
 JokesApi apiInstance = new JokesApi();
 String keywords = rocket; // String | A comma separated list of keywords.
@@ -182,7 +182,7 @@ Integer minRating = 7; // Integer | The minimum rating between 0 and 10 the resu
 Integer maxLength = 200; // Integer | The maximum number of letters in the joke.
 BigDecimal offset = null; // BigDecimal | The number of results to skip.
 try {
-    InlineResponse200 result = apiInstance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
+    SearchJokes200Response result = apiInstance.searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JokesApi#searchJokes");
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchJokes200Response**](SearchJokes200Response.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## submitJoke
 
-> InlineResponse2008 submitJoke(body)
+> SubmitJoke200Response submitJoke(body)
 
 Submit Joke
 
@@ -229,12 +229,12 @@ Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
 
 ```java
 // Import classes:
-//import com.humorapi.JokesApi;
+//import org.openapitools.client.api.JokesApi;
 
 JokesApi apiInstance = new JokesApi();
 String body = "body_example"; // String | Post the joke as plain text.
 try {
-    InlineResponse2008 result = apiInstance.submitJoke(body);
+    SubmitJoke200Response result = apiInstance.submitJoke(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JokesApi#submitJoke");
@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ## upvoteJoke
 
-> InlineResponse2008 upvoteJoke(id)
+> SubmitJoke200Response upvoteJoke(id)
 
 Upvote a Joke
 
@@ -275,12 +275,12 @@ Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 
 ```java
 // Import classes:
-//import com.humorapi.JokesApi;
+//import org.openapitools.client.api.JokesApi;
 
 JokesApi apiInstance = new JokesApi();
 Integer id = 1; // Integer | The object's id.
 try {
-    InlineResponse2008 result = apiInstance.upvoteJoke(id);
+    SubmitJoke200Response result = apiInstance.upvoteJoke(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JokesApi#upvoteJoke");
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

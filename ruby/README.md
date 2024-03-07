@@ -37,9 +37,9 @@ Finally add this to the Gemfile:
 
 ### Install from Git
 
-If the Ruby gem is hosted at a git repository: https://github.com/GIT_USER_ID/GIT_REPO_ID, then add the following in the Gemfile:
+If the Ruby gem is hosted at a git repository: https://github.com/ddsky/humor-api-clients/tree/main/ruby/, then add the following in the Gemfile:
 
-    gem 'openapi_client', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
+    gem 'openapi_client', :git => 'https://github.com/ddsky/humor-api-clients/tree/main/ruby/.git'
 
 ### Include the Ruby code directly
 
@@ -105,21 +105,25 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [OpenapiClient::InlineResponse200](docs/InlineResponse200.md)
- - [OpenapiClient::InlineResponse2001](docs/InlineResponse2001.md)
- - [OpenapiClient::InlineResponse2002](docs/InlineResponse2002.md)
- - [OpenapiClient::InlineResponse2003](docs/InlineResponse2003.md)
- - [OpenapiClient::InlineResponse2004](docs/InlineResponse2004.md)
- - [OpenapiClient::InlineResponse2005](docs/InlineResponse2005.md)
- - [OpenapiClient::InlineResponse2006](docs/InlineResponse2006.md)
- - [OpenapiClient::InlineResponse2007](docs/InlineResponse2007.md)
- - [OpenapiClient::InlineResponse2008](docs/InlineResponse2008.md)
- - [OpenapiClient::InlineResponse2009](docs/InlineResponse2009.md)
+ - [OpenapiClient::AnalyzeJoke200Response](docs/AnalyzeJoke200Response.md)
+ - [OpenapiClient::GenerateNonsenseWord200Response](docs/GenerateNonsenseWord200Response.md)
+ - [OpenapiClient::Praise200Response](docs/Praise200Response.md)
+ - [OpenapiClient::RandomJoke200Response](docs/RandomJoke200Response.md)
+ - [OpenapiClient::RandomMeme200Response](docs/RandomMeme200Response.md)
+ - [OpenapiClient::RateWord200Response](docs/RateWord200Response.md)
+ - [OpenapiClient::SearchGifs200Response](docs/SearchGifs200Response.md)
+ - [OpenapiClient::SearchGifs200ResponseImagesInner](docs/SearchGifs200ResponseImagesInner.md)
+ - [OpenapiClient::SearchJokes200Response](docs/SearchJokes200Response.md)
+ - [OpenapiClient::SearchJokes200ResponseJokesInner](docs/SearchJokes200ResponseJokesInner.md)
+ - [OpenapiClient::SearchMemes200Response](docs/SearchMemes200Response.md)
+ - [OpenapiClient::SearchMemes200ResponseMemesInner](docs/SearchMemes200ResponseMemesInner.md)
+ - [OpenapiClient::SubmitJoke200Response](docs/SubmitJoke200Response.md)
 
 
 ## Documentation for Authorization
 
 
+Authentication schemes defined for the API:
 ### apiKey
 
 

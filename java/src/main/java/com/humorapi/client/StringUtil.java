@@ -16,7 +16,7 @@ package com.humorapi.client;
 import java.util.Collection;
 import java.util.Iterator;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-05T21:05:51.248+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-08T00:10:49.823812600+01:00[Europe/Berlin]")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

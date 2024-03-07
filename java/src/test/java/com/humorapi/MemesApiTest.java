@@ -15,11 +15,11 @@ package com.humorapi;
 
 import com.humorapi.client.ApiException;
 import java.math.BigDecimal;
-import com.humorapi.client.model.InlineResponse2002;
-import com.humorapi.client.model.InlineResponse2003;
-import com.humorapi.client.model.InlineResponse2008;
-import org.junit.Test;
-import org.junit.Ignore;
+import com.humorapi.client.model.RandomMeme200Response;
+import com.humorapi.client.model.SearchMemes200Response;
+import com.humorapi.client.model.SubmitJoke200Response;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,34 +29,31 @@ import java.util.Map;
 /**
  * API tests for MemesApi
  */
-@Ignore
+@Disabled
 public class MemesApiTest {
 
     private final MemesApi api = new MemesApi();
 
-    
     /**
      * Downvote a Meme
      *
      * Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void downvoteMemeTest() throws ApiException {
         Integer id = null;
-                InlineResponse2008 response = api.downvoteMeme(id);
+        SubmitJoke200Response response = api.downvoteMeme(id);
         // TODO: test validations
     }
-    
+
     /**
      * Random Meme
      *
      * Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void randomMemeTest() throws ApiException {
@@ -65,17 +62,16 @@ public class MemesApiTest {
         String mediaType = null;
         Integer number = null;
         Integer minRating = null;
-                InlineResponse2003 response = api.randomMeme(keywords, keywordsInImage, mediaType, number, minRating);
+        RandomMeme200Response response = api.randomMeme(keywords, keywordsInImage, mediaType, number, minRating);
         // TODO: test validations
     }
-    
+
     /**
      * Search Memes
      *
      * Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void searchMemesTest() throws ApiException {
@@ -85,23 +81,22 @@ public class MemesApiTest {
         Integer number = null;
         Integer minRating = null;
         BigDecimal offset = null;
-                InlineResponse2002 response = api.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset);
+        SearchMemes200Response response = api.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset);
         // TODO: test validations
     }
-    
+
     /**
      * Upvote a Meme
      *
      * Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void upvoteMemeTest() throws ApiException {
         Integer id = null;
-                InlineResponse2008 response = api.upvoteMeme(id);
+        SubmitJoke200Response response = api.upvoteMeme(id);
         // TODO: test validations
     }
-    
+
 }

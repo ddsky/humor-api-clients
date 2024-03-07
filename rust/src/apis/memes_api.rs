@@ -45,7 +45,7 @@ pub enum UpvoteMemeError {
 
 
 /// Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
-pub async fn downvote_meme(configuration: &configuration::Configuration, id: i32) -> Result<crate::models::InlineResponse2008, Error<DownvoteMemeError>> {
+pub async fn downvote_meme(configuration: &configuration::Configuration, id: i32) -> Result<crate::models::SubmitJoke200Response, Error<DownvoteMemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -81,7 +81,7 @@ pub async fn downvote_meme(configuration: &configuration::Configuration, id: i32
 }
 
 /// Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
-pub async fn random_meme(configuration: &configuration::Configuration, keywords: Option<&str>, keywords_in_image: Option<bool>, media_type: Option<&str>, number: Option<i32>, min_rating: Option<i32>) -> Result<crate::models::InlineResponse2003, Error<RandomMemeError>> {
+pub async fn random_meme(configuration: &configuration::Configuration, keywords: Option<&str>, keywords_in_image: Option<bool>, media_type: Option<&str>, number: Option<i32>, min_rating: Option<i32>) -> Result<crate::models::RandomMeme200Response, Error<RandomMemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -132,7 +132,7 @@ pub async fn random_meme(configuration: &configuration::Configuration, keywords:
 }
 
 /// Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
-pub async fn search_memes(configuration: &configuration::Configuration, keywords: Option<&str>, keywords_in_image: Option<bool>, media_type: Option<&str>, number: Option<i32>, min_rating: Option<i32>, offset: Option<f32>) -> Result<crate::models::InlineResponse2002, Error<SearchMemesError>> {
+pub async fn search_memes(configuration: &configuration::Configuration, keywords: Option<&str>, keywords_in_image: Option<bool>, media_type: Option<&str>, number: Option<i32>, min_rating: Option<i32>, offset: Option<f32>) -> Result<crate::models::SearchMemes200Response, Error<SearchMemesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -186,7 +186,7 @@ pub async fn search_memes(configuration: &configuration::Configuration, keywords
 }
 
 /// Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
-pub async fn upvote_meme(configuration: &configuration::Configuration, id: i32) -> Result<crate::models::InlineResponse2008, Error<UpvoteMemeError>> {
+pub async fn upvote_meme(configuration: &configuration::Configuration, id: i32) -> Result<crate::models::SubmitJoke200Response, Error<UpvoteMemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

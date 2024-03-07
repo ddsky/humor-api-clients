@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports -fno-warn-unused-matches #-}
 
 module Instances where
@@ -12,6 +13,7 @@ import qualified Data.Set as Set
 import qualified Data.Text as T
 import qualified Data.Time as TI
 import qualified Data.Vector as V
+import Data.String (fromString)
 
 import Control.Monad
 import Data.Char (isSpace)
@@ -51,9 +53,16 @@ instance Arbitrary Date where
     arbitrary = Date <$> arbitrary
     shrink (Date xs) = Date <$> shrink xs
 
+#if MIN_VERSION_aeson(2,0,0)
+#else
 -- | A naive Arbitrary instance for A.Value:
 instance Arbitrary A.Value where
-  arbitrary = frequency [(3, simpleTypes), (1, arrayTypes), (1, objectTypes)]
+  arbitrary = arbitraryValue
+#endif
+
+arbitraryValue :: Gen A.Value
+arbitraryValue =
+  frequency [(3, simpleTypes), (1, arrayTypes), (1, objectTypes)]
     where
       simpleTypes :: Gen A.Value
       simpleTypes =
@@ -63,7 +72,7 @@ instance Arbitrary A.Value where
           , (2, liftM (A.Number . fromIntegral) (arbitrary :: Gen Int))
           , (2, liftM (A.String . T.pack) (arbitrary :: Gen String))
           ]
-      mapF (k, v) = (T.pack k, v)
+      mapF (k, v) = (fromString k, v)
       simpleAndArrays = frequency [(1, sized sizedArray), (4, simpleTypes)]
       arrayTypes = sized sizedArray
       objectTypes = sized sizedObject
@@ -104,98 +113,124 @@ arbitraryReducedMaybeValue n = do
 
 -- * Models
 
-instance Arbitrary InlineResponse200 where
-  arbitrary = sized genInlineResponse200
+instance Arbitrary AnalyzeJoke200Response where
+  arbitrary = sized genAnalyzeJoke200Response
 
-genInlineResponse200 :: Int -> Gen InlineResponse200
-genInlineResponse200 n =
-  InlineResponse200
-    <$> arbitraryReduced n -- inlineResponse200Jokes :: [A.Value]
+genAnalyzeJoke200Response :: Int -> Gen AnalyzeJoke200Response
+genAnalyzeJoke200Response n =
+  AnalyzeJoke200Response
+    <$> arbitrary -- analyzeJoke200ResponseJoke :: Text
+    <*> arbitrary -- analyzeJoke200ResponseTags :: [Text]
   
-instance Arbitrary InlineResponse2001 where
-  arbitrary = sized genInlineResponse2001
+instance Arbitrary GenerateNonsenseWord200Response where
+  arbitrary = sized genGenerateNonsenseWord200Response
 
-genInlineResponse2001 :: Int -> Gen InlineResponse2001
-genInlineResponse2001 n =
-  InlineResponse2001
-    <$> arbitraryReduced n -- inlineResponse2001Images :: [A.Value]
+genGenerateNonsenseWord200Response :: Int -> Gen GenerateNonsenseWord200Response
+genGenerateNonsenseWord200Response n =
+  GenerateNonsenseWord200Response
+    <$> arbitrary -- generateNonsenseWord200ResponseWord :: Text
+    <*> arbitrary -- generateNonsenseWord200ResponseRating :: Double
   
-instance Arbitrary InlineResponse2002 where
-  arbitrary = sized genInlineResponse2002
+instance Arbitrary Praise200Response where
+  arbitrary = sized genPraise200Response
 
-genInlineResponse2002 :: Int -> Gen InlineResponse2002
-genInlineResponse2002 n =
-  InlineResponse2002
-    <$> arbitraryReduced n -- inlineResponse2002Memes :: [A.Value]
+genPraise200Response :: Int -> Gen Praise200Response
+genPraise200Response n =
+  Praise200Response
+    <$> arbitrary -- praise200ResponseText :: Text
   
-instance Arbitrary InlineResponse2003 where
-  arbitrary = sized genInlineResponse2003
+instance Arbitrary RandomJoke200Response where
+  arbitrary = sized genRandomJoke200Response
 
-genInlineResponse2003 :: Int -> Gen InlineResponse2003
-genInlineResponse2003 n =
-  InlineResponse2003
-    <$> arbitrary -- inlineResponse2003Id :: Int
-    <*> arbitrary -- inlineResponse2003Url :: Text
-    <*> arbitrary -- inlineResponse2003Type :: Text
+genRandomJoke200Response :: Int -> Gen RandomJoke200Response
+genRandomJoke200Response n =
+  RandomJoke200Response
+    <$> arbitrary -- randomJoke200ResponseId :: Int
+    <*> arbitrary -- randomJoke200ResponseJoke :: Text
   
-instance Arbitrary InlineResponse2004 where
-  arbitrary = sized genInlineResponse2004
+instance Arbitrary RandomMeme200Response where
+  arbitrary = sized genRandomMeme200Response
 
-genInlineResponse2004 :: Int -> Gen InlineResponse2004
-genInlineResponse2004 n =
-  InlineResponse2004
-    <$> arbitrary -- inlineResponse2004Id :: Int
-    <*> arbitrary -- inlineResponse2004Joke :: Text
+genRandomMeme200Response :: Int -> Gen RandomMeme200Response
+genRandomMeme200Response n =
+  RandomMeme200Response
+    <$> arbitrary -- randomMeme200ResponseId :: Int
+    <*> arbitrary -- randomMeme200ResponseUrl :: Text
+    <*> arbitrary -- randomMeme200ResponseType :: Text
   
-instance Arbitrary InlineResponse2005 where
-  arbitrary = sized genInlineResponse2005
+instance Arbitrary RateWord200Response where
+  arbitrary = sized genRateWord200Response
 
-genInlineResponse2005 :: Int -> Gen InlineResponse2005
-genInlineResponse2005 n =
-  InlineResponse2005
-    <$> arbitrary -- inlineResponse2005Text :: Text
+genRateWord200Response :: Int -> Gen RateWord200Response
+genRateWord200Response n =
+  RateWord200Response
+    <$> arbitrary -- rateWord200ResponseRating :: Double
   
-instance Arbitrary InlineResponse2006 where
-  arbitrary = sized genInlineResponse2006
+instance Arbitrary SearchGifs200Response where
+  arbitrary = sized genSearchGifs200Response
 
-genInlineResponse2006 :: Int -> Gen InlineResponse2006
-genInlineResponse2006 n =
-  InlineResponse2006
-    <$> arbitrary -- inlineResponse2006Rating :: Double
+genSearchGifs200Response :: Int -> Gen SearchGifs200Response
+genSearchGifs200Response n =
+  SearchGifs200Response
+    <$> arbitraryReduced n -- searchGifs200ResponseImages :: [SearchGifs200ResponseImagesInner]
   
-instance Arbitrary InlineResponse2007 where
-  arbitrary = sized genInlineResponse2007
+instance Arbitrary SearchGifs200ResponseImagesInner where
+  arbitrary = sized genSearchGifs200ResponseImagesInner
 
-genInlineResponse2007 :: Int -> Gen InlineResponse2007
-genInlineResponse2007 n =
-  InlineResponse2007
-    <$> arbitrary -- inlineResponse2007Word :: Text
-    <*> arbitrary -- inlineResponse2007Rating :: Double
+genSearchGifs200ResponseImagesInner :: Int -> Gen SearchGifs200ResponseImagesInner
+genSearchGifs200ResponseImagesInner n =
+  SearchGifs200ResponseImagesInner
+    <$> arbitrary -- searchGifs200ResponseImagesInnerUrl :: Text
+    <*> arbitrary -- searchGifs200ResponseImagesInnerWidth :: Int
+    <*> arbitrary -- searchGifs200ResponseImagesInnerHeight :: Int
   
-instance Arbitrary InlineResponse2008 where
-  arbitrary = sized genInlineResponse2008
+instance Arbitrary SearchJokes200Response where
+  arbitrary = sized genSearchJokes200Response
 
-genInlineResponse2008 :: Int -> Gen InlineResponse2008
-genInlineResponse2008 n =
-  InlineResponse2008
-    <$> arbitrary -- inlineResponse2008Message :: Text
+genSearchJokes200Response :: Int -> Gen SearchJokes200Response
+genSearchJokes200Response n =
+  SearchJokes200Response
+    <$> arbitraryReduced n -- searchJokes200ResponseJokes :: [SearchJokes200ResponseJokesInner]
   
-instance Arbitrary InlineResponse2009 where
-  arbitrary = sized genInlineResponse2009
+instance Arbitrary SearchJokes200ResponseJokesInner where
+  arbitrary = sized genSearchJokes200ResponseJokesInner
 
-genInlineResponse2009 :: Int -> Gen InlineResponse2009
-genInlineResponse2009 n =
-  InlineResponse2009
-    <$> arbitrary -- inlineResponse2009Joke :: Text
-    <*> arbitrary -- inlineResponse2009Tags :: [Text]
+genSearchJokes200ResponseJokesInner :: Int -> Gen SearchJokes200ResponseJokesInner
+genSearchJokes200ResponseJokesInner n =
+  SearchJokes200ResponseJokesInner
+    <$> arbitrary -- searchJokes200ResponseJokesInnerId :: Int
+    <*> arbitrary -- searchJokes200ResponseJokesInnerJoke :: Text
+  
+instance Arbitrary SearchMemes200Response where
+  arbitrary = sized genSearchMemes200Response
+
+genSearchMemes200Response :: Int -> Gen SearchMemes200Response
+genSearchMemes200Response n =
+  SearchMemes200Response
+    <$> arbitraryReduced n -- searchMemes200ResponseMemes :: [SearchMemes200ResponseMemesInner]
+  
+instance Arbitrary SearchMemes200ResponseMemesInner where
+  arbitrary = sized genSearchMemes200ResponseMemesInner
+
+genSearchMemes200ResponseMemesInner :: Int -> Gen SearchMemes200ResponseMemesInner
+genSearchMemes200ResponseMemesInner n =
+  SearchMemes200ResponseMemesInner
+    <$> arbitrary -- searchMemes200ResponseMemesInnerId :: Int
+    <*> arbitrary -- searchMemes200ResponseMemesInnerUrl :: Text
+    <*> arbitrary -- searchMemes200ResponseMemesInnerType :: Text
+  
+instance Arbitrary SubmitJoke200Response where
+  arbitrary = sized genSubmitJoke200Response
+
+genSubmitJoke200Response :: Int -> Gen SubmitJoke200Response
+genSubmitJoke200Response n =
+  SubmitJoke200Response
+    <$> arbitrary -- submitJoke200ResponseMessage :: Text
   
 
 
 
 instance Arbitrary E'IncludeTags where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'KeywordsInImage where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'MediaType where

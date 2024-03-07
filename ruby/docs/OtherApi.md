@@ -13,7 +13,7 @@ All URIs are relative to *https://api.humorapi.com*
 
 ## generate_nonsense_word
 
-> <InlineResponse2007> generate_nonsense_word
+> <GenerateNonsenseWord200Response> generate_nonsense_word
 
 Generate Nonsense Word
 
@@ -47,7 +47,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2007>, Integer, Hash)> generate_nonsense_word_with_http_info
+> <Array(<GenerateNonsenseWord200Response>, Integer, Hash)> generate_nonsense_word_with_http_info
 
 ```ruby
 begin
@@ -55,7 +55,7 @@ begin
   data, status_code, headers = api_instance.generate_nonsense_word_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2007>
+  p data # => <GenerateNonsenseWord200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling OtherApi->generate_nonsense_word_with_http_info: #{e}"
 end
@@ -67,7 +67,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**GenerateNonsenseWord200Response**](GenerateNonsenseWord200Response.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ This endpoint does not need any parameter.
 
 ## insult
 
-> <InlineResponse2005> insult(name, reason)
+> <Praise200Response> insult(name, reason)
 
 Insult
 
@@ -117,7 +117,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2005>, Integer, Hash)> insult_with_http_info(name, reason)
+> <Array(<Praise200Response>, Integer, Hash)> insult_with_http_info(name, reason)
 
 ```ruby
 begin
@@ -125,7 +125,7 @@ begin
   data, status_code, headers = api_instance.insult_with_http_info(name, reason)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2005>
+  p data # => <Praise200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling OtherApi->insult_with_http_info: #{e}"
 end
@@ -140,7 +140,7 @@ end
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ end
 
 ## praise
 
-> <InlineResponse2005> praise(name, reason)
+> <Praise200Response> praise(name, reason)
 
 Praise
 
@@ -190,7 +190,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2005>, Integer, Hash)> praise_with_http_info(name, reason)
+> <Array(<Praise200Response>, Integer, Hash)> praise_with_http_info(name, reason)
 
 ```ruby
 begin
@@ -198,7 +198,7 @@ begin
   data, status_code, headers = api_instance.praise_with_http_info(name, reason)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2005>
+  p data # => <Praise200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling OtherApi->praise_with_http_info: #{e}"
 end
@@ -213,7 +213,7 @@ end
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -227,7 +227,7 @@ end
 
 ## rate_word
 
-> <InlineResponse2006> rate_word(word)
+> <RateWord200Response> rate_word(word)
 
 Rate Word
 
@@ -262,7 +262,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2006>, Integer, Hash)> rate_word_with_http_info(word)
+> <Array(<RateWord200Response>, Integer, Hash)> rate_word_with_http_info(word)
 
 ```ruby
 begin
@@ -270,7 +270,7 @@ begin
   data, status_code, headers = api_instance.rate_word_with_http_info(word)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2006>
+  p data # => <RateWord200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling OtherApi->rate_word_with_http_info: #{e}"
 end
@@ -284,7 +284,7 @@ end
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**RateWord200Response**](RateWord200Response.md)
 
 ### Authorization
 
@@ -298,7 +298,7 @@ end
 
 ## search_gifs
 
-> <InlineResponse2001> search_gifs(query, opts)
+> <SearchGifs200Response> search_gifs(query, opts)
 
 Search Gifs
 
@@ -336,7 +336,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2001>, Integer, Hash)> search_gifs_with_http_info(query, opts)
+> <Array(<SearchGifs200Response>, Integer, Hash)> search_gifs_with_http_info(query, opts)
 
 ```ruby
 begin
@@ -344,7 +344,7 @@ begin
   data, status_code, headers = api_instance.search_gifs_with_http_info(query, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2001>
+  p data # => <SearchGifs200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling OtherApi->search_gifs_with_http_info: #{e}"
 end
@@ -359,7 +359,7 @@ end
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**SearchGifs200Response**](SearchGifs200Response.md)
 
 ### Authorization
 

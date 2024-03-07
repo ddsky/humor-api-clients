@@ -1,24 +1,30 @@
-export * from './InlineResponse200';
-export * from './InlineResponse2001';
-export * from './InlineResponse2002';
-export * from './InlineResponse2003';
-export * from './InlineResponse2004';
-export * from './InlineResponse2005';
-export * from './InlineResponse2006';
-export * from './InlineResponse2007';
-export * from './InlineResponse2008';
-export * from './InlineResponse2009';
+export * from '../models/AnalyzeJoke200Response';
+export * from '../models/GenerateNonsenseWord200Response';
+export * from '../models/Praise200Response';
+export * from '../models/RandomJoke200Response';
+export * from '../models/RandomMeme200Response';
+export * from '../models/RateWord200Response';
+export * from '../models/SearchGifs200Response';
+export * from '../models/SearchGifs200ResponseImagesInner';
+export * from '../models/SearchJokes200Response';
+export * from '../models/SearchJokes200ResponseJokesInner';
+export * from '../models/SearchMemes200Response';
+export * from '../models/SearchMemes200ResponseMemesInner';
+export * from '../models/SubmitJoke200Response';
 
-import { InlineResponse200 } from './InlineResponse200';
-import { InlineResponse2001 } from './InlineResponse2001';
-import { InlineResponse2002 } from './InlineResponse2002';
-import { InlineResponse2003 } from './InlineResponse2003';
-import { InlineResponse2004 } from './InlineResponse2004';
-import { InlineResponse2005 } from './InlineResponse2005';
-import { InlineResponse2006 } from './InlineResponse2006';
-import { InlineResponse2007 } from './InlineResponse2007';
-import { InlineResponse2008 } from './InlineResponse2008';
-import { InlineResponse2009 } from './InlineResponse2009';
+import { AnalyzeJoke200Response } from '../models/AnalyzeJoke200Response';
+import { GenerateNonsenseWord200Response } from '../models/GenerateNonsenseWord200Response';
+import { Praise200Response } from '../models/Praise200Response';
+import { RandomJoke200Response } from '../models/RandomJoke200Response';
+import { RandomMeme200Response } from '../models/RandomMeme200Response';
+import { RateWord200Response } from '../models/RateWord200Response';
+import { SearchGifs200Response } from '../models/SearchGifs200Response';
+import { SearchGifs200ResponseImagesInner } from '../models/SearchGifs200ResponseImagesInner';
+import { SearchJokes200Response } from '../models/SearchJokes200Response';
+import { SearchJokes200ResponseJokesInner } from '../models/SearchJokes200ResponseJokesInner';
+import { SearchMemes200Response } from '../models/SearchMemes200Response';
+import { SearchMemes200ResponseMemesInner } from '../models/SearchMemes200ResponseMemesInner';
+import { SubmitJoke200Response } from '../models/SubmitJoke200Response';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -32,28 +38,76 @@ let primitives = [
                     "any"
                  ];
 
-const supportedMediaTypes: { [mediaType: string]: number } = {
-  "application/json": Infinity,
-  "application/octet-stream": 0,
-  "application/x-www-form-urlencoded": 0
-}
-
-
 let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
-    "InlineResponse200": InlineResponse200,
-    "InlineResponse2001": InlineResponse2001,
-    "InlineResponse2002": InlineResponse2002,
-    "InlineResponse2003": InlineResponse2003,
-    "InlineResponse2004": InlineResponse2004,
-    "InlineResponse2005": InlineResponse2005,
-    "InlineResponse2006": InlineResponse2006,
-    "InlineResponse2007": InlineResponse2007,
-    "InlineResponse2008": InlineResponse2008,
-    "InlineResponse2009": InlineResponse2009,
+    "AnalyzeJoke200Response": AnalyzeJoke200Response,
+    "GenerateNonsenseWord200Response": GenerateNonsenseWord200Response,
+    "Praise200Response": Praise200Response,
+    "RandomJoke200Response": RandomJoke200Response,
+    "RandomMeme200Response": RandomMeme200Response,
+    "RateWord200Response": RateWord200Response,
+    "SearchGifs200Response": SearchGifs200Response,
+    "SearchGifs200ResponseImagesInner": SearchGifs200ResponseImagesInner,
+    "SearchJokes200Response": SearchJokes200Response,
+    "SearchJokes200ResponseJokesInner": SearchJokes200ResponseJokesInner,
+    "SearchMemes200Response": SearchMemes200Response,
+    "SearchMemes200ResponseMemesInner": SearchMemes200ResponseMemesInner,
+    "SubmitJoke200Response": SubmitJoke200Response,
 }
+
+type MimeTypeDescriptor = {
+    type: string;
+    subtype: string;
+    subtypeTokens: string[];
+};
+
+/**
+ * Every mime-type consists of a type, subtype, and optional parameters.
+ * The subtype can be composite, including information about the content format.
+ * For example: `application/json-patch+json`, `application/merge-patch+json`.
+ *
+ * This helper transforms a string mime-type into an internal representation.
+ * This simplifies the implementation of predicates that in turn define common rules for parsing or stringifying
+ * the payload.
+ */
+const parseMimeType = (mimeType: string): MimeTypeDescriptor => {
+    const [type, subtype] = mimeType.split('/');
+    return {
+        type,
+        subtype,
+        subtypeTokens: subtype.split('+'),
+    };
+};
+
+type MimeTypePredicate = (mimeType: string) => boolean;
+
+// This factory creates a predicate function that checks a string mime-type against defined rules.
+const mimeTypePredicateFactory = (predicate: (descriptor: MimeTypeDescriptor) => boolean): MimeTypePredicate => (mimeType) => predicate(parseMimeType(mimeType));
+
+// Use this factory when you need to define a simple predicate based only on type and, if applicable, subtype.
+const mimeTypeSimplePredicateFactory = (type: string, subtype?: string): MimeTypePredicate => mimeTypePredicateFactory((descriptor) => {
+    if (descriptor.type !== type) return false;
+    if (subtype != null && descriptor.subtype !== subtype) return false;
+    return true;
+});
+
+// Creating a set of named predicates that will help us determine how to handle different mime-types
+const isTextLikeMimeType = mimeTypeSimplePredicateFactory('text');
+const isJsonMimeType = mimeTypeSimplePredicateFactory('application', 'json');
+const isJsonLikeMimeType = mimeTypePredicateFactory((descriptor) => descriptor.type === 'application' && descriptor.subtypeTokens.some((item) => item === 'json'));
+const isOctetStreamMimeType = mimeTypeSimplePredicateFactory('application', 'octet-stream');
+const isFormUrlencodedMimeType = mimeTypeSimplePredicateFactory('application', 'x-www-form-urlencoded');
+
+// Defining a list of mime-types in the order of prioritization for handling.
+const supportedMimeTypePredicatesWithPriority: MimeTypePredicate[] = [
+    isJsonMimeType,
+    isJsonLikeMimeType,
+    isTextLikeMimeType,
+    isOctetStreamMimeType,
+    isFormUrlencodedMimeType,
+];
 
 export class ObjectSerializer {
     public static findCorrectType(data: any, expectedType: string) {
@@ -100,8 +154,7 @@ export class ObjectSerializer {
             let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
             let transformedData: any[] = [];
-            for (let index in data) {
-                let date = data[index];
+            for (let date of data) {
                 transformedData.push(ObjectSerializer.serialize(date, subType, format));
             }
             return transformedData;
@@ -130,8 +183,7 @@ export class ObjectSerializer {
             // get the map for the correct type.
             let attributeTypes = typeMap[type].getAttributeTypeMap();
             let instance: {[index: string]: any} = {};
-            for (let index in attributeTypes) {
-                let attributeType = attributeTypes[index];
+            for (let attributeType of attributeTypes) {
                 instance[attributeType.baseName] = ObjectSerializer.serialize(data[attributeType.name], attributeType.type, attributeType.format);
             }
             return instance;
@@ -149,8 +201,7 @@ export class ObjectSerializer {
             let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
             let transformedData: any[] = [];
-            for (let index in data) {
-                let date = data[index];
+            for (let date of data) {
                 transformedData.push(ObjectSerializer.deserialize(date, subType, format));
             }
             return transformedData;
@@ -166,9 +217,11 @@ export class ObjectSerializer {
             }
             let instance = new typeMap[type]();
             let attributeTypes = typeMap[type].getAttributeTypeMap();
-            for (let index in attributeTypes) {
-                let attributeType = attributeTypes[index];
-                instance[attributeType.name] = ObjectSerializer.deserialize(data[attributeType.baseName], attributeType.type, attributeType.format);
+            for (let attributeType of attributeTypes) {
+                let value = ObjectSerializer.deserialize(data[attributeType.baseName], attributeType.type, attributeType.format);
+                if (value !== undefined) {
+                    instance[attributeType.name] = value;
+                }
             }
             return instance;
         }
@@ -196,32 +249,32 @@ export class ObjectSerializer {
      */
     public static getPreferredMediaType(mediaTypes: Array<string>): string {
         /** According to OAS 3 we should default to json */
-        if (!mediaTypes) {
+        if (mediaTypes.length === 0) {
             return "application/json";
         }
 
         const normalMediaTypes = mediaTypes.map(this.normalizeMediaType);
-        let selectedMediaType: string | undefined = undefined;
-        let selectedRank: number = -Infinity;
-        for (const mediaType of normalMediaTypes) {
-            if (supportedMediaTypes[mediaType!] > selectedRank) {
-                selectedMediaType = mediaType;
-                selectedRank = supportedMediaTypes[mediaType!];
+
+        for (const predicate of supportedMimeTypePredicatesWithPriority) {
+            for (const mediaType of normalMediaTypes) {
+                if (mediaType != null && predicate(mediaType)) {
+                    return mediaType;
+                }
             }
         }
 
-        if (selectedMediaType === undefined) {
-            throw new Error("None of the given media types are supported: " + mediaTypes.join(", "));
-        }
-
-        return selectedMediaType!;
+        throw new Error("None of the given media types are supported: " + mediaTypes.join(", "));
     }
 
     /**
      * Convert data to a string according the given media type
      */
     public static stringify(data: any, mediaType: string): string {
-        if (mediaType === "application/json") {
+        if (isTextLikeMimeType(mediaType)) {
+            return String(data);
+        }
+
+        if (isJsonLikeMimeType(mediaType)) {
             return JSON.stringify(data);
         }
 
@@ -236,7 +289,11 @@ export class ObjectSerializer {
             throw new Error("Cannot parse content. No Content-Type defined.");
         }
 
-        if (mediaType === "application/json") {
+        if (isTextLikeMimeType(mediaType)) {
+            return rawData;
+        }
+
+        if (isJsonLikeMimeType(mediaType)) {
             return JSON.parse(rawData);
         }
 

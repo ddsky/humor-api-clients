@@ -37,117 +37,169 @@ import Humor.Model
 import Humor.Core
 
 
--- * InlineResponse200
+-- * AnalyzeJoke200Response
 
--- | 'inlineResponse200Jokes' Lens
-inlineResponse200JokesL :: Lens_' InlineResponse200 ([A.Value])
-inlineResponse200JokesL f InlineResponse200{..} = (\inlineResponse200Jokes -> InlineResponse200 { inlineResponse200Jokes, ..} ) <$> f inlineResponse200Jokes
-{-# INLINE inlineResponse200JokesL #-}
+-- | 'analyzeJoke200ResponseJoke' Lens
+analyzeJoke200ResponseJokeL :: Lens_' AnalyzeJoke200Response (Text)
+analyzeJoke200ResponseJokeL f AnalyzeJoke200Response{..} = (\analyzeJoke200ResponseJoke -> AnalyzeJoke200Response { analyzeJoke200ResponseJoke, ..} ) <$> f analyzeJoke200ResponseJoke
+{-# INLINE analyzeJoke200ResponseJokeL #-}
 
-
-
--- * InlineResponse2001
-
--- | 'inlineResponse2001Images' Lens
-inlineResponse2001ImagesL :: Lens_' InlineResponse2001 ([A.Value])
-inlineResponse2001ImagesL f InlineResponse2001{..} = (\inlineResponse2001Images -> InlineResponse2001 { inlineResponse2001Images, ..} ) <$> f inlineResponse2001Images
-{-# INLINE inlineResponse2001ImagesL #-}
+-- | 'analyzeJoke200ResponseTags' Lens
+analyzeJoke200ResponseTagsL :: Lens_' AnalyzeJoke200Response ([Text])
+analyzeJoke200ResponseTagsL f AnalyzeJoke200Response{..} = (\analyzeJoke200ResponseTags -> AnalyzeJoke200Response { analyzeJoke200ResponseTags, ..} ) <$> f analyzeJoke200ResponseTags
+{-# INLINE analyzeJoke200ResponseTagsL #-}
 
 
 
--- * InlineResponse2002
+-- * GenerateNonsenseWord200Response
 
--- | 'inlineResponse2002Memes' Lens
-inlineResponse2002MemesL :: Lens_' InlineResponse2002 ([A.Value])
-inlineResponse2002MemesL f InlineResponse2002{..} = (\inlineResponse2002Memes -> InlineResponse2002 { inlineResponse2002Memes, ..} ) <$> f inlineResponse2002Memes
-{-# INLINE inlineResponse2002MemesL #-}
+-- | 'generateNonsenseWord200ResponseWord' Lens
+generateNonsenseWord200ResponseWordL :: Lens_' GenerateNonsenseWord200Response (Text)
+generateNonsenseWord200ResponseWordL f GenerateNonsenseWord200Response{..} = (\generateNonsenseWord200ResponseWord -> GenerateNonsenseWord200Response { generateNonsenseWord200ResponseWord, ..} ) <$> f generateNonsenseWord200ResponseWord
+{-# INLINE generateNonsenseWord200ResponseWordL #-}
 
-
-
--- * InlineResponse2003
-
--- | 'inlineResponse2003Id' Lens
-inlineResponse2003IdL :: Lens_' InlineResponse2003 (Int)
-inlineResponse2003IdL f InlineResponse2003{..} = (\inlineResponse2003Id -> InlineResponse2003 { inlineResponse2003Id, ..} ) <$> f inlineResponse2003Id
-{-# INLINE inlineResponse2003IdL #-}
-
--- | 'inlineResponse2003Url' Lens
-inlineResponse2003UrlL :: Lens_' InlineResponse2003 (Text)
-inlineResponse2003UrlL f InlineResponse2003{..} = (\inlineResponse2003Url -> InlineResponse2003 { inlineResponse2003Url, ..} ) <$> f inlineResponse2003Url
-{-# INLINE inlineResponse2003UrlL #-}
-
--- | 'inlineResponse2003Type' Lens
-inlineResponse2003TypeL :: Lens_' InlineResponse2003 (Text)
-inlineResponse2003TypeL f InlineResponse2003{..} = (\inlineResponse2003Type -> InlineResponse2003 { inlineResponse2003Type, ..} ) <$> f inlineResponse2003Type
-{-# INLINE inlineResponse2003TypeL #-}
+-- | 'generateNonsenseWord200ResponseRating' Lens
+generateNonsenseWord200ResponseRatingL :: Lens_' GenerateNonsenseWord200Response (Double)
+generateNonsenseWord200ResponseRatingL f GenerateNonsenseWord200Response{..} = (\generateNonsenseWord200ResponseRating -> GenerateNonsenseWord200Response { generateNonsenseWord200ResponseRating, ..} ) <$> f generateNonsenseWord200ResponseRating
+{-# INLINE generateNonsenseWord200ResponseRatingL #-}
 
 
 
--- * InlineResponse2004
+-- * Praise200Response
 
--- | 'inlineResponse2004Id' Lens
-inlineResponse2004IdL :: Lens_' InlineResponse2004 (Int)
-inlineResponse2004IdL f InlineResponse2004{..} = (\inlineResponse2004Id -> InlineResponse2004 { inlineResponse2004Id, ..} ) <$> f inlineResponse2004Id
-{-# INLINE inlineResponse2004IdL #-}
-
--- | 'inlineResponse2004Joke' Lens
-inlineResponse2004JokeL :: Lens_' InlineResponse2004 (Text)
-inlineResponse2004JokeL f InlineResponse2004{..} = (\inlineResponse2004Joke -> InlineResponse2004 { inlineResponse2004Joke, ..} ) <$> f inlineResponse2004Joke
-{-# INLINE inlineResponse2004JokeL #-}
+-- | 'praise200ResponseText' Lens
+praise200ResponseTextL :: Lens_' Praise200Response (Text)
+praise200ResponseTextL f Praise200Response{..} = (\praise200ResponseText -> Praise200Response { praise200ResponseText, ..} ) <$> f praise200ResponseText
+{-# INLINE praise200ResponseTextL #-}
 
 
 
--- * InlineResponse2005
+-- * RandomJoke200Response
 
--- | 'inlineResponse2005Text' Lens
-inlineResponse2005TextL :: Lens_' InlineResponse2005 (Text)
-inlineResponse2005TextL f InlineResponse2005{..} = (\inlineResponse2005Text -> InlineResponse2005 { inlineResponse2005Text, ..} ) <$> f inlineResponse2005Text
-{-# INLINE inlineResponse2005TextL #-}
+-- | 'randomJoke200ResponseId' Lens
+randomJoke200ResponseIdL :: Lens_' RandomJoke200Response (Int)
+randomJoke200ResponseIdL f RandomJoke200Response{..} = (\randomJoke200ResponseId -> RandomJoke200Response { randomJoke200ResponseId, ..} ) <$> f randomJoke200ResponseId
+{-# INLINE randomJoke200ResponseIdL #-}
 
-
-
--- * InlineResponse2006
-
--- | 'inlineResponse2006Rating' Lens
-inlineResponse2006RatingL :: Lens_' InlineResponse2006 (Double)
-inlineResponse2006RatingL f InlineResponse2006{..} = (\inlineResponse2006Rating -> InlineResponse2006 { inlineResponse2006Rating, ..} ) <$> f inlineResponse2006Rating
-{-# INLINE inlineResponse2006RatingL #-}
+-- | 'randomJoke200ResponseJoke' Lens
+randomJoke200ResponseJokeL :: Lens_' RandomJoke200Response (Text)
+randomJoke200ResponseJokeL f RandomJoke200Response{..} = (\randomJoke200ResponseJoke -> RandomJoke200Response { randomJoke200ResponseJoke, ..} ) <$> f randomJoke200ResponseJoke
+{-# INLINE randomJoke200ResponseJokeL #-}
 
 
 
--- * InlineResponse2007
+-- * RandomMeme200Response
 
--- | 'inlineResponse2007Word' Lens
-inlineResponse2007WordL :: Lens_' InlineResponse2007 (Text)
-inlineResponse2007WordL f InlineResponse2007{..} = (\inlineResponse2007Word -> InlineResponse2007 { inlineResponse2007Word, ..} ) <$> f inlineResponse2007Word
-{-# INLINE inlineResponse2007WordL #-}
+-- | 'randomMeme200ResponseId' Lens
+randomMeme200ResponseIdL :: Lens_' RandomMeme200Response (Int)
+randomMeme200ResponseIdL f RandomMeme200Response{..} = (\randomMeme200ResponseId -> RandomMeme200Response { randomMeme200ResponseId, ..} ) <$> f randomMeme200ResponseId
+{-# INLINE randomMeme200ResponseIdL #-}
 
--- | 'inlineResponse2007Rating' Lens
-inlineResponse2007RatingL :: Lens_' InlineResponse2007 (Double)
-inlineResponse2007RatingL f InlineResponse2007{..} = (\inlineResponse2007Rating -> InlineResponse2007 { inlineResponse2007Rating, ..} ) <$> f inlineResponse2007Rating
-{-# INLINE inlineResponse2007RatingL #-}
+-- | 'randomMeme200ResponseUrl' Lens
+randomMeme200ResponseUrlL :: Lens_' RandomMeme200Response (Text)
+randomMeme200ResponseUrlL f RandomMeme200Response{..} = (\randomMeme200ResponseUrl -> RandomMeme200Response { randomMeme200ResponseUrl, ..} ) <$> f randomMeme200ResponseUrl
+{-# INLINE randomMeme200ResponseUrlL #-}
 
-
-
--- * InlineResponse2008
-
--- | 'inlineResponse2008Message' Lens
-inlineResponse2008MessageL :: Lens_' InlineResponse2008 (Text)
-inlineResponse2008MessageL f InlineResponse2008{..} = (\inlineResponse2008Message -> InlineResponse2008 { inlineResponse2008Message, ..} ) <$> f inlineResponse2008Message
-{-# INLINE inlineResponse2008MessageL #-}
+-- | 'randomMeme200ResponseType' Lens
+randomMeme200ResponseTypeL :: Lens_' RandomMeme200Response (Text)
+randomMeme200ResponseTypeL f RandomMeme200Response{..} = (\randomMeme200ResponseType -> RandomMeme200Response { randomMeme200ResponseType, ..} ) <$> f randomMeme200ResponseType
+{-# INLINE randomMeme200ResponseTypeL #-}
 
 
 
--- * InlineResponse2009
+-- * RateWord200Response
 
--- | 'inlineResponse2009Joke' Lens
-inlineResponse2009JokeL :: Lens_' InlineResponse2009 (Text)
-inlineResponse2009JokeL f InlineResponse2009{..} = (\inlineResponse2009Joke -> InlineResponse2009 { inlineResponse2009Joke, ..} ) <$> f inlineResponse2009Joke
-{-# INLINE inlineResponse2009JokeL #-}
+-- | 'rateWord200ResponseRating' Lens
+rateWord200ResponseRatingL :: Lens_' RateWord200Response (Double)
+rateWord200ResponseRatingL f RateWord200Response{..} = (\rateWord200ResponseRating -> RateWord200Response { rateWord200ResponseRating, ..} ) <$> f rateWord200ResponseRating
+{-# INLINE rateWord200ResponseRatingL #-}
 
--- | 'inlineResponse2009Tags' Lens
-inlineResponse2009TagsL :: Lens_' InlineResponse2009 ([Text])
-inlineResponse2009TagsL f InlineResponse2009{..} = (\inlineResponse2009Tags -> InlineResponse2009 { inlineResponse2009Tags, ..} ) <$> f inlineResponse2009Tags
-{-# INLINE inlineResponse2009TagsL #-}
+
+
+-- * SearchGifs200Response
+
+-- | 'searchGifs200ResponseImages' Lens
+searchGifs200ResponseImagesL :: Lens_' SearchGifs200Response ([SearchGifs200ResponseImagesInner])
+searchGifs200ResponseImagesL f SearchGifs200Response{..} = (\searchGifs200ResponseImages -> SearchGifs200Response { searchGifs200ResponseImages, ..} ) <$> f searchGifs200ResponseImages
+{-# INLINE searchGifs200ResponseImagesL #-}
+
+
+
+-- * SearchGifs200ResponseImagesInner
+
+-- | 'searchGifs200ResponseImagesInnerUrl' Lens
+searchGifs200ResponseImagesInnerUrlL :: Lens_' SearchGifs200ResponseImagesInner (Text)
+searchGifs200ResponseImagesInnerUrlL f SearchGifs200ResponseImagesInner{..} = (\searchGifs200ResponseImagesInnerUrl -> SearchGifs200ResponseImagesInner { searchGifs200ResponseImagesInnerUrl, ..} ) <$> f searchGifs200ResponseImagesInnerUrl
+{-# INLINE searchGifs200ResponseImagesInnerUrlL #-}
+
+-- | 'searchGifs200ResponseImagesInnerWidth' Lens
+searchGifs200ResponseImagesInnerWidthL :: Lens_' SearchGifs200ResponseImagesInner (Int)
+searchGifs200ResponseImagesInnerWidthL f SearchGifs200ResponseImagesInner{..} = (\searchGifs200ResponseImagesInnerWidth -> SearchGifs200ResponseImagesInner { searchGifs200ResponseImagesInnerWidth, ..} ) <$> f searchGifs200ResponseImagesInnerWidth
+{-# INLINE searchGifs200ResponseImagesInnerWidthL #-}
+
+-- | 'searchGifs200ResponseImagesInnerHeight' Lens
+searchGifs200ResponseImagesInnerHeightL :: Lens_' SearchGifs200ResponseImagesInner (Int)
+searchGifs200ResponseImagesInnerHeightL f SearchGifs200ResponseImagesInner{..} = (\searchGifs200ResponseImagesInnerHeight -> SearchGifs200ResponseImagesInner { searchGifs200ResponseImagesInnerHeight, ..} ) <$> f searchGifs200ResponseImagesInnerHeight
+{-# INLINE searchGifs200ResponseImagesInnerHeightL #-}
+
+
+
+-- * SearchJokes200Response
+
+-- | 'searchJokes200ResponseJokes' Lens
+searchJokes200ResponseJokesL :: Lens_' SearchJokes200Response ([SearchJokes200ResponseJokesInner])
+searchJokes200ResponseJokesL f SearchJokes200Response{..} = (\searchJokes200ResponseJokes -> SearchJokes200Response { searchJokes200ResponseJokes, ..} ) <$> f searchJokes200ResponseJokes
+{-# INLINE searchJokes200ResponseJokesL #-}
+
+
+
+-- * SearchJokes200ResponseJokesInner
+
+-- | 'searchJokes200ResponseJokesInnerId' Lens
+searchJokes200ResponseJokesInnerIdL :: Lens_' SearchJokes200ResponseJokesInner (Int)
+searchJokes200ResponseJokesInnerIdL f SearchJokes200ResponseJokesInner{..} = (\searchJokes200ResponseJokesInnerId -> SearchJokes200ResponseJokesInner { searchJokes200ResponseJokesInnerId, ..} ) <$> f searchJokes200ResponseJokesInnerId
+{-# INLINE searchJokes200ResponseJokesInnerIdL #-}
+
+-- | 'searchJokes200ResponseJokesInnerJoke' Lens
+searchJokes200ResponseJokesInnerJokeL :: Lens_' SearchJokes200ResponseJokesInner (Text)
+searchJokes200ResponseJokesInnerJokeL f SearchJokes200ResponseJokesInner{..} = (\searchJokes200ResponseJokesInnerJoke -> SearchJokes200ResponseJokesInner { searchJokes200ResponseJokesInnerJoke, ..} ) <$> f searchJokes200ResponseJokesInnerJoke
+{-# INLINE searchJokes200ResponseJokesInnerJokeL #-}
+
+
+
+-- * SearchMemes200Response
+
+-- | 'searchMemes200ResponseMemes' Lens
+searchMemes200ResponseMemesL :: Lens_' SearchMemes200Response ([SearchMemes200ResponseMemesInner])
+searchMemes200ResponseMemesL f SearchMemes200Response{..} = (\searchMemes200ResponseMemes -> SearchMemes200Response { searchMemes200ResponseMemes, ..} ) <$> f searchMemes200ResponseMemes
+{-# INLINE searchMemes200ResponseMemesL #-}
+
+
+
+-- * SearchMemes200ResponseMemesInner
+
+-- | 'searchMemes200ResponseMemesInnerId' Lens
+searchMemes200ResponseMemesInnerIdL :: Lens_' SearchMemes200ResponseMemesInner (Int)
+searchMemes200ResponseMemesInnerIdL f SearchMemes200ResponseMemesInner{..} = (\searchMemes200ResponseMemesInnerId -> SearchMemes200ResponseMemesInner { searchMemes200ResponseMemesInnerId, ..} ) <$> f searchMemes200ResponseMemesInnerId
+{-# INLINE searchMemes200ResponseMemesInnerIdL #-}
+
+-- | 'searchMemes200ResponseMemesInnerUrl' Lens
+searchMemes200ResponseMemesInnerUrlL :: Lens_' SearchMemes200ResponseMemesInner (Text)
+searchMemes200ResponseMemesInnerUrlL f SearchMemes200ResponseMemesInner{..} = (\searchMemes200ResponseMemesInnerUrl -> SearchMemes200ResponseMemesInner { searchMemes200ResponseMemesInnerUrl, ..} ) <$> f searchMemes200ResponseMemesInnerUrl
+{-# INLINE searchMemes200ResponseMemesInnerUrlL #-}
+
+-- | 'searchMemes200ResponseMemesInnerType' Lens
+searchMemes200ResponseMemesInnerTypeL :: Lens_' SearchMemes200ResponseMemesInner (Text)
+searchMemes200ResponseMemesInnerTypeL f SearchMemes200ResponseMemesInner{..} = (\searchMemes200ResponseMemesInnerType -> SearchMemes200ResponseMemesInner { searchMemes200ResponseMemesInnerType, ..} ) <$> f searchMemes200ResponseMemesInnerType
+{-# INLINE searchMemes200ResponseMemesInnerTypeL #-}
+
+
+
+-- * SubmitJoke200Response
+
+-- | 'submitJoke200ResponseMessage' Lens
+submitJoke200ResponseMessageL :: Lens_' SubmitJoke200Response (Text)
+submitJoke200ResponseMessageL f SubmitJoke200Response{..} = (\submitJoke200ResponseMessage -> SubmitJoke200Response { submitJoke200ResponseMessage, ..} ) <$> f submitJoke200ResponseMessage
+{-# INLINE submitJoke200ResponseMessageL #-}
 
 

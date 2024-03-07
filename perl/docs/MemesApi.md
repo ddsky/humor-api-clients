@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **downvote_meme**
-> InlineResponse2008 downvote_meme(id => $id)
+> SubmitJoke200Response downvote_meme(id => $id)
 
 Downvote a Meme
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **random_meme**
-> InlineResponse2003 random_meme(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating)
+> RandomMeme200Response random_meme(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating)
 
 Random Meme
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**RandomMeme200Response**](RandomMeme200Response.md)
 
 ### Authorization
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_memes**
-> InlineResponse2002 search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating, offset => $offset)
+> SearchMemes200Response search_memes(keywords => $keywords, keywords_in_image => $keywords_in_image, media_type => $media_type, number => $number, min_rating => $min_rating, offset => $offset)
 
 Search Memes
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**SearchMemes200Response**](SearchMemes200Response.md)
 
 ### Authorization
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upvote_meme**
-> InlineResponse2008 upvote_meme(id => $id)
+> SubmitJoke200Response upvote_meme(id => $id)
 
 Upvote a Meme
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

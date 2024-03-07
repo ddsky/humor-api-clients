@@ -3,16 +3,19 @@
             [clojure.spec.alpha :as s]
             [spec-tools.core :as st]
             [orchestra.core :refer [defn-spec]]
-            [humor-api.specs.inline-response-200-9 :refer :all]
-            [humor-api.specs.inline-response-200-8 :refer :all]
-            [humor-api.specs.inline-response-200-7 :refer :all]
-            [humor-api.specs.inline-response-200-6 :refer :all]
-            [humor-api.specs.inline-response-200-5 :refer :all]
-            [humor-api.specs.inline-response-200-4 :refer :all]
-            [humor-api.specs.inline-response-200-3 :refer :all]
-            [humor-api.specs.inline-response-200-2 :refer :all]
-            [humor-api.specs.inline-response-200-1 :refer :all]
-            [humor-api.specs.inline-response-200 :refer :all]
+            [humor-api.specs.search-jokes-200-response :refer :all]
+            [humor-api.specs.submit-joke-200-response :refer :all]
+            [humor-api.specs.search-gifs-200-response-images-inner :refer :all]
+            [humor-api.specs.search-memes-200-response-memes-inner :refer :all]
+            [humor-api.specs.analyze-joke-200-response :refer :all]
+            [humor-api.specs.praise-200-response :refer :all]
+            [humor-api.specs.search-gifs-200-response :refer :all]
+            [humor-api.specs.generate-nonsense-word-200-response :refer :all]
+            [humor-api.specs.rate-word-200-response :refer :all]
+            [humor-api.specs.search-jokes-200-response-jokes-inner :refer :all]
+            [humor-api.specs.random-meme-200-response :refer :all]
+            [humor-api.specs.random-joke-200-response :refer :all]
+            [humor-api.specs.search-memes-200-response :refer :all]
             )
   (:import (java.io File)))
 
@@ -31,14 +34,14 @@ See https://humorapi.com/docs/#Generate-Nonsense-Word for more."
              :accepts       ["application/json"]
              :auth-names    ["apiKey"]}))
 
-(defn-spec generate-nonsense-word inline-response-200-7-spec
+(defn-spec generate-nonsense-word generate-nonsense-word-200-response-spec
   "Generate Nonsense Word
   Generate a nonsense word.
 See https://humorapi.com/docs/#Generate-Nonsense-Word for more."
   []
   (let [res (:data (generate-nonsense-word-with-http-info))]
     (if (:decode-models *api-context*)
-       (st/decode inline-response-200-7-spec res st/string-transformer)
+       (st/decode generate-nonsense-word-200-response-spec res st/string-transformer)
        res)))
 
 
@@ -57,14 +60,14 @@ See https://humorapi.com/docs/#Insult for more."
              :accepts       ["application/json"]
              :auth-names    ["apiKey"]}))
 
-(defn-spec insult inline-response-200-5-spec
+(defn-spec insult praise-200-response-spec
   "Insult
   Insult somebody for doing something.
 See https://humorapi.com/docs/#Insult for more."
   [name string?, reason string?]
   (let [res (:data (insult-with-http-info name reason))]
     (if (:decode-models *api-context*)
-       (st/decode inline-response-200-5-spec res st/string-transformer)
+       (st/decode praise-200-response-spec res st/string-transformer)
        res)))
 
 
@@ -83,14 +86,14 @@ See https://humorapi.com/docs/#Praise for more."
              :accepts       ["application/json"]
              :auth-names    ["apiKey"]}))
 
-(defn-spec praise inline-response-200-5-spec
+(defn-spec praise praise-200-response-spec
   "Praise
   Praise somebody for doing something.
 See https://humorapi.com/docs/#Praise for more."
   [name string?, reason string?]
   (let [res (:data (praise-with-http-info name reason))]
     (if (:decode-models *api-context*)
-       (st/decode inline-response-200-5-spec res st/string-transformer)
+       (st/decode praise-200-response-spec res st/string-transformer)
        res)))
 
 
@@ -109,14 +112,14 @@ See https://humorapi.com/docs/#Rate-Word for more."
              :accepts       ["application/json"]
              :auth-names    ["apiKey"]}))
 
-(defn-spec rate-word inline-response-200-6-spec
+(defn-spec rate-word rate-word-200-response-spec
   "Rate Word
   Rate the funniness of a word.
 See https://humorapi.com/docs/#Rate-Word for more."
   [word string?]
   (let [res (:data (rate-word-with-http-info word))]
     (if (:decode-models *api-context*)
-       (st/decode inline-response-200-6-spec res st/string-transformer)
+       (st/decode rate-word-200-response-spec res st/string-transformer)
        res)))
 
 
@@ -136,7 +139,7 @@ See https://humorapi.com/docs/#Search-Gifs for more."
               :accepts       ["application/json"]
               :auth-names    ["apiKey"]})))
 
-(defn-spec search-gifs inline-response-200-1-spec
+(defn-spec search-gifs search-gifs-200-response-spec
   "Search Gifs
   Search for gifs.
 See https://humorapi.com/docs/#Search-Gifs for more."
@@ -144,7 +147,7 @@ See https://humorapi.com/docs/#Search-Gifs for more."
   ([query string?, optional-params any?]
    (let [res (:data (search-gifs-with-http-info query optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode inline-response-200-1-spec res st/string-transformer)
+        (st/decode search-gifs-200-response-spec res st/string-transformer)
         res))))
 
 

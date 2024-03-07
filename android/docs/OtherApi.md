@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## generateNonsenseWord
 
-> InlineResponse2007 generateNonsenseWord()
+> GenerateNonsenseWord200Response generateNonsenseWord()
 
 Generate Nonsense Word
 
@@ -24,11 +24,11 @@ Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word 
 
 ```java
 // Import classes:
-//import com.humorapi.OtherApi;
+//import org.openapitools.client.api.OtherApi;
 
 OtherApi apiInstance = new OtherApi();
 try {
-    InlineResponse2007 result = apiInstance.generateNonsenseWord();
+    GenerateNonsenseWord200Response result = apiInstance.generateNonsenseWord();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling OtherApi#generateNonsenseWord");
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**GenerateNonsenseWord200Response**](GenerateNonsenseWord200Response.md)
 
 ### Authorization
 
@@ -56,7 +56,7 @@ This endpoint does not need any parameter.
 
 ## insult
 
-> InlineResponse2005 insult(name, reason)
+> Praise200Response insult(name, reason)
 
 Insult
 
@@ -66,13 +66,13 @@ Insult somebody for doing something. See https://humorapi.com/docs/#Insult for m
 
 ```java
 // Import classes:
-//import com.humorapi.OtherApi;
+//import org.openapitools.client.api.OtherApi;
 
 OtherApi apiInstance = new OtherApi();
 String name = Alex; // String | The person's name.
 String reason = you did it again; // String | The reason for the praise/insult.
 try {
-    InlineResponse2005 result = apiInstance.insult(name, reason);
+    Praise200Response result = apiInstance.insult(name, reason);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling OtherApi#insult");
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ## praise
 
-> InlineResponse2005 praise(name, reason)
+> Praise200Response praise(name, reason)
 
 Praise
 
@@ -114,13 +114,13 @@ Praise somebody for doing something. See https://humorapi.com/docs/#Praise for m
 
 ```java
 // Import classes:
-//import com.humorapi.OtherApi;
+//import org.openapitools.client.api.OtherApi;
 
 OtherApi apiInstance = new OtherApi();
 String name = Alex; // String | The person's name.
 String reason = you did it again; // String | The reason for the praise/insult.
 try {
-    InlineResponse2005 result = apiInstance.praise(name, reason);
+    Praise200Response result = apiInstance.praise(name, reason);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling OtherApi#praise");
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## rateWord
 
-> InlineResponse2006 rateWord(word)
+> RateWord200Response rateWord(word)
 
 Rate Word
 
@@ -162,12 +162,12 @@ Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
 
 ```java
 // Import classes:
-//import com.humorapi.OtherApi;
+//import org.openapitools.client.api.OtherApi;
 
 OtherApi apiInstance = new OtherApi();
 String word = cookie; // String | The word to be rated.
 try {
-    InlineResponse2006 result = apiInstance.rateWord(word);
+    RateWord200Response result = apiInstance.rateWord(word);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling OtherApi#rateWord");
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**RateWord200Response**](RateWord200Response.md)
 
 ### Authorization
 
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ## searchGifs
 
-> InlineResponse2001 searchGifs(query, number)
+> SearchGifs200Response searchGifs(query, number)
 
 Search Gifs
 
@@ -208,13 +208,13 @@ Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
 
 ```java
 // Import classes:
-//import com.humorapi.OtherApi;
+//import org.openapitools.client.api.OtherApi;
 
 OtherApi apiInstance = new OtherApi();
 String query = cat; // String | A search query.
 Integer number = 3; // Integer | The number of results to retrieve between 1 and 10.
 try {
-    InlineResponse2001 result = apiInstance.searchGifs(query, number);
+    SearchGifs200Response result = apiInstance.searchGifs(query, number);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling OtherApi#searchGifs");
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**SearchGifs200Response**](SearchGifs200Response.md)
 
 ### Authorization
 

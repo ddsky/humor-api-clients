@@ -70,7 +70,7 @@ import qualified Prelude as P
 -- 
 analyzeJoke
   :: (Consumes AnalyzeJoke MimePlainText)
-  => HumorRequest AnalyzeJoke MimePlainText InlineResponse2009 MimeJSON
+  => HumorRequest AnalyzeJoke MimePlainText AnalyzeJoke200Response MimeJSON
 analyzeJoke =
   _mkRequest "POST" ["/jokes/analyze"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -99,7 +99,7 @@ instance Produces AnalyzeJoke MimeJSON
 -- 
 downvoteJoke
   :: Id -- ^ "id" -  The object's id.
-  -> HumorRequest DownvoteJoke MimeNoContent InlineResponse2008 MimeJSON
+  -> HumorRequest DownvoteJoke MimeNoContent SubmitJoke200Response MimeJSON
 downvoteJoke (Id id) =
   _mkRequest "POST" ["/jokes/",toPath id,"/downvote"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -120,7 +120,7 @@ instance Produces DownvoteJoke MimeJSON
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
 randomJoke
-  :: HumorRequest RandomJoke MimeNoContent InlineResponse2004 MimeJSON
+  :: HumorRequest RandomJoke MimeNoContent RandomJoke200Response MimeJSON
 randomJoke =
   _mkRequest "GET" ["/jokes/random"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -166,7 +166,7 @@ instance Produces RandomJoke MimeJSON
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
 searchJokes
-  :: HumorRequest SearchJokes MimeNoContent InlineResponse200 MimeJSON
+  :: HumorRequest SearchJokes MimeNoContent SearchJokes200Response MimeJSON
 searchJokes =
   _mkRequest "GET" ["/jokes/search"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -223,7 +223,7 @@ instance Produces SearchJokes MimeJSON
 -- 
 submitJoke
   :: (Consumes SubmitJoke MimePlainText)
-  => HumorRequest SubmitJoke MimePlainText InlineResponse2008 MimeJSON
+  => HumorRequest SubmitJoke MimePlainText SubmitJoke200Response MimeJSON
 submitJoke =
   _mkRequest "POST" ["/jokes"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -252,7 +252,7 @@ instance Produces SubmitJoke MimeJSON
 -- 
 upvoteJoke
   :: Id -- ^ "id" -  The object's id.
-  -> HumorRequest UpvoteJoke MimeNoContent InlineResponse2008 MimeJSON
+  -> HumorRequest UpvoteJoke MimeNoContent SubmitJoke200Response MimeJSON
 upvoteJoke (Id id) =
   _mkRequest "POST" ["/jokes/",toPath id,"/upvote"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)

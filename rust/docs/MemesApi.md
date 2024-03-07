@@ -1,4 +1,4 @@
-# com.humorapi.client\MemesApi
+# \MemesApi
 
 All URIs are relative to *https://api.humorapi.com*
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## downvote_meme
 
-> crate::models::InlineResponse2008 downvote_meme(id)
+> crate::models::SubmitJoke200Response downvote_meme(id)
 Downvote a Meme
 
 Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
@@ -27,7 +27,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2008**](inline_response_200_8.md)
+[**crate::models::SubmitJoke200Response**](submit_joke_200_response.md)
 
 ### Authorization
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Required | Notes
 
 ## random_meme
 
-> crate::models::InlineResponse2003 random_meme(keywords, keywords_in_image, media_type, number, min_rating)
+> crate::models::RandomMeme200Response random_meme(keywords, keywords_in_image, media_type, number, min_rating)
 Random Meme
 
 Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
@@ -61,7 +61,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2003**](inline_response_200_3.md)
+[**crate::models::RandomMeme200Response**](random_meme_200_response.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_memes
 
-> crate::models::InlineResponse2002 search_memes(keywords, keywords_in_image, media_type, number, min_rating, offset)
+> crate::models::SearchMemes200Response search_memes(keywords, keywords_in_image, media_type, number, min_rating, offset)
 Search Memes
 
 Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
@@ -96,7 +96,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2002**](inline_response_200_2.md)
+[**crate::models::SearchMemes200Response**](search_memes_200_response.md)
 
 ### Authorization
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Required | Notes
 
 ## upvote_meme
 
-> crate::models::InlineResponse2008 upvote_meme(id)
+> crate::models::SubmitJoke200Response upvote_meme(id)
 Upvote a Meme
 
 Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
@@ -126,7 +126,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2008**](inline_response_200_8.md)
+[**crate::models::SubmitJoke200Response**](submit_joke_200_response.md)
 
 ### Authorization
 

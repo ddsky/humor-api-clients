@@ -1,4 +1,4 @@
-# openapi_client.JokesApi
+# humorapi.JokesApi
 
 All URIs are relative to *https://api.humorapi.com*
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **analyze_joke**
-> InlineResponse2009 analyze_joke()
+> AnalyzeJoke200Response analyze_joke(body=body)
 
 Analyze Joke
 
@@ -24,14 +24,14 @@ Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
 * Api Key Authentication (apiKey):
 
 ```python
-import time
-import openapi_client
-from com.humorapi import jokes_api
-from openapi_client.model.inline_response2009 import InlineResponse2009
+import humorapi
+from humorapi.models.analyze_joke200_response import AnalyzeJoke200Response
+from humorapi.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.humorapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = humorapi.Configuration(
     host = "https://api.humorapi.com"
 )
 
@@ -41,37 +41,38 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: apiKey
-configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['apiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with humorapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jokes_api.JokesApi(api_client)
-    body = "body_example" # str | Post the joke as plain text. (optional)
+    api_instance = humorapi.JokesApi(api_client)
+    body = 'body_example' # str | Post the joke as plain text. (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Analyze Joke
         api_response = api_instance.analyze_joke(body=body)
+        print("The response of JokesApi->analyze_joke:\n")
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JokesApi->analyze_joke: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Post the joke as plain text. | [optional]
+ **body** | **str**| Post the joke as plain text. | [optional] 
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**AnalyzeJoke200Response**](AnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -81,7 +82,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: text/plain
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **downvote_joke**
-> InlineResponse2008 downvote_joke(id)
+> SubmitJoke200Response downvote_joke(id)
 
 Downvote a Joke
 
@@ -103,14 +103,14 @@ Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 * Api Key Authentication (apiKey):
 
 ```python
-import time
-import openapi_client
-from com.humorapi import jokes_api
-from openapi_client.model.inline_response2008 import InlineResponse2008
+import humorapi
+from humorapi.models.submit_joke200_response import SubmitJoke200Response
+from humorapi.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.humorapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = humorapi.Configuration(
     host = "https://api.humorapi.com"
 )
 
@@ -120,36 +120,38 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: apiKey
-configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['apiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with humorapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jokes_api.JokesApi(api_client)
+    api_instance = humorapi.JokesApi(api_client)
     id = 1 # int | The object's id.
 
-    # example passing only required values which don't have defaults set
     try:
         # Downvote a Joke
         api_response = api_instance.downvote_joke(id)
+        print("The response of JokesApi->downvote_joke:\n")
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JokesApi->downvote_joke: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| The object&#39;s id. |
+ **id** | **int**| The object&#39;s id. | 
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -159,7 +161,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -170,7 +171,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **random_joke**
-> InlineResponse2004 random_joke()
+> RandomJoke200Response random_joke(keywords=keywords, include_tags=include_tags, exclude_tags=exclude_tags, min_rating=min_rating, max_length=max_length)
 
 Random Joke
 
@@ -181,14 +182,14 @@ Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
 * Api Key Authentication (apiKey):
 
 ```python
-import time
-import openapi_client
-from com.humorapi import jokes_api
-from openapi_client.model.inline_response2004 import InlineResponse2004
+import humorapi
+from humorapi.models.random_joke200_response import RandomJoke200Response
+from humorapi.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.humorapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = humorapi.Configuration(
     host = "https://api.humorapi.com"
 )
 
@@ -198,45 +199,46 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: apiKey
-configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['apiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with humorapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jokes_api.JokesApi(api_client)
-    keywords = "rocket" # str | A comma separated list of keywords. (optional)
-    include_tags = "one_liner" # str | A comma separated list of tags that the joke must have. (optional)
-    exclude_tags = "nsfw" # str | A comma separated list of tags that the joke must not have. (optional)
+    api_instance = humorapi.JokesApi(api_client)
+    keywords = 'rocket' # str | A comma separated list of keywords. (optional)
+    include_tags = 'one_liner' # str | A comma separated list of tags that the joke must have. (optional)
+    exclude_tags = 'nsfw' # str | A comma separated list of tags that the joke must not have. (optional)
     min_rating = 7 # int | The minimum rating between 0 and 10 the result should have. (optional)
     max_length = 200 # int | The maximum number of letters in the joke. (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Random Joke
         api_response = api_instance.random_joke(keywords=keywords, include_tags=include_tags, exclude_tags=exclude_tags, min_rating=min_rating, max_length=max_length)
+        print("The response of JokesApi->random_joke:\n")
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JokesApi->random_joke: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keywords** | **str**| A comma separated list of keywords. | [optional]
- **include_tags** | **str**| A comma separated list of tags that the joke must have. | [optional]
- **exclude_tags** | **str**| A comma separated list of tags that the joke must not have. | [optional]
- **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
- **max_length** | **int**| The maximum number of letters in the joke. | [optional]
+ **keywords** | **str**| A comma separated list of keywords. | [optional] 
+ **include_tags** | **str**| A comma separated list of tags that the joke must have. | [optional] 
+ **exclude_tags** | **str**| A comma separated list of tags that the joke must not have. | [optional] 
+ **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
+ **max_length** | **int**| The maximum number of letters in the joke. | [optional] 
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**RandomJoke200Response**](RandomJoke200Response.md)
 
 ### Authorization
 
@@ -246,7 +248,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -257,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_jokes**
-> InlineResponse200 search_jokes()
+> SearchJokes200Response search_jokes(keywords=keywords, include_tags=include_tags, exclude_tags=exclude_tags, number=number, min_rating=min_rating, max_length=max_length, offset=offset)
 
 Search Jokes
 
@@ -268,14 +269,14 @@ Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
 * Api Key Authentication (apiKey):
 
 ```python
-import time
-import openapi_client
-from com.humorapi import jokes_api
-from openapi_client.model.inline_response200 import InlineResponse200
+import humorapi
+from humorapi.models.search_jokes200_response import SearchJokes200Response
+from humorapi.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.humorapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = humorapi.Configuration(
     host = "https://api.humorapi.com"
 )
 
@@ -285,49 +286,50 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: apiKey
-configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['apiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with humorapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jokes_api.JokesApi(api_client)
-    keywords = "rocket" # str | A comma separated list of keywords. (optional)
-    include_tags = "one_liner" # str | A comma separated list of tags that the joke must have. (optional)
-    exclude_tags = "nsfw" # str | A comma separated list of tags that the joke must not have. (optional)
+    api_instance = humorapi.JokesApi(api_client)
+    keywords = 'rocket' # str | A comma separated list of keywords. (optional)
+    include_tags = 'one_liner' # str | A comma separated list of tags that the joke must have. (optional)
+    exclude_tags = 'nsfw' # str | A comma separated list of tags that the joke must not have. (optional)
     number = 3 # int | The number of results to retrieve between 1 and 10. (optional)
     min_rating = 7 # int | The minimum rating between 0 and 10 the result should have. (optional)
     max_length = 200 # int | The maximum number of letters in the joke. (optional)
-    offset = 0 # float | The number of results to skip. (optional)
+    offset = 3.4 # float | The number of results to skip. (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Search Jokes
         api_response = api_instance.search_jokes(keywords=keywords, include_tags=include_tags, exclude_tags=exclude_tags, number=number, min_rating=min_rating, max_length=max_length, offset=offset)
+        print("The response of JokesApi->search_jokes:\n")
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JokesApi->search_jokes: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keywords** | **str**| A comma separated list of keywords. | [optional]
- **include_tags** | **str**| A comma separated list of tags that the joke must have. | [optional]
- **exclude_tags** | **str**| A comma separated list of tags that the joke must not have. | [optional]
- **number** | **int**| The number of results to retrieve between 1 and 10. | [optional]
- **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
- **max_length** | **int**| The maximum number of letters in the joke. | [optional]
- **offset** | **float**| The number of results to skip. | [optional]
+ **keywords** | **str**| A comma separated list of keywords. | [optional] 
+ **include_tags** | **str**| A comma separated list of tags that the joke must have. | [optional] 
+ **exclude_tags** | **str**| A comma separated list of tags that the joke must not have. | [optional] 
+ **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] 
+ **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] 
+ **max_length** | **int**| The maximum number of letters in the joke. | [optional] 
+ **offset** | **float**| The number of results to skip. | [optional] 
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchJokes200Response**](SearchJokes200Response.md)
 
 ### Authorization
 
@@ -337,7 +339,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -348,7 +349,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **submit_joke**
-> InlineResponse2008 submit_joke()
+> SubmitJoke200Response submit_joke(body=body)
 
 Submit Joke
 
@@ -359,14 +360,14 @@ Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
 * Api Key Authentication (apiKey):
 
 ```python
-import time
-import openapi_client
-from com.humorapi import jokes_api
-from openapi_client.model.inline_response2008 import InlineResponse2008
+import humorapi
+from humorapi.models.submit_joke200_response import SubmitJoke200Response
+from humorapi.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.humorapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = humorapi.Configuration(
     host = "https://api.humorapi.com"
 )
 
@@ -376,37 +377,38 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: apiKey
-configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['apiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with humorapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jokes_api.JokesApi(api_client)
-    body = "body_example" # str | Post the joke as plain text. (optional)
+    api_instance = humorapi.JokesApi(api_client)
+    body = 'body_example' # str | Post the joke as plain text. (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Submit Joke
         api_response = api_instance.submit_joke(body=body)
+        print("The response of JokesApi->submit_joke:\n")
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JokesApi->submit_joke: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Post the joke as plain text. | [optional]
+ **body** | **str**| Post the joke as plain text. | [optional] 
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -417,7 +419,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: text/plain
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -427,7 +428,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upvote_joke**
-> InlineResponse2008 upvote_joke(id)
+> SubmitJoke200Response upvote_joke(id)
 
 Upvote a Joke
 
@@ -438,14 +439,14 @@ Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 * Api Key Authentication (apiKey):
 
 ```python
-import time
-import openapi_client
-from com.humorapi import jokes_api
-from openapi_client.model.inline_response2008 import InlineResponse2008
+import humorapi
+from humorapi.models.submit_joke200_response import SubmitJoke200Response
+from humorapi.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.humorapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = humorapi.Configuration(
     host = "https://api.humorapi.com"
 )
 
@@ -455,36 +456,38 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: apiKey
-configuration.api_key['apiKey'] = 'YOUR_API_KEY'
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['apiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with humorapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jokes_api.JokesApi(api_client)
+    api_instance = humorapi.JokesApi(api_client)
     id = 1 # int | The object's id.
 
-    # example passing only required values which don't have defaults set
     try:
         # Upvote a Joke
         api_response = api_instance.upvote_joke(id)
+        print("The response of JokesApi->upvote_joke:\n")
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JokesApi->upvote_joke: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| The object&#39;s id. |
+ **id** | **int**| The object&#39;s id. | 
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -494,7 +497,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 

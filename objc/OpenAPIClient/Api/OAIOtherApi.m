@@ -1,10 +1,10 @@
 #import "OAIOtherApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIInlineResponse2001.h"
-#import "OAIInlineResponse2005.h"
-#import "OAIInlineResponse2006.h"
-#import "OAIInlineResponse2007.h"
+#import "OAIGenerateNonsenseWord200Response.h"
+#import "OAIPraise200Response.h"
+#import "OAIRateWord200Response.h"
+#import "OAISearchGifs200Response.h"
 
 
 @interface OAIOtherApi ()
@@ -55,10 +55,10 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
 ///
 /// Generate Nonsense Word
 /// Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
-///  @returns OAIInlineResponse2007*
+///  @returns OAIGenerateNonsenseWord200Response*
 ///
 -(NSURLSessionTask*) generateNonsenseWordWithCompletionHandler: 
-    (void (^)(OAIInlineResponse2007* output, NSError* error)) handler {
+    (void (^)(OAIGenerateNonsenseWord200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/words/nonsense/random"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -96,10 +96,10 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2007*"
+                              responseType: @"OAIGenerateNonsenseWord200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2007*)data, error);
+                                    handler((OAIGenerateNonsenseWord200Response*)data, error);
                                 }
                             }];
 }
@@ -111,11 +111,11 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
 ///
 ///  @param reason The reason for the praise/insult. 
 ///
-///  @returns OAIInlineResponse2005*
+///  @returns OAIPraise200Response*
 ///
 -(NSURLSessionTask*) insultWithName: (NSString*) name
     reason: (NSString*) reason
-    completionHandler: (void (^)(OAIInlineResponse2005* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIPraise200Response* output, NSError* error)) handler {
     // verify the required parameter 'name' is set
     if (name == nil) {
         NSParameterAssert(name);
@@ -181,10 +181,10 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2005*"
+                              responseType: @"OAIPraise200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2005*)data, error);
+                                    handler((OAIPraise200Response*)data, error);
                                 }
                             }];
 }
@@ -196,11 +196,11 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
 ///
 ///  @param reason The reason for the praise/insult. 
 ///
-///  @returns OAIInlineResponse2005*
+///  @returns OAIPraise200Response*
 ///
 -(NSURLSessionTask*) praiseWithName: (NSString*) name
     reason: (NSString*) reason
-    completionHandler: (void (^)(OAIInlineResponse2005* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIPraise200Response* output, NSError* error)) handler {
     // verify the required parameter 'name' is set
     if (name == nil) {
         NSParameterAssert(name);
@@ -266,10 +266,10 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2005*"
+                              responseType: @"OAIPraise200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2005*)data, error);
+                                    handler((OAIPraise200Response*)data, error);
                                 }
                             }];
 }
@@ -279,10 +279,10 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
 /// Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
 ///  @param word The word to be rated. 
 ///
-///  @returns OAIInlineResponse2006*
+///  @returns OAIRateWord200Response*
 ///
 -(NSURLSessionTask*) rateWordWithWord: (NSString*) word
-    completionHandler: (void (^)(OAIInlineResponse2006* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIRateWord200Response* output, NSError* error)) handler {
     // verify the required parameter 'word' is set
     if (word == nil) {
         NSParameterAssert(word);
@@ -334,10 +334,10 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2006*"
+                              responseType: @"OAIRateWord200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2006*)data, error);
+                                    handler((OAIRateWord200Response*)data, error);
                                 }
                             }];
 }
@@ -349,11 +349,11 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
 ///
 ///  @param number The number of results to retrieve between 1 and 10. (optional)
 ///
-///  @returns OAIInlineResponse2001*
+///  @returns OAISearchGifs200Response*
 ///
 -(NSURLSessionTask*) searchGifsWithQuery: (NSString*) query
     number: (NSNumber*) number
-    completionHandler: (void (^)(OAIInlineResponse2001* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISearchGifs200Response* output, NSError* error)) handler {
     // verify the required parameter 'query' is set
     if (query == nil) {
         NSParameterAssert(query);
@@ -408,10 +408,10 @@ NSInteger kOAIOtherApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2001*"
+                              responseType: @"OAISearchGifs200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2001*)data, error);
+                                    handler((OAISearchGifs200Response*)data, error);
                                 }
                             }];
 }

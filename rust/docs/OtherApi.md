@@ -1,4 +1,4 @@
-# com.humorapi.client\OtherApi
+# \OtherApi
 
 All URIs are relative to *https://api.humorapi.com*
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## generate_nonsense_word
 
-> crate::models::InlineResponse2007 generate_nonsense_word()
+> crate::models::GenerateNonsenseWord200Response generate_nonsense_word()
 Generate Nonsense Word
 
 Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
@@ -25,7 +25,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::InlineResponse2007**](inline_response_200_7.md)
+[**crate::models::GenerateNonsenseWord200Response**](generate_nonsense_word_200_response.md)
 
 ### Authorization
 
@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ## insult
 
-> crate::models::InlineResponse2005 insult(name, reason)
+> crate::models::Praise200Response insult(name, reason)
 Insult
 
 Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
@@ -56,7 +56,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2005**](inline_response_200_5.md)
+[**crate::models::Praise200Response**](praise_200_response.md)
 
 ### Authorization
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Required | Notes
 
 ## praise
 
-> crate::models::InlineResponse2005 praise(name, reason)
+> crate::models::Praise200Response praise(name, reason)
 Praise
 
 Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
@@ -87,7 +87,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2005**](inline_response_200_5.md)
+[**crate::models::Praise200Response**](praise_200_response.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Required | Notes
 
 ## rate_word
 
-> crate::models::InlineResponse2006 rate_word(word)
+> crate::models::RateWord200Response rate_word(word)
 Rate Word
 
 Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
@@ -117,7 +117,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2006**](inline_response_200_6.md)
+[**crate::models::RateWord200Response**](rate_word_200_response.md)
 
 ### Authorization
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_gifs
 
-> crate::models::InlineResponse2001 search_gifs(query, number)
+> crate::models::SearchGifs200Response search_gifs(query, number)
 Search Gifs
 
 Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
@@ -148,7 +148,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2001**](inline_response_200_1.md)
+[**crate::models::SearchGifs200Response**](search_gifs_200_response.md)
 
 ### Authorization
 

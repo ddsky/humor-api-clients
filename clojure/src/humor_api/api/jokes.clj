@@ -3,16 +3,19 @@
             [clojure.spec.alpha :as s]
             [spec-tools.core :as st]
             [orchestra.core :refer [defn-spec]]
-            [humor-api.specs.inline-response-200-9 :refer :all]
-            [humor-api.specs.inline-response-200-8 :refer :all]
-            [humor-api.specs.inline-response-200-7 :refer :all]
-            [humor-api.specs.inline-response-200-6 :refer :all]
-            [humor-api.specs.inline-response-200-5 :refer :all]
-            [humor-api.specs.inline-response-200-4 :refer :all]
-            [humor-api.specs.inline-response-200-3 :refer :all]
-            [humor-api.specs.inline-response-200-2 :refer :all]
-            [humor-api.specs.inline-response-200-1 :refer :all]
-            [humor-api.specs.inline-response-200 :refer :all]
+            [humor-api.specs.search-jokes-200-response :refer :all]
+            [humor-api.specs.submit-joke-200-response :refer :all]
+            [humor-api.specs.search-gifs-200-response-images-inner :refer :all]
+            [humor-api.specs.search-memes-200-response-memes-inner :refer :all]
+            [humor-api.specs.analyze-joke-200-response :refer :all]
+            [humor-api.specs.praise-200-response :refer :all]
+            [humor-api.specs.search-gifs-200-response :refer :all]
+            [humor-api.specs.generate-nonsense-word-200-response :refer :all]
+            [humor-api.specs.rate-word-200-response :refer :all]
+            [humor-api.specs.search-jokes-200-response-jokes-inner :refer :all]
+            [humor-api.specs.random-meme-200-response :refer :all]
+            [humor-api.specs.random-joke-200-response :refer :all]
+            [humor-api.specs.search-memes-200-response :refer :all]
             )
   (:import (java.io File)))
 
@@ -33,7 +36,7 @@ See https://humorapi.com/docs/#Analyze-Joke for more."
               :accepts       ["application/json"]
               :auth-names    ["apiKey"]})))
 
-(defn-spec analyze-joke inline-response-200-9-spec
+(defn-spec analyze-joke analyze-joke-200-response-spec
   "Analyze Joke
   Analyze a joke.
 See https://humorapi.com/docs/#Analyze-Joke for more."
@@ -41,7 +44,7 @@ See https://humorapi.com/docs/#Analyze-Joke for more."
   ([optional-params any?]
    (let [res (:data (analyze-joke-with-http-info optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode inline-response-200-9-spec res st/string-transformer)
+        (st/decode analyze-joke-200-response-spec res st/string-transformer)
         res))))
 
 
@@ -60,14 +63,14 @@ See https://humorapi.com/docs/#Downvote-Joke for more."
              :accepts       ["application/json"]
              :auth-names    ["apiKey"]}))
 
-(defn-spec downvote-joke inline-response-200-8-spec
+(defn-spec downvote-joke submit-joke-200-response-spec
   "Downvote a Joke
   Downvote a joke.
 See https://humorapi.com/docs/#Downvote-Joke for more."
   [id int?]
   (let [res (:data (downvote-joke-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode inline-response-200-8-spec res st/string-transformer)
+       (st/decode submit-joke-200-response-spec res st/string-transformer)
        res)))
 
 
@@ -86,7 +89,7 @@ See https://humorapi.com/docs/#Random-Joke for more."
               :accepts       ["application/json"]
               :auth-names    ["apiKey"]})))
 
-(defn-spec random-joke inline-response-200-4-spec
+(defn-spec random-joke random-joke-200-response-spec
   "Random Joke
   Get a random joke.
 See https://humorapi.com/docs/#Random-Joke for more."
@@ -94,7 +97,7 @@ See https://humorapi.com/docs/#Random-Joke for more."
   ([optional-params any?]
    (let [res (:data (random-joke-with-http-info optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode inline-response-200-4-spec res st/string-transformer)
+        (st/decode random-joke-200-response-spec res st/string-transformer)
         res))))
 
 
@@ -113,7 +116,7 @@ See https://humorapi.com/docs/#Search-Jokes for more."
               :accepts       ["application/json"]
               :auth-names    ["apiKey"]})))
 
-(defn-spec search-jokes inline-response-200-spec
+(defn-spec search-jokes search-jokes-200-response-spec
   "Search Jokes
   Search for jokes.
 See https://humorapi.com/docs/#Search-Jokes for more."
@@ -121,7 +124,7 @@ See https://humorapi.com/docs/#Search-Jokes for more."
   ([optional-params any?]
    (let [res (:data (search-jokes-with-http-info optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode inline-response-200-spec res st/string-transformer)
+        (st/decode search-jokes-200-response-spec res st/string-transformer)
         res))))
 
 
@@ -141,7 +144,7 @@ See https://humorapi.com/docs/#Submit-Joke for more."
               :accepts       ["application/json"]
               :auth-names    ["apiKey"]})))
 
-(defn-spec submit-joke inline-response-200-8-spec
+(defn-spec submit-joke submit-joke-200-response-spec
   "Submit Joke
   Submit a joke.
 See https://humorapi.com/docs/#Submit-Joke for more."
@@ -149,7 +152,7 @@ See https://humorapi.com/docs/#Submit-Joke for more."
   ([optional-params any?]
    (let [res (:data (submit-joke-with-http-info optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode inline-response-200-8-spec res st/string-transformer)
+        (st/decode submit-joke-200-response-spec res st/string-transformer)
         res))))
 
 
@@ -168,14 +171,14 @@ See https://humorapi.com/docs/#Upvote-Joke for more."
              :accepts       ["application/json"]
              :auth-names    ["apiKey"]}))
 
-(defn-spec upvote-joke inline-response-200-8-spec
+(defn-spec upvote-joke submit-joke-200-response-spec
   "Upvote a Joke
   Upvote a joke.
 See https://humorapi.com/docs/#Upvote-Joke for more."
   [id int?]
   (let [res (:data (upvote-joke-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode inline-response-200-8-spec res st/string-transformer)
+       (st/decode submit-joke-200-response-spec res st/string-transformer)
        res)))
 
 

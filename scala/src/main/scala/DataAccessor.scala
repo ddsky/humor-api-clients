@@ -1,4 +1,4 @@
-package org.openapitools
+package humorapi
 
 // TODO: properly handle custom imports
 import java.io._
@@ -6,7 +6,7 @@ import java.util.UUID
 import java.time._
 import com.twitter.finagle.http.exp.Multipart.{FileUpload, InMemoryFileUpload, OnDiskFileUpload}
 
-import com.humorapi.client.model._
+import org.openapitools.models._
 
 trait DataAccessor {
     // TODO: apiInfo -> apis -> operations = TODO error
@@ -16,92 +16,92 @@ trait DataAccessor {
 
         /**
         * 
-        * @return A InlineResponse2009
+        * @return A AnalyzeJoke200Response
         */
-        def Jokes_analyzeJoke(body: String, authParamapiKey: String): Either[CommonError,InlineResponse2009] = Left(TODO)
+        def Jokes_analyzeJoke(body: String, authParamapiKey: String): Either[CommonError,AnalyzeJoke200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2008
+        * @return A SubmitJoke200Response
         */
-        def Jokes_downvoteJoke(id: Int, authParamapiKey: String): Either[CommonError,InlineResponse2008] = Left(TODO)
+        def Jokes_downvoteJoke(id: Int, authParamapiKey: String): Either[CommonError,SubmitJoke200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2004
+        * @return A RandomJoke200Response
         */
-        def Jokes_randomJoke(keywords: Option[String], includeTags: Option[String], excludeTags: Option[String], minRating: Option[Int], maxLength: Option[Int], authParamapiKey: String): Either[CommonError,InlineResponse2004] = Left(TODO)
+        def Jokes_randomJoke(keywords: Option[String], includeTags: Option[String], excludeTags: Option[String], minRating: Option[Int], maxLength: Option[Int], authParamapiKey: String): Either[CommonError,RandomJoke200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse200
+        * @return A SearchJokes200Response
         */
-        def Jokes_searchJokes(keywords: Option[String], includeTags: Option[String], excludeTags: Option[String], number: Option[Int], minRating: Option[Int], maxLength: Option[Int], offset: Option[BigDecimal], authParamapiKey: String): Either[CommonError,InlineResponse200] = Left(TODO)
+        def Jokes_searchJokes(keywords: Option[String], includeTags: Option[String], excludeTags: Option[String], number: Option[Int], minRating: Option[Int], maxLength: Option[Int], offset: Option[BigDecimal], authParamapiKey: String): Either[CommonError,SearchJokes200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2008
+        * @return A SubmitJoke200Response
         */
-        def Jokes_submitJoke(body: String, authParamapiKey: String): Either[CommonError,InlineResponse2008] = Left(TODO)
+        def Jokes_submitJoke(body: String, authParamapiKey: String): Either[CommonError,SubmitJoke200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2008
+        * @return A SubmitJoke200Response
         */
-        def Jokes_upvoteJoke(id: Int, authParamapiKey: String): Either[CommonError,InlineResponse2008] = Left(TODO)
+        def Jokes_upvoteJoke(id: Int, authParamapiKey: String): Either[CommonError,SubmitJoke200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2008
+        * @return A SubmitJoke200Response
         */
-        def Memes_downvoteMeme(id: Int, authParamapiKey: String): Either[CommonError,InlineResponse2008] = Left(TODO)
+        def Memes_downvoteMeme(id: Int, authParamapiKey: String): Either[CommonError,SubmitJoke200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2003
+        * @return A RandomMeme200Response
         */
-        def Memes_randomMeme(keywords: Option[String], keywordsInImage: Option[Boolean], mediaType: Option[String], number: Option[Int], minRating: Option[Int], authParamapiKey: String): Either[CommonError,InlineResponse2003] = Left(TODO)
+        def Memes_randomMeme(keywords: Option[String], keywordsInImage: Option[Boolean], mediaType: Option[String], number: Option[Int], minRating: Option[Int], authParamapiKey: String): Either[CommonError,RandomMeme200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2002
+        * @return A SearchMemes200Response
         */
-        def Memes_searchMemes(keywords: Option[String], keywordsInImage: Option[Boolean], mediaType: Option[String], number: Option[Int], minRating: Option[Int], offset: Option[BigDecimal], authParamapiKey: String): Either[CommonError,InlineResponse2002] = Left(TODO)
+        def Memes_searchMemes(keywords: Option[String], keywordsInImage: Option[Boolean], mediaType: Option[String], number: Option[Int], minRating: Option[Int], offset: Option[BigDecimal], authParamapiKey: String): Either[CommonError,SearchMemes200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2008
+        * @return A SubmitJoke200Response
         */
-        def Memes_upvoteMeme(id: Int, authParamapiKey: String): Either[CommonError,InlineResponse2008] = Left(TODO)
+        def Memes_upvoteMeme(id: Int, authParamapiKey: String): Either[CommonError,SubmitJoke200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2007
+        * @return A GenerateNonsenseWord200Response
         */
-        def Other_generateNonsenseWord(authParamapiKey: String): Either[CommonError,InlineResponse2007] = Left(TODO)
+        def Other_generateNonsenseWord(authParamapiKey: String): Either[CommonError,GenerateNonsenseWord200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2005
+        * @return A Praise200Response
         */
-        def Other_insult(name: String, reason: String, authParamapiKey: String): Either[CommonError,InlineResponse2005] = Left(TODO)
+        def Other_insult(name: String, reason: String, authParamapiKey: String): Either[CommonError,Praise200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2005
+        * @return A Praise200Response
         */
-        def Other_praise(name: String, reason: String, authParamapiKey: String): Either[CommonError,InlineResponse2005] = Left(TODO)
+        def Other_praise(name: String, reason: String, authParamapiKey: String): Either[CommonError,Praise200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2006
+        * @return A RateWord200Response
         */
-        def Other_rateWord(word: String, authParamapiKey: String): Either[CommonError,InlineResponse2006] = Left(TODO)
+        def Other_rateWord(word: String, authParamapiKey: String): Either[CommonError,RateWord200Response] = Left(TODO)
 
         /**
         * 
-        * @return A InlineResponse2001
+        * @return A SearchGifs200Response
         */
-        def Other_searchGifs(query: String, number: Option[Int], authParamapiKey: String): Either[CommonError,InlineResponse2001] = Left(TODO)
+        def Other_searchGifs(query: String, number: Option[Int], authParamapiKey: String): Either[CommonError,SearchGifs200Response] = Left(TODO)
 
 }

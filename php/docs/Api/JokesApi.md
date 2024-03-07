@@ -1,21 +1,21 @@
-# com.humorapi.client\JokesApi
+# OpenAPI\Client\JokesApi
 
-All URIs are relative to https://api.humorapi.com.
+All URIs are relative to https://api.humorapi.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**analyzeJoke()**](JokesApi.md#analyzeJoke) | **POST** /jokes/analyze | Analyze Joke
-[**downvoteJoke()**](JokesApi.md#downvoteJoke) | **POST** /jokes/{id}/downvote | Downvote a Joke
-[**randomJoke()**](JokesApi.md#randomJoke) | **GET** /jokes/random | Random Joke
-[**searchJokes()**](JokesApi.md#searchJokes) | **GET** /jokes/search | Search Jokes
-[**submitJoke()**](JokesApi.md#submitJoke) | **POST** /jokes | Submit Joke
-[**upvoteJoke()**](JokesApi.md#upvoteJoke) | **POST** /jokes/{id}/upvote | Upvote a Joke
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**analyzeJoke()**](JokesApi.md#analyzeJoke) | **POST** /jokes/analyze | Analyze Joke |
+| [**downvoteJoke()**](JokesApi.md#downvoteJoke) | **POST** /jokes/{id}/downvote | Downvote a Joke |
+| [**randomJoke()**](JokesApi.md#randomJoke) | **GET** /jokes/random | Random Joke |
+| [**searchJokes()**](JokesApi.md#searchJokes) | **GET** /jokes/search | Search Jokes |
+| [**submitJoke()**](JokesApi.md#submitJoke) | **POST** /jokes | Submit Joke |
+| [**upvoteJoke()**](JokesApi.md#upvoteJoke) | **POST** /jokes/{id}/upvote | Upvote a Joke |
 
 
 ## `analyzeJoke()`
 
 ```php
-analyzeJoke($body): \com.humorapi.client\com.humorapi.client.model\InlineResponse2009
+analyzeJoke($body): \OpenAPI\Client\Model\AnalyzeJoke200Response
 ```
 
 Analyze Joke
@@ -30,12 +30,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\JokesApi(
+$apiInstance = new OpenAPI\Client\Api\JokesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -53,13 +53,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | **string**| Post the joke as plain text. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **body** | **string**| Post the joke as plain text. | [optional] |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2009**](../Model/InlineResponse2009.md)
+[**\OpenAPI\Client\Model\AnalyzeJoke200Response**](../Model/AnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 ## `downvoteJoke()`
 
 ```php
-downvoteJoke($id): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+downvoteJoke($id): \OpenAPI\Client\Model\SubmitJoke200Response
 ```
 
 Downvote a Joke
@@ -92,12 +92,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\JokesApi(
+$apiInstance = new OpenAPI\Client\Api\JokesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -115,13 +115,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The object&#39;s id. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| The object&#39;s id. | |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\OpenAPI\Client\Model\SubmitJoke200Response**](../Model/SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 ## `randomJoke()`
 
 ```php
-randomJoke($keywords, $include_tags, $exclude_tags, $min_rating, $max_length): \com.humorapi.client\com.humorapi.client.model\InlineResponse2004
+randomJoke($keywords, $include_tags, $exclude_tags, $min_rating, $max_length): \OpenAPI\Client\Model\RandomJoke200Response
 ```
 
 Random Joke
@@ -154,12 +154,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\JokesApi(
+$apiInstance = new OpenAPI\Client\Api\JokesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -181,17 +181,17 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **keywords** | **string**| A comma separated list of keywords. | [optional]
- **include_tags** | **string**| A comma separated list of tags that the joke must have. | [optional]
- **exclude_tags** | **string**| A comma separated list of tags that the joke must not have. | [optional]
- **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
- **max_length** | **int**| The maximum number of letters in the joke. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **keywords** | **string**| A comma separated list of keywords. | [optional] |
+| **include_tags** | **string**| A comma separated list of tags that the joke must have. | [optional] |
+| **exclude_tags** | **string**| A comma separated list of tags that the joke must not have. | [optional] |
+| **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] |
+| **max_length** | **int**| The maximum number of letters in the joke. | [optional] |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\OpenAPI\Client\Model\RandomJoke200Response**](../Model/RandomJoke200Response.md)
 
 ### Authorization
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 ## `searchJokes()`
 
 ```php
-searchJokes($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset): \com.humorapi.client\com.humorapi.client.model\InlineResponse200
+searchJokes($keywords, $include_tags, $exclude_tags, $number, $min_rating, $max_length, $offset): \OpenAPI\Client\Model\SearchJokes200Response
 ```
 
 Search Jokes
@@ -224,12 +224,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\JokesApi(
+$apiInstance = new OpenAPI\Client\Api\JokesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -253,19 +253,19 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **keywords** | **string**| A comma separated list of keywords. | [optional]
- **include_tags** | **string**| A comma separated list of tags that the joke must have. | [optional]
- **exclude_tags** | **string**| A comma separated list of tags that the joke must not have. | [optional]
- **number** | **int**| The number of results to retrieve between 1 and 10. | [optional]
- **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
- **max_length** | **int**| The maximum number of letters in the joke. | [optional]
- **offset** | **float**| The number of results to skip. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **keywords** | **string**| A comma separated list of keywords. | [optional] |
+| **include_tags** | **string**| A comma separated list of tags that the joke must have. | [optional] |
+| **exclude_tags** | **string**| A comma separated list of tags that the joke must not have. | [optional] |
+| **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] |
+| **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] |
+| **max_length** | **int**| The maximum number of letters in the joke. | [optional] |
+| **offset** | **float**| The number of results to skip. | [optional] |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\OpenAPI\Client\Model\SearchJokes200Response**](../Model/SearchJokes200Response.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 ## `submitJoke()`
 
 ```php
-submitJoke($body): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+submitJoke($body): \OpenAPI\Client\Model\SubmitJoke200Response
 ```
 
 Submit Joke
@@ -298,12 +298,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\JokesApi(
+$apiInstance = new OpenAPI\Client\Api\JokesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -321,13 +321,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | **string**| Post the joke as plain text. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **body** | **string**| Post the joke as plain text. | [optional] |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\OpenAPI\Client\Model\SubmitJoke200Response**](../Model/SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 ## `upvoteJoke()`
 
 ```php
-upvoteJoke($id): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+upvoteJoke($id): \OpenAPI\Client\Model\SubmitJoke200Response
 ```
 
 Upvote a Joke
@@ -360,12 +360,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\JokesApi(
+$apiInstance = new OpenAPI\Client\Api\JokesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -383,13 +383,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The object&#39;s id. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| The object&#39;s id. | |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\OpenAPI\Client\Model\SubmitJoke200Response**](../Model/SubmitJoke200Response.md)
 
 ### Authorization
 

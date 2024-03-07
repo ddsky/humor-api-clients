@@ -59,6 +59,20 @@ private:
     QJsonObject jObj;
 };
 
+inline bool operator==(const OAIObject& left, const OAIObject& right){  
+    return (left.asJsonObject() == right.asJsonObject());  
+}
+
+inline
+#if QT_VERSION < 0x060000
+uint
+#else
+size_t
+#endif
+qHash(const OAIObject& obj, uint seed = 0) noexcept{
+    return qHash(obj.asJsonObject(), seed);
+}
+
 } // namespace OpenAPI
 
 Q_DECLARE_METATYPE(OpenAPI::OAIObject)

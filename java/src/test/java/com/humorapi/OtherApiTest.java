@@ -14,12 +14,12 @@
 package com.humorapi;
 
 import com.humorapi.client.ApiException;
-import com.humorapi.client.model.InlineResponse2001;
-import com.humorapi.client.model.InlineResponse2005;
-import com.humorapi.client.model.InlineResponse2006;
-import com.humorapi.client.model.InlineResponse2007;
-import org.junit.Test;
-import org.junit.Ignore;
+import com.humorapi.client.model.GenerateNonsenseWord200Response;
+import com.humorapi.client.model.Praise200Response;
+import com.humorapi.client.model.RateWord200Response;
+import com.humorapi.client.model.SearchGifs200Response;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,87 +29,81 @@ import java.util.Map;
 /**
  * API tests for OtherApi
  */
-@Ignore
+@Disabled
 public class OtherApiTest {
 
     private final OtherApi api = new OtherApi();
 
-    
     /**
      * Generate Nonsense Word
      *
      * Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void generateNonsenseWordTest() throws ApiException {
-                InlineResponse2007 response = api.generateNonsenseWord();
+        GenerateNonsenseWord200Response response = api.generateNonsenseWord();
         // TODO: test validations
     }
-    
+
     /**
      * Insult
      *
      * Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void insultTest() throws ApiException {
         String name = null;
         String reason = null;
-                InlineResponse2005 response = api.insult(name, reason);
+        Praise200Response response = api.insult(name, reason);
         // TODO: test validations
     }
-    
+
     /**
      * Praise
      *
      * Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void praiseTest() throws ApiException {
         String name = null;
         String reason = null;
-                InlineResponse2005 response = api.praise(name, reason);
+        Praise200Response response = api.praise(name, reason);
         // TODO: test validations
     }
-    
+
     /**
      * Rate Word
      *
      * Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void rateWordTest() throws ApiException {
         String word = null;
-                InlineResponse2006 response = api.rateWord(word);
+        RateWord200Response response = api.rateWord(word);
         // TODO: test validations
     }
-    
+
     /**
      * Search Gifs
      *
      * Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void searchGifsTest() throws ApiException {
         String query = null;
         Integer number = null;
-                InlineResponse2001 response = api.searchGifs(query, number);
+        SearchGifs200Response response = api.searchGifs(query, number);
         // TODO: test validations
     }
-    
+
 }

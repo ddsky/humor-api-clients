@@ -195,6 +195,10 @@ QJsonValue toJsonValue(const OAIHttpFileElement &value) {
     return value.asJsonValue();
 }
 
+QJsonValue toJsonValue(const QJsonValue &value) {
+    return value;
+}
+
 bool fromStringValue(const QString &inStr, QString &value) {
     value.clear();
     value.append(inStr);
@@ -230,7 +234,7 @@ bool fromStringValue(const QString &inStr, QByteArray &value) {
     } else {
         value.clear();
         value.append(inStr.toUtf8());
-        return value.count() > 0;
+        return !value.isEmpty();
     }
 }
 
@@ -422,6 +426,11 @@ bool fromJsonValue(OAIEnum &value, const QJsonValue &jval) {
 
 bool fromJsonValue(OAIHttpFileElement &value, const QJsonValue &jval) {
     return value.fromJsonValue(jval);
+}
+
+bool fromJsonValue(QJsonValue &value, const QJsonValue &jval) {
+    value = jval;
+    return true;
 }
 
 } // namespace OpenAPI

@@ -1,17 +1,19 @@
-import { ResponseContext, RequestContext, HttpFile } from '../http/http';
-import * as models from '../models/all';
+import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
 import { Configuration} from '../configuration'
 
-import { InlineResponse200 } from '../models/InlineResponse200';
-import { InlineResponse2001 } from '../models/InlineResponse2001';
-import { InlineResponse2002 } from '../models/InlineResponse2002';
-import { InlineResponse2003 } from '../models/InlineResponse2003';
-import { InlineResponse2004 } from '../models/InlineResponse2004';
-import { InlineResponse2005 } from '../models/InlineResponse2005';
-import { InlineResponse2006 } from '../models/InlineResponse2006';
-import { InlineResponse2007 } from '../models/InlineResponse2007';
-import { InlineResponse2008 } from '../models/InlineResponse2008';
-import { InlineResponse2009 } from '../models/InlineResponse2009';
+import { AnalyzeJoke200Response } from '../models/AnalyzeJoke200Response';
+import { GenerateNonsenseWord200Response } from '../models/GenerateNonsenseWord200Response';
+import { Praise200Response } from '../models/Praise200Response';
+import { RandomJoke200Response } from '../models/RandomJoke200Response';
+import { RandomMeme200Response } from '../models/RandomMeme200Response';
+import { RateWord200Response } from '../models/RateWord200Response';
+import { SearchGifs200Response } from '../models/SearchGifs200Response';
+import { SearchGifs200ResponseImagesInner } from '../models/SearchGifs200ResponseImagesInner';
+import { SearchJokes200Response } from '../models/SearchJokes200Response';
+import { SearchJokes200ResponseJokesInner } from '../models/SearchJokes200ResponseJokesInner';
+import { SearchMemes200Response } from '../models/SearchMemes200Response';
+import { SearchMemes200ResponseMemesInner } from '../models/SearchMemes200ResponseMemesInner';
+import { SubmitJoke200Response } from '../models/SubmitJoke200Response';
 
 import { ObservableJokesApi } from "./ObservableAPI";
 import { JokesApiRequestFactory, JokesApiResponseProcessor} from "../apis/JokesApi";
@@ -27,7 +29,7 @@ export interface JokesApiAnalyzeJokeRequest {
 
 export interface JokesApiDownvoteJokeRequest {
     /**
-     * The object&#39;s id.
+     * The object\&#39;s id.
      * @type number
      * @memberof JokesApidownvoteJoke
      */
@@ -123,7 +125,7 @@ export interface JokesApiSubmitJokeRequest {
 
 export interface JokesApiUpvoteJokeRequest {
     /**
-     * The object&#39;s id.
+     * The object\&#39;s id.
      * @type number
      * @memberof JokesApiupvoteJoke
      */
@@ -142,7 +144,16 @@ export class ObjectJokesApi {
      * Analyze Joke
      * @param param the request object
      */
-    public analyzeJoke(param: JokesApiAnalyzeJokeRequest = {}, options?: Configuration): Promise<InlineResponse2009> {
+    public analyzeJokeWithHttpInfo(param: JokesApiAnalyzeJokeRequest = {}, options?: Configuration): Promise<HttpInfo<AnalyzeJoke200Response>> {
+        return this.api.analyzeJokeWithHttpInfo(param.body,  options).toPromise();
+    }
+
+    /**
+     * Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
+     * Analyze Joke
+     * @param param the request object
+     */
+    public analyzeJoke(param: JokesApiAnalyzeJokeRequest = {}, options?: Configuration): Promise<AnalyzeJoke200Response> {
         return this.api.analyzeJoke(param.body,  options).toPromise();
     }
 
@@ -151,7 +162,16 @@ export class ObjectJokesApi {
      * Downvote a Joke
      * @param param the request object
      */
-    public downvoteJoke(param: JokesApiDownvoteJokeRequest, options?: Configuration): Promise<InlineResponse2008> {
+    public downvoteJokeWithHttpInfo(param: JokesApiDownvoteJokeRequest, options?: Configuration): Promise<HttpInfo<SubmitJoke200Response>> {
+        return this.api.downvoteJokeWithHttpInfo(param.id,  options).toPromise();
+    }
+
+    /**
+     * Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
+     * Downvote a Joke
+     * @param param the request object
+     */
+    public downvoteJoke(param: JokesApiDownvoteJokeRequest, options?: Configuration): Promise<SubmitJoke200Response> {
         return this.api.downvoteJoke(param.id,  options).toPromise();
     }
 
@@ -160,7 +180,16 @@ export class ObjectJokesApi {
      * Random Joke
      * @param param the request object
      */
-    public randomJoke(param: JokesApiRandomJokeRequest = {}, options?: Configuration): Promise<InlineResponse2004> {
+    public randomJokeWithHttpInfo(param: JokesApiRandomJokeRequest = {}, options?: Configuration): Promise<HttpInfo<RandomJoke200Response>> {
+        return this.api.randomJokeWithHttpInfo(param.keywords, param.includeTags, param.excludeTags, param.minRating, param.maxLength,  options).toPromise();
+    }
+
+    /**
+     * Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
+     * Random Joke
+     * @param param the request object
+     */
+    public randomJoke(param: JokesApiRandomJokeRequest = {}, options?: Configuration): Promise<RandomJoke200Response> {
         return this.api.randomJoke(param.keywords, param.includeTags, param.excludeTags, param.minRating, param.maxLength,  options).toPromise();
     }
 
@@ -169,7 +198,16 @@ export class ObjectJokesApi {
      * Search Jokes
      * @param param the request object
      */
-    public searchJokes(param: JokesApiSearchJokesRequest = {}, options?: Configuration): Promise<InlineResponse200> {
+    public searchJokesWithHttpInfo(param: JokesApiSearchJokesRequest = {}, options?: Configuration): Promise<HttpInfo<SearchJokes200Response>> {
+        return this.api.searchJokesWithHttpInfo(param.keywords, param.includeTags, param.excludeTags, param.number, param.minRating, param.maxLength, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
+     * Search Jokes
+     * @param param the request object
+     */
+    public searchJokes(param: JokesApiSearchJokesRequest = {}, options?: Configuration): Promise<SearchJokes200Response> {
         return this.api.searchJokes(param.keywords, param.includeTags, param.excludeTags, param.number, param.minRating, param.maxLength, param.offset,  options).toPromise();
     }
 
@@ -178,7 +216,16 @@ export class ObjectJokesApi {
      * Submit Joke
      * @param param the request object
      */
-    public submitJoke(param: JokesApiSubmitJokeRequest = {}, options?: Configuration): Promise<InlineResponse2008> {
+    public submitJokeWithHttpInfo(param: JokesApiSubmitJokeRequest = {}, options?: Configuration): Promise<HttpInfo<SubmitJoke200Response>> {
+        return this.api.submitJokeWithHttpInfo(param.body,  options).toPromise();
+    }
+
+    /**
+     * Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
+     * Submit Joke
+     * @param param the request object
+     */
+    public submitJoke(param: JokesApiSubmitJokeRequest = {}, options?: Configuration): Promise<SubmitJoke200Response> {
         return this.api.submitJoke(param.body,  options).toPromise();
     }
 
@@ -187,7 +234,16 @@ export class ObjectJokesApi {
      * Upvote a Joke
      * @param param the request object
      */
-    public upvoteJoke(param: JokesApiUpvoteJokeRequest, options?: Configuration): Promise<InlineResponse2008> {
+    public upvoteJokeWithHttpInfo(param: JokesApiUpvoteJokeRequest, options?: Configuration): Promise<HttpInfo<SubmitJoke200Response>> {
+        return this.api.upvoteJokeWithHttpInfo(param.id,  options).toPromise();
+    }
+
+    /**
+     * Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
+     * Upvote a Joke
+     * @param param the request object
+     */
+    public upvoteJoke(param: JokesApiUpvoteJokeRequest, options?: Configuration): Promise<SubmitJoke200Response> {
         return this.api.upvoteJoke(param.id,  options).toPromise();
     }
 
@@ -198,7 +254,7 @@ import { MemesApiRequestFactory, MemesApiResponseProcessor} from "../apis/MemesA
 
 export interface MemesApiDownvoteMemeRequest {
     /**
-     * The object&#39;s id.
+     * The object\&#39;s id.
      * @type number
      * @memberof MemesApidownvoteMeme
      */
@@ -213,13 +269,13 @@ export interface MemesApiRandomMemeRequest {
      */
     keywords?: string
     /**
-     * Whether the keywords should be found in the meme&#39;s image.
+     * Whether the keywords should be found in the meme\&#39;s image.
      * @type boolean
      * @memberof MemesApirandomMeme
      */
     keywordsInImage?: boolean
     /**
-     * The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;.
+     * The type of the content. Can be either \&#39;image\&#39; or \&#39;video\&#39; or specific formats such as \&#39;jpg\&#39;, \&#39;png\&#39;, \&#39;gif\&#39;, or \&#39;mp4\&#39;.
      * @type &#39;image&#39; | &#39;video&#39; | &#39;jpg&#39; | &#39;gif&#39; | &#39;png&#39; | &#39;mp4&#39;
      * @memberof MemesApirandomMeme
      */
@@ -246,13 +302,13 @@ export interface MemesApiSearchMemesRequest {
      */
     keywords?: string
     /**
-     * Whether the keywords should be found in the meme&#39;s image.
+     * Whether the keywords should be found in the meme\&#39;s image.
      * @type boolean
      * @memberof MemesApisearchMemes
      */
     keywordsInImage?: boolean
     /**
-     * The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;.
+     * The type of the content. Can be either \&#39;image\&#39; or \&#39;video\&#39; or specific formats such as \&#39;jpg\&#39;, \&#39;png\&#39;, \&#39;gif\&#39;, or \&#39;mp4\&#39;.
      * @type &#39;image&#39; | &#39;video&#39; | &#39;jpg&#39; | &#39;gif&#39; | &#39;png&#39; | &#39;mp4&#39;
      * @memberof MemesApisearchMemes
      */
@@ -279,7 +335,7 @@ export interface MemesApiSearchMemesRequest {
 
 export interface MemesApiUpvoteMemeRequest {
     /**
-     * The object&#39;s id.
+     * The object\&#39;s id.
      * @type number
      * @memberof MemesApiupvoteMeme
      */
@@ -298,7 +354,16 @@ export class ObjectMemesApi {
      * Downvote a Meme
      * @param param the request object
      */
-    public downvoteMeme(param: MemesApiDownvoteMemeRequest, options?: Configuration): Promise<InlineResponse2008> {
+    public downvoteMemeWithHttpInfo(param: MemesApiDownvoteMemeRequest, options?: Configuration): Promise<HttpInfo<SubmitJoke200Response>> {
+        return this.api.downvoteMemeWithHttpInfo(param.id,  options).toPromise();
+    }
+
+    /**
+     * Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
+     * Downvote a Meme
+     * @param param the request object
+     */
+    public downvoteMeme(param: MemesApiDownvoteMemeRequest, options?: Configuration): Promise<SubmitJoke200Response> {
         return this.api.downvoteMeme(param.id,  options).toPromise();
     }
 
@@ -307,7 +372,16 @@ export class ObjectMemesApi {
      * Random Meme
      * @param param the request object
      */
-    public randomMeme(param: MemesApiRandomMemeRequest = {}, options?: Configuration): Promise<InlineResponse2003> {
+    public randomMemeWithHttpInfo(param: MemesApiRandomMemeRequest = {}, options?: Configuration): Promise<HttpInfo<RandomMeme200Response>> {
+        return this.api.randomMemeWithHttpInfo(param.keywords, param.keywordsInImage, param.mediaType, param.number, param.minRating,  options).toPromise();
+    }
+
+    /**
+     * Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
+     * Random Meme
+     * @param param the request object
+     */
+    public randomMeme(param: MemesApiRandomMemeRequest = {}, options?: Configuration): Promise<RandomMeme200Response> {
         return this.api.randomMeme(param.keywords, param.keywordsInImage, param.mediaType, param.number, param.minRating,  options).toPromise();
     }
 
@@ -316,7 +390,16 @@ export class ObjectMemesApi {
      * Search Memes
      * @param param the request object
      */
-    public searchMemes(param: MemesApiSearchMemesRequest = {}, options?: Configuration): Promise<InlineResponse2002> {
+    public searchMemesWithHttpInfo(param: MemesApiSearchMemesRequest = {}, options?: Configuration): Promise<HttpInfo<SearchMemes200Response>> {
+        return this.api.searchMemesWithHttpInfo(param.keywords, param.keywordsInImage, param.mediaType, param.number, param.minRating, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
+     * Search Memes
+     * @param param the request object
+     */
+    public searchMemes(param: MemesApiSearchMemesRequest = {}, options?: Configuration): Promise<SearchMemes200Response> {
         return this.api.searchMemes(param.keywords, param.keywordsInImage, param.mediaType, param.number, param.minRating, param.offset,  options).toPromise();
     }
 
@@ -325,7 +408,16 @@ export class ObjectMemesApi {
      * Upvote a Meme
      * @param param the request object
      */
-    public upvoteMeme(param: MemesApiUpvoteMemeRequest, options?: Configuration): Promise<InlineResponse2008> {
+    public upvoteMemeWithHttpInfo(param: MemesApiUpvoteMemeRequest, options?: Configuration): Promise<HttpInfo<SubmitJoke200Response>> {
+        return this.api.upvoteMemeWithHttpInfo(param.id,  options).toPromise();
+    }
+
+    /**
+     * Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
+     * Upvote a Meme
+     * @param param the request object
+     */
+    public upvoteMeme(param: MemesApiUpvoteMemeRequest, options?: Configuration): Promise<SubmitJoke200Response> {
         return this.api.upvoteMeme(param.id,  options).toPromise();
     }
 
@@ -339,7 +431,7 @@ export interface OtherApiGenerateNonsenseWordRequest {
 
 export interface OtherApiInsultRequest {
     /**
-     * The person&#39;s name.
+     * The person\&#39;s name.
      * @type string
      * @memberof OtherApiinsult
      */
@@ -354,7 +446,7 @@ export interface OtherApiInsultRequest {
 
 export interface OtherApiPraiseRequest {
     /**
-     * The person&#39;s name.
+     * The person\&#39;s name.
      * @type string
      * @memberof OtherApipraise
      */
@@ -403,7 +495,16 @@ export class ObjectOtherApi {
      * Generate Nonsense Word
      * @param param the request object
      */
-    public generateNonsenseWord(param: OtherApiGenerateNonsenseWordRequest = {}, options?: Configuration): Promise<InlineResponse2007> {
+    public generateNonsenseWordWithHttpInfo(param: OtherApiGenerateNonsenseWordRequest = {}, options?: Configuration): Promise<HttpInfo<GenerateNonsenseWord200Response>> {
+        return this.api.generateNonsenseWordWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
+     * Generate Nonsense Word
+     * @param param the request object
+     */
+    public generateNonsenseWord(param: OtherApiGenerateNonsenseWordRequest = {}, options?: Configuration): Promise<GenerateNonsenseWord200Response> {
         return this.api.generateNonsenseWord( options).toPromise();
     }
 
@@ -412,7 +513,16 @@ export class ObjectOtherApi {
      * Insult
      * @param param the request object
      */
-    public insult(param: OtherApiInsultRequest, options?: Configuration): Promise<InlineResponse2005> {
+    public insultWithHttpInfo(param: OtherApiInsultRequest, options?: Configuration): Promise<HttpInfo<Praise200Response>> {
+        return this.api.insultWithHttpInfo(param.name, param.reason,  options).toPromise();
+    }
+
+    /**
+     * Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
+     * Insult
+     * @param param the request object
+     */
+    public insult(param: OtherApiInsultRequest, options?: Configuration): Promise<Praise200Response> {
         return this.api.insult(param.name, param.reason,  options).toPromise();
     }
 
@@ -421,7 +531,16 @@ export class ObjectOtherApi {
      * Praise
      * @param param the request object
      */
-    public praise(param: OtherApiPraiseRequest, options?: Configuration): Promise<InlineResponse2005> {
+    public praiseWithHttpInfo(param: OtherApiPraiseRequest, options?: Configuration): Promise<HttpInfo<Praise200Response>> {
+        return this.api.praiseWithHttpInfo(param.name, param.reason,  options).toPromise();
+    }
+
+    /**
+     * Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
+     * Praise
+     * @param param the request object
+     */
+    public praise(param: OtherApiPraiseRequest, options?: Configuration): Promise<Praise200Response> {
         return this.api.praise(param.name, param.reason,  options).toPromise();
     }
 
@@ -430,7 +549,16 @@ export class ObjectOtherApi {
      * Rate Word
      * @param param the request object
      */
-    public rateWord(param: OtherApiRateWordRequest, options?: Configuration): Promise<InlineResponse2006> {
+    public rateWordWithHttpInfo(param: OtherApiRateWordRequest, options?: Configuration): Promise<HttpInfo<RateWord200Response>> {
+        return this.api.rateWordWithHttpInfo(param.word,  options).toPromise();
+    }
+
+    /**
+     * Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
+     * Rate Word
+     * @param param the request object
+     */
+    public rateWord(param: OtherApiRateWordRequest, options?: Configuration): Promise<RateWord200Response> {
         return this.api.rateWord(param.word,  options).toPromise();
     }
 
@@ -439,7 +567,16 @@ export class ObjectOtherApi {
      * Search Gifs
      * @param param the request object
      */
-    public searchGifs(param: OtherApiSearchGifsRequest, options?: Configuration): Promise<InlineResponse2001> {
+    public searchGifsWithHttpInfo(param: OtherApiSearchGifsRequest, options?: Configuration): Promise<HttpInfo<SearchGifs200Response>> {
+        return this.api.searchGifsWithHttpInfo(param.query, param.number,  options).toPromise();
+    }
+
+    /**
+     * Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
+     * Search Gifs
+     * @param param the request object
+     */
+    public searchGifs(param: OtherApiSearchGifsRequest, options?: Configuration): Promise<SearchGifs200Response> {
         return this.api.searchGifs(param.query, param.number,  options).toPromise();
     }
 

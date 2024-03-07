@@ -11,9 +11,9 @@ Method | HTTP request | Description
 [**searchGifs**](OtherApi.md#searchGifs) | **GET** /gif/search | Search Gifs
 
 
-<a name="generateNonsenseWord"></a>
+<a id="generateNonsenseWord"></a>
 # **generateNonsenseWord**
-> InlineResponse2007 generateNonsenseWord()
+> GenerateNonsenseWord200Response generateNonsenseWord()
 
 Generate Nonsense Word
 
@@ -22,12 +22,12 @@ Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word 
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = OtherApi()
 try {
-    val result : InlineResponse2007 = apiInstance.generateNonsenseWord()
+    val result : GenerateNonsenseWord200Response = apiInstance.generateNonsenseWord()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling OtherApi#generateNonsenseWord")
@@ -43,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**GenerateNonsenseWord200Response**](GenerateNonsenseWord200Response.md)
 
 ### Authorization
 
@@ -57,9 +57,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="insult"></a>
+<a id="insult"></a>
 # **insult**
-> InlineResponse2005 insult(name, reason)
+> Praise200Response insult(name, reason)
 
 Insult
 
@@ -68,14 +68,14 @@ Insult somebody for doing something. See https://humorapi.com/docs/#Insult for m
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = OtherApi()
 val name : kotlin.String = Alex // kotlin.String | The person's name.
 val reason : kotlin.String = you did it again // kotlin.String | The reason for the praise/insult.
 try {
-    val result : InlineResponse2005 = apiInstance.insult(name, reason)
+    val result : Praise200Response = apiInstance.insult(name, reason)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling OtherApi#insult")
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -109,9 +109,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="praise"></a>
+<a id="praise"></a>
 # **praise**
-> InlineResponse2005 praise(name, reason)
+> Praise200Response praise(name, reason)
 
 Praise
 
@@ -120,14 +120,14 @@ Praise somebody for doing something. See https://humorapi.com/docs/#Praise for m
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = OtherApi()
 val name : kotlin.String = Alex // kotlin.String | The person's name.
 val reason : kotlin.String = you did it again // kotlin.String | The reason for the praise/insult.
 try {
-    val result : InlineResponse2005 = apiInstance.praise(name, reason)
+    val result : Praise200Response = apiInstance.praise(name, reason)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling OtherApi#praise")
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -161,9 +161,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="rateWord"></a>
+<a id="rateWord"></a>
 # **rateWord**
-> InlineResponse2006 rateWord(word)
+> RateWord200Response rateWord(word)
 
 Rate Word
 
@@ -172,13 +172,13 @@ Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = OtherApi()
 val word : kotlin.String = cookie // kotlin.String | The word to be rated.
 try {
-    val result : InlineResponse2006 = apiInstance.rateWord(word)
+    val result : RateWord200Response = apiInstance.rateWord(word)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling OtherApi#rateWord")
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**RateWord200Response**](RateWord200Response.md)
 
 ### Authorization
 
@@ -211,9 +211,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="searchGifs"></a>
+<a id="searchGifs"></a>
 # **searchGifs**
-> InlineResponse2001 searchGifs(query, number)
+> SearchGifs200Response searchGifs(query, number)
 
 Search Gifs
 
@@ -222,14 +222,14 @@ Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = OtherApi()
 val query : kotlin.String = cat // kotlin.String | A search query.
 val number : kotlin.Int = 3 // kotlin.Int | The number of results to retrieve between 1 and 10.
 try {
-    val result : InlineResponse2001 = apiInstance.searchGifs(query, number)
+    val result : SearchGifs200Response = apiInstance.searchGifs(query, number)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling OtherApi#searchGifs")
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**SearchGifs200Response**](SearchGifs200Response.md)
 
 ### Authorization
 

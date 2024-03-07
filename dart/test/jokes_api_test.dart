@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -14,14 +14,14 @@ import 'package:test/test.dart';
 
 /// tests for JokesApi
 void main() {
-  final instance = JokesApi();
+  // final instance = JokesApi();
 
   group('tests for JokesApi', () {
     // Analyze Joke
     //
     // Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
     //
-    //Future<InlineResponse2009> analyzeJoke({ String body }) async
+    //Future<AnalyzeJoke200Response> analyzeJoke({ String body }) async
     test('test analyzeJoke', () async {
       // TODO
     });
@@ -30,7 +30,7 @@ void main() {
     //
     // Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
     //
-    //Future<InlineResponse2008> downvoteJoke(int id) async
+    //Future<SubmitJoke200Response> downvoteJoke(int id) async
     test('test downvoteJoke', () async {
       // TODO
     });
@@ -39,7 +39,7 @@ void main() {
     //
     // Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
     //
-    //Future<InlineResponse2004> randomJoke({ String keywords, String includeTags, String excludeTags, int minRating, int maxLength }) async
+    //Future<RandomJoke200Response> randomJoke({ String keywords, String includeTags, String excludeTags, int minRating, int maxLength }) async
     test('test randomJoke', () async {
       // TODO
     });
@@ -48,7 +48,7 @@ void main() {
     //
     // Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
     //
-    //Future<InlineResponse200> searchJokes({ String keywords, String includeTags, String excludeTags, int number, int minRating, int maxLength, num offset }) async
+    //Future<SearchJokes200Response> searchJokes({ String keywords, String includeTags, String excludeTags, int number, int minRating, int maxLength, num offset }) async
     test('test searchJokes', () async {
       // TODO
     });
@@ -57,7 +57,7 @@ void main() {
     //
     // Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
     //
-    //Future<InlineResponse2008> submitJoke({ String body }) async
+    //Future<SubmitJoke200Response> submitJoke({ String body }) async
     test('test submitJoke', () async {
       // TODO
     });
@@ -66,7 +66,7 @@ void main() {
     //
     // Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
     //
-    //Future<InlineResponse2008> upvoteJoke(int id) async
+    //Future<SubmitJoke200Response> upvoteJoke(int id) async
     test('test upvoteJoke', () async {
       // TODO
     });

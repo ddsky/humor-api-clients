@@ -14,7 +14,7 @@ Method | HTTP request | Description
 # **generateNonsenseWord**
 ```objc
 -(NSURLSessionTask*) generateNonsenseWordWithCompletionHandler: 
-        (void (^)(OAIInlineResponse2007* output, NSError* error)) handler;
+        (void (^)(OAIGenerateNonsenseWord200Response* output, NSError* error)) handler;
 ```
 
 Generate Nonsense Word
@@ -36,7 +36,7 @@ OAIOtherApi*apiInstance = [[OAIOtherApi alloc] init];
 
 // Generate Nonsense Word
 [apiInstance generateNonsenseWordWithCompletionHandler: 
-          ^(OAIInlineResponse2007* output, NSError* error) {
+          ^(OAIGenerateNonsenseWord200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**OAIInlineResponse2007***](OAIInlineResponse2007.md)
+[**OAIGenerateNonsenseWord200Response***](OAIGenerateNonsenseWord200Response.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ This endpoint does not need any parameter.
 ```objc
 -(NSURLSessionTask*) insultWithName: (NSString*) name
     reason: (NSString*) reason
-        completionHandler: (void (^)(OAIInlineResponse2005* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIPraise200Response* output, NSError* error)) handler;
 ```
 
 Insult
@@ -93,7 +93,7 @@ OAIOtherApi*apiInstance = [[OAIOtherApi alloc] init];
 // Insult
 [apiInstance insultWithName:name
               reason:reason
-          completionHandler: ^(OAIInlineResponse2005* output, NSError* error) {
+          completionHandler: ^(OAIPraise200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2005***](OAIInlineResponse2005.md)
+[**OAIPraise200Response***](OAIPraise200Response.md)
 
 ### Authorization
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) praiseWithName: (NSString*) name
     reason: (NSString*) reason
-        completionHandler: (void (^)(OAIInlineResponse2005* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIPraise200Response* output, NSError* error)) handler;
 ```
 
 Praise
@@ -154,7 +154,7 @@ OAIOtherApi*apiInstance = [[OAIOtherApi alloc] init];
 // Praise
 [apiInstance praiseWithName:name
               reason:reason
-          completionHandler: ^(OAIInlineResponse2005* output, NSError* error) {
+          completionHandler: ^(OAIPraise200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2005***](OAIInlineResponse2005.md)
+[**OAIPraise200Response***](OAIPraise200Response.md)
 
 ### Authorization
 
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 # **rateWord**
 ```objc
 -(NSURLSessionTask*) rateWordWithWord: (NSString*) word
-        completionHandler: (void (^)(OAIInlineResponse2006* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIRateWord200Response* output, NSError* error)) handler;
 ```
 
 Rate Word
@@ -212,7 +212,7 @@ OAIOtherApi*apiInstance = [[OAIOtherApi alloc] init];
 
 // Rate Word
 [apiInstance rateWordWithWord:word
-          completionHandler: ^(OAIInlineResponse2006* output, NSError* error) {
+          completionHandler: ^(OAIRateWord200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2006***](OAIInlineResponse2006.md)
+[**OAIRateWord200Response***](OAIRateWord200Response.md)
 
 ### Authorization
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) searchGifsWithQuery: (NSString*) query
     number: (NSNumber*) number
-        completionHandler: (void (^)(OAIInlineResponse2001* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISearchGifs200Response* output, NSError* error)) handler;
 ```
 
 Search Gifs
@@ -272,7 +272,7 @@ OAIOtherApi*apiInstance = [[OAIOtherApi alloc] init];
 // Search Gifs
 [apiInstance searchGifsWithQuery:query
               number:number
-          completionHandler: ^(OAIInlineResponse2001* output, NSError* error) {
+          completionHandler: ^(OAISearchGifs200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2001***](OAIInlineResponse2001.md)
+[**OAISearchGifs200Response***](OAISearchGifs200Response.md)
 
 ### Authorization
 

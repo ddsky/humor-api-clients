@@ -16,16 +16,19 @@ package com.humorapi.client;
 import java.util.Map;
 import java.util.List;
 
+
 /**
  * <p>ApiException class.</p>
  */
 @SuppressWarnings("serial")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-05T21:05:51.248+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-08T00:10:49.823812600+01:00[Europe/Berlin]")
 public class ApiException extends Exception {
+    private static final long serialVersionUID = 1L;
+
     private int code = 0;
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;
- 
+
     /**
      * <p>Constructor for ApiException.</p>
      */
@@ -97,7 +100,7 @@ public class ApiException extends Exception {
      * @param responseBody the response body
      */
     public ApiException(int code, Map<String, List<String>> responseHeaders, String responseBody) {
-        this((String) null, (Throwable) null, code, responseHeaders, responseBody);
+        this("Response Code: " + code + " Response Body: " + responseBody, (Throwable) null, code, responseHeaders, responseBody);
     }
 
     /**
@@ -150,5 +153,15 @@ public class ApiException extends Exception {
      */
     public String getResponseBody() {
         return responseBody;
+    }
+
+    /**
+     * Get the exception message including HTTP response data.
+     *
+     * @return The exception message
+     */
+    public String getMessage() {
+        return String.format("Message: %s%nHTTP response code: %s%nHTTP response body: %s%nHTTP response headers: %s",
+                super.getMessage(), this.getCode(), this.getResponseBody(), this.getResponseHeaders());
     }
 }

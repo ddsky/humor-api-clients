@@ -1,21 +1,21 @@
-# com.humorapi.client\JokesApi
+# \JokesAPI
 
 All URIs are relative to *https://api.humorapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AnalyzeJoke**](JokesApi.md#AnalyzeJoke) | **Post** /jokes/analyze | Analyze Joke
-[**DownvoteJoke**](JokesApi.md#DownvoteJoke) | **Post** /jokes/{id}/downvote | Downvote a Joke
-[**RandomJoke**](JokesApi.md#RandomJoke) | **Get** /jokes/random | Random Joke
-[**SearchJokes**](JokesApi.md#SearchJokes) | **Get** /jokes/search | Search Jokes
-[**SubmitJoke**](JokesApi.md#SubmitJoke) | **Post** /jokes | Submit Joke
-[**UpvoteJoke**](JokesApi.md#UpvoteJoke) | **Post** /jokes/{id}/upvote | Upvote a Joke
+[**AnalyzeJoke**](JokesAPI.md#AnalyzeJoke) | **Post** /jokes/analyze | Analyze Joke
+[**DownvoteJoke**](JokesAPI.md#DownvoteJoke) | **Post** /jokes/{id}/downvote | Downvote a Joke
+[**RandomJoke**](JokesAPI.md#RandomJoke) | **Get** /jokes/random | Random Joke
+[**SearchJokes**](JokesAPI.md#SearchJokes) | **Get** /jokes/search | Search Jokes
+[**SubmitJoke**](JokesAPI.md#SubmitJoke) | **Post** /jokes | Submit Joke
+[**UpvoteJoke**](JokesAPI.md#UpvoteJoke) | **Post** /jokes/{id}/upvote | Upvote a Joke
 
 
 
 ## AnalyzeJoke
 
-> InlineResponse2009 AnalyzeJoke(ctx).Body(body).Execute()
+> AnalyzeJoke200Response AnalyzeJoke(ctx).Body(body).Execute()
 
 Analyze Joke
 
@@ -27,24 +27,24 @@ Analyze Joke
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    body := "body_example" // string | Post the joke as plain text. (optional)
+	body := "body_example" // string | Post the joke as plain text. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JokesApi.AnalyzeJoke(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.AnalyzeJoke``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AnalyzeJoke`: InlineResponse2009
-    fmt.Fprintf(os.Stdout, "Response from `JokesApi.AnalyzeJoke`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JokesAPI.AnalyzeJoke(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JokesAPI.AnalyzeJoke``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AnalyzeJoke`: AnalyzeJoke200Response
+	fmt.Fprintf(os.Stdout, "Response from `JokesAPI.AnalyzeJoke`: %v\n", resp)
 }
 ```
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**AnalyzeJoke200Response**](AnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## DownvoteJoke
 
-> InlineResponse2008 DownvoteJoke(ctx, id).Execute()
+> SubmitJoke200Response DownvoteJoke(ctx, id).Execute()
 
 Downvote a Joke
 
@@ -93,24 +93,24 @@ Downvote a Joke
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    id := int32(1) // int32 | The object's id.
+	id := int32(1) // int32 | The object's id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JokesApi.DownvoteJoke(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.DownvoteJoke``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DownvoteJoke`: InlineResponse2008
-    fmt.Fprintf(os.Stdout, "Response from `JokesApi.DownvoteJoke`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JokesAPI.DownvoteJoke(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JokesAPI.DownvoteJoke``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DownvoteJoke`: SubmitJoke200Response
+	fmt.Fprintf(os.Stdout, "Response from `JokesAPI.DownvoteJoke`: %v\n", resp)
 }
 ```
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## RandomJoke
 
-> InlineResponse2004 RandomJoke(ctx).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).MinRating(minRating).MaxLength(maxLength).Execute()
+> RandomJoke200Response RandomJoke(ctx).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).MinRating(minRating).MaxLength(maxLength).Execute()
 
 Random Joke
 
@@ -163,28 +163,28 @@ Random Joke
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    keywords := "rocket" // string | A comma separated list of keywords. (optional)
-    includeTags := "one_liner" // string | A comma separated list of tags that the joke must have. (optional)
-    excludeTags := "nsfw" // string | A comma separated list of tags that the joke must not have. (optional)
-    minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
-    maxLength := int32(200) // int32 | The maximum number of letters in the joke. (optional)
+	keywords := "rocket" // string | A comma separated list of keywords. (optional)
+	includeTags := "one_liner" // string | A comma separated list of tags that the joke must have. (optional)
+	excludeTags := "nsfw" // string | A comma separated list of tags that the joke must not have. (optional)
+	minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
+	maxLength := int32(200) // int32 | The maximum number of letters in the joke. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JokesApi.RandomJoke(context.Background()).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).MinRating(minRating).MaxLength(maxLength).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.RandomJoke``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RandomJoke`: InlineResponse2004
-    fmt.Fprintf(os.Stdout, "Response from `JokesApi.RandomJoke`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JokesAPI.RandomJoke(context.Background()).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).MinRating(minRating).MaxLength(maxLength).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JokesAPI.RandomJoke``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RandomJoke`: RandomJoke200Response
+	fmt.Fprintf(os.Stdout, "Response from `JokesAPI.RandomJoke`: %v\n", resp)
 }
 ```
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**RandomJoke200Response**](RandomJoke200Response.md)
 
 ### Authorization
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## SearchJokes
 
-> InlineResponse200 SearchJokes(ctx).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).Number(number).MinRating(minRating).MaxLength(maxLength).Offset(offset).Execute()
+> SearchJokes200Response SearchJokes(ctx).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).Number(number).MinRating(minRating).MaxLength(maxLength).Offset(offset).Execute()
 
 Search Jokes
 
@@ -237,30 +237,30 @@ Search Jokes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    keywords := "rocket" // string | A comma separated list of keywords. (optional)
-    includeTags := "one_liner" // string | A comma separated list of tags that the joke must have. (optional)
-    excludeTags := "nsfw" // string | A comma separated list of tags that the joke must not have. (optional)
-    number := int32(3) // int32 | The number of results to retrieve between 1 and 10. (optional)
-    minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
-    maxLength := int32(200) // int32 | The maximum number of letters in the joke. (optional)
-    offset := float32(8.14) // float32 | The number of results to skip. (optional)
+	keywords := "rocket" // string | A comma separated list of keywords. (optional)
+	includeTags := "one_liner" // string | A comma separated list of tags that the joke must have. (optional)
+	excludeTags := "nsfw" // string | A comma separated list of tags that the joke must not have. (optional)
+	number := int32(3) // int32 | The number of results to retrieve between 1 and 10. (optional)
+	minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
+	maxLength := int32(200) // int32 | The maximum number of letters in the joke. (optional)
+	offset := float32(8.14) // float32 | The number of results to skip. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JokesApi.SearchJokes(context.Background()).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).Number(number).MinRating(minRating).MaxLength(maxLength).Offset(offset).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.SearchJokes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchJokes`: InlineResponse200
-    fmt.Fprintf(os.Stdout, "Response from `JokesApi.SearchJokes`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JokesAPI.SearchJokes(context.Background()).Keywords(keywords).IncludeTags(includeTags).ExcludeTags(excludeTags).Number(number).MinRating(minRating).MaxLength(maxLength).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JokesAPI.SearchJokes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchJokes`: SearchJokes200Response
+	fmt.Fprintf(os.Stdout, "Response from `JokesAPI.SearchJokes`: %v\n", resp)
 }
 ```
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchJokes200Response**](SearchJokes200Response.md)
 
 ### Authorization
 
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ## SubmitJoke
 
-> InlineResponse2008 SubmitJoke(ctx).Body(body).Execute()
+> SubmitJoke200Response SubmitJoke(ctx).Body(body).Execute()
 
 Submit Joke
 
@@ -315,24 +315,24 @@ Submit Joke
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    body := "body_example" // string | Post the joke as plain text. (optional)
+	body := "body_example" // string | Post the joke as plain text. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JokesApi.SubmitJoke(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.SubmitJoke``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SubmitJoke`: InlineResponse2008
-    fmt.Fprintf(os.Stdout, "Response from `JokesApi.SubmitJoke`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JokesAPI.SubmitJoke(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JokesAPI.SubmitJoke``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SubmitJoke`: SubmitJoke200Response
+	fmt.Fprintf(os.Stdout, "Response from `JokesAPI.SubmitJoke`: %v\n", resp)
 }
 ```
 
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## UpvoteJoke
 
-> InlineResponse2008 UpvoteJoke(ctx, id).Execute()
+> SubmitJoke200Response UpvoteJoke(ctx, id).Execute()
 
 Upvote a Joke
 
@@ -381,24 +381,24 @@ Upvote a Joke
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    id := int32(1) // int32 | The object's id.
+	id := int32(1) // int32 | The object's id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JokesApi.UpvoteJoke(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JokesApi.UpvoteJoke``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpvoteJoke`: InlineResponse2008
-    fmt.Fprintf(os.Stdout, "Response from `JokesApi.UpvoteJoke`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JokesAPI.UpvoteJoke(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JokesAPI.UpvoteJoke``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpvoteJoke`: SubmitJoke200Response
+	fmt.Fprintf(os.Stdout, "Response from `JokesAPI.UpvoteJoke`: %v\n", resp)
 }
 ```
 
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

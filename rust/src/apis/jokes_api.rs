@@ -59,7 +59,7 @@ pub enum UpvoteJokeError {
 
 
 /// Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
-pub async fn analyze_joke(configuration: &configuration::Configuration, body: Option<&str>) -> Result<crate::models::InlineResponse2009, Error<AnalyzeJokeError>> {
+pub async fn analyze_joke(configuration: &configuration::Configuration, body: Option<&str>) -> Result<crate::models::AnalyzeJoke200Response, Error<AnalyzeJokeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -96,7 +96,7 @@ pub async fn analyze_joke(configuration: &configuration::Configuration, body: Op
 }
 
 /// Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
-pub async fn downvote_joke(configuration: &configuration::Configuration, id: i32) -> Result<crate::models::InlineResponse2008, Error<DownvoteJokeError>> {
+pub async fn downvote_joke(configuration: &configuration::Configuration, id: i32) -> Result<crate::models::SubmitJoke200Response, Error<DownvoteJokeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -132,7 +132,7 @@ pub async fn downvote_joke(configuration: &configuration::Configuration, id: i32
 }
 
 /// Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
-pub async fn random_joke(configuration: &configuration::Configuration, keywords: Option<&str>, include_tags: Option<&str>, exclude_tags: Option<&str>, min_rating: Option<i32>, max_length: Option<i32>) -> Result<crate::models::InlineResponse2004, Error<RandomJokeError>> {
+pub async fn random_joke(configuration: &configuration::Configuration, keywords: Option<&str>, include_tags: Option<&str>, exclude_tags: Option<&str>, min_rating: Option<i32>, max_length: Option<i32>) -> Result<crate::models::RandomJoke200Response, Error<RandomJokeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -183,7 +183,7 @@ pub async fn random_joke(configuration: &configuration::Configuration, keywords:
 }
 
 /// Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
-pub async fn search_jokes(configuration: &configuration::Configuration, keywords: Option<&str>, include_tags: Option<&str>, exclude_tags: Option<&str>, number: Option<i32>, min_rating: Option<i32>, max_length: Option<i32>, offset: Option<f32>) -> Result<crate::models::InlineResponse200, Error<SearchJokesError>> {
+pub async fn search_jokes(configuration: &configuration::Configuration, keywords: Option<&str>, include_tags: Option<&str>, exclude_tags: Option<&str>, number: Option<i32>, min_rating: Option<i32>, max_length: Option<i32>, offset: Option<f32>) -> Result<crate::models::SearchJokes200Response, Error<SearchJokesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -240,7 +240,7 @@ pub async fn search_jokes(configuration: &configuration::Configuration, keywords
 }
 
 /// Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
-pub async fn submit_joke(configuration: &configuration::Configuration, body: Option<&str>) -> Result<crate::models::InlineResponse2008, Error<SubmitJokeError>> {
+pub async fn submit_joke(configuration: &configuration::Configuration, body: Option<&str>) -> Result<crate::models::SubmitJoke200Response, Error<SubmitJokeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -277,7 +277,7 @@ pub async fn submit_joke(configuration: &configuration::Configuration, body: Opt
 }
 
 /// Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
-pub async fn upvote_joke(configuration: &configuration::Configuration, id: i32) -> Result<crate::models::InlineResponse2008, Error<UpvoteJokeError>> {
+pub async fn upvote_joke(configuration: &configuration::Configuration, id: i32) -> Result<crate::models::SubmitJoke200Response, Error<UpvoteJokeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

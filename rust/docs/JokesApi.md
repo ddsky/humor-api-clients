@@ -1,4 +1,4 @@
-# com.humorapi.client\JokesApi
+# \JokesApi
 
 All URIs are relative to *https://api.humorapi.com*
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## analyze_joke
 
-> crate::models::InlineResponse2009 analyze_joke(body)
+> crate::models::AnalyzeJoke200Response analyze_joke(body)
 Analyze Joke
 
 Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
@@ -29,7 +29,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2009**](inline_response_200_9.md)
+[**crate::models::AnalyzeJoke200Response**](analyze_joke_200_response.md)
 
 ### Authorization
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 
 ## downvote_joke
 
-> crate::models::InlineResponse2008 downvote_joke(id)
+> crate::models::SubmitJoke200Response downvote_joke(id)
 Downvote a Joke
 
 Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
@@ -59,7 +59,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2008**](inline_response_200_8.md)
+[**crate::models::SubmitJoke200Response**](submit_joke_200_response.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Required | Notes
 
 ## random_joke
 
-> crate::models::InlineResponse2004 random_joke(keywords, include_tags, exclude_tags, min_rating, max_length)
+> crate::models::RandomJoke200Response random_joke(keywords, include_tags, exclude_tags, min_rating, max_length)
 Random Joke
 
 Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
@@ -93,7 +93,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2004**](inline_response_200_4.md)
+[**crate::models::RandomJoke200Response**](random_joke_200_response.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_jokes
 
-> crate::models::InlineResponse200 search_jokes(keywords, include_tags, exclude_tags, number, min_rating, max_length, offset)
+> crate::models::SearchJokes200Response search_jokes(keywords, include_tags, exclude_tags, number, min_rating, max_length, offset)
 Search Jokes
 
 Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
@@ -129,7 +129,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse200**](inline_response_200.md)
+[**crate::models::SearchJokes200Response**](search_jokes_200_response.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Required | Notes
 
 ## submit_joke
 
-> crate::models::InlineResponse2008 submit_joke(body)
+> crate::models::SubmitJoke200Response submit_joke(body)
 Submit Joke
 
 Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
@@ -159,7 +159,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2008**](inline_response_200_8.md)
+[**crate::models::SubmitJoke200Response**](submit_joke_200_response.md)
 
 ### Authorization
 
@@ -175,7 +175,7 @@ Name | Type | Description  | Required | Notes
 
 ## upvote_joke
 
-> crate::models::InlineResponse2008 upvote_joke(id)
+> crate::models::SubmitJoke200Response upvote_joke(id)
 Upvote a Joke
 
 Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
@@ -189,7 +189,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2008**](inline_response_200_8.md)
+[**crate::models::SubmitJoke200Response**](submit_joke_200_response.md)
 
 ### Authorization
 

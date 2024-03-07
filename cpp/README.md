@@ -34,7 +34,7 @@ using namespace test_namespace;
 class Example : public QObject {
     Q_OBJECT
     QString create();
-public slots:
+public Q_SLOTS:
    void exampleFunction1();
 };
 

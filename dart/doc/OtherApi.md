@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **generateNonsenseWord**
-> InlineResponse2007 generateNonsenseWord()
+> GenerateNonsenseWord200Response generateNonsenseWord()
 
 Generate Nonsense Word
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**GenerateNonsenseWord200Response**](GenerateNonsenseWord200Response.md)
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **insult**
-> InlineResponse2005 insult(name, reason)
+> Praise200Response insult(name, reason)
 
 Insult
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **praise**
-> InlineResponse2005 praise(name, reason)
+> Praise200Response praise(name, reason)
 
 Praise
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**Praise200Response**](Praise200Response.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rateWord**
-> InlineResponse2006 rateWord(word)
+> RateWord200Response rateWord(word)
 
 Rate Word
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**RateWord200Response**](RateWord200Response.md)
 
 ### Authorization
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchGifs**
-> InlineResponse2001 searchGifs(query, number)
+> SearchGifs200Response searchGifs(query, number)
 
 Search Gifs
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**SearchGifs200Response**](SearchGifs200Response.md)
 
 ### Authorization
 

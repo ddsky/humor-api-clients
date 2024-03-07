@@ -13,7 +13,7 @@ Method | HTTP request | Description
 # **downvoteMeme**
 ```objc
 -(NSURLSessionTask*) downvoteMemeWithId: (NSNumber*) _id
-        completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 ```
 
 Downvote a Meme
@@ -36,7 +36,7 @@ OAIMemesApi*apiInstance = [[OAIMemesApi alloc] init];
 
 // Downvote a Meme
 [apiInstance downvoteMemeWithId:_id
-          completionHandler: ^(OAIInlineResponse2008* output, NSError* error) {
+          completionHandler: ^(OAISubmitJoke200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2008***](OAIInlineResponse2008.md)
+[**OAISubmitJoke200Response***](OAISubmitJoke200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
     mediaType: (NSString*) mediaType
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
-        completionHandler: (void (^)(OAIInlineResponse2003* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIRandomMeme200Response* output, NSError* error)) handler;
 ```
 
 Random Meme
@@ -105,7 +105,7 @@ OAIMemesApi*apiInstance = [[OAIMemesApi alloc] init];
               mediaType:mediaType
               number:number
               minRating:minRating
-          completionHandler: ^(OAIInlineResponse2003* output, NSError* error) {
+          completionHandler: ^(OAIRandomMeme200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2003***](OAIInlineResponse2003.md)
+[**OAIRandomMeme200Response***](OAIRandomMeme200Response.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
     offset: (NSNumber*) offset
-        completionHandler: (void (^)(OAIInlineResponse2002* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISearchMemes200Response* output, NSError* error)) handler;
 ```
 
 Search Memes
@@ -181,7 +181,7 @@ OAIMemesApi*apiInstance = [[OAIMemesApi alloc] init];
               number:number
               minRating:minRating
               offset:offset
-          completionHandler: ^(OAIInlineResponse2002* output, NSError* error) {
+          completionHandler: ^(OAISearchMemes200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2002***](OAIInlineResponse2002.md)
+[**OAISearchMemes200Response***](OAISearchMemes200Response.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 # **upvoteMeme**
 ```objc
 -(NSURLSessionTask*) upvoteMemeWithId: (NSNumber*) _id
-        completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 ```
 
 Upvote a Meme
@@ -243,7 +243,7 @@ OAIMemesApi*apiInstance = [[OAIMemesApi alloc] init];
 
 // Upvote a Meme
 [apiInstance upvoteMemeWithId:_id
-          completionHandler: ^(OAIInlineResponse2008* output, NSError* error) {
+          completionHandler: ^(OAISubmitJoke200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2008***](OAIInlineResponse2008.md)
+[**OAISubmitJoke200Response***](OAISubmitJoke200Response.md)
 
 ### Authorization
 

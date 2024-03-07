@@ -69,7 +69,7 @@ import qualified Prelude as P
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
 generateNonsenseWord
-  :: HumorRequest GenerateNonsenseWord MimeNoContent InlineResponse2007 MimeJSON
+  :: HumorRequest GenerateNonsenseWord MimeNoContent GenerateNonsenseWord200Response MimeJSON
 generateNonsenseWord =
   _mkRequest "GET" ["/words/nonsense/random"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -92,7 +92,7 @@ instance Produces GenerateNonsenseWord MimeJSON
 insult
   :: Name -- ^ "name" -  The person's name.
   -> Reason -- ^ "reason" -  The reason for the praise/insult.
-  -> HumorRequest Insult MimeNoContent InlineResponse2005 MimeJSON
+  -> HumorRequest Insult MimeNoContent Praise200Response MimeJSON
 insult (Name name) (Reason reason) =
   _mkRequest "GET" ["/insult"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -117,7 +117,7 @@ instance Produces Insult MimeJSON
 praise
   :: Name -- ^ "name" -  The person's name.
   -> Reason -- ^ "reason" -  The reason for the praise/insult.
-  -> HumorRequest Praise MimeNoContent InlineResponse2005 MimeJSON
+  -> HumorRequest Praise MimeNoContent Praise200Response MimeJSON
 praise (Name name) (Reason reason) =
   _mkRequest "GET" ["/praise"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -141,7 +141,7 @@ instance Produces Praise MimeJSON
 -- 
 rateWord
   :: Word -- ^ "word" -  The word to be rated.
-  -> HumorRequest RateWord MimeNoContent InlineResponse2006 MimeJSON
+  -> HumorRequest RateWord MimeNoContent RateWord200Response MimeJSON
 rateWord (Word word) =
   _mkRequest "GET" ["/words/rate"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -164,7 +164,7 @@ instance Produces RateWord MimeJSON
 -- 
 searchGifs
   :: Query -- ^ "query" -  A search query.
-  -> HumorRequest SearchGifs MimeNoContent InlineResponse2001 MimeJSON
+  -> HumorRequest SearchGifs MimeNoContent SearchGifs200Response MimeJSON
 searchGifs (Query query) =
   _mkRequest "GET" ["/gif/search"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)

@@ -57,11 +57,11 @@ npm run build
 
 #### git
 
-If the library is hosted at a git repository, e.g.https://github.com/GIT_USER_ID/GIT_REPO_ID
+If the library is hosted at a git repository, e.g.https://github.com/ddsky/humor-api-clients/tree/main/javascript/
 then install it via:
 
 ```shell
-    npm install GIT_USER_ID/GIT_REPO_ID --save
+    npm install ddsky/humor-api-clients/tree/main/javascript/ --save
 ```
 
 ### For browser
@@ -148,22 +148,25 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [HumorApi.InlineResponse200](docs/InlineResponse200.md)
- - [HumorApi.InlineResponse2001](docs/InlineResponse2001.md)
- - [HumorApi.InlineResponse2002](docs/InlineResponse2002.md)
- - [HumorApi.InlineResponse2003](docs/InlineResponse2003.md)
- - [HumorApi.InlineResponse2004](docs/InlineResponse2004.md)
- - [HumorApi.InlineResponse2005](docs/InlineResponse2005.md)
- - [HumorApi.InlineResponse2006](docs/InlineResponse2006.md)
- - [HumorApi.InlineResponse2007](docs/InlineResponse2007.md)
- - [HumorApi.InlineResponse2008](docs/InlineResponse2008.md)
- - [HumorApi.InlineResponse2009](docs/InlineResponse2009.md)
+ - [HumorApi.AnalyzeJoke200Response](docs/AnalyzeJoke200Response.md)
+ - [HumorApi.GenerateNonsenseWord200Response](docs/GenerateNonsenseWord200Response.md)
+ - [HumorApi.Praise200Response](docs/Praise200Response.md)
+ - [HumorApi.RandomJoke200Response](docs/RandomJoke200Response.md)
+ - [HumorApi.RandomMeme200Response](docs/RandomMeme200Response.md)
+ - [HumorApi.RateWord200Response](docs/RateWord200Response.md)
+ - [HumorApi.SearchGifs200Response](docs/SearchGifs200Response.md)
+ - [HumorApi.SearchGifs200ResponseImagesInner](docs/SearchGifs200ResponseImagesInner.md)
+ - [HumorApi.SearchJokes200Response](docs/SearchJokes200Response.md)
+ - [HumorApi.SearchJokes200ResponseJokesInner](docs/SearchJokes200ResponseJokesInner.md)
+ - [HumorApi.SearchMemes200Response](docs/SearchMemes200Response.md)
+ - [HumorApi.SearchMemes200ResponseMemesInner](docs/SearchMemes200ResponseMemesInner.md)
+ - [HumorApi.SubmitJoke200Response](docs/SubmitJoke200Response.md)
 
 
 ## Documentation for Authorization
 
 
-
+Authentication schemes defined for the API:
 ### apiKey
 
 

@@ -1,15 +1,19 @@
-defmodule com.humorapi.client.Mixfile do
+defmodule HumorAPI.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :com/humorapi/client,
-     version: "1.0",
-     elixir: "~> 1.6",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     package: package(),
-     description: "Awesome Humor API.",
-     deps: deps()]
+    [
+      app: :humorapi,
+      version: "1.0",
+      elixir: "~> 1.10",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      package: package(),
+      description: """
+      Awesome Humor API.
+      """,
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -31,16 +35,17 @@ defmodule com.humorapi.client.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:tesla, "~> 1.2"},
-      {:poison, "~> 3.0"}
+      {:tesla, "~> 1.7"},
+      {:jason, "~> 1.4"},
+      {:ex_doc, "~> 0.30", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false}
     ]
   end
 
-   defp package() do
-    [
-      name: "com/humorapi/client",
-      files: ~w(lib mix.exs README* LICENSE*),
-      licenses: [""]
-    ]
+   defp package do
+      [
+        name: "humorapi",
+        files: ~w(.formatter.exs config lib mix.exs README* LICENSE*),
+      ]
   end
 end

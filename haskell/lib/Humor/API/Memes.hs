@@ -70,7 +70,7 @@ import qualified Prelude as P
 -- 
 downvoteMeme
   :: Id -- ^ "id" -  The object's id.
-  -> HumorRequest DownvoteMeme MimeNoContent InlineResponse2008 MimeJSON
+  -> HumorRequest DownvoteMeme MimeNoContent SubmitJoke200Response MimeJSON
 downvoteMeme (Id id) =
   _mkRequest "POST" ["/memes/",toPath id,"/downvote"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -91,7 +91,7 @@ instance Produces DownvoteMeme MimeJSON
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
 randomMeme
-  :: HumorRequest RandomMeme MimeNoContent InlineResponse2003 MimeJSON
+  :: HumorRequest RandomMeme MimeNoContent RandomMeme200Response MimeJSON
 randomMeme =
   _mkRequest "GET" ["/memes/random"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -137,7 +137,7 @@ instance Produces RandomMeme MimeJSON
 -- AuthMethod: 'AuthApiKeyApiKey'
 -- 
 searchMemes
-  :: HumorRequest SearchMemes MimeNoContent InlineResponse2002 MimeJSON
+  :: HumorRequest SearchMemes MimeNoContent SearchMemes200Response MimeJSON
 searchMemes =
   _mkRequest "GET" ["/memes/search"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)
@@ -189,7 +189,7 @@ instance Produces SearchMemes MimeJSON
 -- 
 upvoteMeme
   :: Id -- ^ "id" -  The object's id.
-  -> HumorRequest UpvoteMeme MimeNoContent InlineResponse2008 MimeJSON
+  -> HumorRequest UpvoteMeme MimeNoContent SubmitJoke200Response MimeJSON
 upvoteMeme (Id id) =
   _mkRequest "POST" ["/memes/",toPath id,"/upvote"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyApiKey)

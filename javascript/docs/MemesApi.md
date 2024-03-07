@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## downvoteMeme
 
-> InlineResponse2008 downvoteMeme(id)
+> SubmitJoke200Response downvoteMeme(id)
 
 Downvote a Meme
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ## randomMeme
 
-> InlineResponse2003 randomMeme(opts)
+> RandomMeme200Response randomMeme(opts)
 
 Random Meme
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**RandomMeme200Response**](RandomMeme200Response.md)
 
 ### Authorization
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ## searchMemes
 
-> InlineResponse2002 searchMemes(opts)
+> SearchMemes200Response searchMemes(opts)
 
 Search Memes
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**SearchMemes200Response**](SearchMemes200Response.md)
 
 ### Authorization
 
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ## upvoteMeme
 
-> InlineResponse2008 upvoteMeme(id)
+> SubmitJoke200Response upvoteMeme(id)
 
 Upvote a Meme
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

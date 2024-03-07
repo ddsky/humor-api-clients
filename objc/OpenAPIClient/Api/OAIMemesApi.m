@@ -1,9 +1,9 @@
 #import "OAIMemesApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIInlineResponse2002.h"
-#import "OAIInlineResponse2003.h"
-#import "OAIInlineResponse2008.h"
+#import "OAIRandomMeme200Response.h"
+#import "OAISearchMemes200Response.h"
+#import "OAISubmitJoke200Response.h"
 
 
 @interface OAIMemesApi ()
@@ -56,10 +56,10 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
 /// Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
 ///  @param _id The object's id. 
 ///
-///  @returns OAIInlineResponse2008*
+///  @returns OAISubmitJoke200Response*
 ///
 -(NSURLSessionTask*) downvoteMemeWithId: (NSNumber*) _id
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler {
     // verify the required parameter '_id' is set
     if (_id == nil) {
         NSParameterAssert(_id);
@@ -111,10 +111,10 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2008*"
+                              responseType: @"OAISubmitJoke200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2008*)data, error);
+                                    handler((OAISubmitJoke200Response*)data, error);
                                 }
                             }];
 }
@@ -132,14 +132,14 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
 ///
 ///  @param minRating The minimum rating between 0 and 10 the result should have. (optional)
 ///
-///  @returns OAIInlineResponse2003*
+///  @returns OAIRandomMeme200Response*
 ///
 -(NSURLSessionTask*) randomMemeWithKeywords: (NSString*) keywords
     keywordsInImage: (NSNumber*) keywordsInImage
     mediaType: (NSString*) mediaType
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
-    completionHandler: (void (^)(OAIInlineResponse2003* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIRandomMeme200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/memes/random"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -192,10 +192,10 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2003*"
+                              responseType: @"OAIRandomMeme200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2003*)data, error);
+                                    handler((OAIRandomMeme200Response*)data, error);
                                 }
                             }];
 }
@@ -215,7 +215,7 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
 ///
 ///  @param offset The number of results to skip. (optional)
 ///
-///  @returns OAIInlineResponse2002*
+///  @returns OAISearchMemes200Response*
 ///
 -(NSURLSessionTask*) searchMemesWithKeywords: (NSString*) keywords
     keywordsInImage: (NSNumber*) keywordsInImage
@@ -223,7 +223,7 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
     offset: (NSNumber*) offset
-    completionHandler: (void (^)(OAIInlineResponse2002* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISearchMemes200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/memes/search"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -279,10 +279,10 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2002*"
+                              responseType: @"OAISearchMemes200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2002*)data, error);
+                                    handler((OAISearchMemes200Response*)data, error);
                                 }
                             }];
 }
@@ -292,10 +292,10 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
 /// Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
 ///  @param _id The object's id. 
 ///
-///  @returns OAIInlineResponse2008*
+///  @returns OAISubmitJoke200Response*
 ///
 -(NSURLSessionTask*) upvoteMemeWithId: (NSNumber*) _id
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler {
     // verify the required parameter '_id' is set
     if (_id == nil) {
         NSParameterAssert(_id);
@@ -347,10 +347,10 @@ NSInteger kOAIMemesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2008*"
+                              responseType: @"OAISubmitJoke200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2008*)data, error);
+                                    handler((OAISubmitJoke200Response*)data, error);
                                 }
                             }];
 }

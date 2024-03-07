@@ -26,9 +26,9 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-    <groupId>com.humorapi</groupId>
+    <groupId>org.openapitools</groupId>
     <artifactId>android-client</artifactId>
-    <version>1.0</version>
+    <version>1.0.8</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.humorapi:android-client:1.0"
+compile "org.openapitools:android-client:1.0.8"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- target/android-client-1.0.jar
+- target/android-client-1.0.8.jar
 - target/lib/*.jar
 
 ## Getting Started
@@ -58,7 +58,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
 
-import com.humorapi.JokesApi;
+import org.openapitools.client.api.JokesApi;
 
 public class JokesApiExample {
 
@@ -66,7 +66,7 @@ public class JokesApiExample {
         JokesApi apiInstance = new JokesApi();
         String body = "body_example"; // String | Post the joke as plain text.
         try {
-            InlineResponse2009 result = apiInstance.analyzeJoke(body);
+            AnalyzeJoke200Response result = apiInstance.analyzeJoke(body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling JokesApi#analyzeJoke");
@@ -102,16 +102,19 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse2001](docs/InlineResponse2001.md)
- - [InlineResponse2002](docs/InlineResponse2002.md)
- - [InlineResponse2003](docs/InlineResponse2003.md)
- - [InlineResponse2004](docs/InlineResponse2004.md)
- - [InlineResponse2005](docs/InlineResponse2005.md)
- - [InlineResponse2006](docs/InlineResponse2006.md)
- - [InlineResponse2007](docs/InlineResponse2007.md)
- - [InlineResponse2008](docs/InlineResponse2008.md)
- - [InlineResponse2009](docs/InlineResponse2009.md)
+ - [AnalyzeJoke200Response](docs/AnalyzeJoke200Response.md)
+ - [GenerateNonsenseWord200Response](docs/GenerateNonsenseWord200Response.md)
+ - [Praise200Response](docs/Praise200Response.md)
+ - [RandomJoke200Response](docs/RandomJoke200Response.md)
+ - [RandomMeme200Response](docs/RandomMeme200Response.md)
+ - [RateWord200Response](docs/RateWord200Response.md)
+ - [SearchGifs200Response](docs/SearchGifs200Response.md)
+ - [SearchGifs200ResponseImagesInner](docs/SearchGifs200ResponseImagesInner.md)
+ - [SearchJokes200Response](docs/SearchJokes200Response.md)
+ - [SearchJokes200ResponseJokesInner](docs/SearchJokes200ResponseJokesInner.md)
+ - [SearchMemes200Response](docs/SearchMemes200Response.md)
+ - [SearchMemes200ResponseMemesInner](docs/SearchMemes200ResponseMemesInner.md)
+ - [SubmitJoke200Response](docs/SubmitJoke200Response.md)
 
 
 ## Documentation for Authorization

@@ -1,19 +1,19 @@
-# com.humorapi.client\MemesApi
+# \MemesAPI
 
 All URIs are relative to *https://api.humorapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DownvoteMeme**](MemesApi.md#DownvoteMeme) | **Post** /memes/{id}/downvote | Downvote a Meme
-[**RandomMeme**](MemesApi.md#RandomMeme) | **Get** /memes/random | Random Meme
-[**SearchMemes**](MemesApi.md#SearchMemes) | **Get** /memes/search | Search Memes
-[**UpvoteMeme**](MemesApi.md#UpvoteMeme) | **Post** /memes/{id}/upvote | Upvote a Meme
+[**DownvoteMeme**](MemesAPI.md#DownvoteMeme) | **Post** /memes/{id}/downvote | Downvote a Meme
+[**RandomMeme**](MemesAPI.md#RandomMeme) | **Get** /memes/random | Random Meme
+[**SearchMemes**](MemesAPI.md#SearchMemes) | **Get** /memes/search | Search Memes
+[**UpvoteMeme**](MemesAPI.md#UpvoteMeme) | **Post** /memes/{id}/upvote | Upvote a Meme
 
 
 
 ## DownvoteMeme
 
-> InlineResponse2008 DownvoteMeme(ctx, id).Execute()
+> SubmitJoke200Response DownvoteMeme(ctx, id).Execute()
 
 Downvote a Meme
 
@@ -25,24 +25,24 @@ Downvote a Meme
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    id := int32(1) // int32 | The object's id.
+	id := int32(1) // int32 | The object's id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MemesApi.DownvoteMeme(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MemesApi.DownvoteMeme``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DownvoteMeme`: InlineResponse2008
-    fmt.Fprintf(os.Stdout, "Response from `MemesApi.DownvoteMeme`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MemesAPI.DownvoteMeme(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MemesAPI.DownvoteMeme``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DownvoteMeme`: SubmitJoke200Response
+	fmt.Fprintf(os.Stdout, "Response from `MemesAPI.DownvoteMeme`: %v\n", resp)
 }
 ```
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## RandomMeme
 
-> InlineResponse2003 RandomMeme(ctx).Keywords(keywords).KeywordsInImage(keywordsInImage).MediaType(mediaType).Number(number).MinRating(minRating).Execute()
+> RandomMeme200Response RandomMeme(ctx).Keywords(keywords).KeywordsInImage(keywordsInImage).MediaType(mediaType).Number(number).MinRating(minRating).Execute()
 
 Random Meme
 
@@ -95,28 +95,28 @@ Random Meme
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    keywords := "rocket" // string | A comma separated list of keywords. (optional)
-    keywordsInImage := false // bool | Whether the keywords should be found in the meme's image. (optional)
-    mediaType := "image" // string | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
-    number := int32(3) // int32 | The number of results to retrieve between 1 and 10. (optional)
-    minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
+	keywords := "rocket" // string | A comma separated list of keywords. (optional)
+	keywordsInImage := false // bool | Whether the keywords should be found in the meme's image. (optional)
+	mediaType := "image" // string | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
+	number := int32(3) // int32 | The number of results to retrieve between 1 and 10. (optional)
+	minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MemesApi.RandomMeme(context.Background()).Keywords(keywords).KeywordsInImage(keywordsInImage).MediaType(mediaType).Number(number).MinRating(minRating).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MemesApi.RandomMeme``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RandomMeme`: InlineResponse2003
-    fmt.Fprintf(os.Stdout, "Response from `MemesApi.RandomMeme`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MemesAPI.RandomMeme(context.Background()).Keywords(keywords).KeywordsInImage(keywordsInImage).MediaType(mediaType).Number(number).MinRating(minRating).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MemesAPI.RandomMeme``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RandomMeme`: RandomMeme200Response
+	fmt.Fprintf(os.Stdout, "Response from `MemesAPI.RandomMeme`: %v\n", resp)
 }
 ```
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**RandomMeme200Response**](RandomMeme200Response.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## SearchMemes
 
-> InlineResponse2002 SearchMemes(ctx).Keywords(keywords).KeywordsInImage(keywordsInImage).MediaType(mediaType).Number(number).MinRating(minRating).Offset(offset).Execute()
+> SearchMemes200Response SearchMemes(ctx).Keywords(keywords).KeywordsInImage(keywordsInImage).MediaType(mediaType).Number(number).MinRating(minRating).Offset(offset).Execute()
 
 Search Memes
 
@@ -169,29 +169,29 @@ Search Memes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    keywords := "rocket" // string | A comma separated list of keywords. (optional)
-    keywordsInImage := false // bool | Whether the keywords should be found in the meme's image. (optional)
-    mediaType := "image" // string | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
-    number := int32(3) // int32 | The number of results to retrieve between 1 and 10. (optional)
-    minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
-    offset := float32(8.14) // float32 | The number of results to skip. (optional)
+	keywords := "rocket" // string | A comma separated list of keywords. (optional)
+	keywordsInImage := false // bool | Whether the keywords should be found in the meme's image. (optional)
+	mediaType := "image" // string | The type of the content. Can be either 'image' or 'video' or specific formats such as 'jpg', 'png', 'gif', or 'mp4'. (optional)
+	number := int32(3) // int32 | The number of results to retrieve between 1 and 10. (optional)
+	minRating := int32(7) // int32 | The minimum rating between 0 and 10 the result should have. (optional)
+	offset := float32(8.14) // float32 | The number of results to skip. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MemesApi.SearchMemes(context.Background()).Keywords(keywords).KeywordsInImage(keywordsInImage).MediaType(mediaType).Number(number).MinRating(minRating).Offset(offset).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MemesApi.SearchMemes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchMemes`: InlineResponse2002
-    fmt.Fprintf(os.Stdout, "Response from `MemesApi.SearchMemes`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MemesAPI.SearchMemes(context.Background()).Keywords(keywords).KeywordsInImage(keywordsInImage).MediaType(mediaType).Number(number).MinRating(minRating).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MemesAPI.SearchMemes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchMemes`: SearchMemes200Response
+	fmt.Fprintf(os.Stdout, "Response from `MemesAPI.SearchMemes`: %v\n", resp)
 }
 ```
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**SearchMemes200Response**](SearchMemes200Response.md)
 
 ### Authorization
 
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## UpvoteMeme
 
-> InlineResponse2008 UpvoteMeme(ctx, id).Execute()
+> SubmitJoke200Response UpvoteMeme(ctx, id).Execute()
 
 Upvote a Meme
 
@@ -245,24 +245,24 @@ Upvote a Meme
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/humor-api-clients/tree/main/go/"
 )
 
 func main() {
-    id := int32(1) // int32 | The object's id.
+	id := int32(1) // int32 | The object's id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MemesApi.UpvoteMeme(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MemesApi.UpvoteMeme``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpvoteMeme`: InlineResponse2008
-    fmt.Fprintf(os.Stdout, "Response from `MemesApi.UpvoteMeme`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MemesAPI.UpvoteMeme(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MemesAPI.UpvoteMeme``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpvoteMeme`: SubmitJoke200Response
+	fmt.Fprintf(os.Stdout, "Response from `MemesAPI.UpvoteMeme`: %v\n", resp)
 }
 ```
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

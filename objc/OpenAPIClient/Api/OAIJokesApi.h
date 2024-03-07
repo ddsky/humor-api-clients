@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
-#import "OAIInlineResponse200.h"
-#import "OAIInlineResponse2004.h"
-#import "OAIInlineResponse2008.h"
-#import "OAIInlineResponse2009.h"
+#import "OAIAnalyzeJoke200Response.h"
+#import "OAIRandomJoke200Response.h"
+#import "OAISearchJokes200Response.h"
+#import "OAISubmitJoke200Response.h"
 #import "OAIApi.h"
 
 /**
@@ -33,9 +33,9 @@ extern NSInteger kOAIJokesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Successful analysis"
 ///
-/// @return OAIInlineResponse2009*
+/// @return OAIAnalyzeJoke200Response*
 -(NSURLSessionTask*) analyzeJokeWithBody: (NSString*) body
-    completionHandler: (void (^)(OAIInlineResponse2009* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAIAnalyzeJoke200Response* output, NSError* error)) handler;
 
 
 /// Downvote a Joke
@@ -45,9 +45,9 @@ extern NSInteger kOAIJokesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Successful downvote"
 ///
-/// @return OAIInlineResponse2008*
+/// @return OAISubmitJoke200Response*
 -(NSURLSessionTask*) downvoteJokeWithId: (NSNumber*) _id
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 
 
 /// Random Joke
@@ -61,13 +61,13 @@ extern NSInteger kOAIJokesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Random Joke Response"
 ///
-/// @return OAIInlineResponse2004*
+/// @return OAIRandomJoke200Response*
 -(NSURLSessionTask*) randomJokeWithKeywords: (NSString*) keywords
     includeTags: (NSString*) includeTags
     excludeTags: (NSString*) excludeTags
     minRating: (NSNumber*) minRating
     maxLength: (NSNumber*) maxLength
-    completionHandler: (void (^)(OAIInlineResponse2004* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAIRandomJoke200Response* output, NSError* error)) handler;
 
 
 /// Search Jokes
@@ -83,7 +83,7 @@ extern NSInteger kOAIJokesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Joke Search Response"
 ///
-/// @return OAIInlineResponse200*
+/// @return OAISearchJokes200Response*
 -(NSURLSessionTask*) searchJokesWithKeywords: (NSString*) keywords
     includeTags: (NSString*) includeTags
     excludeTags: (NSString*) excludeTags
@@ -91,7 +91,7 @@ extern NSInteger kOAIJokesApiMissingParamErrorCode;
     minRating: (NSNumber*) minRating
     maxLength: (NSNumber*) maxLength
     offset: (NSNumber*) offset
-    completionHandler: (void (^)(OAIInlineResponse200* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAISearchJokes200Response* output, NSError* error)) handler;
 
 
 /// Submit Joke
@@ -101,9 +101,9 @@ extern NSInteger kOAIJokesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Successful submission."
 ///
-/// @return OAIInlineResponse2008*
+/// @return OAISubmitJoke200Response*
 -(NSURLSessionTask*) submitJokeWithBody: (NSString*) body
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 
 
 /// Upvote a Joke
@@ -113,9 +113,9 @@ extern NSInteger kOAIJokesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Successful upvote"
 ///
-/// @return OAIInlineResponse2008*
+/// @return OAISubmitJoke200Response*
 -(NSURLSessionTask*) upvoteJokeWithId: (NSNumber*) _id
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 
 
 

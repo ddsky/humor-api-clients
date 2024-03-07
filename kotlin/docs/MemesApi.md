@@ -10,9 +10,9 @@ Method | HTTP request | Description
 [**upvoteMeme**](MemesApi.md#upvoteMeme) | **POST** /memes/{id}/upvote | Upvote a Meme
 
 
-<a name="downvoteMeme"></a>
+<a id="downvoteMeme"></a>
 # **downvoteMeme**
-> InlineResponse2008 downvoteMeme(id)
+> SubmitJoke200Response downvoteMeme(id)
 
 Downvote a Meme
 
@@ -21,13 +21,13 @@ Downvote a meme. See https://humorapi.com/docs/#Downvote-Meme for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = MemesApi()
 val id : kotlin.Int = 1 // kotlin.Int | The object's id.
 try {
-    val result : InlineResponse2008 = apiInstance.downvoteMeme(id)
+    val result : SubmitJoke200Response = apiInstance.downvoteMeme(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MemesApi#downvoteMeme")
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -60,9 +60,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="randomMeme"></a>
+<a id="randomMeme"></a>
 # **randomMeme**
-> InlineResponse2003 randomMeme(keywords, keywordsInImage, mediaType, number, minRating)
+> RandomMeme200Response randomMeme(keywords, keywordsInImage, mediaType, number, minRating)
 
 Random Meme
 
@@ -71,8 +71,8 @@ Get a random meme. See https://humorapi.com/docs/#Random-Meme for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = MemesApi()
 val keywords : kotlin.String = rocket // kotlin.String | A comma separated list of keywords.
@@ -81,7 +81,7 @@ val mediaType : kotlin.String = image // kotlin.String | The type of the content
 val number : kotlin.Int = 3 // kotlin.Int | The number of results to retrieve between 1 and 10.
 val minRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
 try {
-    val result : InlineResponse2003 = apiInstance.randomMeme(keywords, keywordsInImage, mediaType, number, minRating)
+    val result : RandomMeme200Response = apiInstance.randomMeme(keywords, keywordsInImage, mediaType, number, minRating)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MemesApi#randomMeme")
@@ -97,14 +97,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keywords** | **kotlin.String**| A comma separated list of keywords. | [optional]
- **keywordsInImage** | **kotlin.Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] [enum: true, false]
+ **keywordsInImage** | **kotlin.Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional]
  **mediaType** | **kotlin.String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] [enum: image, video, jpg, gif, png, mp4]
  **number** | **kotlin.Int**| The number of results to retrieve between 1 and 10. | [optional]
  **minRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**RandomMeme200Response**](RandomMeme200Response.md)
 
 ### Authorization
 
@@ -118,9 +118,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="searchMemes"></a>
+<a id="searchMemes"></a>
 # **searchMemes**
-> InlineResponse2002 searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
+> SearchMemes200Response searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
 
 Search Memes
 
@@ -129,8 +129,8 @@ Search for memes. See https://humorapi.com/docs/#Search-Memes for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = MemesApi()
 val keywords : kotlin.String = rocket // kotlin.String | A comma separated list of keywords.
@@ -140,7 +140,7 @@ val number : kotlin.Int = 3 // kotlin.Int | The number of results to retrieve be
 val minRating : kotlin.Int = 7 // kotlin.Int | The minimum rating between 0 and 10 the result should have.
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | The number of results to skip.
 try {
-    val result : InlineResponse2002 = apiInstance.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
+    val result : SearchMemes200Response = apiInstance.searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MemesApi#searchMemes")
@@ -156,7 +156,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keywords** | **kotlin.String**| A comma separated list of keywords. | [optional]
- **keywordsInImage** | **kotlin.Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional] [enum: true, false]
+ **keywordsInImage** | **kotlin.Boolean**| Whether the keywords should be found in the meme&#39;s image. | [optional]
  **mediaType** | **kotlin.String**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] [enum: image, video, jpg, gif, png, mp4]
  **number** | **kotlin.Int**| The number of results to retrieve between 1 and 10. | [optional]
  **minRating** | **kotlin.Int**| The minimum rating between 0 and 10 the result should have. | [optional]
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**SearchMemes200Response**](SearchMemes200Response.md)
 
 ### Authorization
 
@@ -178,9 +178,9 @@ Configure apiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="upvoteMeme"></a>
+<a id="upvoteMeme"></a>
 # **upvoteMeme**
-> InlineResponse2008 upvoteMeme(id)
+> SubmitJoke200Response upvoteMeme(id)
 
 Upvote a Meme
 
@@ -189,13 +189,13 @@ Upvote a meme. See https://humorapi.com/docs/#Upvote-Meme for more.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.humorapi.client.model.*
+//import humorapi.infrastructure.*
+//import humorapi.models.*
 
 val apiInstance = MemesApi()
 val id : kotlin.Int = 1 // kotlin.Int | The object's id.
 try {
-    val result : InlineResponse2008 = apiInstance.upvoteMeme(id)
+    val result : SubmitJoke200Response = apiInstance.upvoteMeme(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MemesApi#upvoteMeme")
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

@@ -1,19 +1,19 @@
-# com.humorapi.client\MemesApi
+# OpenAPI\Client\MemesApi
 
-All URIs are relative to https://api.humorapi.com.
+All URIs are relative to https://api.humorapi.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**downvoteMeme()**](MemesApi.md#downvoteMeme) | **POST** /memes/{id}/downvote | Downvote a Meme
-[**randomMeme()**](MemesApi.md#randomMeme) | **GET** /memes/random | Random Meme
-[**searchMemes()**](MemesApi.md#searchMemes) | **GET** /memes/search | Search Memes
-[**upvoteMeme()**](MemesApi.md#upvoteMeme) | **POST** /memes/{id}/upvote | Upvote a Meme
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**downvoteMeme()**](MemesApi.md#downvoteMeme) | **POST** /memes/{id}/downvote | Downvote a Meme |
+| [**randomMeme()**](MemesApi.md#randomMeme) | **GET** /memes/random | Random Meme |
+| [**searchMemes()**](MemesApi.md#searchMemes) | **GET** /memes/search | Search Memes |
+| [**upvoteMeme()**](MemesApi.md#upvoteMeme) | **POST** /memes/{id}/upvote | Upvote a Meme |
 
 
 ## `downvoteMeme()`
 
 ```php
-downvoteMeme($id): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+downvoteMeme($id): \OpenAPI\Client\Model\SubmitJoke200Response
 ```
 
 Downvote a Meme
@@ -28,12 +28,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\MemesApi(
+$apiInstance = new OpenAPI\Client\Api\MemesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -51,13 +51,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The object&#39;s id. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| The object&#39;s id. | |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\OpenAPI\Client\Model\SubmitJoke200Response**](../Model/SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ## `randomMeme()`
 
 ```php
-randomMeme($keywords, $keywords_in_image, $media_type, $number, $min_rating): \com.humorapi.client\com.humorapi.client.model\InlineResponse2003
+randomMeme($keywords, $keywords_in_image, $media_type, $number, $min_rating): \OpenAPI\Client\Model\RandomMeme200Response
 ```
 
 Random Meme
@@ -90,12 +90,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\MemesApi(
+$apiInstance = new OpenAPI\Client\Api\MemesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -117,17 +117,17 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **keywords** | **string**| A comma separated list of keywords. | [optional]
- **keywords_in_image** | **bool**| Whether the keywords should be found in the meme&#39;s image. | [optional]
- **media_type** | **string**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional]
- **number** | **int**| The number of results to retrieve between 1 and 10. | [optional]
- **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **keywords** | **string**| A comma separated list of keywords. | [optional] |
+| **keywords_in_image** | **bool**| Whether the keywords should be found in the meme&#39;s image. | [optional] |
+| **media_type** | **string**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] |
+| **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] |
+| **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\OpenAPI\Client\Model\RandomMeme200Response**](../Model/RandomMeme200Response.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 ## `searchMemes()`
 
 ```php
-searchMemes($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset): \com.humorapi.client\com.humorapi.client.model\InlineResponse2002
+searchMemes($keywords, $keywords_in_image, $media_type, $number, $min_rating, $offset): \OpenAPI\Client\Model\SearchMemes200Response
 ```
 
 Search Memes
@@ -160,12 +160,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\MemesApi(
+$apiInstance = new OpenAPI\Client\Api\MemesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -188,18 +188,18 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **keywords** | **string**| A comma separated list of keywords. | [optional]
- **keywords_in_image** | **bool**| Whether the keywords should be found in the meme&#39;s image. | [optional]
- **media_type** | **string**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional]
- **number** | **int**| The number of results to retrieve between 1 and 10. | [optional]
- **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional]
- **offset** | **float**| The number of results to skip. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **keywords** | **string**| A comma separated list of keywords. | [optional] |
+| **keywords_in_image** | **bool**| Whether the keywords should be found in the meme&#39;s image. | [optional] |
+| **media_type** | **string**| The type of the content. Can be either &#39;image&#39; or &#39;video&#39; or specific formats such as &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, or &#39;mp4&#39;. | [optional] |
+| **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] |
+| **min_rating** | **int**| The minimum rating between 0 and 10 the result should have. | [optional] |
+| **offset** | **float**| The number of results to skip. | [optional] |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\OpenAPI\Client\Model\SearchMemes200Response**](../Model/SearchMemes200Response.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 ## `upvoteMeme()`
 
 ```php
-upvoteMeme($id): \com.humorapi.client\com.humorapi.client.model\InlineResponse2008
+upvoteMeme($id): \OpenAPI\Client\Model\SubmitJoke200Response
 ```
 
 Upvote a Meme
@@ -232,12 +232,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\MemesApi(
+$apiInstance = new OpenAPI\Client\Api\MemesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -255,13 +255,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The object&#39;s id. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| The object&#39;s id. | |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\OpenAPI\Client\Model\SubmitJoke200Response**](../Model/SubmitJoke200Response.md)
 
 ### Authorization
 

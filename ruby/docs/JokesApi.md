@@ -14,7 +14,7 @@ All URIs are relative to *https://api.humorapi.com*
 
 ## analyze_joke
 
-> <InlineResponse2009> analyze_joke(opts)
+> <AnalyzeJoke200Response> analyze_joke(opts)
 
 Analyze Joke
 
@@ -51,7 +51,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2009>, Integer, Hash)> analyze_joke_with_http_info(opts)
+> <Array(<AnalyzeJoke200Response>, Integer, Hash)> analyze_joke_with_http_info(opts)
 
 ```ruby
 begin
@@ -59,7 +59,7 @@ begin
   data, status_code, headers = api_instance.analyze_joke_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2009>
+  p data # => <AnalyzeJoke200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling JokesApi->analyze_joke_with_http_info: #{e}"
 end
@@ -73,7 +73,7 @@ end
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**AnalyzeJoke200Response**](AnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ end
 
 ## downvote_joke
 
-> <InlineResponse2008> downvote_joke(id)
+> <SubmitJoke200Response> downvote_joke(id)
 
 Downvote a Joke
 
@@ -122,7 +122,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2008>, Integer, Hash)> downvote_joke_with_http_info(id)
+> <Array(<SubmitJoke200Response>, Integer, Hash)> downvote_joke_with_http_info(id)
 
 ```ruby
 begin
@@ -130,7 +130,7 @@ begin
   data, status_code, headers = api_instance.downvote_joke_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2008>
+  p data # => <SubmitJoke200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling JokesApi->downvote_joke_with_http_info: #{e}"
 end
@@ -144,7 +144,7 @@ end
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ end
 
 ## random_joke
 
-> <InlineResponse2004> random_joke(opts)
+> <RandomJoke200Response> random_joke(opts)
 
 Random Joke
 
@@ -199,7 +199,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2004>, Integer, Hash)> random_joke_with_http_info(opts)
+> <Array(<RandomJoke200Response>, Integer, Hash)> random_joke_with_http_info(opts)
 
 ```ruby
 begin
@@ -207,7 +207,7 @@ begin
   data, status_code, headers = api_instance.random_joke_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2004>
+  p data # => <RandomJoke200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling JokesApi->random_joke_with_http_info: #{e}"
 end
@@ -225,7 +225,7 @@ end
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**RandomJoke200Response**](RandomJoke200Response.md)
 
 ### Authorization
 
@@ -239,7 +239,7 @@ end
 
 ## search_jokes
 
-> <InlineResponse200> search_jokes(opts)
+> <SearchJokes200Response> search_jokes(opts)
 
 Search Jokes
 
@@ -282,7 +282,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse200>, Integer, Hash)> search_jokes_with_http_info(opts)
+> <Array(<SearchJokes200Response>, Integer, Hash)> search_jokes_with_http_info(opts)
 
 ```ruby
 begin
@@ -290,7 +290,7 @@ begin
   data, status_code, headers = api_instance.search_jokes_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse200>
+  p data # => <SearchJokes200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling JokesApi->search_jokes_with_http_info: #{e}"
 end
@@ -310,7 +310,7 @@ end
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchJokes200Response**](SearchJokes200Response.md)
 
 ### Authorization
 
@@ -324,7 +324,7 @@ end
 
 ## submit_joke
 
-> <InlineResponse2008> submit_joke(opts)
+> <SubmitJoke200Response> submit_joke(opts)
 
 Submit Joke
 
@@ -361,7 +361,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2008>, Integer, Hash)> submit_joke_with_http_info(opts)
+> <Array(<SubmitJoke200Response>, Integer, Hash)> submit_joke_with_http_info(opts)
 
 ```ruby
 begin
@@ -369,7 +369,7 @@ begin
   data, status_code, headers = api_instance.submit_joke_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2008>
+  p data # => <SubmitJoke200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling JokesApi->submit_joke_with_http_info: #{e}"
 end
@@ -383,7 +383,7 @@ end
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -397,7 +397,7 @@ end
 
 ## upvote_joke
 
-> <InlineResponse2008> upvote_joke(id)
+> <SubmitJoke200Response> upvote_joke(id)
 
 Upvote a Joke
 
@@ -432,7 +432,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2008>, Integer, Hash)> upvote_joke_with_http_info(id)
+> <Array(<SubmitJoke200Response>, Integer, Hash)> upvote_joke_with_http_info(id)
 
 ```ruby
 begin
@@ -440,7 +440,7 @@ begin
   data, status_code, headers = api_instance.upvote_joke_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2008>
+  p data # => <SubmitJoke200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling JokesApi->upvote_joke_with_http_info: #{e}"
 end
@@ -454,7 +454,7 @@ end
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

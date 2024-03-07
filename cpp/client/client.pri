@@ -2,16 +2,19 @@ QT += network
 
 HEADERS += \
 # Models
-    $${PWD}/OAIInline_response_200.h \
-    $${PWD}/OAIInline_response_200_1.h \
-    $${PWD}/OAIInline_response_200_2.h \
-    $${PWD}/OAIInline_response_200_3.h \
-    $${PWD}/OAIInline_response_200_4.h \
-    $${PWD}/OAIInline_response_200_5.h \
-    $${PWD}/OAIInline_response_200_6.h \
-    $${PWD}/OAIInline_response_200_7.h \
-    $${PWD}/OAIInline_response_200_8.h \
-    $${PWD}/OAIInline_response_200_9.h \
+    $${PWD}/OAIAnalyze_joke_200_response.h \
+    $${PWD}/OAIGenerate_nonsense_word_200_response.h \
+    $${PWD}/OAIPraise_200_response.h \
+    $${PWD}/OAIRandom_joke_200_response.h \
+    $${PWD}/OAIRandom_meme_200_response.h \
+    $${PWD}/OAIRate_word_200_response.h \
+    $${PWD}/OAISearch_gifs_200_response.h \
+    $${PWD}/OAISearch_gifs_200_response_images_inner.h \
+    $${PWD}/OAISearch_jokes_200_response.h \
+    $${PWD}/OAISearch_jokes_200_response_jokes_inner.h \
+    $${PWD}/OAISearch_memes_200_response.h \
+    $${PWD}/OAISearch_memes_200_response_memes_inner.h \
+    $${PWD}/OAISubmit_joke_200_response.h \
 # APIs
     $${PWD}/OAIJokesApi.h \
     $${PWD}/OAIMemesApi.h \
@@ -28,16 +31,19 @@ HEADERS += \
 
 SOURCES += \
 # Models
-    $${PWD}/OAIInline_response_200.cpp \
-    $${PWD}/OAIInline_response_200_1.cpp \
-    $${PWD}/OAIInline_response_200_2.cpp \
-    $${PWD}/OAIInline_response_200_3.cpp \
-    $${PWD}/OAIInline_response_200_4.cpp \
-    $${PWD}/OAIInline_response_200_5.cpp \
-    $${PWD}/OAIInline_response_200_6.cpp \
-    $${PWD}/OAIInline_response_200_7.cpp \
-    $${PWD}/OAIInline_response_200_8.cpp \
-    $${PWD}/OAIInline_response_200_9.cpp \
+    $${PWD}/OAIAnalyze_joke_200_response.cpp \
+    $${PWD}/OAIGenerate_nonsense_word_200_response.cpp \
+    $${PWD}/OAIPraise_200_response.cpp \
+    $${PWD}/OAIRandom_joke_200_response.cpp \
+    $${PWD}/OAIRandom_meme_200_response.cpp \
+    $${PWD}/OAIRate_word_200_response.cpp \
+    $${PWD}/OAISearch_gifs_200_response.cpp \
+    $${PWD}/OAISearch_gifs_200_response_images_inner.cpp \
+    $${PWD}/OAISearch_jokes_200_response.cpp \
+    $${PWD}/OAISearch_jokes_200_response_jokes_inner.cpp \
+    $${PWD}/OAISearch_memes_200_response.cpp \
+    $${PWD}/OAISearch_memes_200_response_memes_inner.cpp \
+    $${PWD}/OAISubmit_joke_200_response.cpp \
 # APIs
     $${PWD}/OAIJokesApi.cpp \
     $${PWD}/OAIMemesApi.cpp \

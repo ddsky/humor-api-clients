@@ -81,7 +81,7 @@ public:
     void setRequestCompressionEnabled(bool enable);
     int  getHttpResponseCode() const;
 
-signals:
+Q_SIGNALS:
     void on_execution_finished(OAIHttpRequestWorker *worker);
 
 private:

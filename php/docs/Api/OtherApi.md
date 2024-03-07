@@ -1,20 +1,20 @@
-# com.humorapi.client\OtherApi
+# OpenAPI\Client\OtherApi
 
-All URIs are relative to https://api.humorapi.com.
+All URIs are relative to https://api.humorapi.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**generateNonsenseWord()**](OtherApi.md#generateNonsenseWord) | **GET** /words/nonsense/random | Generate Nonsense Word
-[**insult()**](OtherApi.md#insult) | **GET** /insult | Insult
-[**praise()**](OtherApi.md#praise) | **GET** /praise | Praise
-[**rateWord()**](OtherApi.md#rateWord) | **GET** /words/rate | Rate Word
-[**searchGifs()**](OtherApi.md#searchGifs) | **GET** /gif/search | Search Gifs
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**generateNonsenseWord()**](OtherApi.md#generateNonsenseWord) | **GET** /words/nonsense/random | Generate Nonsense Word |
+| [**insult()**](OtherApi.md#insult) | **GET** /insult | Insult |
+| [**praise()**](OtherApi.md#praise) | **GET** /praise | Praise |
+| [**rateWord()**](OtherApi.md#rateWord) | **GET** /words/rate | Rate Word |
+| [**searchGifs()**](OtherApi.md#searchGifs) | **GET** /gif/search | Search Gifs |
 
 
 ## `generateNonsenseWord()`
 
 ```php
-generateNonsenseWord(): \com.humorapi.client\com.humorapi.client.model\InlineResponse2007
+generateNonsenseWord(): \OpenAPI\Client\Model\GenerateNonsenseWord200Response
 ```
 
 Generate Nonsense Word
@@ -29,12 +29,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\OtherApi(
+$apiInstance = new OpenAPI\Client\Api\OtherApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2007**](../Model/InlineResponse2007.md)
+[**\OpenAPI\Client\Model\GenerateNonsenseWord200Response**](../Model/GenerateNonsenseWord200Response.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ This endpoint does not need any parameter.
 ## `insult()`
 
 ```php
-insult($name, $reason): \com.humorapi.client\com.humorapi.client.model\InlineResponse2005
+insult($name, $reason): \OpenAPI\Client\Model\Praise200Response
 ```
 
 Insult
@@ -88,12 +88,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\OtherApi(
+$apiInstance = new OpenAPI\Client\Api\OtherApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -112,14 +112,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| The person&#39;s name. |
- **reason** | **string**| The reason for the praise/insult. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| The person&#39;s name. | |
+| **reason** | **string**| The reason for the praise/insult. | |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\OpenAPI\Client\Model\Praise200Response**](../Model/Praise200Response.md)
 
 ### Authorization
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 ## `praise()`
 
 ```php
-praise($name, $reason): \com.humorapi.client\com.humorapi.client.model\InlineResponse2005
+praise($name, $reason): \OpenAPI\Client\Model\Praise200Response
 ```
 
 Praise
@@ -152,12 +152,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\OtherApi(
+$apiInstance = new OpenAPI\Client\Api\OtherApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -176,14 +176,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| The person&#39;s name. |
- **reason** | **string**| The reason for the praise/insult. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| The person&#39;s name. | |
+| **reason** | **string**| The reason for the praise/insult. | |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\OpenAPI\Client\Model\Praise200Response**](../Model/Praise200Response.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 ## `rateWord()`
 
 ```php
-rateWord($word): \com.humorapi.client\com.humorapi.client.model\InlineResponse2006
+rateWord($word): \OpenAPI\Client\Model\RateWord200Response
 ```
 
 Rate Word
@@ -216,12 +216,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\OtherApi(
+$apiInstance = new OpenAPI\Client\Api\OtherApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -239,13 +239,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **word** | **string**| The word to be rated. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **word** | **string**| The word to be rated. | |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\OpenAPI\Client\Model\RateWord200Response**](../Model/RateWord200Response.md)
 
 ### Authorization
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 ## `searchGifs()`
 
 ```php
-searchGifs($query, $number): \com.humorapi.client\com.humorapi.client.model\InlineResponse2001
+searchGifs($query, $number): \OpenAPI\Client\Model\SearchGifs200Response
 ```
 
 Search Gifs
@@ -278,12 +278,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apiKey
-$config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = com.humorapi.client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 
-$apiInstance = new com.humorapi.client\Api\OtherApi(
+$apiInstance = new OpenAPI\Client\Api\OtherApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -302,14 +302,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **query** | **string**| A search query. |
- **number** | **int**| The number of results to retrieve between 1 and 10. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **query** | **string**| A search query. | |
+| **number** | **int**| The number of results to retrieve between 1 and 10. | [optional] |
 
 ### Return type
 
-[**\com.humorapi.client\com.humorapi.client.model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\OpenAPI\Client\Model\SearchGifs200Response**](../Model/SearchGifs200Response.md)
 
 ### Authorization
 

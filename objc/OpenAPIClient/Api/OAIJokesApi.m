@@ -1,10 +1,10 @@
 #import "OAIJokesApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIInlineResponse200.h"
-#import "OAIInlineResponse2004.h"
-#import "OAIInlineResponse2008.h"
-#import "OAIInlineResponse2009.h"
+#import "OAIAnalyzeJoke200Response.h"
+#import "OAIRandomJoke200Response.h"
+#import "OAISearchJokes200Response.h"
+#import "OAISubmitJoke200Response.h"
 
 
 @interface OAIJokesApi ()
@@ -57,10 +57,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
 /// Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
 ///  @param body Post the joke as plain text. (optional)
 ///
-///  @returns OAIInlineResponse2009*
+///  @returns OAIAnalyzeJoke200Response*
 ///
 -(NSURLSessionTask*) analyzeJokeWithBody: (NSString*) body
-    completionHandler: (void (^)(OAIInlineResponse2009* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIAnalyzeJoke200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/jokes/analyze"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -99,10 +99,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2009*"
+                              responseType: @"OAIAnalyzeJoke200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2009*)data, error);
+                                    handler((OAIAnalyzeJoke200Response*)data, error);
                                 }
                             }];
 }
@@ -112,10 +112,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
 /// Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 ///  @param _id The object's id. 
 ///
-///  @returns OAIInlineResponse2008*
+///  @returns OAISubmitJoke200Response*
 ///
 -(NSURLSessionTask*) downvoteJokeWithId: (NSNumber*) _id
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler {
     // verify the required parameter '_id' is set
     if (_id == nil) {
         NSParameterAssert(_id);
@@ -167,10 +167,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2008*"
+                              responseType: @"OAISubmitJoke200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2008*)data, error);
+                                    handler((OAISubmitJoke200Response*)data, error);
                                 }
                             }];
 }
@@ -188,14 +188,14 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
 ///
 ///  @param maxLength The maximum number of letters in the joke. (optional)
 ///
-///  @returns OAIInlineResponse2004*
+///  @returns OAIRandomJoke200Response*
 ///
 -(NSURLSessionTask*) randomJokeWithKeywords: (NSString*) keywords
     includeTags: (NSString*) includeTags
     excludeTags: (NSString*) excludeTags
     minRating: (NSNumber*) minRating
     maxLength: (NSNumber*) maxLength
-    completionHandler: (void (^)(OAIInlineResponse2004* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIRandomJoke200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/jokes/random"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -248,10 +248,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2004*"
+                              responseType: @"OAIRandomJoke200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2004*)data, error);
+                                    handler((OAIRandomJoke200Response*)data, error);
                                 }
                             }];
 }
@@ -273,7 +273,7 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
 ///
 ///  @param offset The number of results to skip. (optional)
 ///
-///  @returns OAIInlineResponse200*
+///  @returns OAISearchJokes200Response*
 ///
 -(NSURLSessionTask*) searchJokesWithKeywords: (NSString*) keywords
     includeTags: (NSString*) includeTags
@@ -282,7 +282,7 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
     minRating: (NSNumber*) minRating
     maxLength: (NSNumber*) maxLength
     offset: (NSNumber*) offset
-    completionHandler: (void (^)(OAIInlineResponse200* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISearchJokes200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/jokes/search"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -341,10 +341,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse200*"
+                              responseType: @"OAISearchJokes200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse200*)data, error);
+                                    handler((OAISearchJokes200Response*)data, error);
                                 }
                             }];
 }
@@ -354,10 +354,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
 /// Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
 ///  @param body Post the joke as plain text. (optional)
 ///
-///  @returns OAIInlineResponse2008*
+///  @returns OAISubmitJoke200Response*
 ///
 -(NSURLSessionTask*) submitJokeWithBody: (NSString*) body
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/jokes"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -396,10 +396,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2008*"
+                              responseType: @"OAISubmitJoke200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2008*)data, error);
+                                    handler((OAISubmitJoke200Response*)data, error);
                                 }
                             }];
 }
@@ -409,10 +409,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
 /// Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 ///  @param _id The object's id. 
 ///
-///  @returns OAIInlineResponse2008*
+///  @returns OAISubmitJoke200Response*
 ///
 -(NSURLSessionTask*) upvoteJokeWithId: (NSNumber*) _id
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler {
     // verify the required parameter '_id' is set
     if (_id == nil) {
         NSParameterAssert(_id);
@@ -464,10 +464,10 @@ NSInteger kOAIJokesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIInlineResponse2008*"
+                              responseType: @"OAISubmitJoke200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIInlineResponse2008*)data, error);
+                                    handler((OAISubmitJoke200Response*)data, error);
                                 }
                             }];
 }

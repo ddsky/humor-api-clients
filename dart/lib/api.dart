@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -14,6 +14,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:collection/collection.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
@@ -31,23 +32,31 @@ part 'api/jokes_api.dart';
 part 'api/memes_api.dart';
 part 'api/other_api.dart';
 
-part 'model/inline_response200.dart';
-part 'model/inline_response2001.dart';
-part 'model/inline_response2002.dart';
-part 'model/inline_response2003.dart';
-part 'model/inline_response2004.dart';
-part 'model/inline_response2005.dart';
-part 'model/inline_response2006.dart';
-part 'model/inline_response2007.dart';
-part 'model/inline_response2008.dart';
-part 'model/inline_response2009.dart';
+part 'model/analyze_joke200_response.dart';
+part 'model/generate_nonsense_word200_response.dart';
+part 'model/praise200_response.dart';
+part 'model/random_joke200_response.dart';
+part 'model/random_meme200_response.dart';
+part 'model/rate_word200_response.dart';
+part 'model/search_gifs200_response.dart';
+part 'model/search_gifs200_response_images_inner.dart';
+part 'model/search_jokes200_response.dart';
+part 'model/search_jokes200_response_jokes_inner.dart';
+part 'model/search_memes200_response.dart';
+part 'model/search_memes200_response_memes_inner.dart';
+part 'model/submit_joke200_response.dart';
 
+
+/// An [ApiClient] instance that uses the default values obtained from
+/// the OpenAPI specification file.
+var defaultApiClient = ApiClient();
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
 const _dateEpochMarker = 'epoch';
+const _deepEquality = DeepCollectionEquality();
 final _dateFormatter = DateFormat('yyyy-MM-dd');
 final _regList = RegExp(r'^List<(.*)>$');
 final _regSet = RegExp(r'^Set<(.*)>$');
 final _regMap = RegExp(r'^Map<String,(.*)>$');
 
-ApiClient defaultApiClient = ApiClient();
+bool _isEpochMarker(String? pattern) => pattern == _dateEpochMarker || pattern == '/$_dateEpochMarker/';

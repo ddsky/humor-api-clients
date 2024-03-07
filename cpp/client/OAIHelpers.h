@@ -136,6 +136,7 @@ QJsonValue toJsonValue(const double &value);
 QJsonValue toJsonValue(const OAIObject &value);
 QJsonValue toJsonValue(const OAIEnum &value);
 QJsonValue toJsonValue(const OAIHttpFileElement &value);
+QJsonValue toJsonValue(const QJsonValue &value);
 
 template <typename T>
 QJsonValue toJsonValue(const QList<T> &val) {
@@ -222,6 +223,7 @@ bool fromJsonValue(double &value, const QJsonValue &jval);
 bool fromJsonValue(OAIObject &value, const QJsonValue &jval);
 bool fromJsonValue(OAIEnum &value, const QJsonValue &jval);
 bool fromJsonValue(OAIHttpFileElement &value, const QJsonValue &jval);
+bool fromJsonValue(QJsonValue &value, const QJsonValue &jval);
 
 template <typename T>
 bool fromJsonValue(QList<T> &val, const QJsonValue &jval) {

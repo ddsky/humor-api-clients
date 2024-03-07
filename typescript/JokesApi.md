@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **analyzeJoke**
-> InlineResponse2009 analyzeJoke()
+> AnalyzeJoke200Response analyzeJoke()
 
 Analyze a joke. See https://humorapi.com/docs/#Analyze-Joke for more.
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2009**
+**AnalyzeJoke200Response**
 
 ### Authorization
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **downvoteJoke**
-> InlineResponse2008 downvoteJoke()
+> SubmitJoke200Response downvoteJoke()
 
 Downvote a joke. See https://humorapi.com/docs/#Downvote-Joke for more.
 
@@ -82,7 +82,7 @@ const configuration = .createConfiguration();
 const apiInstance = new .JokesApi(configuration);
 
 let body:.JokesApiDownvoteJokeRequest = {
-  // number | The object's id.
+  // number | The object\'s id.
   id: 1,
 };
 
@@ -96,12 +96,12 @@ apiInstance.downvoteJoke(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**number**] | The object&#39;s id. | defaults to undefined
+ **id** | [**number**] | The object\&#39;s id. | defaults to undefined
 
 
 ### Return type
 
-**InlineResponse2008**
+**SubmitJoke200Response**
 
 ### Authorization
 
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **randomJoke**
-> InlineResponse2004 randomJoke()
+> RandomJoke200Response randomJoke()
 
 Get a random joke. See https://humorapi.com/docs/#Random-Joke for more.
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2004**
+**RandomJoke200Response**
 
 ### Authorization
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **searchJokes**
-> InlineResponse200 searchJokes()
+> SearchJokes200Response searchJokes()
 
 Search for jokes. See https://humorapi.com/docs/#Search-Jokes for more.
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse200**
+**SearchJokes200Response**
 
 ### Authorization
 
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **submitJoke**
-> InlineResponse2008 submitJoke()
+> SubmitJoke200Response submitJoke()
 
 Submit a joke. See https://humorapi.com/docs/#Submit-Joke for more.
 
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2008**
+**SubmitJoke200Response**
 
 ### Authorization
 
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **upvoteJoke**
-> InlineResponse2008 upvoteJoke()
+> SubmitJoke200Response upvoteJoke()
 
 Upvote a joke. See https://humorapi.com/docs/#Upvote-Joke for more.
 
@@ -328,7 +328,7 @@ const configuration = .createConfiguration();
 const apiInstance = new .JokesApi(configuration);
 
 let body:.JokesApiUpvoteJokeRequest = {
-  // number | The object's id.
+  // number | The object\'s id.
   id: 1,
 };
 
@@ -342,12 +342,12 @@ apiInstance.upvoteJoke(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**number**] | The object&#39;s id. | defaults to undefined
+ **id** | [**number**] | The object\&#39;s id. | defaults to undefined
 
 
 ### Return type
 
-**InlineResponse2008**
+**SubmitJoke200Response**
 
 ### Authorization
 

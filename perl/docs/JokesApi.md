@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **analyze_joke**
-> InlineResponse2009 analyze_joke(body => $body)
+> AnalyzeJoke200Response analyze_joke(body => $body)
 
 Analyze Joke
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**AnalyzeJoke200Response**](AnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **downvote_joke**
-> InlineResponse2008 downvote_joke(id => $id)
+> SubmitJoke200Response downvote_joke(id => $id)
 
 Downvote a Joke
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **random_joke**
-> InlineResponse2004 random_joke(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, min_rating => $min_rating, max_length => $max_length)
+> RandomJoke200Response random_joke(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, min_rating => $min_rating, max_length => $max_length)
 
 Random Joke
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**RandomJoke200Response**](RandomJoke200Response.md)
 
 ### Authorization
 
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_jokes**
-> InlineResponse200 search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length, offset => $offset)
+> SearchJokes200Response search_jokes(keywords => $keywords, include_tags => $include_tags, exclude_tags => $exclude_tags, number => $number, min_rating => $min_rating, max_length => $max_length, offset => $offset)
 
 Search Jokes
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchJokes200Response**](SearchJokes200Response.md)
 
 ### Authorization
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **submit_joke**
-> InlineResponse2008 submit_joke(body => $body)
+> SubmitJoke200Response submit_joke(body => $body)
 
 Submit Joke
 
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upvote_joke**
-> InlineResponse2008 upvote_joke(id => $id)
+> SubmitJoke200Response upvote_joke(id => $id)
 
 Upvote a Joke
 
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

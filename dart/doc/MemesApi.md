@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **downvoteMeme**
-> InlineResponse2008 downvoteMeme(id)
+> SubmitJoke200Response downvoteMeme(id)
 
 Downvote a Meme
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **randomMeme**
-> InlineResponse2003 randomMeme(keywords, keywordsInImage, mediaType, number, minRating)
+> RandomMeme200Response randomMeme(keywords, keywordsInImage, mediaType, number, minRating)
 
 Random Meme
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**RandomMeme200Response**](RandomMeme200Response.md)
 
 ### Authorization
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchMemes**
-> InlineResponse2002 searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
+> SearchMemes200Response searchMemes(keywords, keywordsInImage, mediaType, number, minRating, offset)
 
 Search Memes
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**SearchMemes200Response**](SearchMemes200Response.md)
 
 ### Authorization
 
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upvoteMeme**
-> InlineResponse2008 upvoteMeme(id)
+> SubmitJoke200Response upvoteMeme(id)
 
 Upvote a Meme
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

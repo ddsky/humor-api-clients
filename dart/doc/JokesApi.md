@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **analyzeJoke**
-> InlineResponse2009 analyzeJoke(body)
+> AnalyzeJoke200Response analyzeJoke(body)
 
 Analyze Joke
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**AnalyzeJoke200Response**](AnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **downvoteJoke**
-> InlineResponse2008 downvoteJoke(id)
+> SubmitJoke200Response downvoteJoke(id)
 
 Downvote a Joke
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **randomJoke**
-> InlineResponse2004 randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
+> RandomJoke200Response randomJoke(keywords, includeTags, excludeTags, minRating, maxLength)
 
 Random Joke
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**RandomJoke200Response**](RandomJoke200Response.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchJokes**
-> InlineResponse200 searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
+> SearchJokes200Response searchJokes(keywords, includeTags, excludeTags, number, minRating, maxLength, offset)
 
 Search Jokes
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchJokes200Response**](SearchJokes200Response.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **submitJoke**
-> InlineResponse2008 submitJoke(body)
+> SubmitJoke200Response submitJoke(body)
 
 Submit Joke
 
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upvoteJoke**
-> InlineResponse2008 upvoteJoke(id)
+> SubmitJoke200Response upvoteJoke(id)
 
 Upvote a Joke
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**SubmitJoke200Response**](SubmitJoke200Response.md)
 
 ### Authorization
 

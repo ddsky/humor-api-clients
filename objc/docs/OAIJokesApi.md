@@ -15,7 +15,7 @@ Method | HTTP request | Description
 # **analyzeJoke**
 ```objc
 -(NSURLSessionTask*) analyzeJokeWithBody: (NSString*) body
-        completionHandler: (void (^)(OAIInlineResponse2009* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIAnalyzeJoke200Response* output, NSError* error)) handler;
 ```
 
 Analyze Joke
@@ -38,7 +38,7 @@ OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
 
 // Analyze Joke
 [apiInstance analyzeJokeWithBody:body
-          completionHandler: ^(OAIInlineResponse2009* output, NSError* error) {
+          completionHandler: ^(OAIAnalyzeJoke200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2009***](OAIInlineResponse2009.md)
+[**OAIAnalyzeJoke200Response***](OAIAnalyzeJoke200Response.md)
 
 ### Authorization
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 # **downvoteJoke**
 ```objc
 -(NSURLSessionTask*) downvoteJokeWithId: (NSNumber*) _id
-        completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 ```
 
 Downvote a Joke
@@ -95,7 +95,7 @@ OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
 
 // Downvote a Joke
 [apiInstance downvoteJokeWithId:_id
-          completionHandler: ^(OAIInlineResponse2008* output, NSError* error) {
+          completionHandler: ^(OAISubmitJoke200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2008***](OAIInlineResponse2008.md)
+[**OAISubmitJoke200Response***](OAISubmitJoke200Response.md)
 
 ### Authorization
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
     excludeTags: (NSString*) excludeTags
     minRating: (NSNumber*) minRating
     maxLength: (NSNumber*) maxLength
-        completionHandler: (void (^)(OAIInlineResponse2004* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIRandomJoke200Response* output, NSError* error)) handler;
 ```
 
 Random Joke
@@ -164,7 +164,7 @@ OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
               excludeTags:excludeTags
               minRating:minRating
               maxLength:maxLength
-          completionHandler: ^(OAIInlineResponse2004* output, NSError* error) {
+          completionHandler: ^(OAIRandomJoke200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2004***](OAIInlineResponse2004.md)
+[**OAIRandomJoke200Response***](OAIRandomJoke200Response.md)
 
 ### Authorization
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
     minRating: (NSNumber*) minRating
     maxLength: (NSNumber*) maxLength
     offset: (NSNumber*) offset
-        completionHandler: (void (^)(OAIInlineResponse200* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISearchJokes200Response* output, NSError* error)) handler;
 ```
 
 Search Jokes
@@ -243,7 +243,7 @@ OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
               minRating:minRating
               maxLength:maxLength
               offset:offset
-          completionHandler: ^(OAIInlineResponse200* output, NSError* error) {
+          completionHandler: ^(OAISearchJokes200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse200***](OAIInlineResponse200.md)
+[**OAISearchJokes200Response***](OAISearchJokes200Response.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 # **submitJoke**
 ```objc
 -(NSURLSessionTask*) submitJokeWithBody: (NSString*) body
-        completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 ```
 
 Submit Joke
@@ -306,7 +306,7 @@ OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
 
 // Submit Joke
 [apiInstance submitJokeWithBody:body
-          completionHandler: ^(OAIInlineResponse2008* output, NSError* error) {
+          completionHandler: ^(OAISubmitJoke200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2008***](OAIInlineResponse2008.md)
+[**OAISubmitJoke200Response***](OAISubmitJoke200Response.md)
 
 ### Authorization
 
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 # **upvoteJoke**
 ```objc
 -(NSURLSessionTask*) upvoteJokeWithId: (NSNumber*) _id
-        completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 ```
 
 Upvote a Joke
@@ -363,7 +363,7 @@ OAIJokesApi*apiInstance = [[OAIJokesApi alloc] init];
 
 // Upvote a Joke
 [apiInstance upvoteJokeWithId:_id
-          completionHandler: ^(OAIInlineResponse2008* output, NSError* error) {
+          completionHandler: ^(OAISubmitJoke200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIInlineResponse2008***](OAIInlineResponse2008.md)
+[**OAISubmitJoke200Response***](OAISubmitJoke200Response.md)
 
 ### Authorization
 

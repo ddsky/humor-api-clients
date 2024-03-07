@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
-#import "OAIInlineResponse2002.h"
-#import "OAIInlineResponse2003.h"
-#import "OAIInlineResponse2008.h"
+#import "OAIRandomMeme200Response.h"
+#import "OAISearchMemes200Response.h"
+#import "OAISubmitJoke200Response.h"
 #import "OAIApi.h"
 
 /**
@@ -32,9 +32,9 @@ extern NSInteger kOAIMemesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Successful downvote"
 ///
-/// @return OAIInlineResponse2008*
+/// @return OAISubmitJoke200Response*
 -(NSURLSessionTask*) downvoteMemeWithId: (NSNumber*) _id
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 
 
 /// Random Meme
@@ -48,13 +48,13 @@ extern NSInteger kOAIMemesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Random Meme Response"
 ///
-/// @return OAIInlineResponse2003*
+/// @return OAIRandomMeme200Response*
 -(NSURLSessionTask*) randomMemeWithKeywords: (NSString*) keywords
     keywordsInImage: (NSNumber*) keywordsInImage
     mediaType: (NSString*) mediaType
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
-    completionHandler: (void (^)(OAIInlineResponse2003* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAIRandomMeme200Response* output, NSError* error)) handler;
 
 
 /// Search Memes
@@ -69,14 +69,14 @@ extern NSInteger kOAIMemesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Meme Search Response"
 ///
-/// @return OAIInlineResponse2002*
+/// @return OAISearchMemes200Response*
 -(NSURLSessionTask*) searchMemesWithKeywords: (NSString*) keywords
     keywordsInImage: (NSNumber*) keywordsInImage
     mediaType: (NSString*) mediaType
     number: (NSNumber*) number
     minRating: (NSNumber*) minRating
     offset: (NSNumber*) offset
-    completionHandler: (void (^)(OAIInlineResponse2002* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAISearchMemes200Response* output, NSError* error)) handler;
 
 
 /// Upvote a Meme
@@ -86,9 +86,9 @@ extern NSInteger kOAIMemesApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"Successful upvote"
 ///
-/// @return OAIInlineResponse2008*
+/// @return OAISubmitJoke200Response*
 -(NSURLSessionTask*) upvoteMemeWithId: (NSNumber*) _id
-    completionHandler: (void (^)(OAIInlineResponse2008* output, NSError* error)) handler;
+    completionHandler: (void (^)(OAISubmitJoke200Response* output, NSError* error)) handler;
 
 
 

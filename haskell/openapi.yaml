@@ -162,7 +162,7 @@ paths:
                     - id: 1
                       joke: this is a car joke
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/search_jokes_200_response'
           description: Joke Search Response
       summary: Search Jokes
       tags:
@@ -212,7 +212,7 @@ paths:
                       width: 498
                       height: 498
               schema:
-                $ref: '#/components/schemas/inline_response_200_1'
+                $ref: '#/components/schemas/search_gifs_200_response'
           description: Gif Search Response
       summary: Search Gifs
       tags:
@@ -239,14 +239,11 @@ paths:
         name: keywords-in-image
         required: false
         schema:
-          enum:
-          - true
-          - false
           example: false
           type: boolean
         style: form
-      - description: The type of the content. Can be either 'image' or 'video' or
-          specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
+      - description: "The type of the content. Can be either 'image' or 'video' or\
+          \ specific formats such as 'jpg', 'png', 'gif', or 'mp4'."
         explode: true
         in: query
         name: media-type
@@ -313,7 +310,7 @@ paths:
                       url: https://i.imgur.com/8JTc5z3.jpg
                       type: image/jpeg
               schema:
-                $ref: '#/components/schemas/inline_response_200_2'
+                $ref: '#/components/schemas/search_memes_200_response'
           description: Meme Search Response
       summary: Search Memes
       tags:
@@ -340,14 +337,11 @@ paths:
         name: keywords-in-image
         required: false
         schema:
-          enum:
-          - true
-          - false
           example: false
           type: boolean
         style: form
-      - description: The type of the content. Can be either 'image' or 'video' or
-          specific formats such as 'jpg', 'png', 'gif', or 'mp4'.
+      - description: "The type of the content. Can be either 'image' or 'video' or\
+          \ specific formats such as 'jpg', 'png', 'gif', or 'mp4'."
         explode: true
         in: query
         name: media-type
@@ -397,7 +391,7 @@ paths:
                     url: https://preview.redd.it/hg0zn2mhjsh01.png?width=640&crop=smart&auto=webp&s=f19b0a87edfc6c71b35ec9aceb64799cd532ff59
                     type: image/png
               schema:
-                $ref: '#/components/schemas/inline_response_200_3'
+                $ref: '#/components/schemas/random_meme_200_response'
           description: Random Meme Response
       summary: Random Meme
       tags:
@@ -525,7 +519,7 @@ paths:
                     id: 1
                     joke: this is a car joke
               schema:
-                $ref: '#/components/schemas/inline_response_200_4'
+                $ref: '#/components/schemas/random_joke_200_response'
           description: Random Joke Response
       summary: Random Joke
       tags:
@@ -562,9 +556,9 @@ paths:
               examples:
                 Praise:
                   value:
-                    text: Bravo Alex, you mastermind, you did it again.
+                    text: "Bravo Alex, you mastermind, you did it again."
               schema:
-                $ref: '#/components/schemas/inline_response_200_5'
+                $ref: '#/components/schemas/praise_200_response'
           description: Praise Response
       summary: Praise
       tags:
@@ -601,9 +595,9 @@ paths:
               examples:
                 Insult:
                   value:
-                    text: Holy moley, you dropped the ball Alex, you dingbat.
+                    text: "Holy moley, you dropped the ball Alex, you dingbat."
               schema:
-                $ref: '#/components/schemas/inline_response_200_5'
+                $ref: '#/components/schemas/praise_200_response'
           description: Insult Response
       summary: Insult
       tags:
@@ -633,7 +627,7 @@ paths:
                   value:
                     rating: 0.57
               schema:
-                $ref: '#/components/schemas/inline_response_200_6'
+                $ref: '#/components/schemas/rate_word_200_response'
           description: Word Rating Response
       summary: Rate Word
       tags:
@@ -655,7 +649,7 @@ paths:
                     word: caboo
                     rating: 0.41
               schema:
-                $ref: '#/components/schemas/inline_response_200_7'
+                $ref: '#/components/schemas/generate_nonsense_word_200_response'
           description: Generate Nonsense Word Response
       summary: Generate Nonsense Word
       tags:
@@ -673,6 +667,7 @@ paths:
               Joke-Request-Body:
                 $ref: '#/components/examples/Plain-Joke'
             schema:
+              description: ""
               type: string
               x-examples:
                 example-1: asdf
@@ -686,7 +681,7 @@ paths:
                   value:
                     message: Thanks for submitting the joke.
               schema:
-                $ref: '#/components/schemas/inline_response_200_8'
+                $ref: '#/components/schemas/submit_joke_200_response'
           description: Successful submission.
       summary: Submit Joke
       tags:
@@ -704,6 +699,7 @@ paths:
               Joke-Request-Body:
                 $ref: '#/components/examples/Plain-Joke'
             schema:
+              description: ""
               type: string
               x-examples:
                 example-1: abc
@@ -719,7 +715,7 @@ paths:
                     tags:
                     - ANIMAL
               schema:
-                $ref: '#/components/schemas/inline_response_200_9'
+                $ref: '#/components/schemas/analyze_joke_200_response'
           description: Successful analysis
       summary: Analyze Joke
       tags:
@@ -749,7 +745,7 @@ paths:
                 Successful-Vote:
                   $ref: '#/components/examples/Successful-Vote'
               schema:
-                $ref: '#/components/schemas/inline_response_200_8'
+                $ref: '#/components/schemas/submit_joke_200_response'
           description: Successful upvote
       summary: Upvote a Joke
       tags:
@@ -779,7 +775,7 @@ paths:
                 Successful-Vote:
                   $ref: '#/components/examples/Successful-Vote'
               schema:
-                $ref: '#/components/schemas/inline_response_200_8'
+                $ref: '#/components/schemas/submit_joke_200_response'
           description: Successful upvote
       summary: Upvote a Meme
       tags:
@@ -809,7 +805,7 @@ paths:
                 Successful-Vote:
                   $ref: '#/components/examples/Successful-Vote'
               schema:
-                $ref: '#/components/schemas/inline_response_200_8'
+                $ref: '#/components/schemas/submit_joke_200_response'
           description: Successful downvote
       summary: Downvote a Joke
       tags:
@@ -839,7 +835,7 @@ paths:
                 Successful-Vote:
                   $ref: '#/components/examples/Successful-Vote'
               schema:
-                $ref: '#/components/schemas/inline_response_200_8'
+                $ref: '#/components/schemas/submit_joke_200_response'
           description: Successful downvote
       summary: Downvote a Meme
       tags:
@@ -987,8 +983,8 @@ components:
         type: integer
       style: form
     media-type:
-      description: The type of the content. Can be either 'image' or 'video' or specific
-        formats such as 'jpg', 'png', 'gif', or 'mp4'.
+      description: "The type of the content. Can be either 'image' or 'video' or specific\
+        \ formats such as 'jpg', 'png', 'gif', or 'mp4'."
       explode: true
       in: query
       name: media-type
@@ -1046,23 +1042,31 @@ components:
         type: number
       style: form
   schemas:
-    inline_response_200:
+    search_jokes_200_response_jokes_inner:
+      example:
+        id: 0
+        joke: joke
+      properties:
+        id:
+          type: integer
+        joke:
+          minLength: 1
+          type: string
+      required:
+      - id
+      - joke
+    search_jokes_200_response:
+      description: ""
       example:
         jokes:
-        - '{}'
-        - '{}'
+        - id: 0
+          joke: joke
+        - id: 0
+          joke: joke
       properties:
         jokes:
           items:
-            properties:
-              id:
-                type: integer
-              joke:
-                minLength: 1
-                type: string
-            required:
-            - id
-            - joke
+            $ref: '#/components/schemas/search_jokes_200_response_jokes_inner'
           minItems: 1
           type: array
           uniqueItems: true
@@ -1074,26 +1078,37 @@ components:
           jokes:
           - id: 1
             joke: This is a joke
-    inline_response_200_1:
+    search_gifs_200_response_images_inner:
+      example:
+        width: 0
+        url: url
+        height: 6
+      properties:
+        url:
+          minLength: 1
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - height
+      - url
+      - width
+    search_gifs_200_response:
+      description: ""
       example:
         images:
-        - '{}'
-        - '{}'
+        - width: 0
+          url: url
+          height: 6
+        - width: 0
+          url: url
+          height: 6
       properties:
         images:
           items:
-            properties:
-              url:
-                minLength: 1
-                type: string
-              width:
-                type: integer
-              height:
-                type: integer
-            required:
-            - height
-            - url
-            - width
+            $ref: '#/components/schemas/search_gifs_200_response_images_inner'
           minItems: 1
           type: array
           uniqueItems: true
@@ -1112,27 +1127,38 @@ components:
           - url: https://media.tenor.com/images/6e45dbbc34d8427ffcc322024c73f8fc/tenor.gif
             width: 498
             height: 498
-    inline_response_200_2:
+    search_memes_200_response_memes_inner:
+      example:
+        id: 0
+        type: type
+        url: url
+      properties:
+        id:
+          type: integer
+        url:
+          minLength: 1
+          type: string
+        type:
+          minLength: 1
+          type: string
+      required:
+      - id
+      - type
+      - url
+    search_memes_200_response:
+      description: ""
       example:
         memes:
-        - '{}'
-        - '{}'
+        - id: 0
+          type: type
+          url: url
+        - id: 0
+          type: type
+          url: url
       properties:
         memes:
           items:
-            properties:
-              id:
-                type: integer
-              url:
-                minLength: 1
-                type: string
-              type:
-                minLength: 1
-                type: string
-            required:
-            - id
-            - type
-            - url
+            $ref: '#/components/schemas/search_memes_200_response_memes_inner'
           minItems: 1
           type: array
           uniqueItems: true
@@ -1151,7 +1177,8 @@ components:
           - id: 6698
             url: https://i.imgur.com/8JTc5z3.jpg
             type: image/jpeg
-    inline_response_200_3:
+    random_meme_200_response:
+      description: ""
       example:
         id: 0
         type: type
@@ -1175,7 +1202,8 @@ components:
           id: 50561
           url: https://preview.redd.it/hg0zn2mhjsh01.png?width=640&crop=smart&auto=webp&s=f19b0a87edfc6c71b35ec9aceb64799cd532ff59
           type: image/png
-    inline_response_200_4:
+    random_joke_200_response:
+      description: ""
       example:
         id: 0
         joke: joke
@@ -1193,7 +1221,8 @@ components:
         example-1:
           id: 1
           joke: this is a car joke
-    inline_response_200_5:
+    praise_200_response:
+      description: ""
       example:
         text: text
       properties:
@@ -1205,8 +1234,9 @@ components:
       type: object
       x-examples:
         example-1:
-          text: Bravo Alex, you mastermind, you did it again.
-    inline_response_200_6:
+          text: "Bravo Alex, you mastermind, you did it again."
+    rate_word_200_response:
+      description: ""
       example:
         rating: 0.8008281904610115
       properties:
@@ -1218,7 +1248,8 @@ components:
       x-examples:
         example-1:
           rating: 0.57
-    inline_response_200_7:
+    generate_nonsense_word_200_response:
+      description: ""
       example:
         rating: 0.8008281904610115
         word: word
@@ -1236,7 +1267,8 @@ components:
         example-1:
           word: caboo
           rating: 0.41
-    inline_response_200_8:
+    submit_joke_200_response:
+      description: ""
       example:
         message: message
       properties:
@@ -1248,7 +1280,8 @@ components:
       x-examples:
         example-1:
           message: ""
-    inline_response_200_9:
+    analyze_joke_200_response:
+      description: ""
       example:
         joke: joke
         tags:

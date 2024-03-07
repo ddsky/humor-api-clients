@@ -27,10 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.humorapi.client.model.InlineResponse2001;
-import com.humorapi.client.model.InlineResponse2005;
-import com.humorapi.client.model.InlineResponse2006;
-import com.humorapi.client.model.InlineResponse2007;
+import com.humorapi.client.model.GenerateNonsenseWord200Response;
+import com.humorapi.client.model.Praise200Response;
+import com.humorapi.client.model.RateWord200Response;
+import com.humorapi.client.model.SearchGifs200Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -88,7 +88,6 @@ public class OtherApi {
      */
     public okhttp3.Call generateNonsenseWordCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -121,7 +120,6 @@ public class OtherApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -134,17 +132,14 @@ public class OtherApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call generateNonsenseWordValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = generateNonsenseWordCall(_callback);
-        return localVarCall;
+        return generateNonsenseWordCall(_callback);
 
     }
 
     /**
      * Generate Nonsense Word
      * Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
-     * @return InlineResponse2007
+     * @return GenerateNonsenseWord200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -152,15 +147,15 @@ public class OtherApi {
         <tr><td> 200 </td><td> Generate Nonsense Word Response </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2007 generateNonsenseWord() throws ApiException {
-        ApiResponse<InlineResponse2007> localVarResp = generateNonsenseWordWithHttpInfo();
+    public GenerateNonsenseWord200Response generateNonsenseWord() throws ApiException {
+        ApiResponse<GenerateNonsenseWord200Response> localVarResp = generateNonsenseWordWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Generate Nonsense Word
      * Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
-     * @return ApiResponse&lt;InlineResponse2007&gt;
+     * @return ApiResponse&lt;GenerateNonsenseWord200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -168,9 +163,9 @@ public class OtherApi {
         <tr><td> 200 </td><td> Generate Nonsense Word Response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2007> generateNonsenseWordWithHttpInfo() throws ApiException {
+    public ApiResponse<GenerateNonsenseWord200Response> generateNonsenseWordWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = generateNonsenseWordValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenerateNonsenseWord200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -186,10 +181,10 @@ public class OtherApi {
         <tr><td> 200 </td><td> Generate Nonsense Word Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateNonsenseWordAsync(final ApiCallback<InlineResponse2007> _callback) throws ApiException {
+    public okhttp3.Call generateNonsenseWordAsync(final ApiCallback<GenerateNonsenseWord200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateNonsenseWordValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenerateNonsenseWord200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -208,7 +203,6 @@ public class OtherApi {
      */
     public okhttp3.Call insultCall(String name, String reason, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -249,7 +243,6 @@ public class OtherApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -262,20 +255,17 @@ public class OtherApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call insultValidateBeforeCall(String name, String reason, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling insult(Async)");
         }
-        
+
         // verify the required parameter 'reason' is set
         if (reason == null) {
             throw new ApiException("Missing the required parameter 'reason' when calling insult(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = insultCall(name, reason, _callback);
-        return localVarCall;
+        return insultCall(name, reason, _callback);
 
     }
 
@@ -284,7 +274,7 @@ public class OtherApi {
      * Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
      * @param name The person&#39;s name. (required)
      * @param reason The reason for the praise/insult. (required)
-     * @return InlineResponse2005
+     * @return Praise200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -292,8 +282,8 @@ public class OtherApi {
         <tr><td> 200 </td><td> Insult Response </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2005 insult(String name, String reason) throws ApiException {
-        ApiResponse<InlineResponse2005> localVarResp = insultWithHttpInfo(name, reason);
+    public Praise200Response insult(String name, String reason) throws ApiException {
+        ApiResponse<Praise200Response> localVarResp = insultWithHttpInfo(name, reason);
         return localVarResp.getData();
     }
 
@@ -302,7 +292,7 @@ public class OtherApi {
      * Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
      * @param name The person&#39;s name. (required)
      * @param reason The reason for the praise/insult. (required)
-     * @return ApiResponse&lt;InlineResponse2005&gt;
+     * @return ApiResponse&lt;Praise200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -310,9 +300,9 @@ public class OtherApi {
         <tr><td> 200 </td><td> Insult Response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2005> insultWithHttpInfo(String name, String reason) throws ApiException {
+    public ApiResponse<Praise200Response> insultWithHttpInfo(String name, String reason) throws ApiException {
         okhttp3.Call localVarCall = insultValidateBeforeCall(name, reason, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+        Type localVarReturnType = new TypeToken<Praise200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -330,10 +320,10 @@ public class OtherApi {
         <tr><td> 200 </td><td> Insult Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call insultAsync(String name, String reason, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
+    public okhttp3.Call insultAsync(String name, String reason, final ApiCallback<Praise200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = insultValidateBeforeCall(name, reason, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+        Type localVarReturnType = new TypeToken<Praise200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -352,7 +342,6 @@ public class OtherApi {
      */
     public okhttp3.Call praiseCall(String name, String reason, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -393,7 +382,6 @@ public class OtherApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -406,20 +394,17 @@ public class OtherApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call praiseValidateBeforeCall(String name, String reason, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling praise(Async)");
         }
-        
+
         // verify the required parameter 'reason' is set
         if (reason == null) {
             throw new ApiException("Missing the required parameter 'reason' when calling praise(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = praiseCall(name, reason, _callback);
-        return localVarCall;
+        return praiseCall(name, reason, _callback);
 
     }
 
@@ -428,7 +413,7 @@ public class OtherApi {
      * Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
      * @param name The person&#39;s name. (required)
      * @param reason The reason for the praise/insult. (required)
-     * @return InlineResponse2005
+     * @return Praise200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -436,8 +421,8 @@ public class OtherApi {
         <tr><td> 200 </td><td> Praise Response </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2005 praise(String name, String reason) throws ApiException {
-        ApiResponse<InlineResponse2005> localVarResp = praiseWithHttpInfo(name, reason);
+    public Praise200Response praise(String name, String reason) throws ApiException {
+        ApiResponse<Praise200Response> localVarResp = praiseWithHttpInfo(name, reason);
         return localVarResp.getData();
     }
 
@@ -446,7 +431,7 @@ public class OtherApi {
      * Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
      * @param name The person&#39;s name. (required)
      * @param reason The reason for the praise/insult. (required)
-     * @return ApiResponse&lt;InlineResponse2005&gt;
+     * @return ApiResponse&lt;Praise200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -454,9 +439,9 @@ public class OtherApi {
         <tr><td> 200 </td><td> Praise Response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2005> praiseWithHttpInfo(String name, String reason) throws ApiException {
+    public ApiResponse<Praise200Response> praiseWithHttpInfo(String name, String reason) throws ApiException {
         okhttp3.Call localVarCall = praiseValidateBeforeCall(name, reason, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+        Type localVarReturnType = new TypeToken<Praise200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -474,10 +459,10 @@ public class OtherApi {
         <tr><td> 200 </td><td> Praise Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call praiseAsync(String name, String reason, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
+    public okhttp3.Call praiseAsync(String name, String reason, final ApiCallback<Praise200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = praiseValidateBeforeCall(name, reason, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+        Type localVarReturnType = new TypeToken<Praise200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -495,7 +480,6 @@ public class OtherApi {
      */
     public okhttp3.Call rateWordCall(String word, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -532,7 +516,6 @@ public class OtherApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -545,15 +528,12 @@ public class OtherApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call rateWordValidateBeforeCall(String word, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'word' is set
         if (word == null) {
             throw new ApiException("Missing the required parameter 'word' when calling rateWord(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = rateWordCall(word, _callback);
-        return localVarCall;
+        return rateWordCall(word, _callback);
 
     }
 
@@ -561,7 +541,7 @@ public class OtherApi {
      * Rate Word
      * Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
      * @param word The word to be rated. (required)
-     * @return InlineResponse2006
+     * @return RateWord200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -569,8 +549,8 @@ public class OtherApi {
         <tr><td> 200 </td><td> Word Rating Response </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2006 rateWord(String word) throws ApiException {
-        ApiResponse<InlineResponse2006> localVarResp = rateWordWithHttpInfo(word);
+    public RateWord200Response rateWord(String word) throws ApiException {
+        ApiResponse<RateWord200Response> localVarResp = rateWordWithHttpInfo(word);
         return localVarResp.getData();
     }
 
@@ -578,7 +558,7 @@ public class OtherApi {
      * Rate Word
      * Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
      * @param word The word to be rated. (required)
-     * @return ApiResponse&lt;InlineResponse2006&gt;
+     * @return ApiResponse&lt;RateWord200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -586,9 +566,9 @@ public class OtherApi {
         <tr><td> 200 </td><td> Word Rating Response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2006> rateWordWithHttpInfo(String word) throws ApiException {
+    public ApiResponse<RateWord200Response> rateWordWithHttpInfo(String word) throws ApiException {
         okhttp3.Call localVarCall = rateWordValidateBeforeCall(word, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<RateWord200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -605,10 +585,10 @@ public class OtherApi {
         <tr><td> 200 </td><td> Word Rating Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call rateWordAsync(String word, final ApiCallback<InlineResponse2006> _callback) throws ApiException {
+    public okhttp3.Call rateWordAsync(String word, final ApiCallback<RateWord200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = rateWordValidateBeforeCall(word, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<RateWord200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -627,7 +607,6 @@ public class OtherApi {
      */
     public okhttp3.Call searchGifsCall(String query, Integer number, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -668,7 +647,6 @@ public class OtherApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -681,15 +659,12 @@ public class OtherApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call searchGifsValidateBeforeCall(String query, Integer number, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'query' is set
         if (query == null) {
             throw new ApiException("Missing the required parameter 'query' when calling searchGifs(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = searchGifsCall(query, number, _callback);
-        return localVarCall;
+        return searchGifsCall(query, number, _callback);
 
     }
 
@@ -698,7 +673,7 @@ public class OtherApi {
      * Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
      * @param query A search query. (required)
      * @param number The number of results to retrieve between 1 and 10. (optional)
-     * @return InlineResponse2001
+     * @return SearchGifs200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -706,8 +681,8 @@ public class OtherApi {
         <tr><td> 200 </td><td> Gif Search Response </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2001 searchGifs(String query, Integer number) throws ApiException {
-        ApiResponse<InlineResponse2001> localVarResp = searchGifsWithHttpInfo(query, number);
+    public SearchGifs200Response searchGifs(String query, Integer number) throws ApiException {
+        ApiResponse<SearchGifs200Response> localVarResp = searchGifsWithHttpInfo(query, number);
         return localVarResp.getData();
     }
 
@@ -716,7 +691,7 @@ public class OtherApi {
      * Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
      * @param query A search query. (required)
      * @param number The number of results to retrieve between 1 and 10. (optional)
-     * @return ApiResponse&lt;InlineResponse2001&gt;
+     * @return ApiResponse&lt;SearchGifs200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -724,9 +699,9 @@ public class OtherApi {
         <tr><td> 200 </td><td> Gif Search Response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2001> searchGifsWithHttpInfo(String query, Integer number) throws ApiException {
+    public ApiResponse<SearchGifs200Response> searchGifsWithHttpInfo(String query, Integer number) throws ApiException {
         okhttp3.Call localVarCall = searchGifsValidateBeforeCall(query, number, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<SearchGifs200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -744,10 +719,10 @@ public class OtherApi {
         <tr><td> 200 </td><td> Gif Search Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchGifsAsync(String query, Integer number, final ApiCallback<InlineResponse2001> _callback) throws ApiException {
+    public okhttp3.Call searchGifsAsync(String query, Integer number, final ApiCallback<SearchGifs200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchGifsValidateBeforeCall(query, number, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<SearchGifs200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

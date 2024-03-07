@@ -52,7 +52,7 @@ pub enum SearchGifsError {
 
 
 /// Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
-pub async fn generate_nonsense_word(configuration: &configuration::Configuration, ) -> Result<crate::models::InlineResponse2007, Error<GenerateNonsenseWordError>> {
+pub async fn generate_nonsense_word(configuration: &configuration::Configuration, ) -> Result<crate::models::GenerateNonsenseWord200Response, Error<GenerateNonsenseWordError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -88,7 +88,7 @@ pub async fn generate_nonsense_word(configuration: &configuration::Configuration
 }
 
 /// Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
-pub async fn insult(configuration: &configuration::Configuration, name: &str, reason: &str) -> Result<crate::models::InlineResponse2005, Error<InsultError>> {
+pub async fn insult(configuration: &configuration::Configuration, name: &str, reason: &str) -> Result<crate::models::Praise200Response, Error<InsultError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -126,7 +126,7 @@ pub async fn insult(configuration: &configuration::Configuration, name: &str, re
 }
 
 /// Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
-pub async fn praise(configuration: &configuration::Configuration, name: &str, reason: &str) -> Result<crate::models::InlineResponse2005, Error<PraiseError>> {
+pub async fn praise(configuration: &configuration::Configuration, name: &str, reason: &str) -> Result<crate::models::Praise200Response, Error<PraiseError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -164,7 +164,7 @@ pub async fn praise(configuration: &configuration::Configuration, name: &str, re
 }
 
 /// Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
-pub async fn rate_word(configuration: &configuration::Configuration, word: &str) -> Result<crate::models::InlineResponse2006, Error<RateWordError>> {
+pub async fn rate_word(configuration: &configuration::Configuration, word: &str) -> Result<crate::models::RateWord200Response, Error<RateWordError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -201,7 +201,7 @@ pub async fn rate_word(configuration: &configuration::Configuration, word: &str)
 }
 
 /// Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
-pub async fn search_gifs(configuration: &configuration::Configuration, query: &str, number: Option<i32>) -> Result<crate::models::InlineResponse2001, Error<SearchGifsError>> {
+pub async fn search_gifs(configuration: &configuration::Configuration, query: &str, number: Option<i32>) -> Result<crate::models::SearchGifs200Response, Error<SearchGifsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

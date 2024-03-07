@@ -3,16 +3,19 @@
             [clojure.spec.alpha :as s]
             [spec-tools.core :as st]
             [orchestra.core :refer [defn-spec]]
-            [humor-api.specs.inline-response-200-9 :refer :all]
-            [humor-api.specs.inline-response-200-8 :refer :all]
-            [humor-api.specs.inline-response-200-7 :refer :all]
-            [humor-api.specs.inline-response-200-6 :refer :all]
-            [humor-api.specs.inline-response-200-5 :refer :all]
-            [humor-api.specs.inline-response-200-4 :refer :all]
-            [humor-api.specs.inline-response-200-3 :refer :all]
-            [humor-api.specs.inline-response-200-2 :refer :all]
-            [humor-api.specs.inline-response-200-1 :refer :all]
-            [humor-api.specs.inline-response-200 :refer :all]
+            [humor-api.specs.search-jokes-200-response :refer :all]
+            [humor-api.specs.submit-joke-200-response :refer :all]
+            [humor-api.specs.search-gifs-200-response-images-inner :refer :all]
+            [humor-api.specs.search-memes-200-response-memes-inner :refer :all]
+            [humor-api.specs.analyze-joke-200-response :refer :all]
+            [humor-api.specs.praise-200-response :refer :all]
+            [humor-api.specs.search-gifs-200-response :refer :all]
+            [humor-api.specs.generate-nonsense-word-200-response :refer :all]
+            [humor-api.specs.rate-word-200-response :refer :all]
+            [humor-api.specs.search-jokes-200-response-jokes-inner :refer :all]
+            [humor-api.specs.random-meme-200-response :refer :all]
+            [humor-api.specs.random-joke-200-response :refer :all]
+            [humor-api.specs.search-memes-200-response :refer :all]
             )
   (:import (java.io File)))
 
@@ -32,14 +35,14 @@ See https://humorapi.com/docs/#Downvote-Meme for more."
              :accepts       ["application/json"]
              :auth-names    ["apiKey"]}))
 
-(defn-spec downvote-meme inline-response-200-8-spec
+(defn-spec downvote-meme submit-joke-200-response-spec
   "Downvote a Meme
   Downvote a meme.
 See https://humorapi.com/docs/#Downvote-Meme for more."
   [id int?]
   (let [res (:data (downvote-meme-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode inline-response-200-8-spec res st/string-transformer)
+       (st/decode submit-joke-200-response-spec res st/string-transformer)
        res)))
 
 
@@ -58,7 +61,7 @@ See https://humorapi.com/docs/#Random-Meme for more."
               :accepts       ["application/json"]
               :auth-names    ["apiKey"]})))
 
-(defn-spec random-meme inline-response-200-3-spec
+(defn-spec random-meme random-meme-200-response-spec
   "Random Meme
   Get a random meme.
 See https://humorapi.com/docs/#Random-Meme for more."
@@ -66,7 +69,7 @@ See https://humorapi.com/docs/#Random-Meme for more."
   ([optional-params any?]
    (let [res (:data (random-meme-with-http-info optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode inline-response-200-3-spec res st/string-transformer)
+        (st/decode random-meme-200-response-spec res st/string-transformer)
         res))))
 
 
@@ -85,7 +88,7 @@ See https://humorapi.com/docs/#Search-Memes for more."
               :accepts       ["application/json"]
               :auth-names    ["apiKey"]})))
 
-(defn-spec search-memes inline-response-200-2-spec
+(defn-spec search-memes search-memes-200-response-spec
   "Search Memes
   Search for memes.
 See https://humorapi.com/docs/#Search-Memes for more."
@@ -93,7 +96,7 @@ See https://humorapi.com/docs/#Search-Memes for more."
   ([optional-params any?]
    (let [res (:data (search-memes-with-http-info optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode inline-response-200-2-spec res st/string-transformer)
+        (st/decode search-memes-200-response-spec res st/string-transformer)
         res))))
 
 
@@ -112,14 +115,14 @@ See https://humorapi.com/docs/#Upvote-Meme for more."
              :accepts       ["application/json"]
              :auth-names    ["apiKey"]}))
 
-(defn-spec upvote-meme inline-response-200-8-spec
+(defn-spec upvote-meme submit-joke-200-response-spec
   "Upvote a Meme
   Upvote a meme.
 See https://humorapi.com/docs/#Upvote-Meme for more."
   [id int?]
   (let [res (:data (upvote-meme-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode inline-response-200-8-spec res st/string-transformer)
+       (st/decode submit-joke-200-response-spec res st/string-transformer)
        res)))
 
 

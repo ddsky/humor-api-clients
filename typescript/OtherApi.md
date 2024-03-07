@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **generateNonsenseWord**
-> InlineResponse2007 generateNonsenseWord()
+> GenerateNonsenseWord200Response generateNonsenseWord()
 
 Generate a nonsense word. See https://humorapi.com/docs/#Generate-Nonsense-Word for more.
 
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**InlineResponse2007**
+**GenerateNonsenseWord200Response**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **insult**
-> InlineResponse2005 insult()
+> Praise200Response insult()
 
 Insult somebody for doing something. See https://humorapi.com/docs/#Insult for more.
 
@@ -75,7 +75,7 @@ const configuration = .createConfiguration();
 const apiInstance = new .OtherApi(configuration);
 
 let body:.OtherApiInsultRequest = {
-  // string | The person's name.
+  // string | The person\'s name.
   name: "Alex",
   // string | The reason for the praise/insult.
   reason: "you did it again",
@@ -91,13 +91,13 @@ apiInstance.insult(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | [**string**] | The person&#39;s name. | defaults to undefined
+ **name** | [**string**] | The person\&#39;s name. | defaults to undefined
  **reason** | [**string**] | The reason for the praise/insult. | defaults to undefined
 
 
 ### Return type
 
-**InlineResponse2005**
+**Praise200Response**
 
 ### Authorization
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **praise**
-> InlineResponse2005 praise()
+> Praise200Response praise()
 
 Praise somebody for doing something. See https://humorapi.com/docs/#Praise for more.
 
@@ -132,7 +132,7 @@ const configuration = .createConfiguration();
 const apiInstance = new .OtherApi(configuration);
 
 let body:.OtherApiPraiseRequest = {
-  // string | The person's name.
+  // string | The person\'s name.
   name: "Alex",
   // string | The reason for the praise/insult.
   reason: "you did it again",
@@ -148,13 +148,13 @@ apiInstance.praise(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | [**string**] | The person&#39;s name. | defaults to undefined
+ **name** | [**string**] | The person\&#39;s name. | defaults to undefined
  **reason** | [**string**] | The reason for the praise/insult. | defaults to undefined
 
 
 ### Return type
 
-**InlineResponse2005**
+**Praise200Response**
 
 ### Authorization
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **rateWord**
-> InlineResponse2006 rateWord()
+> RateWord200Response rateWord()
 
 Rate the funniness of a word. See https://humorapi.com/docs/#Rate-Word for more.
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2006**
+**RateWord200Response**
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **searchGifs**
-> InlineResponse2001 searchGifs()
+> SearchGifs200Response searchGifs()
 
 Search for gifs. See https://humorapi.com/docs/#Search-Gifs for more.
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2001**
+**SearchGifs200Response**
 
 ### Authorization
 
